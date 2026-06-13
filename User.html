@@ -905,6 +905,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       cursor: pointer;
       font-size: 0.82rem;
       color: var(--text-secondary);
@@ -915,6 +916,7 @@
       display: none;
     }
     .switch-slider {
+      flex-shrink: 0;
       width: 42px;
       height: 22px;
       background-color: var(--bg-tertiary);
@@ -1030,6 +1032,94 @@
       font-size: 1.5rem;
     }
 
+    /* Top-Right Back Button styling */
+    .db-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .back-to-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+      text-decoration: none;
+      transition: all var(--transition-speed) var(--transition-timing);
+    }
+    .back-to-home-btn:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+      color: var(--text-primary);
+    }
+    .back-to-home-btn-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent-primary);
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+    .back-to-home-btn:hover .back-to-home-btn-icon {
+      transform: translateX(-4px);
+    }
+    /* RTL mirroring */
+    [dir="rtl"] .back-to-home-btn-icon {
+      transform: scaleX(-1);
+    }
+    [dir="rtl"] .back-to-home-btn:hover .back-to-home-btn-icon {
+      transform: scaleX(-1) translateX(-4px);
+    }
+    .header-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    /* Brand Logo & Text Styling */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 10;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-svg {
+      width: 38px;
+      height: 38px;
+      fill: none;
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+      animation: pulseLogo 3s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover .brand-logo-svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+    }
+
     /* ==========================================================================
        8. RESPONSIVE BREAKPOINTS (Desktop First Design)
        ========================================================================== */
@@ -1054,6 +1144,8 @@
         padding: 24px 16px;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .db-sidebar.open {
         right: 0;
@@ -1110,10 +1202,10 @@
       }
       .db-sidebar-nav {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: visible;
         white-space: normal;
         padding-bottom: 0;
-        max-height: calc(100vh - 120px);
+        max-height: none;
         gap: 6px;
       }
       .db-nav-item {
@@ -1151,60 +1243,6 @@
       }
     }
 
-    /* Top-Right Back Button styling */
-    .db-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-    .back-to-home-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-      z-index: 10;
-      text-decoration: none;
-      transition: all var(--transition-speed) var(--transition-timing);
-    }
-    .back-to-home-btn:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px var(--accent-glow);
-      color: var(--text-primary);
-    }
-    .back-to-home-btn-icon {
-      width: 16px;
-      height: 16px;
-      stroke: var(--accent-primary);
-      stroke-width: 2.5;
-      fill: none;
-      transition: transform 0.25s ease;
-    }
-    .back-to-home-btn:hover .back-to-home-btn-icon {
-      transform: translateX(-4px);
-    }
-    /* RTL mirroring */
-    [dir="rtl"] .back-to-home-btn-icon {
-      transform: scaleX(-1);
-    }
-    [dir="rtl"] .back-to-home-btn:hover .back-to-home-btn-icon {
-      transform: scaleX(-1) translateX(-4px);
-    }
-    .header-controls-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 10;
-    }
-
     @media (max-width: 768px) {
       .dashboard-wrapper {
         margin-top: 30px;
@@ -1214,39 +1252,10 @@
         font-size: 0.78rem;
       }
     }
-
-    /* Brand Logo & Text Styling */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-heading);
-      font-size: 1.45rem;
-      font-weight: 800;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      z-index: 10;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .brand-logo-svg {
-      width: 38px;
-      height: 38px;
-      fill: none;
-      filter: drop-shadow(0 0 4px var(--accent-glow));
-      animation: pulseLogo 3s infinite ease-in-out;
-      transition: transform 0.3s ease;
-    }
-
-    .brand:hover .brand-logo-svg {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    @keyframes pulseLogo {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
-      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+    @media (max-width: 480px) {
+      .db-card {
+        padding: 16px;
+      }
     }
   </style>
   <link rel="stylesheet" href="responsive.css">
@@ -1318,7 +1327,12 @@
               <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/></svg>
             </button>
             <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle direction" title="Toggle layout direction">
-              <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+              <svg class="control-btn-icon rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 4l4 4-4 4" />
+                <path d="M3 8h18" />
+                <path d="M7 12l-4 4 4 4" />
+                <path d="M3 16h18" />
+              </svg>
             </button>
             <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu" style="display: none;">
               <svg class="back-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none;">
@@ -1394,14 +1408,14 @@
               <span>Theme</span>
             </button>
             <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
-              <i class="fa-solid fa-right-left control-btn-icon rtl-icon" style="font-size: 14px;"></i>
+              <svg class="control-btn-icon rtl-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round;">
+                <path d="M17 4l4 4-4 4" />
+                <path d="M3 8h18" />
+                <path d="M7 12l-4 4 4 4" />
+                <path d="M3 16h18" />
+              </svg>
               <span>RTL</span>
             </button>
-          </div>
-          
-          <div class="db-nav-item" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;" onclick="window.location.href='Residential.html'">
-            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>Exit Dashboard</span>
           </div>
           <!-- Logout button -->
           <div class="db-nav-item logout-nav-item" onclick="window.location.href='login.html'">
@@ -2469,12 +2483,14 @@
       if (mobileDrawer) mobileDrawer.classList.add('open');
       if (drawerOverlay) drawerOverlay.classList.add('active');
       document.body.style.overflow = 'hidden'; 
+      document.documentElement.style.overflow = 'hidden';
     }
 
     function closeMobileDrawer() {
       if (mobileDrawer) mobileDrawer.classList.remove('open');
       if (drawerOverlay) drawerOverlay.classList.remove('active');
       document.body.style.overflow = ''; 
+      document.documentElement.style.overflow = '';
     }
 
     if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);

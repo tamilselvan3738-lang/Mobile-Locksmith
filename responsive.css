@@ -172,6 +172,18 @@ section:has(> table),
     max-width: 100% !important;
   }
 
+  /* Enforce full-width stacked styling for mobile drawer theme & direction toggles */
+  .drawer-controls-row,
+  .db-mobile-controls-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .drawer-controls-row .control-btn,
+  .db-mobile-controls-row .control-btn {
+    width: 100% !important;
+    flex: none !important;
+  }
+
   /* Dashboard Sidebar Stacking (Removed to support hamburger menu drawer on mobile/tablet) */
 }
 
@@ -221,11 +233,6 @@ section:has(> table),
   .mobile-drawer {
     width: 285px !important;
     padding: 16px !important;
-  }
-
-  .drawer-controls-row {
-    flex-direction: column !important;
-    gap: 8px !important;
   }
 
   /* Buttons expand to full width inside actions groups */

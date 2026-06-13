@@ -1618,6 +1618,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       cursor: pointer;
       font-size: 0.82rem;
       color: var(--text-secondary);
@@ -1630,6 +1631,7 @@
     }
 
     .switch-slider {
+      flex-shrink: 0;
       width: 42px;
       height: 22px;
       background-color: var(--bg-tertiary);
@@ -2018,6 +2020,8 @@
         padding: 24px 16px;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .db-sidebar.open {
         right: 0;
@@ -2074,10 +2078,10 @@
       }
       .db-sidebar-nav {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: visible;
         white-space: normal;
         padding-bottom: 0;
-        max-height: calc(100vh - 120px);
+        max-height: none;
         gap: 6px;
       }
       .db-nav-item {
@@ -2117,6 +2121,9 @@
       @media (max-width: 480px) {
       .home-section {
         padding: 50px 16px;
+      }
+      .db-card {
+        padding: 16px;
       }
     }
   </style>
@@ -2193,7 +2200,12 @@
               <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/></svg>
             </button>
             <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle" style="width: 32px; height: 32px; border-radius: 8px;">
-              <i class="fa-solid fa-right-left control-btn-icon rtl-icon" style="font-size: 14px;"></i>
+              <svg class="control-btn-icon rtl-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round;">
+                <path d="M17 4l4 4-4 4" />
+                <path d="M3 8h18" />
+                <path d="M7 12l-4 4 4 4" />
+                <path d="M3 16h18" />
+              </svg>
             </button>
             <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu" style="display: none;">
               <svg class="back-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none;">
@@ -2273,7 +2285,12 @@
               <span>Theme</span>
             </button>
             <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
-              <i class="fa-solid fa-right-left control-btn-icon rtl-icon" style="font-size: 14px;"></i>
+              <svg class="control-btn-icon rtl-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round;">
+                <path d="M17 4l4 4-4 4" />
+                <path d="M3 8h18" />
+                <path d="M7 12l-4 4 4 4" />
+                <path d="M3 16h18" />
+              </svg>
               <span>RTL</span>
             </button>
           </div>
@@ -3547,12 +3564,14 @@
       if (mobileDrawer) mobileDrawer.classList.add('open');
       if (drawerOverlay) drawerOverlay.classList.add('active');
       document.body.style.overflow = 'hidden'; 
+      document.documentElement.style.overflow = 'hidden';
     }
 
     function closeMobileDrawer() {
       if (mobileDrawer) mobileDrawer.classList.remove('open');
       if (drawerOverlay) drawerOverlay.classList.remove('active');
       document.body.style.overflow = ''; 
+      document.documentElement.style.overflow = '';
     }
 
     if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);
