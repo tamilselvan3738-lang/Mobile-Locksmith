@@ -1,0 +1,5827 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium Mobile Locksmith Navigation Showcase</title>
+
+  <!-- SEO Meta Tags -->
+
+  <meta name="description" content="Stunning showcase of a highly interactive, responsive, dark-mode and RTL-capable navigation system for Mobile Locksmith services.">
+
+  <meta name="author" content="Antigravity">
+
+  
+
+  <!-- Premium Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+  <style>
+
+    /* ==========================================================================
+
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+
+       ========================================================================== */
+
+    :root {
+
+      /* Typography */
+
+      --font-heading: 'Outfit', sans-serif;
+
+      --font-body: 'Inter', sans-serif;
+
+
+
+      /* Colors - Light Mode Defaults */
+
+      --bg-primary: #f8fafc;
+
+      --bg-secondary: #ffffff;
+
+      --bg-tertiary: #f1f5f9;
+
+      --text-primary: #0f172a;
+
+      --text-secondary: #475569;
+
+      --text-muted: #94a3b8;
+
+      
+
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+
+      --accent-glow: rgba(212, 175, 55, 0.15);
+
+      
+
+      --danger-primary: #ef4444;      /* Emergency Red */
+
+      --danger-glow: rgba(239, 68, 68, 0.4);
+
+      
+
+      --border-color: rgba(15, 23, 42, 0.08);
+
+      --nav-bg: rgba(255, 255, 255, 0.7);
+
+      --nav-border: rgba(255, 255, 255, 0.5);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+
+      
+
+      /* Grid Ambient Animation Colors */
+
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+
+
+      /* Layout */
+
+      --nav-height: 74px;
+
+      --border-radius: 20px;
+
+      --transition-speed: 0.3s;
+
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    /* Dark Mode Overrides */
+
+    html.dark {
+
+      --bg-primary: #0b0f19;
+
+      --bg-secondary: #111827;
+
+      --bg-tertiary: #1f2937;
+
+      --text-primary: #f8fafc;
+
+      --text-secondary: #94a3b8;
+
+      --text-muted: #64748b;
+
+      
+
+      --accent-primary: #ffd700;      /* Bright Gold */
+
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+
+      --accent-glow: rgba(255, 215, 0, 0.25);
+
+      
+
+      --danger-primary: #ff4757;
+
+      --danger-glow: rgba(255, 71, 87, 0.6);
+
+      
+
+      --border-color: rgba(255, 255, 255, 0.08);
+
+      --nav-bg: rgba(11, 15, 25, 0.65);
+
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+
+      
+
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       2. RESET & BASE STYLES (Supports RTL Smooth Transitions)
+
+       ========================================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+
+                  border-color var(--transition-speed) var(--transition-timing), 
+
+                  color var(--transition-speed) var(--transition-timing);
+
+    }
+
+
+
+    body {
+
+      font-family: var(--font-body);
+
+      background-color: var(--bg-primary);
+
+      color: var(--text-primary);
+
+      min-height: 140vh; /* Allow scrolling to show floating header effect */
+
+      overflow-x: hidden;
+
+      position: relative;
+
+    }
+
+
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+
+
+    a {
+
+      text-decoration: none;
+
+      color: inherit;
+
+    }
+
+
+
+    ul {
+
+      list-style: none;
+
+    }
+
+
+
+    button {
+
+      background: none;
+
+      border: none;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* RTL Transition Support */
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    
+
+    [dir="rtl"] {
+
+      text-align: right;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       3. AMBIENT BACKGROUND SYSTEM (Showcases Glassmorphism)
+
+       ========================================================================== */
+
+    .bg-grid {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      background-size: 40px 40px;
+
+      background-image: 
+
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+
+    }
+
+
+
+    .bg-mesh-1, .bg-mesh-2 {
+
+      position: fixed;
+
+      width: 600px;
+
+      height: 600px;
+
+      border-radius: 50%;
+
+      filter: blur(140px);
+
+      z-index: -2;
+
+      opacity: 0.8;
+
+      pointer-events: none;
+
+      animation: float 20s infinite alternate ease-in-out;
+
+    }
+
+
+
+    .bg-mesh-1 {
+
+      top: -10%;
+
+      left: -10%;
+
+      background: var(--mesh-color-1);
+
+    }
+
+
+
+    .bg-mesh-2 {
+
+      bottom: 10%;
+
+      right: -10%;
+
+      background: var(--mesh-color-2);
+
+      animation-delay: -5s;
+
+    }
+
+
+
+    @keyframes float {
+
+      0% { transform: translate(0, 0) scale(1); }
+
+      100% { transform: translate(100px, 50px) scale(1.2); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       4. SINGLE-DECK GLOWING NAVIGATION HEADER (Logo Left, Menu Center, Controls Right)
+
+       ========================================================================== */
+
+    .navbar-wrapper {
+
+      position: fixed;
+
+      top: 20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 96%;
+
+      max-width: 1640px;
+
+      z-index: 1000;
+
+      animation: slideDown 0.8s var(--transition-timing);
+
+    }
+
+
+
+    .navbar-container {
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-md);
+
+      height: var(--nav-height);
+
+      border-radius: var(--border-radius);
+
+      padding: 0 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: relative;
+
+      overflow: visible; /* Vital for dropdown panels */
+
+    }
+
+
+
+    /* Ambient Cursor Tracker Overlay inside navbar container */
+
+    .navbar-glow-overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      border-radius: var(--border-radius);
+
+      pointer-events: none;
+
+      background: radial-gradient(
+
+        120px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+
+        rgba(0, 242, 254, 0.08),
+
+        transparent 80%
+
+      );
+
+      z-index: 1;
+
+    }
+
+
+
+    /* RTL horizontal adjustments */
+
+    [dir="rtl"] .navbar-wrapper {
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    /* 4.1 CREATIVE UNIQUE BRAND LOGO (Hexagon Cyber-Key Logo - Left Aligned) */
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-family: var(--font-heading);
+
+      font-size: 1.45rem;
+
+      font-weight: 800;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      z-index: 10;
+
+      position: relative;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Logo based on Lock */
+
+    .brand-logo-svg {
+
+      width: 38px;
+
+      height: 38px;
+
+      fill: none;
+
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+
+      animation: pulseLogo 3s infinite ease-in-out;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    .brand:hover .brand-logo-svg {
+
+      transform: scale(1.1) rotate(5deg);
+
+    }
+
+
+
+    @keyframes pulseLogo {
+
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+
+    }
+
+
+
+    /* 4.2 NAVIGATION LINKS (Centered Group - Hidden in Mobile/Tablet Views) */
+
+    .nav-menu {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 2px;
+
+      flex-grow: 1;
+
+      height: 100%;
+
+      z-index: 2;
+
+      padding: 0 16px;
+
+    }
+
+
+
+    .nav-item {
+
+      position: relative;
+
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+
+
+    .nav-link {
+
+      font-family: var(--font-body);
+
+      font-size: 0.78rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      padding: 6px 8px;
+
+      border-radius: 8px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 3px;
+
+      white-space: nowrap;
+
+      transition: color 0.25s ease, background-color 0.25s ease;
+
+    }
+
+
+
+    .nav-link:hover, .nav-item.active .nav-link {
+
+      color: var(--text-primary);
+
+      background-color: rgba(255, 255, 255, 0.05);
+
+    }
+
+
+
+    html.dark .nav-link:hover, html.dark .nav-item.active .nav-link {
+
+      background-color: rgba(255, 255, 255, 0.03);
+
+    }
+
+
+
+    /* Down Chevron indicator */
+
+    .chevron-icon {
+
+      width: 11px;
+
+      height: 11px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    .nav-item:hover .chevron-icon {
+
+      transform: rotate(180deg);
+
+    }
+
+
+
+    /* 4.3 SUBMENU PANEL SYSTEM (Dropdowns restricted to Home & Dashboard ONLY) */
+
+    .dropdown-panel {
+
+      position: absolute;
+
+      top: calc(var(--nav-height) - 10px);
+
+      left: 50%;
+
+      transform: translateX(-50%) rotateX(-12deg) translateY(12px);
+
+      width: max-content;
+
+      max-width: 340px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 12px;
+
+      box-shadow: var(--shadow-lg);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: 100;
+
+      transform-origin: top center;
+
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+
+                  transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .nav-item:hover .dropdown-panel {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+      transform: translateX(-50%) rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Alignments for end-aligned components (Dashboard dropdown alignment) */
+
+    .dropdown-right {
+
+      left: auto;
+
+      right: 0;
+
+      transform: rotateX(-12deg) translateY(12px);
+
+    }
+
+    
+
+    [dir="rtl"] .dropdown-right {
+
+      right: auto;
+
+      left: 0;
+
+    }
+
+
+
+    .nav-item:hover .dropdown-right {
+
+      transform: rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Dropdown Item Styling */
+
+    .dropdown-item {
+
+      border-radius: 10px;
+
+      padding: 10px 12px;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+    }
+
+
+
+    .dropdown-item:hover {
+
+      background-color: var(--bg-tertiary);
+
+      transform: translateY(-2px);
+
+    }
+
+
+
+    .dropdown-item-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: var(--accent-primary);
+
+      stroke-width: 2;
+
+      fill: none;
+
+      flex-shrink: 0;
+
+      margin-top: 2px;
+
+    }
+
+
+
+    .dropdown-item-content {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    .dropdown-item-title {
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      margin-bottom: 2px;
+
+    }
+
+
+
+    .dropdown-item-desc {
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.3;
+
+    }
+
+
+
+    /* Pulsing Emergency Indicator badge */
+
+    .emergency-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--danger-primary);
+
+      border-radius: 50%;
+
+      margin-inline-start: 6px;
+
+      box-shadow: 0 0 0 0 var(--danger-glow);
+
+      animation: pulseEmergency 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+
+    }
+
+
+
+    @keyframes pulseEmergency {
+
+      0% { box-shadow: 0 0 0 0 var(--danger-glow); }
+
+      70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); }
+
+      100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       5. CONTROLS (Toggles & Action Buttons - Right Aligned)
+
+       ========================================================================== */
+
+    .nav-controls {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      z-index: 10;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Circular Utility Toggle Button Styles */
+
+    .control-btn {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .control-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 12px var(--accent-glow);
+
+    }
+
+
+
+    .control-btn-icon {
+
+      width: 18px;
+
+      height: 18px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.2;
+
+      fill: none;
+
+      transition: transform 0.4s var(--transition-timing);
+
+    }
+
+
+
+    /* Sun/Moon Morphing Specifics */
+
+    .sun-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .moon-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .sun-icon {
+
+      display: block;
+
+      animation: rotateSun 10s infinite linear;
+
+    }
+
+
+
+    @keyframes rotateSun {
+
+      0% { transform: rotate(0deg); }
+
+      100% { transform: rotate(360deg); }
+
+    }
+
+
+
+    /* RTL Switch Animation */
+
+    .rtl-icon {
+
+      transition: transform 0.4s ease;
+
+    }
+
+
+
+    [dir="rtl"] .rtl-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    /* 5.1 LOGIN BUTTON WITH MICRO-ANIMATION & GRADIENT GLOW */
+
+    .login-btn {
+
+      padding: 10px 18px;
+
+      border-radius: 12px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: #ffffff;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .login-btn::before {
+
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+
+      left: -50%;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255, 255, 255, 0.25),
+
+        transparent
+
+      );
+
+      transform: skewX(-25deg);
+
+      transition: 0.75s ease;
+
+    }
+
+
+
+    .login-btn:hover::before {
+
+      left: 125%;
+
+    }
+
+
+
+    .login-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 6px 20px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    /* SVG Lock Animation details */
+
+    .padlock-svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      fill: none;
+
+      stroke: #ffffff;
+
+      stroke-width: 2.5;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+
+    }
+
+
+
+    .padlock-shackle {
+
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      transform-origin: 12px 6px;
+
+    }
+
+
+
+    .login-btn:hover .padlock-shackle {
+
+      transform: translateY(-2px) rotate(45deg);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       6. MOBILE RESPONSIVE HAMBURGER & INTERACTIVE DRAWER
+
+       ========================================================================== */
+
+    .mobile-nav-toggle {
+
+      display: none;
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border-color);
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+    }
+
+
+
+    .hamburger-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    /* Mobile Menu Drawer Panel */
+
+    .mobile-drawer {
+
+      position: fixed;
+
+      top: 0;
+
+      right: -100%;
+
+      width: 330px;
+
+      max-width: 100%;
+
+      height: 100vh;
+
+      background-color: var(--bg-secondary);
+
+      border-left: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-lg);
+
+      z-index: 1100;
+
+      padding: 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      overflow-y: auto;
+
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer {
+
+      right: auto;
+
+      left: -100%;
+
+      border-left: none;
+
+      border-right: 1px solid var(--border-color);
+
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .mobile-drawer.open {
+
+      right: 0;
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer.open {
+
+      left: 0;
+
+      right: auto;
+
+    }
+
+
+
+    .mobile-drawer-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border-color);
+
+      padding-bottom: 15px;
+
+      margin-bottom: 10px;
+
+      position: relative;
+
+    }
+
+
+
+    /* PRO STYLES Back Button in mobile drawer (Top Right) */
+
+    .back-btn {
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      padding: 6px 12px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-tertiary);
+
+      color: var(--text-primary);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    
+
+
+
+    .back-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 2px 8px var(--accent-glow);
+
+      transform: translateX(-2px);
+
+    }
+
+
+
+    [dir="rtl"] .back-btn:hover {
+
+      transform: translateX(2px);
+
+    }
+
+
+
+    .back-icon {
+
+      width: 14px;
+
+      height: 14px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    [dir="rtl"] .back-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    .mobile-menu-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      flex-grow: 1;
+
+      overflow-y: auto;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    /* Scrollbar styles for list inside drawer */
+
+    .mobile-menu-list::-webkit-scrollbar {
+
+      width: 4px;
+
+    }
+
+    .mobile-menu-list::-webkit-scrollbar-thumb {
+
+      background: var(--border-color);
+
+      border-radius: 4px;
+
+    }
+
+
+
+    .mobile-menu-item {
+
+      width: 100%;
+
+    }
+
+
+
+    .mobile-menu-link {
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 8px 0;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    }
+
+
+
+    .mobile-submenu {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding-inline-start: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      transition: max-height 0.3s ease-out;
+
+    }
+
+
+
+    .mobile-submenu.open {
+
+      max-height: 500px;
+
+      margin-top: 6px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .mobile-submenu-link {
+
+      font-size: 0.84rem;
+
+      color: var(--text-secondary);
+
+      padding: 6px 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+
+    /* Bottom drawer container for remaining content (RTL, Dark Mode, Login) */
+
+    .drawer-footer {
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .drawer-controls-row {
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+
+
+    .drawer-controls-row .control-btn {
+
+      flex: 1;
+
+      border-radius: 12px;
+
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      font-size: 0.82rem;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .drawer-footer .login-btn {
+
+      width: 100%;
+
+      height: 46px;
+
+      justify-content: center;
+
+      border-radius: 12px;
+
+    }
+
+
+
+    .drawer-overlay {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background-color: rgba(15, 23, 42, 0.5);
+
+      backdrop-filter: blur(4px);
+
+      z-index: 1050;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+
+
+    .drawer-overlay.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       7. HERO & COMPANION SHOWCASE CONTENT (Provides Visual Depth)
+
+       ========================================================================== */
+
+    .hero {
+
+      margin-top: 170px;
+
+      padding: 40px 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      max-width: 950px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      z-index: 10;
+
+      position: relative;
+
+    }
+
+
+
+    .hero-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 6px 14px;
+
+      border-radius: 30px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      box-shadow: var(--shadow-sm);
+
+      margin-bottom: 24px;
+
+    }
+
+
+
+    .hero-badge-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--accent-secondary);
+
+      border-radius: 50%;
+
+    }
+
+
+
+    .hero-title {
+
+      font-family: var(--font-heading);
+
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+
+      font-weight: 600;
+
+      line-height: 1.15;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .hero-gradient {
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+
+    .hero-desc {
+
+      font-size: clamp(1rem, 2vw, 1.18rem);
+
+      color: var(--text-secondary);
+
+      max-width: 680px;
+
+      line-height: 1.6;
+
+      margin-bottom: 36px;
+
+    }
+
+
+
+    /* Creative Locks interactive Grid component */
+
+    .dashboard-preview {
+
+      width: 100%;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      box-shadow: var(--shadow-lg);
+
+      padding: 30px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+
+      margin-top: 20px;
+
+      text-align: start;
+
+    }
+
+
+
+    .preview-card {
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      background-color: var(--bg-primary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .preview-card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+
+    }
+
+
+
+    .card-icon-wrapper {
+
+      width: 44px;
+
+      height: 44px;
+
+      border-radius: 10px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      margin-bottom: 16px;
+
+    }
+
+
+
+    .card-title {
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      margin-bottom: 6px;
+
+    }
+
+
+
+    .card-desc {
+
+      font-size: 0.82rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.4;
+
+    }
+
+
+
+    /* Keyframe Animations */
+
+    @keyframes slideDown {
+
+      from { transform: translate(-50%, -40px); opacity: 0; }
+
+      to { transform: translate(-50%, 0); opacity: 1; }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       8. RESPONSIVE BREAKPOINTS (Desktop First Design)
+
+       ========================================================================== */
+
+    @media (max-width: 1550px) {
+
+      /* Drop font size down to ensure it stays snug in center */
+
+      .nav-link {
+
+        font-size: 0.7rem;
+
+        padding: 5px 6px;
+
+      }
+
+      .brand {
+
+        font-size: 1.3rem;
+
+        gap: 8px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 32px;
+
+        height: 32px;
+
+      }
+
+    }
+
+
+
+    /* Nest Hub Max and smaller laptop scaling (1200px to 1366px) */
+
+    @media (max-width: 1366px) and (min-width: 1201px) {
+
+      .nav-link {
+
+        font-size: 0.65rem;
+
+        padding: 4px 4px;
+
+        gap: 2px;
+
+      }
+
+      .brand {
+
+        font-size: 1.15rem;
+
+        gap: 6px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 28px;
+
+        height: 28px;
+
+      }
+
+      .nav-controls {
+
+        gap: 6px;
+
+      }
+
+      .login-btn {
+
+        padding: 8px 12px;
+
+        font-size: 0.8rem;
+
+      }
+
+      .control-btn {
+
+        width: 36px;
+
+        height: 36px;
+
+      }
+
+      .control-btn-icon {
+
+        width: 16px;
+
+        height: 16px;
+
+      }
+
+    }
+
+
+
+    /* Tablet and mobile view collapse under 1200px */
+
+    @media (max-width: 1200px) {
+
+      /* Hide center menu & right desktop-controls */
+
+      .nav-menu, .nav-controls {
+
+        display: none;
+
+      }
+
+      
+
+      .mobile-nav-toggle {
+
+        display: flex; /* Show Hamburger in header */
+
+      }
+
+
+
+      .navbar-container {
+
+        padding: 0 16px;
+
+      }
+
+
+
+      .navbar-wrapper {
+
+        top: 15px;
+
+        width: 92%;
+
+      }
+
+      
+
+      .hero {
+
+        margin-top: 130px;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       FOOTER STYLES (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== */
+
+    .footer-wrapper {
+
+      margin-top: 100px;
+
+      padding: 60px 24px 30px 24px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border-top: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+
+
+    .footer-container {
+
+      max-width: 1540px;
+
+      margin: 0 auto;
+
+      width: 100%;
+
+    }
+
+
+
+    .footer-grid {
+
+      display: grid;
+
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+
+      gap: 40px;
+
+    }
+
+
+
+    .footer-col {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    /* Footer logo matches main logo size and responsive rules automatically */
+
+
+
+    .footer-title {
+
+      font-family: var(--font-heading);
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      margin-bottom: 20px;
+
+      position: relative;
+
+      padding-bottom: 8px;
+
+    }
+
+
+
+    .footer-title::after {
+
+      content: '';
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 30px;
+
+      height: 3px;
+
+      background: var(--accent-gradient);
+
+      border-radius: 2px;
+
+    }
+
+
+
+    [dir="rtl"] .footer-title::after {
+
+      left: auto;
+
+      right: 0;
+
+    }
+
+
+
+    .footer-text {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .footer-links-list, .footer-contact-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+
+
+    .footer-link-item {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      transition: all 0.25s ease;
+
+      display: inline-block;
+
+      width: fit-content;
+
+    }
+
+
+
+    .footer-link-item:hover {
+
+      color: var(--accent-primary);
+
+      transform: translateX(4px);
+
+    }
+
+
+
+    [dir="rtl"] .footer-link-item:hover {
+
+      transform: translateX(-4px);
+
+    }
+
+
+
+    .footer-contact-list li {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+    }
+
+
+
+    .contact-icon {
+
+      width: 16px;
+
+      height: 16px;
+
+      color: var(--accent-primary);
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .social-links {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 16px;
+
+    }
+
+
+
+    .social-icon-btn {
+
+      width: 36px;
+
+      height: 36px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .social-icon-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+    }
+
+
+
+    .social-icon-btn svg {
+
+      width: 16px;
+
+      height: 16px;
+
+    }
+
+
+
+    .newsletter-form {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 10px;
+
+    }
+
+
+
+    .newsletter-input {
+
+      flex-grow: 1;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-primary);
+
+      padding: 0 14px;
+
+      font-family: inherit;
+
+      font-size: 0.82rem;
+
+      color: var(--text-primary);
+
+      transition: border-color 0.25s ease;
+
+    }
+
+
+
+    .newsletter-input:focus {
+
+      outline: none;
+
+      border-color: var(--accent-primary);
+
+    }
+
+
+
+    .newsletter-btn {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      transition: all 0.25s ease;
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+
+
+    .newsletter-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    .footer-divider {
+
+      height: 1px;
+
+      background-color: var(--border-color);
+
+      margin: 40px 0 25px 0;
+
+    }
+
+
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+    }
+
+
+
+    .footer-bottom-links {
+
+      display: flex;
+
+      gap: 20px;
+
+    }
+
+
+
+    .footer-bottom-link {
+
+      color: var(--text-muted);
+
+      transition: color 0.2s ease;
+
+    }
+
+
+
+    .footer-bottom-link:hover {
+
+      color: var(--accent-primary);
+
+    }
+
+
+
+    /* Footer Responsive Grid */
+
+    @media (max-width: 1200px) {
+
+      .footer-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 2;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 1;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       SECURITY INSTALLATION SPECIFIC STYLES
+
+       ========================================================================== */
+
+    .security-container {
+
+      max-width: 1400px;
+
+      margin: 120px auto 60px;
+
+      padding: 0 24px;
+
+    }
+
+    
+
+    .security-hero {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+      margin-bottom: 80px;
+
+    }
+
+    
+
+    .sec-hero-text h1 {
+
+      font-size: clamp(2.5rem, 5vw, 4rem);
+
+      line-height: 1.1;
+
+      margin-bottom: 24px;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+    
+
+    .sec-hero-text p {
+
+      font-size: 1.125rem;
+
+      color: var(--text-secondary);
+
+      margin-bottom: 32px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    .sec-hero-img-wrapper {
+
+      position: relative;
+
+      border-radius: var(--border-radius);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-lg);
+
+      border: 1px solid var(--border-color);
+
+      background: var(--bg-secondary);
+
+    }
+
+    
+
+    .sec-hero-img-wrapper img {
+
+      width: 100%;
+
+      height: auto;
+
+      display: block;
+
+      transition: transform 0.5s ease;
+
+    }
+
+    
+
+    .sec-hero-img-wrapper:hover img {
+
+      transform: scale(1.05);
+
+    }
+
+    
+
+    /* Interactive Dashboard Grid */
+
+    .section-hub-dashboard {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .hub-grid {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+    }
+
+    
+
+    .hub-dashboard-mockup {
+
+      background: var(--bg-secondary);
+
+      border-radius: 16px;
+
+      border: 1px solid var(--border-color);
+
+      padding: 24px;
+
+      box-shadow: var(--shadow-md);
+
+      text-align: left;
+
+    }
+
+    
+
+    .hub-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 20px;
+
+      padding-bottom: 16px;
+
+      border-bottom: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .hub-status-light {
+
+      width: 12px;
+
+      height: 12px;
+
+      border-radius: 50%;
+
+      background: #ef4444;
+
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .hub-status-light.armed {
+
+      background: #10b981;
+
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+
+    }
+
+    
+
+    .hub-zones-list {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 16px;
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .hub-zone-card {
+
+      background: var(--bg-primary);
+
+      border: 1px solid var(--border-color);
+
+      padding: 16px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .hub-zone-status {
+
+      font-size: 0.75rem;
+
+      font-weight: 700;
+
+      color: #ef4444;
+
+      padding: 4px 8px;
+
+      background: rgba(239, 68, 68, 0.1);
+
+      border-radius: 4px;
+
+    }
+
+    
+
+    .hub-zone-status.secure {
+
+      color: #10b981;
+
+      background: rgba(16, 185, 129, 0.1);
+
+    }
+
+    
+
+    .hub-master-btn {
+
+      width: 100%;
+
+      background: var(--danger-primary);
+
+      color: #fff;
+
+      font-weight: 700;
+
+      padding: 16px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      transition: all 0.3s ease;
+
+      box-shadow: 0 4px 12px var(--danger-glow);
+
+      border: none;
+
+    }
+
+    
+
+    .hub-master-btn.armed {
+
+      background: #10b981;
+
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+
+    }
+
+    
+
+    /* Alarm System Keypad */
+
+    .section-alarm-systems {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .alarm-keypad-box {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 40px;
+
+      box-shadow: var(--shadow-md);
+
+      max-width: 380px;
+
+      margin: 0 auto;
+
+    }
+
+    
+
+    .keypad-display {
+
+      background: #1e293b;
+
+      border: 2px solid var(--border-color);
+
+      border-radius: 8px;
+
+      padding: 12px;
+
+      font-family: monospace;
+
+      font-size: 1.25rem;
+
+      color: #10b981;
+
+      text-align: center;
+
+      letter-spacing: 4px;
+
+      margin-bottom: 24px;
+
+      min-height: 48px;
+
+      box-sizing: border-box;
+
+    }
+
+    
+
+    .keypad-display.error {
+
+      color: #ef4444;
+
+    }
+
+    
+
+    .keypad-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 12px;
+
+    }
+
+    
+
+    .keypad-btn {
+
+      background: var(--bg-primary);
+
+      border: 1px solid var(--border-color);
+
+      padding: 18px;
+
+      border-radius: 8px;
+
+      font-size: 1.25rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      cursor: pointer;
+
+      transition: all 0.2s ease;
+
+    }
+
+    
+
+    .keypad-btn:hover {
+
+      background: var(--accent-glow);
+
+      border-color: var(--accent-primary);
+
+      color: var(--accent-primary);
+
+    }
+
+    
+
+    /* Video Doorbell Live Feed */
+
+    .section-doorbells {
+
+      display: grid;
+
+      grid-template-columns: 1.1fr 0.9fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .doorbell-feed-card {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 24px;
+
+      box-shadow: var(--shadow-md);
+
+    }
+
+    
+
+    .doorbell-video-window {
+
+      width: 100%;
+
+      aspect-ratio: 16/9;
+
+      background: #000;
+
+      border-radius: 12px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border-color);
+
+      margin-bottom: 16px;
+
+    }
+
+    
+
+    .video-overlay-rect {
+
+      position: absolute;
+
+      border: 2px solid #ef4444;
+
+      display: none;
+
+      pointer-events: none;
+
+    }
+
+    
+
+    .doorbell-btn-row {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 16px;
+
+    }
+
+    
+
+    /* Motion Sensors Zone Grid */
+
+    .section-motion-sensors {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .motion-sensor-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+    }
+
+    
+
+    .motion-zones-visualizer {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 16px;
+
+      aspect-ratio: 4/3;
+
+    }
+
+    
+
+    .motion-zone-tile {
+
+      background: var(--bg-secondary);
+
+      border: 2px solid var(--border-color);
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      transition: all 0.3s ease;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    
+
+    .motion-zone-tile:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 0 15px var(--accent-glow);
+
+    }
+
+    
+
+    .motion-ripple {
+
+      position: absolute;
+
+      width: 10px;
+
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: var(--accent-glow);
+
+      border: 2px solid var(--accent-primary);
+
+      transform: scale(0);
+
+      opacity: 1;
+
+      pointer-events: none;
+
+      animation: rippleEffect 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+
+    }
+
+    
+
+    @keyframes rippleEffect {
+
+      0% { transform: scale(0); opacity: 1; }
+
+      100% { transform: scale(30); opacity: 0; }
+
+    }
+
+    
+
+    /* Intercom Waveforms */
+
+    .section-intercom {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .intercom-waves-box {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 40px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-md);
+
+    }
+
+    
+
+    .intercom-waveform-svg {
+
+      width: 100%;
+
+      height: 80px;
+
+      stroke: var(--accent-primary);
+
+      stroke-width: 3;
+
+      fill: none;
+
+      stroke-linecap: round;
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .intercom-waveform-svg path {
+
+      transition: d 0.5s ease;
+
+    }
+
+    
+
+    .intercom-talk-btn {
+
+      background: var(--accent-primary);
+
+      color: #0b0f19;
+
+      font-weight: 700;
+
+      padding: 16px 32px;
+
+      border-radius: 50px;
+
+      cursor: pointer;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      transition: all 0.3s ease;
+
+      border: none;
+
+    }
+
+    
+
+    .intercom-talk-btn:active {
+
+      transform: scale(0.95);
+
+    }
+
+    
+
+    /* Bandwidth Calculator */
+
+    .section-remote-monitor {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 60px 40px;
+
+      margin-bottom: 80px;
+
+      box-shadow: var(--shadow-md);
+
+    }
+
+    
+
+    .bandwidth-calc-box {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 48px;
+
+      margin-top: 32px;
+
+      align-items: center;
+
+    }
+
+    
+
+    .calc-slider-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 24px;
+
+      text-align: left;
+
+    }
+
+    
+
+    .calc-slider-label {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      font-weight: 600;
+
+    }
+
+    
+
+    .calc-slider {
+
+      width: 100%;
+
+      height: 6px;
+
+      background: var(--border-color);
+
+      outline: none;
+
+      border-radius: 4px;
+
+      appearance: none;
+
+    }
+
+    
+
+    .calc-slider::-webkit-slider-thumb {
+
+      appearance: none;
+
+      width: 20px;
+
+      height: 20px;
+
+      border-radius: 50%;
+
+      background: var(--accent-primary);
+
+      cursor: pointer;
+
+      box-shadow: 0 0 10px var(--accent-glow);
+
+    }
+
+    
+
+    .calc-result-card {
+
+      background: var(--bg-tertiary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 32px;
+
+      text-align: center;
+
+    }
+
+    
+
+    .bandwidth-value {
+
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+
+      font-weight: 800;
+
+      color: var(--accent-primary);
+
+      margin-bottom: 8px;
+
+    }
+
+    
+
+    /* Layout Helpers & Responsive */
+
+    .sec-header {
+
+      margin-bottom: 48px;
+
+      text-align: left;
+
+    }
+
+    
+
+    .sec-badge {
+
+      display: inline-block;
+
+      padding: 6px 12px;
+
+      background: var(--accent-glow);
+
+      color: var(--accent-primary);
+
+      border-radius: 20px;
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 16px;
+
+      border: 1px solid rgba(212,175,55,0.2);
+
+    }
+
+    
+
+    .sec-title {
+font-weight: 500;
+font-size: clamp(2rem, 3.5vw, 2.75rem);
+
+      color: var(--text-primary);
+
+      margin-bottom: 16px;
+
+      line-height: 1.2;
+
+    }
+
+    
+
+    .sec-desc {
+
+      color: var(--text-secondary);
+
+      font-size: 1.1rem;
+
+      max-width: 700px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    @media (max-width: 1024px) {
+
+      .security-hero, .hub-grid, .section-alarm-systems, .section-doorbells, .motion-sensor-grid, .section-intercom, .bandwidth-calc-box {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+      }
+
+    }
+
+      @media (max-width: 480px) {
+
+      .home-section {
+
+        padding: 50px 16px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 992px) {
+
+      /* Stack inline grid columns on mobile/tablet viewports, excluding auto-fit/auto-fill grids */
+
+      div[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      div[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]) {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 30px !important;
+
+      }
+
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+  <!-- Background Grids and Meshes -->
+
+  <div class="bg-grid"></div>
+
+  <div class="bg-mesh-1"></div>
+
+  <div class="bg-mesh-2"></div>
+
+
+
+  <!-- Mobile Drawer Overlay -->
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+
+
+  <!-- Interactive Mobile Slide-out Navigation Drawer -->
+
+  <aside class="mobile-drawer" id="mobileDrawer">
+
+    <!-- Header with Brand on Left and Back Button on Right -->
+
+    <div class="mobile-drawer-header">
+
+      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
+
+        <!-- Hexagon cyber key SVG logo based on Lock -->
+
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+      <!-- Back Chevron Arrow Button on Top Right -->
+
+      <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu">
+
+        <svg class="back-icon" viewBox="0 0 24 24">
+
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        </svg>
+
+        <span>Back</span>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- Inside Hamburger Menu Content (13 links) -->
+
+    <nav class="mobile-menu-list">
+
+      <!-- Home Submenu inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Home</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./index.html" class="mobile-submenu-link">Home 1</a>
+
+          <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Other Links (Arranged directly in mobile menu list) -->
+
+      <a href="./About.html" class="mobile-menu-link">About</a>
+
+      
+
+      <a href="./Emergency.html" class="mobile-menu-link">
+
+        <span>Emergency</span>
+
+      </a>
+
+      
+
+      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
+
+      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
+
+      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
+
+      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
+
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+
+      <a href="./Service.html" class="mobile-menu-link">Service</a>
+
+      <a href="./Security.html" class="mobile-menu-link">Security</a>
+
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+
+
+      <!-- Dashboard inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Dashboard</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Footer of Drawer containing remaining items (Toggles & Login) -->
+
+    <div class="drawer-footer">
+
+      <div class="drawer-controls-row">
+
+        <!-- Drawer Dark Mode Toggle -->
+
+        <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+          <span>Theme</span>
+
+        </button>
+
+
+
+        <!-- Drawer RTL Toggle -->
+
+        <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+          <span>L/R Mirror</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Drawer Login Button -->
+
+      <a href="./login.html" class="login-btn" id="drawerLoginBtn" style="text-decoration: none; cursor: pointer;">
+
+        <svg class="padlock-svg" viewBox="0 0 24 24">
+
+          <path class="padlock-shackle" id="drawerShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+          <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+          <circle cx="12" cy="16" r="1.5" />
+
+        </svg>
+
+        <span>Login</span>
+
+      </a>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- Single-Deck floating Header (Logo Left, Menu Center, Toggles & CTA Right) -->
+
+  <header class="navbar-wrapper">
+
+    <div class="navbar-container" id="mainNavbar">
+
+      <!-- Glow ambient overlay following user mouse -->
+
+      <div class="navbar-glow-overlay" id="navGlow"></div>
+
+
+
+      <!-- Left: Logo based on Lock -->
+
+      <a href="index.html" class="brand">
+
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- Lock Shackle -->
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <!-- Lock Body (Shield shape) -->
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+
+          <!-- Center Keyhole -->
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+
+
+      <!-- Center: Navigation Menu (Desktop/Laptop View) -->
+
+      <ul class="nav-menu">
+
+        <!-- Home (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./index.html" class="nav-link">
+
+            <span>Home</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel">
+
+            <a href="./index.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 1</span>
+
+              </div>
+
+            </a>
+
+            <a href="./home 2.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 2</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+
+
+        <!-- Direct Links arranged side-by-side in center -->
+
+        <li class="nav-item">
+
+          <a href="./About.html" class="nav-link">About</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Emergency.html" class="nav-link">Emergency</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Residential.html" class="nav-link">Residential</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Commercial.html" class="nav-link">Commercial</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Pricing.html" class="nav-link">Pricing</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Service.html" class="nav-link">Service</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security.html" class="nav-link">Security</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Reviews.html" class="nav-link">Reviews</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Contact.html" class="nav-link">Contact</a>
+
+        </li>
+
+
+
+        <!-- Dashboard (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./Dashboard.html" class="nav-link">
+
+            <span>Dashboard</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel dropdown-right">
+
+            <a href="./Admin.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Admin Dashboard</span>
+
+              </div>
+
+            </a>
+
+            <a href="./User.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">User Dashboard</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+
+
+      <!-- Right: Controls & CTA button (Desktop/Laptop View) -->
+
+      <div class="nav-controls">
+
+        <!-- Right to Left Toggle -->
+
+        <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+        </button>
+
+
+
+        <!-- Dark Mode Toggle -->
+
+        <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+        </button>
+
+
+
+        <!-- Login Button with dynamic Padlock -->
+
+        <a href="./login.html" class="login-btn" id="loginBtn" style="text-decoration: none; cursor: pointer;">
+
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+
+            <!-- Padlock shackle path that moves on hover -->
+
+            <path class="padlock-shackle" id="desktopShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+            <circle cx="12" cy="16" r="1.5" />
+
+          </svg>
+
+          <span>Login</span>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Hamburger button for mobile/laptop drawer trigger -->
+
+      <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+
+        <svg class="hamburger-icon" viewBox="0 0 24 24">
+
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+
+        </svg>
+
+      </button>
+
+
+
+    </div>
+
+  </header>
+
+
+
+
+
+  <!-- Main Content Wrapper -->
+
+  <main class="security-container">
+
+
+
+    <!-- SECTION 1: CCTV CAMERA SYSTEMS (Hero) -->
+
+    <section class="security-hero">
+
+      <div class="sec-hero-text">
+
+        <span class="sec-badge">Advanced Surveillance</span>
+
+        <h1>CCTV Camera Systems <span>High-Def Clarity</span></h1>
+
+        <p>
+
+          Gain complete visibility over your property. We install custom IP camera setups, high-definition dome and bullet systems, infrared night vision cameras, and smart AI surveillance networks capable of identifying objects, license plates, and perimeter crossings in real time.
+
+        </p>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+
+          <a href="#hub-dashboard" class="submit-btn-comm" style="margin-top: 0; padding: 14px 28px; text-decoration: none; border: none;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 18px; height: 18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11l2 2 4-4"/></svg>
+
+            <span>Launch Dashboard</span>
+
+          </a>
+
+          <a href="#doorbells" class="option-btn" style="display: flex; align-items: center; justify-content: center; padding: 14px 28px; text-decoration: none;">
+
+            <span>Doorbell Feed</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="sec-hero-img-wrapper" style="padding: 20px;">
+
+        <!-- Visual CCTV dome camera custom SVG vector graphic -->
+
+        <svg viewBox="0 0 200 200" style="width: 80%; height: auto;">
+
+          <defs>
+
+            <radialGradient id="cameraReflect" cx="30%" cy="30%" r="70%">
+
+              <stop offset="0%" stop-color="#475569" />
+
+              <stop offset="50%" stop-color="#1e293b" />
+
+              <stop offset="100%" stop-color="#0f172a" />
+
+            </radialGradient>
+
+            <radialGradient id="lensReflect" cx="40%" cy="40%" r="60%">
+
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+
+              <stop offset="40%" stop-color="#1d4ed8" stop-opacity="0.9" />
+
+              <stop offset="100%" stop-color="#020617" />
+
+            </radialGradient>
+
+          </defs>
+
+          <!-- Base mount bracket -->
+
+          <path d="M40 50 L160 50 L140 80 L60 80 Z" fill="#334155" stroke="var(--accent-primary)" stroke-width="2"/>
+
+          <!-- Dome casing -->
+
+          <circle cx="100" cy="115" r="55" fill="url(#cameraReflect)" stroke="#475569" stroke-width="4" />
+
+          <path d="M45 115 A55 55 0 0 0 155 115 Z" fill="#1e293b" opacity="0.3"/>
+
+          <!-- Glass lens dome outline -->
+
+          <circle cx="100" cy="122" r="32" fill="url(#lensReflect)" stroke="#0284c7" stroke-width="3"/>
+
+          <!-- Inner Lens aperture -->
+
+          <circle cx="96" cy="118" r="12" fill="#000" stroke="#334155" stroke-width="2"/>
+
+          <!-- Glass flare highlight -->
+
+          <ellipse cx="88" cy="110" rx="6" ry="3" fill="#fff" opacity="0.6" transform="rotate(-30 88 110)"/>
+
+          <!-- Red blinking status indicator LED -->
+
+          <circle cx="100" cy="85" r="4" fill="#ef4444" id="cameraBlinkLed">
+
+            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/>
+
+          </circle>
+
+          <!-- HUD circle overlay -->
+
+          <circle cx="100" cy="115" r="75" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 8" opacity="0.4"/>
+
+          <!-- Tech crosshairs -->
+
+          <path d="M100 25 V35 M100 195 V205 M15 115 H25 M185 115 H195" stroke="#38bdf8" stroke-width="2" opacity="0.5"/>
+
+        </svg>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 2: SMART SECURITY SYSTEMS (Hub Dashboard) -->
+
+    <section id="hub-dashboard" class="section-hub-dashboard">
+
+      <div class="hub-grid">
+
+        <div class="hub-dashboard-mockup">
+
+          <div class="hub-header">
+
+            <div>
+
+              <h4 style="font-weight: 700; font-size: 1.2rem; color: var(--text-primary);">Security Central Control Hub</h4>
+
+              <span style="font-size: 0.8rem; color: var(--text-muted);" id="hubMessage">Status: Security System Disarmed</span>
+
+            </div>
+
+            <div class="hub-status-light" id="hubStatusLight"></div>
+
+          </div>
+
+          
+
+          <div class="hub-zones-list">
+
+            <div class="hub-zone-card">
+
+              <span style="font-weight: 600;">Zone 1: Front Entry</span>
+
+              <span class="hub-zone-status secure" id="zone1Status">SECURE</span>
+
+            </div>
+
+            <div class="hub-zone-card">
+
+              <span style="font-weight: 600;">Zone 2: Living Room</span>
+
+              <span class="hub-zone-status secure" id="zone2Status">SECURE</span>
+
+            </div>
+
+            <div class="hub-zone-card">
+
+              <span style="font-weight: 600;">Zone 3: Kitchen Windows</span>
+
+              <span class="hub-zone-status secure" id="zone3Status">SECURE</span>
+
+            </div>
+
+            <div class="hub-zone-card">
+
+              <span style="font-weight: 600;">Zone 4: Back Gate</span>
+
+              <span class="hub-zone-status secure" id="zone4Status">SECURE</span>
+
+            </div>
+
+          </div>
+
+          
+
+          <button class="hub-master-btn" id="hubMasterBtn">Arm System</button>
+
+        </div>
+
+        <div>
+
+          <span class="sec-badge">Centralized Protection</span>
+
+          <h2 class="sec-title">Smart Security Systems Integration</h2>
+
+          <p class="sec-desc" style="margin-bottom: 24px;">
+
+            Coordinate your entire safety perimeter from a single screen. Our smart security integrations join locks, lights, doorbells, alarms, and cameras under a single responsive framework.
+
+          </p>
+
+          <div class="comm-hero-img-wrapper" style="max-height: 220px;">
+
+            <img src="images/smart_lock_install.png" alt="High tech smart electronic door lock being installed with biometric integration">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 3: ALARM SYSTEMS -->
+
+    <section id="alarm-systems" class="section-alarm-systems">
+
+      <div>
+
+        <span class="sec-badge">Intruder Detection</span>
+
+        <h2 class="sec-title">Enterprise Alarm Systems</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Deter intrusion before it happens. We install high-decibel glass-break sensors, perimeter tripwires, and digital backup cellular alarms that alert authorities instantly if lines are cut.
+
+        </p>
+
+        <div style="background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm);">
+
+          <h5 style="font-weight: 600; margin-bottom: 8px; color: var(--accent-primary);">Alarm Panel Simulator</h5>
+
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);" id="alarmSimInstructions">
+
+            The alarm is currently ARMED. Enter code <strong style="color: var(--accent-primary);">1234</strong> followed by <strong style="color: var(--accent-primary);">DISARM</strong> on the keypad to silence the system.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="alarm-keypad-box">
+
+          <div class="keypad-display" id="keypadDisplay">ARMED</div>
+
+          <div class="keypad-grid">
+
+            <button class="keypad-btn" onclick="pressKey('1')">1</button>
+
+            <button class="keypad-btn" onclick="pressKey('2')">2</button>
+
+            <button class="keypad-btn" onclick="pressKey('3')">3</button>
+
+            <button class="keypad-btn" onclick="pressKey('4')">4</button>
+
+            <button class="keypad-btn" onclick="pressKey('5')">5</button>
+
+            <button class="keypad-btn" onclick="pressKey('6')">6</button>
+
+            <button class="keypad-btn" onclick="pressKey('7')">7</button>
+
+            <button class="keypad-btn" onclick="pressKey('8')">8</button>
+
+            <button class="keypad-btn" onclick="pressKey('9')">9</button>
+
+            <button class="keypad-btn" onclick="clearKeypad()" style="font-size: 0.85rem; color: var(--danger-primary);">CLEAR</button>
+
+            <button class="keypad-btn" onclick="pressKey('0')">0</button>
+
+            <button class="keypad-btn" onclick="submitKeypad()" style="font-size: 0.85rem; color: #10b981;">DISARM</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 4: VIDEO DOORBELLS -->
+
+    <section id="doorbells" class="section-doorbells">
+
+      <div class="doorbell-feed-card">
+
+        <div class="doorbell-video-window">
+
+          <!-- Live simulation video background SVG design -->
+
+          <svg viewBox="0 0 320 180" style="width: 100%; height: 100%;" id="doorbellVideoFeed">
+
+            <!-- Camera view template -->
+
+            <rect width="320" height="180" fill="#0f172a" />
+
+            <!-- Grid grid pattern -->
+
+            <path d="M0 45 H320 M0 90 H320 M0 135 H320 M80 0 V180 M160 0 V180 M240 0 V180" stroke="#334155" stroke-width="0.5" opacity="0.3" />
+
+            <!-- Ringing target graphic person overlay -->
+
+            <g id="visitorSilhouette" opacity="0">
+
+              <circle cx="160" cy="100" r="24" fill="#334155" stroke="#475569" stroke-width="2"/>
+
+              <path d="M120 160 C120 130 140 125 160 125 C180 125 200 130 200 160 Z" fill="#334155" stroke="#475569" stroke-width="2"/>
+
+              <animate attributeName="opacity" id="silhouetteFade" begin="indefinite" fill="freeze" from="0" to="1" dur="0.8s" />
+
+            </g>
+
+            <!-- Scan lines overlay -->
+
+            <line x1="0" y1="10" x2="320" y2="10" stroke="#38bdf8" stroke-width="1" opacity="0.15" id="videoScanline">
+
+              <animate attributeName="y1" values="0;180;0" dur="8s" repeatCount="indefinite" />
+
+              <animate attributeName="y2" values="0;180;0" dur="8s" repeatCount="indefinite" />
+
+            </line>
+
+            <!-- Camera overlays -->
+
+            <text x="15" y="25" fill="#38bdf8" font-family="monospace" font-size="8" opacity="0.8">REC LIVE</text>
+
+            <circle cx="65" cy="22" r="3" fill="#ef4444">
+
+              <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+
+            </circle>
+
+            <text x="15" y="165" fill="#38bdf8" font-family="monospace" font-size="8" opacity="0.8" id="doorbellTimestamp">CAM-01 11:41:12</text>
+
+            <text x="260" y="25" fill="#38bdf8" font-family="monospace" font-size="8" opacity="0.8">1080p HDR</text>
+
+            <!-- Crosshairs corner frames -->
+
+            <path d="M10 10 H25 M10 10 V25 M310 10 H295 M310 10 V25 M10 170 H25 M10 170 V155 M310 170 H295 M310 170 V155" stroke="#38bdf8" stroke-width="1" opacity="0.6"/>
+
+          </svg>
+
+          <div class="video-overlay-rect" id="detectionBox" style="width: 100px; height: 100px; left: 110px; top: 40px;"></div>
+
+        </div>
+
+        <div class="doorbell-btn-row">
+
+          <button class="submit-btn-comm" style="margin-top: 0; padding: 10px 24px;" id="ringDoorbellBtn">Simulate Doorbell Ring</button>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <span class="sec-badge">Smart Thresholds</span>
+
+        <h2 class="sec-title">Premium Video Doorbells</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Never miss a delivery or visitor again. We mount advanced wide-angle doorbells with high-definition optical lenses, two-way audio talk, and custom facial recognition alerts that send snapshot notifications straight to your mobile phone.
+
+        </p>
+
+        <ul style="display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary);">
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Ultra-wide 160-degree field of vision</span>
+
+          </li>
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Smart Human & Package detection filters</span>
+
+          </li>
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Local secure SD card or encrypted Cloud backup feeds</span>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 5: MOTION SENSORS -->
+
+    <section id="motion-sensors" class="section-motion-sensors">
+
+      <div class="motion-sensor-grid">
+
+        <div>
+
+          <span class="sec-badge">Space Tracking</span>
+
+          <h2 class="sec-title">Advanced Motion Sensors</h2>
+
+          <p class="sec-desc" style="margin-bottom: 24px;">
+
+            Eradicate blind spots. We install dual-technology motion detectors that combine passive infrared (PIR) heat detection with microwave radar sweeps to completely filter out false alarms from pets.
+
+          </p>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm);">
+
+            <h5 style="font-weight: 600; margin-bottom: 8px; color: var(--text-primary);" id="motionConsoleTitle">Motion Grid Analyzer</h5>
+
+            <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);" id="motionConsoleDesc">
+
+              Click on any quadrant on the right to simulate infrared motion sweeps. The grid radar will track and pinpoint wave ripples across the selected sector.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="motion-zones-visualizer" id="motionZoneGrid">
+
+          <div class="motion-zone-tile" data-zone="A">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px; color: var(--accent-primary);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+
+            <span style="font-weight:700; font-size:0.9rem;">Zone A: Front Drive</span>
+
+          </div>
+
+          <div class="motion-zone-tile" data-zone="B">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px; color: var(--accent-primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+            <span style="font-weight:700; font-size:0.9rem;">Zone B: Back Lawn</span>
+
+          </div>
+
+          <div class="motion-zone-tile" data-zone="C">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px; color: var(--accent-primary);"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+
+            <span style="font-weight:700; font-size:0.9rem;">Zone C: Side Path</span>
+
+          </div>
+
+          <div class="motion-zone-tile" data-zone="D">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px; color: var(--accent-primary);"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+
+            <span style="font-weight:700; font-size:0.9rem;">Zone D: Garage Bay</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 6: ACCESS CONTROL SYSTEMS -->
+
+    <section id="access-control" class="section-access-control" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; margin-bottom: 100px;">
+
+      <div class="comm-hero-img-wrapper">
+
+        <img src="images/access_control.png" alt="High-tech biometric card reader on commercial wall mount">
+
+      </div>
+
+      <div>
+
+        <span class="sec-badge">Authorized Entry</span>
+
+        <h2 class="sec-title">Integrated Access Control Systems</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Manage clearance and permissions profiles dynamically. We install multi-factor authentication systems integrating secure smart card readers, fingerprint validation, and central administration dashboards to secure corporate corridors.
+
+        </p>
+
+        <ul style="display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary);">
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Time-locked access rules and scheduling patterns</span>
+
+          </li>
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Instant credentials revocation from any device</span>
+
+          </li>
+
+          <li style="display: flex; align-items: center; gap: 12px;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+            <span>Comprehensive entry/exit audit logs</span>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 7: INTERCOM SYSTEMS -->
+
+    <section id="intercom" class="section-intercom">
+
+      <div>
+
+        <span class="sec-badge">Threshold Communication</span>
+
+        <h2 class="sec-title">Two-Way Intercom Systems</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Talk directly with visitors before granting entrance. Our intercom integrations offer clear high-definition audio, video feeds, and remote door lock triggers accessible right from corporate phone networks.
+
+        </p>
+
+        <div style="background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm);">
+
+          <h5 style="font-weight:600; margin-bottom: 8px;">Audio Test Simulator</h5>
+
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+
+            Hover and hold the **TALK TO GATE** button on the right to test audio waveforms. You will see real-time frequency oscillations indicating an open speech channel.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="intercom-waves-box">
+
+          <svg class="intercom-waveform-svg" id="intercomWaveform" viewBox="0 0 400 80">
+
+            <!-- Animated path representing wave -->
+
+            <path d="M 10,40 Q 50,40 100,40 T 200,40 T 300,40 T 390,40" id="wavePath" />
+
+          </svg>
+
+          <button class="intercom-talk-btn" id="intercomTalkBtn">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 18px; height: 18px;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+
+            <span>TALK TO GATE</span>
+
+          </button>
+
+          <p style="font-size:0.75rem; color: var(--text-secondary); margin-top: 16px;" id="intercomStatus">Status: Microphone Muted</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 8: REMOTE MONITORING SETUP -->
+
+    <section id="remote-monitoring" class="section-remote-monitor">
+
+      <div class="sec-header">
+
+        <span class="sec-badge">Remote Operations</span>
+
+        <h2 class="sec-title">Live Remote Monitoring Setup</h2>
+
+        <p class="sec-desc">
+
+          Monitor your property security from anywhere in the world. We configure secure virtual private networks (VPNs) and cloud streams so you can inspect live feeds, look at logs, and alter alarm configurations on any smartphone or tablet.
+
+        </p>
+
+      </div>
+
+      
+
+      <div class="bandwidth-calc-box">
+
+        <div class="calc-slider-group">
+
+          <div>
+
+            <div class="calc-slider-label">
+
+              <span>Number of Active Cameras</span>
+
+              <span id="camValueText" style="color: var(--accent-primary); font-weight:700;">4 Cameras</span>
+
+            </div>
+
+            <input type="range" min="2" max="16" value="4" class="calc-slider" id="calcCamsSlider">
+
+          </div>
+
+          
+
+          <div>
+
+            <div class="calc-slider-label">
+
+              <span>Stream Resolution</span>
+
+              <span id="resValueText" style="color: var(--accent-primary); font-weight:700;">1080p Full HD</span>
+
+            </div>
+
+            <input type="range" min="1" max="3" value="2" class="calc-slider" id="calcResSlider">
+
+          </div>
+
+        </div>
+
+        
+
+        <div class="calc-result-card">
+
+          <h5 style="font-weight: 600; margin-bottom: 16px; color: var(--text-muted);">Estimated Bandwidth Required</h5>
+
+          <div class="bandwidth-value" id="bandwidthValText">16 Mbps</div>
+
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;" id="bandwidthRecommendation">
+
+            Recommendation: Standard Broadband connection (Fiber recommended for 4K).
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <!-- ==========================================================================
+
+       FOOTER SECTION (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== -->
+
+  <footer class="footer-wrapper">
+
+    <div class="footer-container">
+
+      
+
+      <!-- Footer Grid -->
+
+      <div class="footer-grid">
+
+        
+
+        <!-- Column 1: Brand & About -->
+
+        <div class="footer-col brand-col">
+
+          <a href="index.html" class="brand" style="margin-bottom: 16px;">
+
+            <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+              <defs>
+
+                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                  <stop offset="0%" stop-color="var(--accent-primary)" />
+
+                  <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+                </linearGradient>
+
+              </defs>
+
+              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
+
+              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
+
+            </svg>
+
+            <span>LOCKSMITH</span>
+
+          </a>
+
+          <p class="footer-text">
+
+            Licensed, bonded, and insured mobile emergency locksmith services. Rapid lockout assistance, security audits, and keyless automation systems. Available 24 hours.
+
+          </p>
+
+          <div class="social-links">
+
+            <a href="#facebook" class="social-icon-btn" aria-label="Facebook">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+
+            </a>
+
+            <a href="#twitter" class="social-icon-btn" aria-label="Twitter">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+
+            </a>
+
+            <a href="#instagram" class="social-icon-btn" aria-label="Instagram">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Column 2: Locksmith Services -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Locksmith Services</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="Emergency.html" class="footer-link-item">Emergency Services</a></li>
+
+            <li><a href="Residential.html" class="footer-link-item">Residential Locksmith</a></li>
+
+            <li><a href="Commercial.html" class="footer-link-item">Commercial Locksmith</a></li>
+
+            <li><a href="#security" class="footer-link-item">Security Installation</a></li>
+
+            <li><a href="Lock Types.html" class="footer-link-item">Lock Types Guide</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 3: Resources & Info -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Resources & Info</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="#about" class="footer-link-item">About Our Team</a></li>
+
+            <li><a href="Pricing.html" class="footer-link-item">Pricing & Estimates</a></li>
+
+            <li><a href="#service-areas" class="footer-link-item">Service Areas Map</a></li>
+
+            <li><a href="#resources" class="footer-link-item">Security Blog & Tips</a></li>
+
+            <li><a href="#reviews" class="footer-link-item">Reviews & Testimonials</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 5: Newsletter Sign-up -->
+
+        <div class="footer-col newsletter-col">
+
+          <h3 class="footer-title">Secure News & Offers</h3>
+
+          <p class="footer-text" style="margin-bottom: 12px;">Subscribe for safety tips & special lock installation deals.</p>
+
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+
+            <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required class="newsletter-input" />
+
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+
+              <svg class="padlock-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #fff;">
+
+                <path d="M7 11V7a5 5 0 0 1 10 0v4M4 11h16v11H4z" fill="none" stroke-width="2.5" />
+
+              </svg>
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Divider line -->
+
+      <div class="footer-divider"></div>
+
+
+
+      <!-- Footer Bottom -->
+
+      <div class="footer-bottom">
+
+        <p class="copyright">&copy; 2026 LOCKSMITH. All rights reserved. Licensed Locksmith #LIC-9428-A.</p>
+
+        <div class="footer-bottom-links">
+
+          <a href="#privacy" class="footer-bottom-link">Privacy Policy</a>
+
+          <a href="#terms" class="footer-bottom-link">Terms of Service</a>
+
+          <a href="#licensing" class="footer-bottom-link">Licensing Details</a>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ==========================================================================
+
+       9. INTERACTIVE JAVASCRIPT CONTROLLERS
+
+       ========================================================================== */ -->
+
+  <script>
+
+    // 9.1 Theme Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+
+    
+
+    function initTheme() {
+
+      const savedTheme = localStorage.getItem('theme');
+
+      if (savedTheme === 'light') {
+
+        document.documentElement.classList.remove('dark');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+      }
+
+    }
+
+    
+
+    function toggleTheme() {
+
+      if (document.documentElement.classList.contains('dark')) {
+
+        document.documentElement.classList.remove('dark');
+
+        localStorage.setItem('theme', 'light');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+        localStorage.setItem('theme', 'dark');
+
+      }
+
+    }
+
+
+
+    initTheme();
+
+    darkModeBtn.addEventListener('click', toggleTheme);
+
+    drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+
+
+    // 9.2 RTL Layout Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+
+    
+
+    function toggleRtl() {
+
+      const currentDir = document.documentElement.dir || 'ltr';
+
+      if (currentDir === 'ltr') {
+
+        document.documentElement.dir = 'rtl';
+
+      } else {
+
+        document.documentElement.dir = 'ltr';
+
+      }
+
+    }
+
+
+
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+
+    drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+
+
+    // 9.3 Ambient Cursor Tracker in Navbar Container
+
+    const mainNavbar = document.getElementById('mainNavbar');
+
+    const navGlow = document.getElementById('navGlow');
+
+
+
+    if (mainNavbar && navGlow) {
+
+      mainNavbar.addEventListener('mousemove', (e) => {
+
+        const rect = mainNavbar.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        
+
+        mainNavbar.style.setProperty('--mouse-x', `${x}px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `${y}px`);
+
+      });
+
+
+
+      mainNavbar.addEventListener('mouseleave', () => {
+
+        // Reset glow offscreen when mouse leaves
+
+        mainNavbar.style.setProperty('--mouse-x', `-999px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `-999px`);
+
+      });
+
+    }
+
+
+
+    // 9.4 Mobile Drawer Controller (Drawer + Overlay + Back/Close triggers)
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+
+
+    function openMobileDrawer() {
+
+      mobileDrawer.classList.add('open');
+
+      drawerOverlay.classList.add('active');
+
+      document.body.style.overflow = 'hidden'; // Stop page scrolling
+
+    }
+
+
+
+    function closeMobileDrawer() {
+
+      mobileDrawer.classList.remove('open');
+
+      drawerOverlay.classList.remove('active');
+
+      document.body.style.overflow = ''; // Resume page scrolling
+
+    }
+
+
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+
+    drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+
+
+    // 9.5 Drawer Accordion Submenu Collapses
+
+    const accordionTriggers = document.querySelectorAll('.drawer-accordion-trigger');
+
+
+
+    accordionTriggers.forEach(trigger => {
+
+      trigger.addEventListener('click', () => {
+
+        // Toggle active submenu container height
+
+        const submenu = trigger.nextElementSibling;
+
+        const chevron = trigger.querySelector('.chevron-icon');
+
+        
+
+        if (submenu.classList.contains('open')) {
+
+          submenu.classList.remove('open');
+
+          chevron.style.transform = 'rotate(0deg)';
+
+        } else {
+
+          // Close others first for a clean accordian flow
+
+          accordionTriggers.forEach(otherTrigger => {
+
+            const otherSub = otherTrigger.nextElementSibling;
+
+            const otherChevron = otherTrigger.querySelector('.chevron-icon');
+
+            if (otherSub && otherSub.classList.contains('open') && otherSub !== submenu) {
+
+              otherSub.classList.remove('open');
+
+              otherChevron.style.transform = 'rotate(0deg)';
+
+            }
+
+          });
+
+          
+
+          submenu.classList.add('open');
+
+          chevron.style.transform = 'rotate(180deg)';
+
+        }
+
+      });
+
+    });
+
+
+
+    // 9.6 Login Button Hover Shackle micro-interactions (Dual-Bind: Desktop & Mobile Drawer)
+
+    const loginBtn = document.getElementById('loginBtn');
+
+    const drawerLoginBtn = document.getElementById('drawerLoginBtn');
+
+    const desktopShackle = document.getElementById('desktopShackle');
+
+    const drawerShackle = document.getElementById('drawerShackle');
+
+
+
+    loginBtn.addEventListener('mouseenter', () => {
+
+      desktopShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    loginBtn.addEventListener('mouseleave', () => {
+
+      desktopShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    drawerLoginBtn.addEventListener('mouseenter', () => {
+
+      drawerShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    drawerLoginBtn.addEventListener('mouseleave', () => {
+
+      drawerShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    // 9.7 Active Page Highlighter
+
+    function highlightActivePage() {
+
+      const path = window.location.pathname;
+
+      let page = path.split("/").pop();
+
+      if (!page || page === "") {
+
+        page = "index.html";
+
+      }
+
+      page = decodeURIComponent(page);
+
+
+
+      const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+
+      const dropdownItems = document.querySelectorAll('.nav-menu .dropdown-item');
+
+
+
+      const getFilename = (href) => {
+
+        if (!href) return "";
+
+        return href.replace(/^\.\//, "").split("/").pop();
+
+      };
+
+
+
+      let activeFound = false;
+
+
+
+      dropdownItems.forEach(item => {
+
+        const hrefFilename = getFilename(item.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          item.classList.add('active-link');
+
+          const parentNavItem = item.closest('.nav-item');
+
+          if (parentNavItem) {
+
+            parentNavItem.classList.add('active');
+
+          }
+
+          activeFound = true;
+
+        }
+
+      });
+
+
+
+      if (!activeFound) {
+
+        navLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            const parentNavItem = link.closest('.nav-item');
+
+            if (parentNavItem) {
+
+              parentNavItem.classList.add('active');
+
+            }
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+
+
+      const mobileLinks = document.querySelectorAll('.mobile-menu-list .mobile-menu-link');
+
+      const mobileSubLinks = document.querySelectorAll('.mobile-menu-list .mobile-submenu-link');
+
+
+
+      let mobileActiveFound = false;
+
+
+
+      mobileSubLinks.forEach(subLink => {
+
+        const hrefFilename = getFilename(subLink.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          subLink.classList.add('active-link');
+
+          const submenu = subLink.closest('.mobile-submenu');
+
+          if (submenu) {
+
+            submenu.classList.add('open');
+
+            const trigger = submenu.previousElementSibling;
+
+            if (trigger && trigger.querySelector('.chevron-icon')) {
+
+              trigger.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+
+            }
+
+          }
+
+          mobileActiveFound = true;
+
+        }
+
+      });
+
+
+
+      if (!mobileActiveFound) {
+
+        mobileLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+    }
+
+
+
+    highlightActivePage();
+
+
+
+    // ==========================================================================
+
+    // SECURITY INSTALLATION PAGE INTERACTIVE CONTROLLERS
+
+    // ==========================================================================
+
+
+
+    // 1. Smart Security Hub Control
+
+    const hubMasterBtn = document.getElementById('hubMasterBtn');
+
+    const hubStatusLight = document.getElementById('hubStatusLight');
+
+    const hubMessage = document.getElementById('hubMessage');
+
+    const zoneStatuses = [
+
+      document.getElementById('zone1Status'),
+
+      document.getElementById('zone2Status'),
+
+      document.getElementById('zone3Status'),
+
+      document.getElementById('zone4Status')
+
+    ];
+
+    
+
+    let isArmed = false;
+
+    
+
+    if (hubMasterBtn && hubStatusLight && hubMessage) {
+
+      hubMasterBtn.addEventListener('click', () => {
+
+        isArmed = !isArmed;
+
+        if (isArmed) {
+
+          hubMasterBtn.classList.add('armed');
+
+          hubMasterBtn.innerText = "Disarm Hub";
+
+          hubStatusLight.classList.add('armed');
+
+          hubMessage.innerText = "Status: Security System ARMED (Active protection)";
+
+          zoneStatuses.forEach(status => {
+
+            if (status) {
+
+              status.innerText = "ACTIVE";
+
+              status.style.color = "#10b981";
+
+              status.style.background = "rgba(16, 185, 129, 0.1)";
+
+            }
+
+          });
+
+        } else {
+
+          hubMasterBtn.classList.remove('armed');
+
+          hubMasterBtn.innerText = "Arm System";
+
+          hubStatusLight.classList.remove('armed');
+
+          hubMessage.innerText = "Status: Security System Disarmed";
+
+          zoneStatuses.forEach(status => {
+
+            if (status) {
+
+              status.innerText = "SECURE";
+
+              status.style.color = "#94a3b8";
+
+              status.style.background = "rgba(148, 163, 184, 0.1)";
+
+            }
+
+          });
+
+        }
+
+      });
+
+    }
+
+
+
+    // 2. Alarm Keypad Simulator
+
+    const display = document.getElementById('keypadDisplay');
+
+    let inputCode = "";
+
+    
+
+    window.pressKey = function(key) {
+
+      if (!display) return;
+
+      if (display.innerText === "ARMED" || display.innerText === "DISARMED" || display.innerText === "ERR CODE") {
+
+        display.innerText = "";
+
+        display.classList.remove('error');
+
+      }
+
+      if (inputCode.length < 4) {
+
+        inputCode += key;
+
+        display.innerText = "*".repeat(inputCode.length);
+
+      }
+
+    };
+
+    
+
+    window.clearKeypad = function() {
+
+      if (!display) return;
+
+      inputCode = "";
+
+      display.innerText = "";
+
+      display.classList.remove('error');
+
+    };
+
+    
+
+    window.submitKeypad = function() {
+
+      if (!display) return;
+
+      if (inputCode === "1234") {
+
+        display.innerText = "DISARMED";
+
+        display.style.color = "#10b981";
+
+        inputCode = "";
+
+        isArmed = false;
+
+        if (hubMasterBtn) {
+
+          hubMasterBtn.classList.remove('armed');
+
+          hubMasterBtn.innerText = "Arm System";
+
+        }
+
+        if (hubStatusLight) hubStatusLight.classList.remove('armed');
+
+        if (hubMessage) hubMessage.innerText = "Status: Security System Disarmed";
+
+      } else {
+
+        display.innerText = "ERR CODE";
+
+        display.classList.add('error');
+
+        display.style.color = "#ef4444";
+
+        inputCode = "";
+
+        setTimeout(() => {
+
+          if (display.innerText === "ERR CODE") {
+
+            display.innerText = "ARMED";
+
+            display.style.color = "#ef4444";
+
+          }
+
+        }, 1500);
+
+      }
+
+    };
+
+
+
+    // 3. Video Doorbell Simulator
+
+    const ringDoorbellBtn = document.getElementById('ringDoorbellBtn');
+
+    const visitorSilhouette = document.getElementById('visitorSilhouette');
+
+    const silhouetteFade = document.getElementById('silhouetteFade');
+
+    const detectionBox = document.getElementById('detectionBox');
+
+    
+
+    if (ringDoorbellBtn && visitorSilhouette && detectionBox) {
+
+      ringDoorbellBtn.addEventListener('click', () => {
+
+        // Trigger Silhouette fade
+
+        if (silhouetteFade) {
+
+          silhouetteFade.beginElement();
+
+        }
+
+        visitorSilhouette.setAttribute('opacity', '1');
+
+        
+
+        // Show detection bounding box after 0.8s
+
+        setTimeout(() => {
+
+          detectionBox.style.display = 'block';
+
+          detectionBox.style.border = '2px solid #ef4444';
+
+          
+
+          // Flash detect alert
+
+          const timestamp = document.getElementById('doorbellTimestamp');
+
+          if (timestamp) {
+
+            timestamp.innerText = "CAM-01: HUMAN DETECTED!";
+
+            timestamp.style.fill = "#ef4444";
+
+          }
+
+        }, 800);
+
+        
+
+        // Auto reset feed after 5 seconds
+
+        setTimeout(() => {
+
+          visitorSilhouette.setAttribute('opacity', '0');
+
+          detectionBox.style.display = 'none';
+
+          const timestamp = document.getElementById('doorbellTimestamp');
+
+          if (timestamp) {
+
+            const now = new Date();
+
+            timestamp.innerText = `CAM-01 ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
+            timestamp.style.fill = "#38bdf8";
+
+          }
+
+        }, 6000);
+
+      });
+
+    }
+
+
+
+    // 4. Motion Zones Quadrant Scanner
+
+    const motionZoneGrid = document.getElementById('motionZoneGrid');
+
+    const motionConsoleTitle = document.getElementById('motionConsoleTitle');
+
+    const motionConsoleDesc = document.getElementById('motionConsoleDesc');
+
+    
+
+    if (motionZoneGrid && motionConsoleTitle && motionConsoleDesc) {
+
+      const tiles = motionZoneGrid.querySelectorAll('.motion-zone-tile');
+
+      tiles.forEach(tile => {
+
+        tile.addEventListener('click', (e) => {
+
+          const zone = tile.getAttribute('data-zone');
+
+          const zoneName = tile.querySelector('span').innerText;
+
+          
+
+          // Create wave ripple element
+
+          const rect = tile.getBoundingClientRect();
+
+          const ripple = document.createElement('div');
+
+          ripple.className = 'motion-ripple';
+
+          
+
+          const x = e.clientX - rect.left;
+
+          const y = e.clientY - rect.top;
+
+          ripple.style.left = `${x}px`;
+
+          ripple.style.top = `${y}px`;
+
+          
+
+          tile.appendChild(ripple);
+
+          
+
+          // Remove ripple after anim completes
+
+          setTimeout(() => {
+
+            ripple.remove();
+
+          }, 1000);
+
+          
+
+          // Update Console Info
+
+          motionConsoleTitle.innerText = `Alert: Intrusion Event in ${zone}`;
+
+          motionConsoleTitle.style.color = "var(--accent-primary)";
+
+          motionConsoleDesc.innerText = `Active radar ping confirms infrared heat signatures detected in "${zoneName}". Local alarm routing trigger stands ready.`;
+
+        });
+
+      });
+
+    }
+
+
+
+    // 5. Intercom Two-Way Talk Simulator
+
+    const intercomTalkBtn = document.getElementById('intercomTalkBtn');
+
+    const wavePath = document.getElementById('wavePath');
+
+    const intercomStatus = document.getElementById('intercomStatus');
+
+    
+
+    let intercomInterval;
+
+    
+
+    if (intercomTalkBtn && wavePath && intercomStatus) {
+
+      intercomTalkBtn.addEventListener('mousedown', startIntercomTalk);
+
+      intercomTalkBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startIntercomTalk(); });
+
+      
+
+      intercomTalkBtn.addEventListener('mouseup', stopIntercomTalk);
+
+      intercomTalkBtn.addEventListener('mouseleave', stopIntercomTalk);
+
+      intercomTalkBtn.addEventListener('touchend', stopIntercomTalk);
+
+    }
+
+    
+
+    function startIntercomTalk() {
+
+      intercomStatus.innerText = "Status: TRANSMITTING AUDIO (Release to mute)";
+
+      intercomStatus.style.color = "var(--accent-primary)";
+
+      
+
+      let step = 0;
+
+      intercomInterval = setInterval(() => {
+
+        step += 0.5;
+
+        // Generate a dynamic waving wave path
+
+        const d = `M 10,40 Q 50,${40 + Math.sin(step) * 25} 100,${40 - Math.sin(step) * 20} T 200,${40 + Math.cos(step) * 22} T 300,${40 - Math.sin(step) * 25} T 390,40`;
+
+        wavePath.setAttribute('d', d);
+
+      }, 50);
+
+    }
+
+    
+
+    function stopIntercomTalk() {
+
+      clearInterval(intercomInterval);
+
+      if (intercomStatus) {
+
+        intercomStatus.innerText = "Status: Microphone Muted";
+
+        intercomStatus.style.color = "var(--text-secondary)";
+
+      }
+
+      if (wavePath) {
+
+        wavePath.setAttribute('d', 'M 10,40 Q 50,40 100,40 T 200,40 T 300,40 T 390,40');
+
+      }
+
+    }
+
+
+
+    // 6. Remote Monitoring Bandwidth Calculator
+
+    const camsSlider = document.getElementById('calcCamsSlider');
+
+    const resSlider = document.getElementById('calcResSlider');
+
+    const camText = document.getElementById('camValueText');
+
+    const resText = document.getElementById('resValueText');
+
+    const valText = document.getElementById('bandwidthValText');
+
+    const recText = document.getElementById('bandwidthRecommendation');
+
+    
+
+    function updateBandwidth() {
+
+      if (!camsSlider || !resSlider || !valText || !recText) return;
+
+      
+
+      const cams = parseInt(camsSlider.value);
+
+      const resVal = parseInt(resSlider.value);
+
+      
+
+      let label = "";
+
+      let mbpsPerCam = 2; // 720p default
+
+      
+
+      if (resVal === 1) {
+
+        label = "720p HD";
+
+        mbpsPerCam = 2.5;
+
+      } else if (resVal === 2) {
+
+        label = "1080p Full HD";
+
+        mbpsPerCam = 5;
+
+      } else {
+
+        label = "4K Ultra HD";
+
+        mbpsPerCam = 15;
+
+      }
+
+      
+
+      camText.innerText = `${cams} Cameras`;
+
+      resText.innerText = label;
+
+      
+
+      const totalMbps = cams * mbpsPerCam;
+
+      valText.innerText = `${totalMbps} Mbps`;
+
+      
+
+      if (totalMbps <= 15) {
+
+        recText.innerText = "Recommendation: Standard Broadband (DSL / Standard Cable).";
+
+      } else if (totalMbps <= 50) {
+
+        recText.innerText = "Recommendation: High Speed Internet (Fiber or Premium Cable recommended).";
+
+      } else {
+
+        recText.innerText = "Recommendation: Gigabit Fiber optic connection with dedicated security bandwidth.";
+
+      }
+
+    }
+
+    
+
+    if (camsSlider) camsSlider.addEventListener('input', updateBandwidth);
+
+    if (resSlider) resSlider.addEventListener('input', updateBandwidth);
+
+  </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,7025 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium Mobile Locksmith Navigation Showcase</title>
+
+  <!-- SEO Meta Tags -->
+
+  <meta name="description" content="Stunning showcase of a highly interactive, responsive, dark-mode and RTL-capable navigation system for Mobile Locksmith services.">
+
+  <meta name="author" content="Antigravity">
+
+  
+
+  <!-- Premium Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+  <style>
+
+    /* ==========================================================================
+
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+
+       ========================================================================== */
+
+    :root {
+
+      /* Typography */
+
+      --font-heading: 'Outfit', sans-serif;
+
+      --font-body: 'Inter', sans-serif;
+
+
+
+      /* Colors - Light Mode Defaults */
+
+      --bg-primary: #f8fafc;
+
+      --bg-secondary: #ffffff;
+
+      --bg-tertiary: #f1f5f9;
+
+      --text-primary: #0f172a;
+
+      --text-secondary: #475569;
+
+      --text-muted: #94a3b8;
+
+      
+
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+
+      --accent-glow: rgba(212, 175, 55, 0.15);
+
+      
+
+      --danger-primary: #ef4444;      /* Emergency Red */
+
+      --danger-glow: rgba(239, 68, 68, 0.4);
+
+      
+
+      --border-color: rgba(15, 23, 42, 0.08);
+
+      --nav-bg: rgba(255, 255, 255, 0.7);
+
+      --nav-border: rgba(255, 255, 255, 0.5);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+
+      
+
+      /* Grid Ambient Animation Colors */
+
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+
+
+      /* Layout */
+
+      --nav-height: 74px;
+
+      --border-radius: 20px;
+
+      --transition-speed: 0.3s;
+
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    /* Dark Mode Overrides */
+
+    html.dark {
+
+      --bg-primary: #0b0f19;
+
+      --bg-secondary: #111827;
+
+      --bg-tertiary: #1f2937;
+
+      --text-primary: #f8fafc;
+
+      --text-secondary: #94a3b8;
+
+      --text-muted: #64748b;
+
+      
+
+      --accent-primary: #ffd700;      /* Bright Gold */
+
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+
+      --accent-glow: rgba(255, 215, 0, 0.25);
+
+      
+
+      --danger-primary: #ff4757;
+
+      --danger-glow: rgba(255, 71, 87, 0.6);
+
+      
+
+      --border-color: rgba(255, 255, 255, 0.08);
+
+      --nav-bg: rgba(11, 15, 25, 0.65);
+
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+
+      
+
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       2. RESET & BASE STYLES (Supports RTL Smooth Transitions)
+
+       ========================================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+
+                  border-color var(--transition-speed) var(--transition-timing), 
+
+                  color var(--transition-speed) var(--transition-timing);
+
+    }
+
+
+
+    body {
+
+      font-family: var(--font-body);
+
+      background-color: var(--bg-primary);
+
+      color: var(--text-primary);
+
+      min-height: 140vh; /* Allow scrolling to show floating header effect */
+
+      overflow-x: hidden;
+
+      position: relative;
+
+    }
+
+
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+
+
+    a {
+
+      text-decoration: none;
+
+      color: inherit;
+
+    }
+
+
+
+    ul {
+
+      list-style: none;
+
+    }
+
+
+
+    button {
+
+      background: none;
+
+      border: none;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* RTL Transition Support */
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    
+
+    [dir="rtl"] {
+
+      text-align: right;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       3. AMBIENT BACKGROUND SYSTEM (Showcases Glassmorphism)
+
+       ========================================================================== */
+
+    .bg-grid {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      background-size: 40px 40px;
+
+      background-image: 
+
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+
+    }
+
+
+
+    .bg-mesh-1, .bg-mesh-2 {
+
+      position: fixed;
+
+      width: 600px;
+
+      height: 600px;
+
+      border-radius: 50%;
+
+      filter: blur(140px);
+
+      z-index: -2;
+
+      opacity: 0.8;
+
+      pointer-events: none;
+
+      animation: float 20s infinite alternate ease-in-out;
+
+    }
+
+
+
+    .bg-mesh-1 {
+
+      top: -10%;
+
+      left: -10%;
+
+      background: var(--mesh-color-1);
+
+    }
+
+
+
+    .bg-mesh-2 {
+
+      bottom: 10%;
+
+      right: -10%;
+
+      background: var(--mesh-color-2);
+
+      animation-delay: -5s;
+
+    }
+
+
+
+    @keyframes float {
+
+      0% { transform: translate(0, 0) scale(1); }
+
+      100% { transform: translate(100px, 50px) scale(1.2); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       4. SINGLE-DECK GLOWING NAVIGATION HEADER (Logo Left, Menu Center, Controls Right)
+
+       ========================================================================== */
+
+    .navbar-wrapper {
+
+      position: fixed;
+
+      top: 20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 96%;
+
+      max-width: 1640px;
+
+      z-index: 1000;
+
+      animation: slideDown 0.8s var(--transition-timing);
+
+    }
+
+
+
+    .navbar-container {
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-md);
+
+      height: var(--nav-height);
+
+      border-radius: var(--border-radius);
+
+      padding: 0 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: relative;
+
+      overflow: visible; /* Vital for dropdown panels */
+
+    }
+
+
+
+    /* Ambient Cursor Tracker Overlay inside navbar container */
+
+    .navbar-glow-overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      border-radius: var(--border-radius);
+
+      pointer-events: none;
+
+      background: radial-gradient(
+
+        120px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+
+        rgba(0, 242, 254, 0.08),
+
+        transparent 80%
+
+      );
+
+      z-index: 1;
+
+    }
+
+
+
+    /* RTL horizontal adjustments */
+
+    [dir="rtl"] .navbar-wrapper {
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    /* 4.1 CREATIVE UNIQUE BRAND LOGO (Hexagon Cyber-Key Logo - Left Aligned) */
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-family: var(--font-heading);
+
+      font-size: 1.45rem;
+
+      font-weight: 800;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      z-index: 10;
+
+      position: relative;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Logo based on Lock */
+
+    .brand-logo-svg {
+
+      width: 38px;
+
+      height: 38px;
+
+      fill: none;
+
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+
+      animation: pulseLogo 3s infinite ease-in-out;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    .brand:hover .brand-logo-svg {
+
+      transform: scale(1.1) rotate(5deg);
+
+    }
+
+
+
+    @keyframes pulseLogo {
+
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+
+    }
+
+
+
+    /* 4.2 NAVIGATION LINKS (Centered Group - Hidden in Mobile/Tablet Views) */
+
+    .nav-menu {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 2px;
+
+      flex-grow: 1;
+
+      height: 100%;
+
+      z-index: 2;
+
+      padding: 0 16px;
+
+    }
+
+
+
+    .nav-item {
+
+      position: relative;
+
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+
+
+    .nav-link {
+
+      font-family: var(--font-body);
+
+      font-size: 0.78rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      padding: 6px 8px;
+
+      border-radius: 8px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 3px;
+
+      white-space: nowrap;
+
+      transition: color 0.25s ease, background-color 0.25s ease;
+
+    }
+
+
+
+    .nav-link:hover, .nav-item.active .nav-link {
+
+      color: var(--text-primary);
+
+      background-color: rgba(255, 255, 255, 0.05);
+
+    }
+
+
+
+    html.dark .nav-link:hover, html.dark .nav-item.active .nav-link {
+
+      background-color: rgba(255, 255, 255, 0.03);
+
+    }
+
+
+
+    /* Down Chevron indicator */
+
+    .chevron-icon {
+
+      width: 11px;
+
+      height: 11px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    .nav-item:hover .chevron-icon {
+
+      transform: rotate(180deg);
+
+    }
+
+
+
+    /* 4.3 SUBMENU PANEL SYSTEM (Dropdowns restricted to Home & Dashboard ONLY) */
+
+    .dropdown-panel {
+
+      position: absolute;
+
+      top: calc(var(--nav-height) - 10px);
+
+      left: 50%;
+
+      transform: translateX(-50%) rotateX(-12deg) translateY(12px);
+
+      width: max-content;
+
+      max-width: 340px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 12px;
+
+      box-shadow: var(--shadow-lg);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: 100;
+
+      transform-origin: top center;
+
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+
+                  transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .nav-item:hover .dropdown-panel {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+      transform: translateX(-50%) rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Alignments for end-aligned components (Dashboard dropdown alignment) */
+
+    .dropdown-right {
+
+      left: auto;
+
+      right: 0;
+
+      transform: rotateX(-12deg) translateY(12px);
+
+    }
+
+    
+
+    [dir="rtl"] .dropdown-right {
+
+      right: auto;
+
+      left: 0;
+
+    }
+
+
+
+    .nav-item:hover .dropdown-right {
+
+      transform: rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Dropdown Item Styling */
+
+    .dropdown-item {
+
+      border-radius: 10px;
+
+      padding: 10px 12px;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+    }
+
+
+
+    .dropdown-item:hover {
+
+      background-color: var(--bg-tertiary);
+
+      transform: translateY(-2px);
+
+    }
+
+
+
+    .dropdown-item-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: var(--accent-primary);
+
+      stroke-width: 2;
+
+      fill: none;
+
+      flex-shrink: 0;
+
+      margin-top: 2px;
+
+    }
+
+
+
+    .dropdown-item-content {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    .dropdown-item-title {
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      margin-bottom: 2px;
+
+    }
+
+
+
+    .dropdown-item-desc {
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.3;
+
+    }
+
+
+
+    /* Pulsing Emergency Indicator badge */
+
+    .emergency-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--danger-primary);
+
+      border-radius: 50%;
+
+      margin-inline-start: 6px;
+
+      box-shadow: 0 0 0 0 var(--danger-glow);
+
+      animation: pulseEmergency 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+
+    }
+
+
+
+    @keyframes pulseEmergency {
+
+      0% { box-shadow: 0 0 0 0 var(--danger-glow); }
+
+      70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); }
+
+      100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       5. CONTROLS (Toggles & Action Buttons - Right Aligned)
+
+       ========================================================================== */
+
+    .nav-controls {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      z-index: 10;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Circular Utility Toggle Button Styles */
+
+    .control-btn {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .control-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 12px var(--accent-glow);
+
+    }
+
+
+
+    .control-btn-icon {
+
+      width: 18px;
+
+      height: 18px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.2;
+
+      fill: none;
+
+      transition: transform 0.4s var(--transition-timing);
+
+    }
+
+
+
+    /* Sun/Moon Morphing Specifics */
+
+    .sun-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .moon-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .sun-icon {
+
+      display: block;
+
+      animation: rotateSun 10s infinite linear;
+
+    }
+
+
+
+    @keyframes rotateSun {
+
+      0% { transform: rotate(0deg); }
+
+      100% { transform: rotate(360deg); }
+
+    }
+
+
+
+    /* RTL Switch Animation */
+
+    .rtl-icon {
+
+      transition: transform 0.4s ease;
+
+    }
+
+
+
+    [dir="rtl"] .rtl-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    /* 5.1 LOGIN BUTTON WITH MICRO-ANIMATION & GRADIENT GLOW */
+
+    .login-btn {
+
+      padding: 10px 18px;
+
+      border-radius: 12px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: #ffffff;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .login-btn::before {
+
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+
+      left: -50%;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255, 255, 255, 0.25),
+
+        transparent
+
+      );
+
+      transform: skewX(-25deg);
+
+      transition: 0.75s ease;
+
+    }
+
+
+
+    .login-btn:hover::before {
+
+      left: 125%;
+
+    }
+
+
+
+    .login-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 6px 20px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    /* SVG Lock Animation details */
+
+    .padlock-svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      fill: none;
+
+      stroke: #ffffff;
+
+      stroke-width: 2.5;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+
+    }
+
+
+
+    .padlock-shackle {
+
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      transform-origin: 12px 6px;
+
+    }
+
+
+
+    .login-btn:hover .padlock-shackle {
+
+      transform: translateY(-2px) rotate(45deg);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       6. MOBILE RESPONSIVE HAMBURGER & INTERACTIVE DRAWER
+
+       ========================================================================== */
+
+    .mobile-nav-toggle {
+
+      display: none;
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border-color);
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+    }
+
+
+
+    .hamburger-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    /* Mobile Menu Drawer Panel */
+
+    .mobile-drawer {
+
+      position: fixed;
+
+      top: 0;
+
+      right: -100%;
+
+      width: 330px;
+
+      max-width: 100%;
+
+      height: 100vh;
+
+      background-color: var(--bg-secondary);
+
+      border-left: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-lg);
+
+      z-index: 1100;
+
+      padding: 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      overflow-y: auto;
+
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer {
+
+      right: auto;
+
+      left: -100%;
+
+      border-left: none;
+
+      border-right: 1px solid var(--border-color);
+
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .mobile-drawer.open {
+
+      right: 0;
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer.open {
+
+      left: 0;
+
+      right: auto;
+
+    }
+
+
+
+    .mobile-drawer-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border-color);
+
+      padding-bottom: 15px;
+
+      margin-bottom: 10px;
+
+      position: relative;
+
+    }
+
+
+
+    /* PRO STYLES Back Button in mobile drawer (Top Right) */
+
+    .back-btn {
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      padding: 6px 12px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-tertiary);
+
+      color: var(--text-primary);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    
+
+
+
+    .back-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 2px 8px var(--accent-glow);
+
+      transform: translateX(-2px);
+
+    }
+
+
+
+    [dir="rtl"] .back-btn:hover {
+
+      transform: translateX(2px);
+
+    }
+
+
+
+    .back-icon {
+
+      width: 14px;
+
+      height: 14px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    [dir="rtl"] .back-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    .mobile-menu-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      flex-grow: 1;
+
+      overflow-y: auto;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    /* Scrollbar styles for list inside drawer */
+
+    .mobile-menu-list::-webkit-scrollbar {
+
+      width: 4px;
+
+    }
+
+    .mobile-menu-list::-webkit-scrollbar-thumb {
+
+      background: var(--border-color);
+
+      border-radius: 4px;
+
+    }
+
+
+
+    .mobile-menu-item {
+
+      width: 100%;
+
+    }
+
+
+
+    .mobile-menu-link {
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 8px 0;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    }
+
+
+
+    .mobile-submenu {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding-inline-start: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      transition: max-height 0.3s ease-out;
+
+    }
+
+
+
+    .mobile-submenu.open {
+
+      max-height: 500px;
+
+      margin-top: 6px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .mobile-submenu-link {
+
+      font-size: 0.84rem;
+
+      color: var(--text-secondary);
+
+      padding: 6px 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+
+    /* Bottom drawer container for remaining content (RTL, Dark Mode, Login) */
+
+    .drawer-footer {
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .drawer-controls-row {
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+
+
+    .drawer-controls-row .control-btn {
+
+      flex: 1;
+
+      border-radius: 12px;
+
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      font-size: 0.82rem;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .drawer-footer .login-btn {
+
+      width: 100%;
+
+      height: 46px;
+
+      justify-content: center;
+
+      border-radius: 12px;
+
+    }
+
+
+
+    .drawer-overlay {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background-color: rgba(15, 23, 42, 0.5);
+
+      backdrop-filter: blur(4px);
+
+      z-index: 1050;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+
+
+    .drawer-overlay.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       7. HERO & COMPANION SHOWCASE CONTENT (Provides Visual Depth)
+
+       ========================================================================== */
+
+    .hero {
+
+      margin-top: 170px;
+
+      padding: 40px 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      max-width: 950px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      z-index: 10;
+
+      position: relative;
+
+    }
+
+
+
+    .hero-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 6px 14px;
+
+      border-radius: 30px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      box-shadow: var(--shadow-sm);
+
+      margin-bottom: 24px;
+
+    }
+
+
+
+    .hero-badge-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--accent-secondary);
+
+      border-radius: 50%;
+
+    }
+
+
+
+    .hero-title {
+
+      font-family: var(--font-heading);
+
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+
+      font-weight: 600;
+
+      line-height: 1.15;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .hero-gradient {
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+
+    .hero-desc {
+
+      font-size: clamp(1rem, 2vw, 1.18rem);
+
+      color: var(--text-secondary);
+
+      max-width: 680px;
+
+      line-height: 1.6;
+
+      margin-bottom: 36px;
+
+    }
+
+
+
+    /* Creative Locks interactive Grid component */
+
+    .dashboard-preview {
+
+      width: 100%;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      box-shadow: var(--shadow-lg);
+
+      padding: 30px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+
+      margin-top: 20px;
+
+      text-align: start;
+
+    }
+
+
+
+    .preview-card {
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      background-color: var(--bg-primary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .preview-card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+
+    }
+
+
+
+    .card-icon-wrapper {
+
+      width: 44px;
+
+      height: 44px;
+
+      border-radius: 10px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      margin-bottom: 16px;
+
+    }
+
+
+
+    .card-title {
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      margin-bottom: 6px;
+
+    }
+
+
+
+    .card-desc {
+
+      font-size: 0.82rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.4;
+
+    }
+
+
+
+    /* Keyframe Animations */
+
+    @keyframes slideDown {
+
+      from { transform: translate(-50%, -40px); opacity: 0; }
+
+      to { transform: translate(-50%, 0); opacity: 1; }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       8. RESPONSIVE BREAKPOINTS (Desktop First Design)
+
+       ========================================================================== */
+
+    @media (max-width: 1550px) {
+
+      /* Drop font size down to ensure it stays snug in center */
+
+      .nav-link {
+
+        font-size: 0.7rem;
+
+        padding: 5px 6px;
+
+      }
+
+      .brand {
+
+        font-size: 1.3rem;
+
+        gap: 8px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 32px;
+
+        height: 32px;
+
+      }
+
+    }
+
+
+
+    /* Nest Hub Max and smaller laptop scaling (1200px to 1366px) */
+
+    @media (max-width: 1366px) and (min-width: 1201px) {
+
+      .nav-link {
+
+        font-size: 0.65rem;
+
+        padding: 4px 4px;
+
+        gap: 2px;
+
+      }
+
+      .brand {
+
+        font-size: 1.15rem;
+
+        gap: 6px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 28px;
+
+        height: 28px;
+
+      }
+
+      .nav-controls {
+
+        gap: 6px;
+
+      }
+
+      .login-btn {
+
+        padding: 8px 12px;
+
+        font-size: 0.8rem;
+
+      }
+
+      .control-btn {
+
+        width: 36px;
+
+        height: 36px;
+
+      }
+
+      .control-btn-icon {
+
+        width: 16px;
+
+        height: 16px;
+
+      }
+
+    }
+
+
+
+    /* Tablet and mobile view collapse under 1200px */
+
+    @media (max-width: 1200px) {
+
+      /* Hide center menu & right desktop-controls */
+
+      .nav-menu, .nav-controls {
+
+        display: none;
+
+      }
+
+      
+
+      .mobile-nav-toggle {
+
+        display: flex; /* Show Hamburger in header */
+
+      }
+
+
+
+      .navbar-container {
+
+        padding: 0 16px;
+
+      }
+
+
+
+      .navbar-wrapper {
+
+        top: 15px;
+
+        width: 92%;
+
+      }
+
+      
+
+      .hero {
+
+        margin-top: 130px;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       FOOTER STYLES (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== */
+
+    .footer-wrapper {
+
+      margin-top: 100px;
+
+      padding: 60px 24px 30px 24px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border-top: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+
+
+    .footer-container {
+
+      max-width: 1540px;
+
+      margin: 0 auto;
+
+      width: 100%;
+
+    }
+
+
+
+    .footer-grid {
+
+      display: grid;
+
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+
+      gap: 40px;
+
+    }
+
+
+
+    .footer-col {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    /* Footer logo matches main logo size and responsive rules automatically */
+
+
+
+    .footer-title {
+
+      font-family: var(--font-heading);
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      margin-bottom: 20px;
+
+      position: relative;
+
+      padding-bottom: 8px;
+
+    }
+
+
+
+    .footer-title::after {
+
+      content: '';
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 30px;
+
+      height: 3px;
+
+      background: var(--accent-gradient);
+
+      border-radius: 2px;
+
+    }
+
+
+
+    [dir="rtl"] .footer-title::after {
+
+      left: auto;
+
+      right: 0;
+
+    }
+
+
+
+    .footer-text {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .footer-links-list, .footer-contact-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+
+
+    .footer-link-item {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      transition: all 0.25s ease;
+
+      display: inline-block;
+
+      width: fit-content;
+
+    }
+
+
+
+    .footer-link-item:hover {
+
+      color: var(--accent-primary);
+
+      transform: translateX(4px);
+
+    }
+
+
+
+    [dir="rtl"] .footer-link-item:hover {
+
+      transform: translateX(-4px);
+
+    }
+
+
+
+    .footer-contact-list li {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+    }
+
+
+
+    .contact-icon {
+
+      width: 16px;
+
+      height: 16px;
+
+      color: var(--accent-primary);
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .social-links {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 16px;
+
+    }
+
+
+
+    .social-icon-btn {
+
+      width: 36px;
+
+      height: 36px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .social-icon-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+    }
+
+
+
+    .social-icon-btn svg {
+
+      width: 16px;
+
+      height: 16px;
+
+    }
+
+
+
+    .newsletter-form {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 10px;
+
+    }
+
+
+
+    .newsletter-input {
+
+      flex-grow: 1;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-primary);
+
+      padding: 0 14px;
+
+      font-family: inherit;
+
+      font-size: 0.82rem;
+
+      color: var(--text-primary);
+
+      transition: border-color 0.25s ease;
+
+    }
+
+
+
+    .newsletter-input:focus {
+
+      outline: none;
+
+      border-color: var(--accent-primary);
+
+    }
+
+
+
+    .newsletter-btn {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      transition: all 0.25s ease;
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+
+
+    .newsletter-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    .footer-divider {
+
+      height: 1px;
+
+      background-color: var(--border-color);
+
+      margin: 40px 0 25px 0;
+
+    }
+
+
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+    }
+
+
+
+    .footer-bottom-links {
+
+      display: flex;
+
+      gap: 20px;
+
+    }
+
+
+
+    .footer-bottom-link {
+
+      color: var(--text-muted);
+
+      transition: color 0.2s ease;
+
+    }
+
+
+
+    .footer-bottom-link:hover {
+
+      color: var(--accent-primary);
+
+    }
+
+
+
+    /* Footer Responsive Grid */
+
+    @media (max-width: 1200px) {
+
+      .footer-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 2;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 1;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       REVIEWS PAGE STYLING (Exclusive Premium Designs)
+
+       ========================================================================== */
+
+    .reviews-main {
+
+      padding-top: 120px;
+
+      position: relative;
+
+      z-index: 5;
+
+    }
+
+    
+
+    .reviews-section {
+
+      max-width: 1400px;
+
+      margin: 0 auto 100px auto;
+
+      padding: 0 24px;
+
+    }
+
+    
+
+    /* Hero Section */
+
+    .rev-hero {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      min-height: 50vh;
+
+      margin-top: 40px;
+
+    }
+
+    
+
+    .rev-hero-text h1 {
+
+      font-size: clamp(2.5rem, 5vw, 4rem);
+
+      font-weight: 800;
+
+      line-height: 1.1;
+
+      margin-bottom: 24px;
+
+      color: var(--text-primary);
+
+    }
+
+    
+
+    .rev-hero-desc {
+
+      font-size: 1.15rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+      margin-bottom: 32px;
+
+    }
+
+    
+
+    .hero-stats-row {
+
+      display: flex;
+
+      gap: 30px;
+
+      margin-top: 40px;
+
+    }
+
+    
+
+    .hero-stat-box {
+
+      border-left: 3px solid var(--accent-primary);
+
+      padding-left: 16px;
+
+    }
+
+    
+
+    .stat-num {
+
+      font-size: 2.2rem;
+
+      font-weight: 800;
+
+      color: var(--accent-primary);
+
+      font-family: var(--font-heading);
+
+    }
+
+    
+
+    .stat-lbl {
+
+      font-size: 0.8rem;
+
+      color: var(--text-muted);
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      margin-top: 4px;
+
+    }
+
+    
+
+    .rev-hero-visual {
+
+      position: relative;
+
+      border-radius: var(--border-radius);
+
+      overflow: hidden;
+
+      border: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-lg);
+
+      aspect-ratio: 4/3;
+
+    }
+
+    
+
+    .rev-hero-visual img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.5s ease;
+
+    }
+
+    
+
+    .rev-hero-visual:hover img {
+
+      transform: scale(1.03);
+
+    }
+
+    
+
+    .hero-glass-card {
+
+      position: absolute;
+
+      bottom: 20px;
+
+      left: 20px;
+
+      right: 20px;
+
+      background: rgba(11, 15, 25, 0.75);
+
+      backdrop-filter: blur(12px);
+
+      -webkit-backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      padding: 16px 20px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      color: #fff;
+
+    }
+
+    
+
+    html:not(.dark) .hero-glass-card {
+
+      background: rgba(255, 255, 255, 0.85);
+
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      color: var(--text-primary);
+
+    }
+
+
+
+    /* Section Header */
+
+    .sec-badge-center {
+
+      display: table;
+
+      margin: 0 auto 16px auto;
+
+    }
+
+    
+
+    .sec-title-center {
+
+      text-align: center;
+
+      margin-bottom: 50px;
+
+    }
+
+    
+
+    /* Category Filters */
+
+    .filter-row {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      margin-bottom: 40px;
+
+      flex-wrap: wrap;
+
+    }
+
+    
+
+    .filter-btn {
+
+      padding: 10px 20px;
+
+      border-radius: 30px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      border: 1px solid var(--border-color);
+
+      background: var(--bg-secondary);
+
+      cursor: pointer;
+
+      transition: all 0.25s ease;
+
+    }
+
+    
+
+    .filter-btn:hover, .filter-btn.active {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 4px 12px var(--accent-glow);
+
+    }
+
+    
+
+    .filter-btn.active {
+
+      background: var(--accent-gradient);
+
+      color: #fff;
+
+      border: 1px solid transparent;
+
+    }
+
+    
+
+    /* Reviews Grid */
+
+    .reviews-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+      gap: 24px;
+
+    }
+
+    
+
+    .rev-card {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 24px;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      position: relative;
+
+    }
+
+    
+
+    .rev-card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: var(--shadow-md), 0 10px 30px var(--accent-glow);
+
+    }
+
+    
+
+    .rev-card-top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      margin-bottom: 16px;
+
+    }
+
+    
+
+    .user-info {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+    }
+
+    
+
+    .user-avatar {
+
+      width: 44px;
+
+      height: 44px;
+
+      border-radius: 50%;
+
+      background: var(--bg-tertiary);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-weight: 700;
+
+      color: var(--accent-primary);
+
+      border: 2px solid var(--accent-primary);
+
+    }
+
+    
+
+    .user-meta h4 {
+
+      font-size: 0.95rem;
+
+      color: var(--text-primary);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+    }
+
+    
+
+    .verified-icon {
+
+      color: #10b981;
+
+      width: 14px;
+
+      height: 14px;
+
+    }
+
+    
+
+    .user-meta span {
+
+      font-size: 0.75rem;
+
+      color: var(--text-muted);
+
+    }
+
+    
+
+    .stars-rating {
+
+      color: #f59e0b; /* Yellow rating */
+
+      display: flex;
+
+      gap: 2px;
+
+    }
+
+    
+
+    .stars-rating svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      fill: currentColor;
+
+    }
+
+    
+
+    .rev-service-tag {
+
+      display: inline-block;
+
+      padding: 4px 8px;
+
+      border-radius: 6px;
+
+      background: var(--bg-tertiary);
+
+      color: var(--text-secondary);
+
+      font-size: 0.72rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.5px;
+
+      margin-bottom: 12px;
+
+      align-self: flex-start;
+
+    }
+
+    
+
+    .rev-text {
+
+      font-size: 0.88rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.5;
+
+      flex-grow: 1;
+
+    }
+
+    
+
+    .rev-date {
+
+      font-size: 0.75rem;
+
+      color: var(--text-muted);
+
+      margin-top: 16px;
+
+    }
+
+    
+
+    /* Success Stories */
+
+    .story-layout {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 40px;
+
+    }
+
+    
+
+    .story-item {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 40px;
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-md);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .story-item:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: var(--shadow-lg), 0 10px 40px var(--accent-glow);
+
+    }
+
+    
+
+    .story-item.reversed {
+
+      grid-template-columns: 1fr 1fr;
+
+    }
+
+    .story-item.reversed .story-visual {
+
+      order: 2;
+
+    }
+
+    
+
+    .story-visual {
+
+      position: relative;
+
+      height: 100%;
+
+      min-height: 350px;
+
+    }
+
+    
+
+    .story-visual img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      position: absolute;
+
+    }
+
+    
+
+    .story-content {
+
+      padding: 40px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+    }
+
+    
+
+    .story-title {
+
+      font-size: 1.6rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      margin-bottom: 16px;
+
+    }
+
+    
+
+    .story-desc {
+
+      font-size: 0.95rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .story-stats {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 16px;
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 20px;
+
+      margin-bottom: 20px;
+
+    }
+
+    
+
+    .story-stat h5 {
+
+      font-size: 0.75rem;
+
+      color: var(--text-muted);
+
+      text-transform: uppercase;
+
+      margin-bottom: 4px;
+
+    }
+
+    
+
+    .story-stat p {
+
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      color: var(--accent-primary);
+
+    }
+
+    
+
+    .story-quote {
+
+      font-style: italic;
+
+      color: var(--text-secondary);
+
+      border-left: 2px solid var(--accent-primary);
+
+      padding-left: 14px;
+
+      font-size: 0.88rem;
+
+    }
+
+    
+
+    /* Business Testimonials */
+
+    .biz-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 24px;
+
+    }
+
+    
+
+    .biz-card {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 30px;
+
+      box-shadow: var(--shadow-sm);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .biz-card:hover {
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-5px);
+
+      box-shadow: var(--shadow-md);
+
+    }
+
+    
+
+    .biz-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 20px;
+
+    }
+
+    
+
+    .biz-logo {
+
+      font-weight: 800;
+
+      color: var(--text-primary);
+
+      font-size: 1.1rem;
+
+      letter-spacing: -0.5px;
+
+    }
+
+    
+
+    .biz-rating {
+
+      font-size: 0.8rem;
+
+      color: var(--accent-primary);
+
+      background: var(--accent-glow);
+
+      padding: 4px 10px;
+
+      border-radius: 20px;
+
+      font-weight: 700;
+
+    }
+
+    
+
+    .biz-content {
+
+      font-size: 0.9rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.5;
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .biz-details-btn {
+
+      font-size: 0.78rem;
+
+      color: var(--accent-primary);
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.5px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      cursor: pointer;
+
+      width: fit-content;
+
+    }
+
+    
+
+    .biz-details-btn:hover {
+
+      color: var(--accent-secondary);
+
+    }
+
+    
+
+    /* Technical Spec Sheets */
+
+    .spec-sheet-panel {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      transition: max-height 0.3s ease-out;
+
+      background: var(--bg-primary);
+
+      border-radius: 8px;
+
+      padding: 0;
+
+    }
+
+    
+
+    .spec-sheet-panel.open {
+
+      max-height: 250px;
+
+      margin-top: 16px;
+
+      padding: 12px;
+
+      border: 1px dashed var(--border-color);
+
+    }
+
+    
+
+    .spec-table {
+
+      width: 100%;
+
+      font-size: 0.76rem;
+
+      border-collapse: collapse;
+
+    }
+
+    
+
+    .spec-table td {
+
+      padding: 6px 4px;
+
+      color: var(--text-secondary);
+
+    }
+
+    
+
+    .spec-table tr td:first-child {
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+    }
+
+    
+
+    /* Video Testimonials */
+
+    .video-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 24px;
+
+    }
+
+    
+
+    .video-card {
+
+      position: relative;
+
+      aspect-ratio: 16/10;
+
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-sm);
+
+      cursor: pointer;
+
+      perspective: 1000px;
+
+      transform-style: preserve-3d;
+
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    }
+
+    
+
+    .video-card img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.5s ease;
+
+    }
+
+    
+
+    .video-overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(to top, rgba(11, 15, 25, 0.9) 0%, rgba(11, 15, 25, 0.2) 60%);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      padding: 20px;
+
+      box-sizing: border-box;
+
+      color: #fff;
+
+    }
+
+    
+
+    .play-btn-wrapper {
+
+      width: 50px;
+
+      height: 50px;
+
+      border-radius: 50%;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      align-self: center;
+
+      margin-top: auto;
+
+      margin-bottom: auto;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .play-btn-wrapper svg {
+
+      width: 18px;
+
+      height: 18px;
+
+      fill: #fff;
+
+      margin-left: 2px;
+
+    }
+
+    
+
+    .video-card:hover {
+
+      box-shadow: var(--shadow-lg), 0 10px 30px var(--accent-glow);
+
+      transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+
+    }
+
+    
+
+    .video-card:hover img {
+
+      transform: scale(1.05);
+
+    }
+
+    
+
+    .video-card:hover .play-btn-wrapper {
+
+      transform: scale(1.15);
+
+      box-shadow: 0 6px 20px var(--accent-glow);
+
+    }
+
+    
+
+    .video-meta-info {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-end;
+
+      width: 100%;
+
+    }
+
+    
+
+    .video-meta-info h4 {
+
+      font-size: 0.95rem;
+
+      font-weight: 700;
+
+      margin-bottom: 2px;
+
+    }
+
+    
+
+    .video-meta-info p {
+
+      font-size: 0.75rem;
+
+      color: rgba(255, 255, 255, 0.7);
+
+    }
+
+    
+
+    .video-duration {
+
+      font-size: 0.7rem;
+
+      background: rgba(0, 0, 0, 0.6);
+
+      padding: 3px 8px;
+
+      border-radius: 4px;
+
+      backdrop-filter: blur(4px);
+
+    }
+
+    
+
+    /* Platform Trust Panel */
+
+    .platform-row {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 20px;
+
+    }
+
+    
+
+    .platform-card {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s ease;
+
+    }
+
+    
+
+    .platform-card:hover {
+
+      border-color: var(--accent-primary);
+
+      transform: scale(1.02);
+
+    }
+
+    
+
+    .platform-name {
+
+      font-family: var(--font-heading);
+
+      font-size: 1.15rem;
+
+      font-weight: 800;
+
+      margin-bottom: 4px;
+
+    }
+
+    
+
+    .platform-stars {
+
+      color: #f59e0b;
+
+      margin-bottom: 8px;
+
+      font-size: 0.8rem;
+
+    }
+
+    
+
+    .platform-rating {
+
+      font-size: 1.25rem;
+
+      font-weight: 800;
+
+      color: var(--text-primary);
+
+    }
+
+    
+
+    .platform-reviews-count {
+
+      font-size: 0.75rem;
+
+      color: var(--text-muted);
+
+      margin-top: 4px;
+
+    }
+
+    
+
+    /* Feedback Builder Form */
+
+    .feedback-builder {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      padding: 40px;
+
+      max-width: 800px;
+
+      margin: 0 auto;
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+    
+
+    .form-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 20px;
+
+      margin-bottom: 20px;
+
+    }
+
+    
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+    }
+
+    
+
+    .form-group-full {
+
+      grid-column: span 2;
+
+    }
+
+    
+
+    .form-group label {
+
+      font-size: 0.82rem;
+
+      font-weight: 700;
+
+      color: var(--text-secondary);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.5px;
+
+    }
+
+    
+
+    .form-control {
+
+      background: var(--bg-primary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 8px;
+
+      padding: 12px 14px;
+
+      font-family: inherit;
+
+      color: var(--text-primary);
+
+      font-size: 0.88rem;
+
+      transition: all 0.25s ease;
+
+      outline: none;
+
+    }
+
+    
+
+    .form-control:focus {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 0 0 2px var(--accent-glow);
+
+    }
+
+    
+
+    /* Star Interactive Selection */
+
+    .interactive-stars {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-bottom: 12px;
+
+    }
+
+    
+
+    .interactive-star {
+
+      font-size: 1.8rem;
+
+      color: var(--text-muted);
+
+      cursor: pointer;
+
+      transition: color 0.2s ease, transform 0.2s ease;
+
+    }
+
+    
+
+    .interactive-star:hover {
+
+      transform: scale(1.15);
+
+    }
+
+    
+
+    .interactive-star.selected, .interactive-star.hovered {
+
+      color: #ffd700;
+
+    }
+
+    
+
+    /* Service Selector Capsules */
+
+    .capsule-row {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-bottom: 12px;
+
+    }
+
+    
+
+    .capsule-btn {
+
+      padding: 8px 16px;
+
+      border-radius: 20px;
+
+      font-size: 0.78rem;
+
+      font-weight: 700;
+
+      background: var(--bg-primary);
+
+      color: var(--text-secondary);
+
+      border: 1px solid var(--border-color);
+
+      cursor: pointer;
+
+      transition: all 0.2s ease;
+
+    }
+
+    
+
+    .capsule-btn.active, .capsule-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      color: var(--text-primary);
+
+    }
+
+    
+
+    .capsule-btn.active {
+
+      background: var(--accent-glow);
+
+    }
+
+    
+
+    /* File Uploader Mock */
+
+    .upload-zone {
+
+      border: 2px dashed var(--border-color);
+
+      border-radius: 10px;
+
+      padding: 20px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: all 0.25s ease;
+
+      background: var(--bg-primary);
+
+    }
+
+    
+
+    .upload-zone:hover {
+
+      border-color: var(--accent-primary);
+
+      background: var(--accent-glow);
+
+    }
+
+    
+
+    .upload-zone svg {
+
+      width: 28px;
+
+      height: 28px;
+
+      stroke: var(--text-muted);
+
+      margin-bottom: 8px;
+
+    }
+
+    
+
+    .upload-zone span {
+
+      font-size: 0.8rem;
+
+      color: var(--text-secondary);
+
+      display: block;
+
+    }
+
+    
+
+    /* FAQ Accordion */
+
+    .faq-layout {
+
+      max-width: 850px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+    
+
+    .faq-item {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      overflow: hidden;
+
+      transition: all 0.25s ease;
+
+    }
+
+    
+
+    .faq-item:hover {
+
+      border-color: var(--accent-primary);
+
+    }
+
+    
+
+    .faq-trigger {
+
+      width: 100%;
+
+      padding: 20px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      text-align: left;
+
+      font-weight: 700;
+
+      font-size: 0.98rem;
+
+      color: var(--text-primary);
+
+      cursor: pointer;
+
+    }
+
+    
+
+    .faq-trigger .chevron-icon {
+
+      width: 16px;
+
+      height: 16px;
+
+      transition: transform 0.25s ease;
+
+    }
+
+    
+
+    .faq-content {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding: 0 20px;
+
+      font-size: 0.88rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+
+    }
+
+    
+
+    .faq-item.open .faq-content {
+
+      max-height: 200px;
+
+      padding: 0 20px 20px 20px;
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 16px;
+
+    }
+
+    
+
+    .faq-item.open .faq-trigger .chevron-icon {
+
+      transform: rotate(180deg);
+
+    }
+
+    
+
+    /* Submission Status Overlay */
+
+    .form-success-overlay {
+
+      display: none;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 40px 0;
+
+      animation: fadeIn 0.4s ease;
+
+    }
+
+    
+
+    @keyframes fadeIn {
+
+      from { opacity: 0; transform: scale(0.95); }
+
+      to { opacity: 1; transform: scale(1); }
+
+    }
+
+    
+
+    .success-checkmark {
+
+      width: 60px;
+
+      height: 60px;
+
+      border-radius: 50%;
+
+      background: rgba(16, 185, 129, 0.1);
+
+      color: #10b981;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 16px;
+
+      border: 2px solid #10b981;
+
+    }
+
+    
+
+    .success-checkmark svg {
+
+      width: 32px;
+
+      height: 32px;
+
+      stroke-width: 3;
+
+    }
+
+    
+
+    /* Responsive overrides */
+
+    @media (max-width: 1024px) {
+
+      .rev-hero {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+      }
+
+      .story-item {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .story-item.reversed {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .story-item.reversed .story-visual {
+
+        order: 0;
+
+      }
+
+      .biz-grid, .video-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+      }
+
+      .platform-row {
+
+        grid-template-columns: repeat(2, 1fr);
+
+      }
+
+    }
+
+    
+
+    @media (max-width: 768px) {
+
+      .biz-grid, .video-grid, .platform-row {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .form-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .form-group-full {
+
+        grid-column: span 1;
+
+      }
+
+      .feedback-builder {
+
+        padding: 24px;
+
+      }
+
+      .story-content {
+
+        padding: 24px;
+
+      }
+
+    }
+
+
+
+    /* Business Section Premium Layout */
+
+    .biz-section-layout {
+
+      display: grid;
+
+      grid-template-columns: 1fr 2.2fr;
+
+      gap: 30px;
+
+      align-items: stretch;
+
+    }
+
+    
+
+    .biz-showcase-card {
+
+      position: relative;
+
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-md);
+
+      aspect-ratio: 4/5;
+
+      min-height: 380px;
+
+    }
+
+    
+
+    .biz-showcase-card img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+    }
+
+    
+
+    .biz-showcase-overlay {
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(to top, rgba(11, 15, 25, 0.95) 0%, rgba(11, 15, 25, 0.2) 80%);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: flex-end;
+
+      padding: 24px;
+
+      box-sizing: border-box;
+
+      color: #fff;
+
+    }
+
+
+
+    html:not(.dark) .biz-showcase-overlay {
+
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.1) 80%);
+
+    }
+
+    
+
+    .biz-showcase-overlay h4 {
+
+      font-size: 1.25rem;
+
+      font-weight: 800;
+
+      margin-bottom: 8px;
+
+      color: var(--accent-primary);
+
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
+    }
+
+    
+
+    .biz-showcase-overlay p {
+
+      font-size: 0.85rem;
+
+      line-height: 1.5;
+
+      opacity: 0.9;
+
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+    }
+
+
+
+    @media (max-width: 1024px) {
+
+      .biz-section-layout {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .biz-showcase-card {
+
+        aspect-ratio: 16/7;
+
+        min-height: 250px;
+
+      }
+
+    }
+
+      @media (max-width: 480px) {
+
+      .home-section {
+
+        padding: 50px 16px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 992px) {
+
+      /* Stack inline grid columns on mobile/tablet viewports, excluding auto-fit/auto-fill grids */
+
+      div[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      div[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]) {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 30px !important;
+
+      }
+
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+  <!-- Background Grids and Meshes -->
+
+  <div class="bg-grid"></div>
+
+  <div class="bg-mesh-1"></div>
+
+  <div class="bg-mesh-2"></div>
+
+
+
+  <!-- Mobile Drawer Overlay -->
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+
+
+  <!-- Interactive Mobile Slide-out Navigation Drawer -->
+
+  <aside class="mobile-drawer" id="mobileDrawer">
+
+    <!-- Header with Brand on Left and Back Button on Right -->
+
+    <div class="mobile-drawer-header">
+
+      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
+
+        <!-- Hexagon cyber key SVG logo based on Lock -->
+
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+      <!-- Back Chevron Arrow Button on Top Right -->
+
+      <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu">
+
+        <svg class="back-icon" viewBox="0 0 24 24">
+
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        </svg>
+
+        <span>Back</span>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- Inside Hamburger Menu Content (13 links) -->
+
+    <nav class="mobile-menu-list">
+
+      <!-- Home Submenu inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Home</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./index.html" class="mobile-submenu-link">Home 1</a>
+
+          <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Other Links (Arranged directly in mobile menu list) -->
+
+      <a href="./About.html" class="mobile-menu-link">About</a>
+
+      
+
+      <a href="./Emergency.html" class="mobile-menu-link">
+
+        <span>Emergency</span>
+
+      </a>
+
+      
+
+      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
+
+      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
+
+      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
+
+      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
+
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+
+      <a href="./Service.html" class="mobile-menu-link">Service</a>
+
+      <a href="./Security.html" class="mobile-menu-link">Security</a>
+
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+
+
+      <!-- Dashboard inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Dashboard</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Footer of Drawer containing remaining items (Toggles & Login) -->
+
+    <div class="drawer-footer">
+
+      <div class="drawer-controls-row">
+
+        <!-- Drawer Dark Mode Toggle -->
+
+        <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+          <span>Theme</span>
+
+        </button>
+
+
+
+        <!-- Drawer RTL Toggle -->
+
+        <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+          <span>L/R Mirror</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Drawer Login Button -->
+
+      <a href="./login.html" class="login-btn" id="drawerLoginBtn" style="text-decoration: none; cursor: pointer;">
+
+        <svg class="padlock-svg" viewBox="0 0 24 24">
+
+          <path class="padlock-shackle" id="drawerShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+          <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+          <circle cx="12" cy="16" r="1.5" />
+
+        </svg>
+
+        <span>Login</span>
+
+      </a>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- Single-Deck floating Header (Logo Left, Menu Center, Toggles & CTA Right) -->
+
+  <header class="navbar-wrapper">
+
+    <div class="navbar-container" id="mainNavbar">
+
+      <!-- Glow ambient overlay following user mouse -->
+
+      <div class="navbar-glow-overlay" id="navGlow"></div>
+
+
+
+      <!-- Left: Logo based on Lock -->
+
+      <a href="index.html" class="brand">
+
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- Lock Shackle -->
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <!-- Lock Body (Shield shape) -->
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+
+          <!-- Center Keyhole -->
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+
+
+      <!-- Center: Navigation Menu (Desktop/Laptop View) -->
+
+      <ul class="nav-menu">
+
+        <!-- Home (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./index.html" class="nav-link">
+
+            <span>Home</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel">
+
+            <a href="./index.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 1</span>
+
+              </div>
+
+            </a>
+
+            <a href="./home 2.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 2</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+
+
+        <!-- Direct Links arranged side-by-side in center -->
+
+        <li class="nav-item">
+
+          <a href="./About.html" class="nav-link">About</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Emergency.html" class="nav-link">Emergency</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Residential.html" class="nav-link">Residential</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Commercial.html" class="nav-link">Commercial</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Pricing.html" class="nav-link">Pricing</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Service.html" class="nav-link">Service</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security.html" class="nav-link">Security</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Reviews.html" class="nav-link">Reviews</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Contact.html" class="nav-link">Contact</a>
+
+        </li>
+
+
+
+        <!-- Dashboard (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./Dashboard.html" class="nav-link">
+
+            <span>Dashboard</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel dropdown-right">
+
+            <a href="./Admin.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Admin Dashboard</span>
+
+              </div>
+
+            </a>
+
+            <a href="./User.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">User Dashboard</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+
+
+      <!-- Right: Controls & CTA button (Desktop/Laptop View) -->
+
+      <div class="nav-controls">
+
+        <!-- Right to Left Toggle -->
+
+        <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+        </button>
+
+
+
+        <!-- Dark Mode Toggle -->
+
+        <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+        </button>
+
+
+
+        <!-- Login Button with dynamic Padlock -->
+
+        <a href="./login.html" class="login-btn" id="loginBtn" style="text-decoration: none; cursor: pointer;">
+
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+
+            <!-- Padlock shackle path that moves on hover -->
+
+            <path class="padlock-shackle" id="desktopShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+            <circle cx="12" cy="16" r="1.5" />
+
+          </svg>
+
+          <span>Login</span>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Hamburger button for mobile/laptop drawer trigger -->
+
+      <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+
+        <svg class="hamburger-icon" viewBox="0 0 24 24">
+
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+
+        </svg>
+
+      </button>
+
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ==========================================================================
+
+       MAIN CONTENT SECTION (8 Premium Interactive Reviews & Trust Sections)
+
+       ========================================================================== -->
+
+  <main class="reviews-main">
+
+    
+
+    <!-- Section 1: Hero Section -->
+
+    <section class="reviews-section rev-hero">
+
+      <div class="rev-hero-text">
+
+        <div class="sec-badge">Verified Trust Hub</div>
+
+        <h1>Securing Homes, Earning Trust</h1>
+
+        <p class="rev-hero-desc">At LOCKSMITH, we measure our success in the peace of mind we deliver to our community. Read authentic, verified stories from local homeowners, business managers, and stranded motorists who experienced our rapid-response, professional locksmith services firsthand.</p>
+
+        <div class="hero-stats-row">
+
+          <div class="hero-stat-box">
+
+            <div class="stat-num">4.9/5</div>
+
+            <div class="stat-lbl">Overall Rating</div>
+
+          </div>
+
+          <div class="hero-stat-box">
+
+            <div class="stat-num">12K+</div>
+
+            <div class="stat-lbl">Locks Secured</div>
+
+          </div>
+
+          <div class="hero-stat-box">
+
+            <div class="stat-num">100%</div>
+
+            <div class="stat-lbl">Verified Audits</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="rev-hero-visual">
+
+        <img src="images/reviews_hero.png" alt="Happy customer with locksmith keys" />
+
+        <div class="hero-glass-card">
+
+          <div>
+
+            <div style="font-weight: 700; font-size: 0.95rem;">Average Response Time</div>
+
+            <div style="font-size: 0.78rem; opacity: 0.8;">Across all five-star service calls</div>
+
+          </div>
+
+          <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-primary);">18 Mins</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 2: Platform Trust Badge Panel -->
+
+    <section class="reviews-section">
+
+      <div class="platform-row">
+
+        <div class="platform-card">
+
+          <div class="platform-name" style="color: #4285F4;">Google Reviews</div>
+
+          <div class="platform-stars">★★★★★</div>
+
+          <div class="platform-rating">4.9 / 5.0</div>
+
+          <div class="platform-reviews-count">1,420+ Local Ratings</div>
+
+        </div>
+
+        <div class="platform-card">
+
+          <div class="platform-name" style="color: #d32323;">Yelp Local</div>
+
+          <div class="platform-stars">★★★★★</div>
+
+          <div class="platform-rating">4.8 / 5.0</div>
+
+          <div class="platform-reviews-count">840+ Verified Reviews</div>
+
+        </div>
+
+        <div class="platform-card">
+
+          <div class="platform-name" style="color: #ff3a1a;">Angi Rating</div>
+
+          <div class="platform-stars">★★★★★</div>
+
+          <div class="platform-rating">Grade A</div>
+
+          <div class="platform-reviews-count">310+ Service Awards</div>
+
+        </div>
+
+        <div class="platform-card">
+
+          <div class="platform-name" style="color: #fe5000;">HomeAdvisor</div>
+
+          <div class="platform-stars">★★★★★</div>
+
+          <div class="platform-rating">4.9 / 5.0</div>
+
+          <div class="platform-reviews-count">480+ Checked Badges</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 3: Customer Reviews (Interactive Grid with Filters) -->
+
+    <section class="reviews-section" id="customer-reviews">
+
+      <div class="sec-badge sec-badge-center">Testimonials</div>
+
+      <h2 class="sec-title sec-title-center">What Our Clients Are Saying</h2>
+
+      
+
+      <!-- Category Filter Row -->
+
+      <div class="filter-row">
+
+        <button class="filter-btn active" data-filter="all">All Reviews</button>
+
+        <button class="filter-btn" data-filter="emergency">Emergency Lockouts</button>
+
+        <button class="filter-btn" data-filter="residential">Residential Upgrades</button>
+
+        <button class="filter-btn" data-filter="automotive">Automotive Locksmith</button>
+
+        <button class="filter-btn" data-filter="commercial">Commercial Security</button>
+
+      </div>
+
+
+
+      <!-- Reviews Grid -->
+
+      <div class="reviews-grid" id="reviewsGrid">
+
+        <!-- Review 1 -->
+
+        <div class="rev-card" data-category="emergency">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">SJ</div>
+
+                <div class="user-meta">
+
+                  <h4>Sarah Jenkins <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Homeowner</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Emergency Lockout</div>
+
+            <p class="rev-text">"Locked myself out of my apartment at 2 AM in freezing weather. The dispatch was incredibly reassuring, and the technician arrived in exactly 15 minutes. He picked the lock with zero damage to the door trim. Fair price and absolute lifesaver!"</p>
+
+          </div>
+
+          <div class="rev-date">June 8, 2026</div>
+
+        </div>
+
+
+
+        <!-- Review 2 -->
+
+        <div class="rev-card" data-category="residential">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">DV</div>
+
+                <div class="user-meta">
+
+                  <h4>David Vance <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Resident</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Residential Upgrade</div>
+
+            <p class="rev-text">"Had our entire family home rekeyed and upgraded to keyless smart locks. The tech walked us through the best security systems. The integration is seamless and the app works beautifully. Outstanding workmanship and professionalism."</p>
+
+          </div>
+
+          <div class="rev-date">May 29, 2026</div>
+
+        </div>
+
+
+
+        <!-- Review 3 -->
+
+        <div class="rev-card" data-category="automotive">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">MT</div>
+
+                <div class="user-meta">
+
+                  <h4>Marcus Thorne <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Car Owner</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Automotive Locksmith</div>
+
+            <p class="rev-text">"Lost my transponder car key at the mall. The dealership quoted a huge tow fee plus a three-day wait. These guys came to the parking lot and cut and programmed a new smart key on-site within 40 minutes. Absolutely outstanding service!"</p>
+
+          </div>
+
+          <div class="rev-date">May 15, 2026</div>
+
+        </div>
+
+
+
+        <!-- Review 4 -->
+
+        <div class="rev-card" data-category="commercial">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">CZ</div>
+
+                <div class="user-meta">
+
+                  <h4>Chloe Zhao <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Office Admin</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Commercial Security</div>
+
+            <p class="rev-text">"Installed heavy-duty electric strikes and a multi-door biometric access control system in our corporate office. Extremely tidy cabling, comprehensive system training, and solid post-installation support. Highly recommend their business locksmith team."</p>
+
+          </div>
+
+          <div class="rev-date">April 28, 2026</div>
+
+        </div>
+
+
+
+        <!-- Review 5 -->
+
+        <div class="rev-card" data-category="emergency">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">ER</div>
+
+                <div class="user-meta">
+
+                  <h4>Elena Rostova <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Tenant</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Emergency Lockout</div>
+
+            <p class="rev-text">"Had my house key snap off inside the cylinder right at rush hour. The technician extracted the broken stub instantly and made three duplicates in his mobile van. Prompt, friendly, and charged exactly what was quoted over the phone."</p>
+
+          </div>
+
+          <div class="rev-date">April 12, 2026</div>
+
+        </div>
+
+
+
+        <!-- Review 6 -->
+
+        <div class="rev-card" data-category="automotive">
+
+          <div>
+
+            <div class="rev-card-top">
+
+              <div class="user-info">
+
+                <div class="user-avatar">BP</div>
+
+                <div class="user-meta">
+
+                  <h4>Brian Peterson <span class="verified-badge"><svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span></h4>
+
+                  <span>Verified Motorist</span>
+
+                </div>
+
+              </div>
+
+              <div class="stars-rating">
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+              </div>
+
+            </div>
+
+            <div class="rev-service-tag">Automotive Locksmith</div>
+
+            <p class="rev-text">"Accidentally locked my keys in the truck trunk with the engine running. The locksmith arrived very quickly, bypass decoded the door lock in minutes, and retrieved the keys. Excellent response and friendly tech."</p>
+
+          </div>
+
+          <div class="rev-date">March 30, 2026</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 4: Success Stories (Emergency Case Studies) -->
+
+    <section class="reviews-section" id="success-stories">
+
+      <div class="sec-badge sec-badge-center">Case Studies</div>
+
+      <h2 class="sec-title sec-title-center">Our Locksmith Success Stories</h2>
+
+      
+
+      <div class="story-layout">
+
+        <!-- Story 1 -->
+
+        <div class="story-item">
+
+          <div class="story-visual">
+
+            <img src="images/success_story_residential.png" alt="Sleek residential door lock upgrade" />
+
+          </div>
+
+          <div class="story-content">
+
+            <div class="rev-service-tag" style="background: var(--accent-glow); color: var(--accent-primary);">Estate Overhaul</div>
+
+            <h3 class="story-title">Complete Security Overhaul for Lakeview Estate</h3>
+
+            <p class="story-desc">Following a security survey, we replaced outdated mechanical locks on a 6,500 sq ft smart home with networked biometrics and high-security key cylinders, unified under a master system.</p>
+
+            <div class="story-stats">
+
+              <div class="story-stat">
+
+                <h5>Timeframe</h5>
+
+                <p>6 Hours</p>
+
+              </div>
+
+              <div class="story-stat">
+
+                <h5>Locker Hardware</h5>
+
+                <p>Grade-1 Smart</p>
+
+              </div>
+
+              <div class="story-stat">
+
+                <h5>Result</h5>
+
+                <p>100% Keyless</p>
+
+              </div>
+
+            </div>
+
+            <p class="story-quote">"The team delivered beyond expectations. Not only is the estate secure, but the integration with our smart home hub is flawless." — Evelyn Vance, Owner</p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Story 2 -->
+
+        <div class="story-item reversed">
+
+          <div class="story-visual">
+
+            <img src="images/success_story_commercial.png" alt="Locksmith technician at work" />
+
+          </div>
+
+          <div class="story-content">
+
+            <div class="rev-service-tag" style="background: var(--accent-glow); color: var(--accent-primary);">B2B Integration</div>
+
+            <h3 class="story-title">Corporate Master Key Restructuring</h3>
+
+            <p class="story-desc">After a key-compromise incident at a tech headquarters, our commercial locksmith team worked overnight to rekey 85 office doors and implement restrictive patented keyway control.</p>
+
+            <div class="story-stats">
+
+              <div class="story-stat">
+
+                <h5>Response</h5>
+
+                <p>45 Mins</p>
+
+              </div>
+
+              <div class="story-stat">
+
+                <h5>Locks Rekeyed</h5>
+
+                <p>85 Cylinders</p>
+
+              </div>
+
+              <div class="story-stat">
+
+                <h5>Security Level</h5>
+
+                <p>Patented Key</p>
+
+              </div>
+
+            </div>
+
+            <p class="story-quote">"They re-keyed our entire campus overnight so we had no security downtime. Restrictive keys guarantee no unauthorized duplication." — Robert Finch, Facilities VP</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 5: Business Testimonials (B2B Grid) -->
+
+    <section class="reviews-section" id="business-testimonials">
+
+      <div class="sec-badge sec-badge-center">Commercial Trust</div>
+
+      <h2 class="sec-title sec-title-center">Business & Commercial Testimonials</h2>
+
+      
+
+      <div class="biz-section-layout">
+
+        <!-- Left: Visual showcase card -->
+
+        <div class="biz-showcase-card">
+
+          <img src="images/business_testimonial_retail.png" alt="Secured commercial retail storefront" />
+
+          <div class="biz-showcase-overlay">
+
+            <h4>B2B Security Audits</h4>
+
+            <p>We work with local retailers, logistics depots, and clinics to implement certified Grade-1 locking hardware.</p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Right: Testimonial cards grid -->
+
+        <div class="biz-grid">
+
+          <!-- Biz 1 -->
+
+          <div class="biz-card">
+
+            <div>
+
+              <div class="biz-header">
+
+                <div class="biz-logo">Metro Retail Hub</div>
+
+                <div class="biz-rating">★★★★★</div>
+
+              </div>
+
+              <p class="biz-content">"Securing multiple display counters and loading bay gates across our shops was complex. LOCKSMITH unified our hardware and set up a robust key tracking schedule. Quick response and skilled service."</p>
+
+            </div>
+
+            <div>
+
+              <div class="biz-details-btn" onclick="toggleSpecSheet('spec-retail')">
+
+                <span>View Security Specs</span>
+
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" style="width: 12px; height: 12px;"><path d="M19 9l-7 7-7-7"/></svg>
+
+              </div>
+
+              <div class="spec-sheet-panel" id="spec-retail">
+
+                <table class="spec-table">
+
+                  <tr><td>Hardware:</td><td>Schlage ND cylindrical heavy-duty locks</td></tr>
+
+                  <tr><td>Access Control:</td><td>Master Key Level 3 restricted keys</td></tr>
+
+                  <tr><td>Protection:</td><td>Anti-pry latch guards on rear exits</td></tr>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Biz 2 -->
+
+          <div class="biz-card">
+
+            <div>
+
+              <div class="biz-header">
+
+                <div class="biz-logo">Aero Logistics</div>
+
+                <div class="biz-rating">★★★★★</div>
+
+              </div>
+
+              <p class="biz-content">"Our logistics yard requires heavy duty lock solutions. We had panic bars installed on perimeter gates and digital card readers integrated. These locksmiths understand heavy commercial requirements."</p>
+
+            </div>
+
+            <div>
+
+              <div class="biz-details-btn" onclick="toggleSpecSheet('spec-aero')">
+
+                <span>View Security Specs</span>
+
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" style="width: 12px; height: 12px;"><path d="M19 9l-7 7-7-7"/></svg>
+
+              </div>
+
+              <div class="spec-sheet-panel" id="spec-aero">
+
+                <table class="spec-table">
+
+                  <tr><td>Hardware:</td><td>Von Duprin fire-rated exit devices</td></tr>
+
+                  <tr><td>Perimeter:</td><td>Weatherproof digital locks with keypad</td></tr>
+
+                  <tr><td>Compliance:</td><td>ADA compliant accessible lock levers</td></tr>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Biz 3 -->
+
+          <div class="biz-card">
+
+            <div>
+
+              <div class="biz-header">
+
+                <div class="biz-logo">Apex Clinic</div>
+
+                <div class="biz-rating">★★★★★</div>
+
+              </div>
+
+              <p class="biz-content">"Private records storage requires high level security compliance. Locksmith audited our file cabinets, installed digital cabinet locks, and upgraded office locksets. Fast and professional."</p>
+
+            </div>
+
+            <div>
+
+              <div class="biz-details-btn" onclick="toggleSpecSheet('spec-apex')">
+
+                <span>View Security Specs</span>
+
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" style="width: 12px; height: 12px;"><path d="M19 9l-7 7-7-7"/></svg>
+
+              </div>
+
+              <div class="spec-sheet-panel" id="spec-apex">
+
+                <table class="spec-table">
+
+                  <tr><td>Storage:</td><td>Electronic numeric cabinet drawer locks</td></tr>
+
+                  <tr><td>Main Doors:</td><td>Medeco high-security lock cylinders</td></tr>
+
+                  <tr><td>Auditing:</td><td>Access logging digital keypad locks</td></tr>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 6: Video Testimonials (Mock Video Player Grid) -->
+
+    <section class="reviews-section" id="video-testimonials">
+
+      <div class="sec-badge sec-badge-center">Video Reviews</div>
+
+      <h2 class="sec-title sec-title-center">Watch Customer Reviews</h2>
+
+      
+
+      <div class="video-grid">
+
+        <!-- Video 1 -->
+
+        <div class="video-card">
+
+          <img src="images/video_thumb_customer1.png" alt="Homeowner testimonial video thumbnail" />
+
+          <div class="video-overlay">
+
+            <span class="video-duration">1:45</span>
+
+            <div class="play-btn-wrapper">
+
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+            </div>
+
+            <div class="video-meta-info">
+
+              <div>
+
+                <h4>Claire Robinson</h4>
+
+                <p>"The locksmith made us feel safe again."</p>
+
+              </div>
+
+              <p style="font-size: 0.72rem; color: var(--accent-primary);">Home Rekeying</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Video 2 -->
+
+        <div class="video-card">
+
+          <img src="images/video_thumb_customer2.png" alt="Corporate customer testimonial video thumbnail" />
+
+          <div class="video-overlay">
+
+            <span class="video-duration">2:15</span>
+
+            <div class="play-btn-wrapper">
+
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+            </div>
+
+            <div class="video-meta-info">
+
+              <div>
+
+                <h4>Gregory Myers</h4>
+
+                <p>"Fast commercial lock service."</p>
+
+              </div>
+
+              <p style="font-size: 0.72rem; color: var(--accent-primary);">Access Control</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Video 3 -->
+
+        <div class="video-card">
+
+          <img src="images/video_thumb_customer3.png" alt="Car owner testimonial video thumbnail" />
+
+          <div class="video-overlay">
+
+            <span class="video-duration">1:10</span>
+
+            <div class="play-btn-wrapper">
+
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+            </div>
+
+            <div class="video-meta-info">
+
+              <div>
+
+                <h4>Amelia Vance</h4>
+
+                <p>"Programmed a car key in minutes."</p>
+
+              </div>
+
+              <p style="font-size: 0.72rem; color: var(--accent-primary);">Auto Unlock</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 7: Interactive Review Submission Form (Leave a Review) -->
+
+    <section class="reviews-section" id="leave-review">
+
+      <div class="sec-badge sec-badge-center">Share Experience</div>
+
+      <h2 class="sec-title sec-title-center">Leave Us Your Review</h2>
+
+      
+
+      <div class="feedback-builder">
+
+        <!-- Form container -->
+
+        <form id="reviewSubmitForm" onsubmit="handleReviewSubmit(event);">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+
+              <label>Full Name</label>
+
+              <input type="text" class="form-control" placeholder="e.g. John Doe" required id="reviewerName" />
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Service Area</label>
+
+              <input type="text" class="form-control" placeholder="e.g. Downtown Office / Suburbs" required id="reviewerArea" />
+
+            </div>
+
+            
+
+            <div class="form-group form-group-full">
+
+              <label>Star Rating</label>
+
+              <div class="interactive-stars" id="starContainer">
+
+                <span class="interactive-star" data-value="1">★</span>
+
+                <span class="interactive-star" data-value="2">★</span>
+
+                <span class="interactive-star" data-value="3">★</span>
+
+                <span class="interactive-star" data-value="4">★</span>
+
+                <span class="interactive-star" data-value="5">★</span>
+
+              </div>
+
+              <input type="hidden" id="starValue" value="0" required />
+
+            </div>
+
+
+
+            <div class="form-group form-group-full">
+
+              <label>Locksmith Service Type</label>
+
+              <div class="capsule-row" id="capsulesRow">
+
+                <button type="button" class="capsule-btn" data-service="Emergency Lockout">Emergency Lockout</button>
+
+                <button type="button" class="capsule-btn" data-service="Smart Lock Installation">Smart Lock Install</button>
+
+                <button type="button" class="capsule-btn" data-service="Lock Rekeying">Lock Rekeying</button>
+
+                <button type="button" class="capsule-btn" data-service="Commercial Security">Commercial Locksmith</button>
+
+              </div>
+
+              <input type="hidden" id="selectedService" value="" required />
+
+            </div>
+
+
+
+            <div class="form-group form-group-full">
+
+              <label>Your Review</label>
+
+              <textarea class="form-control" rows="4" placeholder="Tell locals about your experience with our response time, pricing, and hardware quality..." required id="reviewerComments"></textarea>
+
+            </div>
+
+
+
+            <div class="form-group form-group-full">
+
+              <label>Attach Photo of Lockset (Optional)</label>
+
+              <div class="upload-zone" onclick="mockFileUpload();">
+
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+
+                <span id="uploadLabel">Drag & drop or click to upload security lock photo (max 5MB)</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          
+
+          <button type="submit" class="login-btn" style="width: 100%; height: 48px; justify-content: center; text-shadow: none; font-size: 0.95rem;">
+
+            <span>Submit Verified Review</span>
+
+          </button>
+
+        </form>
+
+
+
+        <!-- Success overlay -->
+
+        <div class="form-success-overlay" id="successOverlay">
+
+          <div class="success-checkmark">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+
+          </div>
+
+          <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 8px;">Review Submitted Successfully!</h3>
+
+          <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 450px;">Thank you for securing your feedback. Our audit team will review it against our dispatch records to issue a 'Verified Customer' badge on your rating.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 8: FAQ & Audit Verification Section -->
+
+    <section class="reviews-section" style="margin-bottom: 150px;">
+
+      <div class="sec-badge sec-badge-center">Review Auditing</div>
+
+      <h2 class="sec-title sec-title-center">Authenticity & Verification FAQ</h2>
+
+      
+
+      <div class="faq-layout">
+
+        <!-- FAQ 1 -->
+
+        <div class="faq-item">
+
+          <button class="faq-trigger">
+
+            <span>How do you guarantee that your customer reviews are authentic?</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </button>
+
+          <div class="faq-content">
+
+            <p>Every review published on our site containing a 'Verified Customer' badge has been cross-referenced with a unique dispatch ticket number from our digital service scheduler. This ensures that the review is written by a real client who received emergency locksmith or installation services from a licensed member of our team.</p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- FAQ 2 -->
+
+        <div class="faq-item">
+
+          <button class="faq-trigger">
+
+            <span>Do you post negative reviews or do you only filter for five-star feedback?</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </button>
+
+          <div class="faq-content">
+
+            <p>We believe in absolute transparency. We publish all verified reviews, regardless of rating, provided they meet our community standards guidelines (no abusive language or private technician identifiers). In the rare case of negative feedback, our dispatch manager immediately opens a service ticket to resolve the customer's issues under our satisfaction guarantee.</p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- FAQ 3 -->
+
+        <div class="faq-item">
+
+          <button class="faq-trigger">
+
+            <span>How can I edit a review I previously left for a locksmith technician?</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </button>
+
+          <div class="faq-content">
+
+            <p>If your situation has been resolved or you would like to update your comments, please contact our administrative desk at support@locksmith-services.com with your original ticket number, and our team will issue an edit link to update your feedback.</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <!-- ==========================================================================
+
+       FOOTER SECTION (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== -->
+
+  <footer class="footer-wrapper">
+
+    <div class="footer-container">
+
+      
+
+      <!-- Footer Grid -->
+
+      <div class="footer-grid">
+
+        
+
+        <!-- Column 1: Brand & About -->
+
+        <div class="footer-col brand-col">
+
+          <a href="index.html" class="brand" style="margin-bottom: 16px;">
+
+            <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+              <defs>
+
+                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                  <stop offset="0%" stop-color="var(--accent-primary)" />
+
+                  <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+                </linearGradient>
+
+              </defs>
+
+              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
+
+              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
+
+            </svg>
+
+            <span>LOCKSMITH</span>
+
+          </a>
+
+          <p class="footer-text">
+
+            Licensed, bonded, and insured mobile emergency locksmith services. Rapid lockout assistance, security audits, and keyless automation systems. Available 24 hours.
+
+          </p>
+
+          <div class="social-links">
+
+            <a href="#facebook" class="social-icon-btn" aria-label="Facebook">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+
+            </a>
+
+            <a href="#twitter" class="social-icon-btn" aria-label="Twitter">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+
+            </a>
+
+            <a href="#instagram" class="social-icon-btn" aria-label="Instagram">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Column 2: Locksmith Services -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Locksmith Services</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="Emergency.html" class="footer-link-item">Emergency Services</a></li>
+
+            <li><a href="Residential.html" class="footer-link-item">Residential Locksmith</a></li>
+
+            <li><a href="Commercial.html" class="footer-link-item">Commercial Locksmith</a></li>
+
+            <li><a href="Security Installationl.html" class="footer-link-item">Security Installation</a></li>
+
+            <li><a href="Lock Types.html" class="footer-link-item">Lock Types Guide</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 3: Resources & Info -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Resources & Info</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="#about" class="footer-link-item">About Our Team</a></li>
+
+            <li><a href="Pricing.html" class="footer-link-item">Pricing & Estimates</a></li>
+
+            <li><a href="#service-areas" class="footer-link-item">Service Areas Map</a></li>
+
+            <li><a href="#resources" class="footer-link-item">Security Blog & Tips</a></li>
+
+            <li><a href="#reviews" class="footer-link-item">Reviews & Testimonials</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 5: Newsletter Sign-up -->
+
+        <div class="footer-col newsletter-col">
+
+          <h3 class="footer-title">Secure News & Offers</h3>
+
+          <p class="footer-text" style="margin-bottom: 12px;">Subscribe for safety tips & special lock installation deals.</p>
+
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+
+            <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required class="newsletter-input" />
+
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+
+              <svg class="padlock-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #fff;">
+
+                <path d="M7 11V7a5 5 0 0 1 10 0v4M4 11h16v11H4z" fill="none" stroke-width="2.5" />
+
+              </svg>
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Divider line -->
+
+      <div class="footer-divider"></div>
+
+
+
+      <!-- Footer Bottom -->
+
+      <div class="footer-bottom">
+
+        <p class="copyright">&copy; 2026 LOCKSMITH. All rights reserved. Licensed Locksmith #LIC-9428-A.</p>
+
+        <div class="footer-bottom-links">
+
+          <a href="#privacy" class="footer-bottom-link">Privacy Policy</a>
+
+          <a href="#terms" class="footer-bottom-link">Terms of Service</a>
+
+          <a href="#licensing" class="footer-bottom-link">Licensing Details</a>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ==========================================================================
+
+       9. INTERACTIVE JAVASCRIPT CONTROLLERS
+
+       ========================================================================== */ -->
+
+  <script>
+
+    // 9.1 Theme Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+
+    
+
+    function initTheme() {
+
+      const savedTheme = localStorage.getItem('theme');
+
+      if (savedTheme === 'light') {
+
+        document.documentElement.classList.remove('dark');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+      }
+
+    }
+
+    
+
+    function toggleTheme() {
+
+      if (document.documentElement.classList.contains('dark')) {
+
+        document.documentElement.classList.remove('dark');
+
+        localStorage.setItem('theme', 'light');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+        localStorage.setItem('theme', 'dark');
+
+      }
+
+    }
+
+
+
+    initTheme();
+
+    darkModeBtn.addEventListener('click', toggleTheme);
+
+    drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+
+
+    // 9.2 RTL Layout Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+
+    
+
+    function toggleRtl() {
+
+      const currentDir = document.documentElement.dir || 'ltr';
+
+      if (currentDir === 'ltr') {
+
+        document.documentElement.dir = 'rtl';
+
+      } else {
+
+        document.documentElement.dir = 'ltr';
+
+      }
+
+    }
+
+
+
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+
+    drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+
+
+    // 9.3 Ambient Cursor Tracker in Navbar Container
+
+    const mainNavbar = document.getElementById('mainNavbar');
+
+    const navGlow = document.getElementById('navGlow');
+
+
+
+    if (mainNavbar && navGlow) {
+
+      mainNavbar.addEventListener('mousemove', (e) => {
+
+        const rect = mainNavbar.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        
+
+        mainNavbar.style.setProperty('--mouse-x', `${x}px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `${y}px`);
+
+      });
+
+
+
+      mainNavbar.addEventListener('mouseleave', () => {
+
+        // Reset glow offscreen when mouse leaves
+
+        mainNavbar.style.setProperty('--mouse-x', `-999px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `-999px`);
+
+      });
+
+    }
+
+
+
+    // 9.4 Mobile Drawer Controller (Drawer + Overlay + Back/Close triggers)
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+
+
+    function openMobileDrawer() {
+
+      mobileDrawer.classList.add('open');
+
+      drawerOverlay.classList.add('active');
+
+      document.body.style.overflow = 'hidden'; // Stop page scrolling
+
+    }
+
+
+
+    function closeMobileDrawer() {
+
+      mobileDrawer.classList.remove('open');
+
+      drawerOverlay.classList.remove('active');
+
+      document.body.style.overflow = ''; // Resume page scrolling
+
+    }
+
+
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+
+    drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+
+
+    // 9.5 Drawer Accordion Submenu Collapses
+
+    const accordionTriggers = document.querySelectorAll('.drawer-accordion-trigger');
+
+
+
+    accordionTriggers.forEach(trigger => {
+
+      trigger.addEventListener('click', () => {
+
+        // Toggle active submenu container height
+
+        const submenu = trigger.nextElementSibling;
+
+        const chevron = trigger.querySelector('.chevron-icon');
+
+        
+
+        if (submenu.classList.contains('open')) {
+
+          submenu.classList.remove('open');
+
+          chevron.style.transform = 'rotate(0deg)';
+
+        } else {
+
+          // Close others first for a clean accordian flow
+
+          accordionTriggers.forEach(otherTrigger => {
+
+            const otherSub = otherTrigger.nextElementSibling;
+
+            const otherChevron = otherTrigger.querySelector('.chevron-icon');
+
+            if (otherSub && otherSub.classList.contains('open') && otherSub !== submenu) {
+
+              otherSub.classList.remove('open');
+
+              otherChevron.style.transform = 'rotate(0deg)';
+
+            }
+
+          });
+
+          
+
+          submenu.classList.add('open');
+
+          chevron.style.transform = 'rotate(180deg)';
+
+        }
+
+      });
+
+    });
+
+
+
+    // 9.6 Login Button Hover Shackle micro-interactions (Dual-Bind: Desktop & Mobile Drawer)
+
+    const loginBtn = document.getElementById('loginBtn');
+
+    const drawerLoginBtn = document.getElementById('drawerLoginBtn');
+
+    const desktopShackle = document.getElementById('desktopShackle');
+
+    const drawerShackle = document.getElementById('drawerShackle');
+
+
+
+    loginBtn.addEventListener('mouseenter', () => {
+
+      desktopShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    loginBtn.addEventListener('mouseleave', () => {
+
+      desktopShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    drawerLoginBtn.addEventListener('mouseenter', () => {
+
+      drawerShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    drawerLoginBtn.addEventListener('mouseleave', () => {
+
+      drawerShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    // 9.7 Active Page Highlighter
+
+    function highlightActivePage() {
+
+      const path = window.location.pathname;
+
+      let page = path.split("/").pop();
+
+      if (!page || page === "") {
+
+        page = "index.html";
+
+      }
+
+      page = decodeURIComponent(page);
+
+
+
+      const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+
+      const dropdownItems = document.querySelectorAll('.nav-menu .dropdown-item');
+
+
+
+      const getFilename = (href) => {
+
+        if (!href) return "";
+
+        return href.replace(/^\.\//, "").split("/").pop();
+
+      };
+
+
+
+      let activeFound = false;
+
+
+
+      dropdownItems.forEach(item => {
+
+        const hrefFilename = getFilename(item.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          item.classList.add('active-link');
+
+          const parentNavItem = item.closest('.nav-item');
+
+          if (parentNavItem) {
+
+            parentNavItem.classList.add('active');
+
+          }
+
+          activeFound = true;
+
+        }
+
+      });
+
+
+
+      if (!activeFound) {
+
+        navLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            const parentNavItem = link.closest('.nav-item');
+
+            if (parentNavItem) {
+
+              parentNavItem.classList.add('active');
+
+            }
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+
+
+      const mobileLinks = document.querySelectorAll('.mobile-menu-list .mobile-menu-link');
+
+      const mobileSubLinks = document.querySelectorAll('.mobile-menu-list .mobile-submenu-link');
+
+
+
+      let mobileActiveFound = false;
+
+
+
+      mobileSubLinks.forEach(subLink => {
+
+        const hrefFilename = getFilename(subLink.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          subLink.classList.add('active-link');
+
+          const submenu = subLink.closest('.mobile-submenu');
+
+          if (submenu) {
+
+            submenu.classList.add('open');
+
+            const trigger = submenu.previousElementSibling;
+
+            if (trigger && trigger.querySelector('.chevron-icon')) {
+
+              trigger.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+
+            }
+
+          }
+
+          mobileActiveFound = true;
+
+        }
+
+      });
+
+
+
+      if (!mobileActiveFound) {
+
+        mobileLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+    }
+
+
+
+    highlightActivePage();
+
+
+
+    // ==========================================================================
+
+    // REVIEWS INTERACTIVE CONTROLLERS
+
+    // ==========================================================================
+
+
+
+    // 1. Review Filtering Logic
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    const reviewCards = document.querySelectorAll('.rev-card');
+
+
+
+    filterButtons.forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        // Remove active class from all buttons
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+
+        btn.classList.add('active');
+
+
+
+        const filterValue = btn.getAttribute('data-filter');
+
+
+
+        reviewCards.forEach(card => {
+
+          const category = card.getAttribute('data-category');
+
+          if (filterValue === 'all' || category === filterValue) {
+
+            card.style.display = 'flex';
+
+            setTimeout(() => {
+
+              card.style.opacity = '1';
+
+              card.style.transform = 'translateY(0)';
+
+            }, 10);
+
+          } else {
+
+            card.style.opacity = '0';
+
+            card.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+
+              card.style.display = 'none';
+
+            }, 300); // Wait for transition to finish
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+
+    // 2. Business Testimonial Spec Sheet Toggle
+
+    function toggleSpecSheet(id) {
+
+      const panel = document.getElementById(id);
+
+      const button = panel.previousElementSibling;
+
+      const svg = button.querySelector('svg');
+
+      
+
+      if (panel.classList.contains('open')) {
+
+        panel.classList.remove('open');
+
+        svg.style.transform = 'rotate(0deg)';
+
+      } else {
+
+        panel.classList.add('open');
+
+        svg.style.transform = 'rotate(180deg)';
+
+      }
+
+    }
+
+
+
+    // 3. Interactive Star Ratings
+
+    const stars = document.querySelectorAll('.interactive-star');
+
+    const starInput = document.getElementById('starValue');
+
+
+
+    stars.forEach(star => {
+
+      star.addEventListener('mouseenter', () => {
+
+        const val = parseInt(star.getAttribute('data-value'));
+
+        highlightStars(val, 'hovered');
+
+      });
+
+
+
+      star.addEventListener('mouseleave', () => {
+
+        resetStars();
+
+      });
+
+
+
+      star.addEventListener('click', () => {
+
+        const val = parseInt(star.getAttribute('data-value'));
+
+        starInput.value = val;
+
+        highlightStars(val, 'selected');
+
+      });
+
+    });
+
+
+
+    function highlightStars(val, className) {
+
+      stars.forEach(star => {
+
+        const starVal = parseInt(star.getAttribute('data-value'));
+
+        if (starVal <= val) {
+
+          star.classList.add(className);
+
+        } else {
+
+          star.classList.remove(className);
+
+        }
+
+      });
+
+    }
+
+
+
+    function resetStars() {
+
+      stars.forEach(star => {
+
+        star.classList.remove('hovered');
+
+        const selectedVal = parseInt(starInput.value);
+
+        const starVal = parseInt(star.getAttribute('data-value'));
+
+        if (starVal <= selectedVal) {
+
+          star.classList.add('selected');
+
+        } else {
+
+          star.classList.remove('selected');
+
+        }
+
+      });
+
+    }
+
+
+
+    // 4. Service Capsule Selector
+
+    const capsuleBtns = document.querySelectorAll('.capsule-btn');
+
+    const serviceInput = document.getElementById('selectedService');
+
+
+
+    capsuleBtns.forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        capsuleBtns.forEach(b => b.classList.remove('active'));
+
+        btn.classList.add('active');
+
+        serviceInput.value = btn.getAttribute('data-service');
+
+      });
+
+    });
+
+
+
+    // 5. Mock File Upload
+
+    function mockFileUpload() {
+
+      const label = document.getElementById('uploadLabel');
+
+      label.innerText = "lock_security_audit.jpg (1.4 MB) attached successfully";
+
+      label.style.color = "var(--accent-primary)";
+
+    }
+
+
+
+    // 6. Review Form Submission
+
+    function handleReviewSubmit(e) {
+
+      e.preventDefault();
+
+      
+
+      const starVal = starInput.value;
+
+      if (starVal === "0") {
+
+        alert("Please select a star rating.");
+
+        return;
+
+      }
+
+
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+
+      const btnText = submitBtn.querySelector('span');
+
+      
+
+      // Show spinner / loading state
+
+      submitBtn.disabled = true;
+
+      btnText.innerText = "Securing Submission...";
+
+      
+
+      setTimeout(() => {
+
+        // Hide form and show success overlay
+
+        e.target.style.display = "none";
+
+        document.getElementById('successOverlay').style.display = "flex";
+
+      }, 1500);
+
+    }
+
+
+
+    // 7. FAQ Accordion Action
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+
+      const trigger = item.querySelector('.faq-trigger');
+
+      trigger.addEventListener('click', () => {
+
+        const isOpen = item.classList.contains('open');
+
+        
+
+        // Close all first
+
+        faqItems.forEach(i => i.classList.remove('open'));
+
+        
+
+        if (!isOpen) {
+
+          item.classList.add('open');
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
+

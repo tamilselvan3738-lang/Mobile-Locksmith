@@ -1,0 +1,6223 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium Mobile Locksmith Navigation Showcase</title>
+
+  <!-- SEO Meta Tags -->
+
+  <meta name="description" content="Stunning showcase of a highly interactive, responsive, dark-mode and RTL-capable navigation system for Mobile Locksmith services.">
+
+  <meta name="author" content="Antigravity">
+
+  
+
+  <!-- Premium Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+  <style>
+
+    /* ==========================================================================
+
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+
+       ========================================================================== */
+
+    :root {
+
+      /* Typography */
+
+      --font-heading: 'Outfit', sans-serif;
+
+      --font-body: 'Inter', sans-serif;
+
+
+
+      /* Colors - Light Mode Defaults */
+
+      --bg-primary: #f8fafc;
+
+      --bg-secondary: #ffffff;
+
+      --bg-tertiary: #f1f5f9;
+
+      --text-primary: #0f172a;
+
+      --text-secondary: #475569;
+
+      --text-muted: #94a3b8;
+
+      
+
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+
+      --accent-glow: rgba(212, 175, 55, 0.15);
+
+      
+
+      --danger-primary: #ef4444;      /* Emergency Red */
+
+      --danger-glow: rgba(239, 68, 68, 0.4);
+
+      
+
+      --border-color: rgba(15, 23, 42, 0.08);
+
+      --nav-bg: rgba(255, 255, 255, 0.7);
+
+      --nav-border: rgba(255, 255, 255, 0.5);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+
+      
+
+      /* Grid Ambient Animation Colors */
+
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+
+
+      /* Layout */
+
+      --nav-height: 74px;
+
+      --border-radius: 20px;
+
+      --transition-speed: 0.3s;
+
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    /* Dark Mode Overrides */
+
+    html.dark {
+
+      --bg-primary: #0b0f19;
+
+      --bg-secondary: #111827;
+
+      --bg-tertiary: #1f2937;
+
+      --text-primary: #f8fafc;
+
+      --text-secondary: #94a3b8;
+
+      --text-muted: #64748b;
+
+      
+
+      --accent-primary: #ffd700;      /* Bright Gold */
+
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+
+      --accent-glow: rgba(255, 215, 0, 0.25);
+
+      
+
+      --danger-primary: #ff4757;
+
+      --danger-glow: rgba(255, 71, 87, 0.6);
+
+      
+
+      --border-color: rgba(255, 255, 255, 0.08);
+
+      --nav-bg: rgba(11, 15, 25, 0.65);
+
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+
+      
+
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       2. RESET & BASE STYLES (Supports RTL Smooth Transitions)
+
+       ========================================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+
+                  border-color var(--transition-speed) var(--transition-timing), 
+
+                  color var(--transition-speed) var(--transition-timing);
+
+    }
+
+
+
+    body {
+
+      font-family: var(--font-body);
+
+      background-color: var(--bg-primary);
+
+      color: var(--text-primary);
+
+      min-height: 140vh; /* Allow scrolling to show floating header effect */
+
+      overflow-x: hidden;
+
+      position: relative;
+
+    }
+
+
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+
+
+    a {
+
+      text-decoration: none;
+
+      color: inherit;
+
+    }
+
+
+
+    ul {
+
+      list-style: none;
+
+    }
+
+
+
+    button {
+
+      background: none;
+
+      border: none;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* RTL Transition Support */
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    
+
+    [dir="rtl"] {
+
+      text-align: right;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       3. AMBIENT BACKGROUND SYSTEM (Showcases Glassmorphism)
+
+       ========================================================================== */
+
+    .bg-grid {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      background-size: 40px 40px;
+
+      background-image: 
+
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+
+    }
+
+
+
+    .bg-mesh-1, .bg-mesh-2 {
+
+      position: fixed;
+
+      width: 600px;
+
+      height: 600px;
+
+      border-radius: 50%;
+
+      filter: blur(140px);
+
+      z-index: -2;
+
+      opacity: 0.8;
+
+      pointer-events: none;
+
+      animation: float 20s infinite alternate ease-in-out;
+
+    }
+
+
+
+    .bg-mesh-1 {
+
+      top: -10%;
+
+      left: -10%;
+
+      background: var(--mesh-color-1);
+
+    }
+
+
+
+    .bg-mesh-2 {
+
+      bottom: 10%;
+
+      right: -10%;
+
+      background: var(--mesh-color-2);
+
+      animation-delay: -5s;
+
+    }
+
+
+
+    @keyframes float {
+
+      0% { transform: translate(0, 0) scale(1); }
+
+      100% { transform: translate(100px, 50px) scale(1.2); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       4. SINGLE-DECK GLOWING NAVIGATION HEADER (Logo Left, Menu Center, Controls Right)
+
+       ========================================================================== */
+
+    .navbar-wrapper {
+
+      position: fixed;
+
+      top: 20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 96%;
+
+      max-width: 1640px;
+
+      z-index: 1000;
+
+      animation: slideDown 0.8s var(--transition-timing);
+
+    }
+
+
+
+    .navbar-container {
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-md);
+
+      height: var(--nav-height);
+
+      border-radius: var(--border-radius);
+
+      padding: 0 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: relative;
+
+      overflow: visible; /* Vital for dropdown panels */
+
+    }
+
+
+
+    /* Ambient Cursor Tracker Overlay inside navbar container */
+
+    .navbar-glow-overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      border-radius: var(--border-radius);
+
+      pointer-events: none;
+
+      background: radial-gradient(
+
+        120px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+
+        rgba(0, 242, 254, 0.08),
+
+        transparent 80%
+
+      );
+
+      z-index: 1;
+
+    }
+
+
+
+    /* RTL horizontal adjustments */
+
+    [dir="rtl"] .navbar-wrapper {
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    /* 4.1 CREATIVE UNIQUE BRAND LOGO (Hexagon Cyber-Key Logo - Left Aligned) */
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-family: var(--font-heading);
+
+      font-size: 1.45rem;
+
+      font-weight: 800;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      z-index: 10;
+
+      position: relative;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Logo based on Lock */
+
+    .brand-logo-svg {
+
+      width: 38px;
+
+      height: 38px;
+
+      fill: none;
+
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+
+      animation: pulseLogo 3s infinite ease-in-out;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    .brand:hover .brand-logo-svg {
+
+      transform: scale(1.1) rotate(5deg);
+
+    }
+
+
+
+    @keyframes pulseLogo {
+
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+
+    }
+
+
+
+    /* 4.2 NAVIGATION LINKS (Centered Group - Hidden in Mobile/Tablet Views) */
+
+    .nav-menu {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 2px;
+
+      flex-grow: 1;
+
+      height: 100%;
+
+      z-index: 2;
+
+      padding: 0 16px;
+
+    }
+
+
+
+    .nav-item {
+
+      position: relative;
+
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+
+
+    .nav-link {
+
+      font-family: var(--font-body);
+
+      font-size: 0.78rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      padding: 6px 8px;
+
+      border-radius: 8px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 3px;
+
+      white-space: nowrap;
+
+      transition: color 0.25s ease, background-color 0.25s ease;
+
+    }
+
+
+
+    .nav-link:hover, .nav-item.active .nav-link {
+
+      color: var(--text-primary);
+
+      background-color: rgba(255, 255, 255, 0.05);
+
+    }
+
+
+
+    html.dark .nav-link:hover, html.dark .nav-item.active .nav-link {
+
+      background-color: rgba(255, 255, 255, 0.03);
+
+    }
+
+
+
+    /* Down Chevron indicator */
+
+    .chevron-icon {
+
+      width: 11px;
+
+      height: 11px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    .nav-item:hover .chevron-icon {
+
+      transform: rotate(180deg);
+
+    }
+
+
+
+    /* 4.3 SUBMENU PANEL SYSTEM (Dropdowns restricted to Home & Dashboard ONLY) */
+
+    .dropdown-panel {
+
+      position: absolute;
+
+      top: calc(var(--nav-height) - 10px);
+
+      left: 50%;
+
+      transform: translateX(-50%) rotateX(-12deg) translateY(12px);
+
+      width: max-content;
+
+      max-width: 340px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 12px;
+
+      box-shadow: var(--shadow-lg);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: 100;
+
+      transform-origin: top center;
+
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+
+                  transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .nav-item:hover .dropdown-panel {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+      transform: translateX(-50%) rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Alignments for end-aligned components (Dashboard dropdown alignment) */
+
+    .dropdown-right {
+
+      left: auto;
+
+      right: 0;
+
+      transform: rotateX(-12deg) translateY(12px);
+
+    }
+
+    
+
+    [dir="rtl"] .dropdown-right {
+
+      right: auto;
+
+      left: 0;
+
+    }
+
+
+
+    .nav-item:hover .dropdown-right {
+
+      transform: rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Dropdown Item Styling */
+
+    .dropdown-item {
+
+      border-radius: 10px;
+
+      padding: 10px 12px;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+    }
+
+
+
+    .dropdown-item:hover {
+
+      background-color: var(--bg-tertiary);
+
+      transform: translateY(-2px);
+
+    }
+
+
+
+    .dropdown-item-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: var(--accent-primary);
+
+      stroke-width: 2;
+
+      fill: none;
+
+      flex-shrink: 0;
+
+      margin-top: 2px;
+
+    }
+
+
+
+    .dropdown-item-content {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    .dropdown-item-title {
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      margin-bottom: 2px;
+
+    }
+
+
+
+    .dropdown-item-desc {
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.3;
+
+    }
+
+
+
+    /* Pulsing Emergency Indicator badge */
+
+    .emergency-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--danger-primary);
+
+      border-radius: 50%;
+
+      margin-inline-start: 6px;
+
+      box-shadow: 0 0 0 0 var(--danger-glow);
+
+      animation: pulseEmergency 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+
+    }
+
+
+
+    @keyframes pulseEmergency {
+
+      0% { box-shadow: 0 0 0 0 var(--danger-glow); }
+
+      70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); }
+
+      100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       5. CONTROLS (Toggles & Action Buttons - Right Aligned)
+
+       ========================================================================== */
+
+    .nav-controls {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      z-index: 10;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Circular Utility Toggle Button Styles */
+
+    .control-btn {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .control-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 12px var(--accent-glow);
+
+    }
+
+
+
+    .control-btn-icon {
+
+      width: 18px;
+
+      height: 18px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.2;
+
+      fill: none;
+
+      transition: transform 0.4s var(--transition-timing);
+
+    }
+
+
+
+    /* Sun/Moon Morphing Specifics */
+
+    .sun-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .moon-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .sun-icon {
+
+      display: block;
+
+      animation: rotateSun 10s infinite linear;
+
+    }
+
+
+
+    @keyframes rotateSun {
+
+      0% { transform: rotate(0deg); }
+
+      100% { transform: rotate(360deg); }
+
+    }
+
+
+
+    /* RTL Switch Animation */
+
+    .rtl-icon {
+
+      transition: transform 0.4s ease;
+
+    }
+
+
+
+    [dir="rtl"] .rtl-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    /* 5.1 LOGIN BUTTON WITH MICRO-ANIMATION & GRADIENT GLOW */
+
+    .login-btn {
+
+      padding: 10px 18px;
+
+      border-radius: 12px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: #ffffff;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .login-btn::before {
+
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+
+      left: -50%;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255, 255, 255, 0.25),
+
+        transparent
+
+      );
+
+      transform: skewX(-25deg);
+
+      transition: 0.75s ease;
+
+    }
+
+
+
+    .login-btn:hover::before {
+
+      left: 125%;
+
+    }
+
+
+
+    .login-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 6px 20px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    /* SVG Lock Animation details */
+
+    .padlock-svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      fill: none;
+
+      stroke: #ffffff;
+
+      stroke-width: 2.5;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+
+    }
+
+
+
+    .padlock-shackle {
+
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      transform-origin: 12px 6px;
+
+    }
+
+
+
+    .login-btn:hover .padlock-shackle {
+
+      transform: translateY(-2px) rotate(45deg);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       6. MOBILE RESPONSIVE HAMBURGER & INTERACTIVE DRAWER
+
+       ========================================================================== */
+
+    .mobile-nav-toggle {
+
+      display: none;
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border-color);
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+    }
+
+
+
+    .hamburger-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    /* Mobile Menu Drawer Panel */
+
+    .mobile-drawer {
+
+      position: fixed;
+
+      top: 0;
+
+      right: -100%;
+
+      width: 330px;
+
+      max-width: 100%;
+
+      height: 100vh;
+
+      background-color: var(--bg-secondary);
+
+      border-left: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-lg);
+
+      z-index: 1100;
+
+      padding: 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      overflow-y: auto;
+
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer {
+
+      right: auto;
+
+      left: -100%;
+
+      border-left: none;
+
+      border-right: 1px solid var(--border-color);
+
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .mobile-drawer.open {
+
+      right: 0;
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer.open {
+
+      left: 0;
+
+      right: auto;
+
+    }
+
+
+
+    .mobile-drawer-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border-color);
+
+      padding-bottom: 15px;
+
+      margin-bottom: 10px;
+
+      position: relative;
+
+    }
+
+
+
+    /* PRO STYLES Back Button in mobile drawer (Top Right) */
+
+    .back-btn {
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      padding: 6px 12px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-tertiary);
+
+      color: var(--text-primary);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    
+
+
+
+    .back-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 2px 8px var(--accent-glow);
+
+      transform: translateX(-2px);
+
+    }
+
+
+
+    [dir="rtl"] .back-btn:hover {
+
+      transform: translateX(2px);
+
+    }
+
+
+
+    .back-icon {
+
+      width: 14px;
+
+      height: 14px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    [dir="rtl"] .back-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    .mobile-menu-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      flex-grow: 1;
+
+      overflow-y: auto;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    /* Scrollbar styles for list inside drawer */
+
+    .mobile-menu-list::-webkit-scrollbar {
+
+      width: 4px;
+
+    }
+
+    .mobile-menu-list::-webkit-scrollbar-thumb {
+
+      background: var(--border-color);
+
+      border-radius: 4px;
+
+    }
+
+
+
+    .mobile-menu-item {
+
+      width: 100%;
+
+    }
+
+
+
+    .mobile-menu-link {
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 8px 0;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    }
+
+
+
+    .mobile-submenu {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding-inline-start: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      transition: max-height 0.3s ease-out;
+
+    }
+
+
+
+    .mobile-submenu.open {
+
+      max-height: 500px;
+
+      margin-top: 6px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .mobile-submenu-link {
+
+      font-size: 0.84rem;
+
+      color: var(--text-secondary);
+
+      padding: 6px 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+
+    /* Bottom drawer container for remaining content (RTL, Dark Mode, Login) */
+
+    .drawer-footer {
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .drawer-controls-row {
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+
+
+    .drawer-controls-row .control-btn {
+
+      flex: 1;
+
+      border-radius: 12px;
+
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      font-size: 0.82rem;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .drawer-footer .login-btn {
+
+      width: 100%;
+
+      height: 46px;
+
+      justify-content: center;
+
+      border-radius: 12px;
+
+    }
+
+
+
+    .drawer-overlay {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background-color: rgba(15, 23, 42, 0.5);
+
+      backdrop-filter: blur(4px);
+
+      z-index: 1050;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+
+
+    .drawer-overlay.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       7. HERO & COMPANION SHOWCASE CONTENT (Provides Visual Depth)
+
+       ========================================================================== */
+
+    .hero {
+
+      margin-top: 170px;
+
+      padding: 40px 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      max-width: 950px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      z-index: 10;
+
+      position: relative;
+
+    }
+
+
+
+    .hero-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 6px 14px;
+
+      border-radius: 30px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      box-shadow: var(--shadow-sm);
+
+      margin-bottom: 24px;
+
+    }
+
+
+
+    .hero-badge-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--accent-secondary);
+
+      border-radius: 50%;
+
+    }
+
+
+
+    .hero-title {
+
+      font-family: var(--font-heading);
+
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+
+      font-weight: 600;
+
+      line-height: 1.15;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .hero-gradient {
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+
+    .hero-desc {
+
+      font-size: clamp(1rem, 2vw, 1.18rem);
+
+      color: var(--text-secondary);
+
+      max-width: 680px;
+
+      line-height: 1.6;
+
+      margin-bottom: 36px;
+
+    }
+
+
+
+    /* Creative Locks interactive Grid component */
+
+    .dashboard-preview {
+
+      width: 100%;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      box-shadow: var(--shadow-lg);
+
+      padding: 30px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+
+      margin-top: 20px;
+
+      text-align: start;
+
+    }
+
+
+
+    .preview-card {
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      background-color: var(--bg-primary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .preview-card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+
+    }
+
+
+
+    .card-icon-wrapper {
+
+      width: 44px;
+
+      height: 44px;
+
+      border-radius: 10px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      margin-bottom: 16px;
+
+    }
+
+
+
+    .card-title {
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      margin-bottom: 6px;
+
+    }
+
+
+
+    .card-desc {
+
+      font-size: 0.82rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.4;
+
+    }
+
+
+
+    /* Keyframe Animations */
+
+    @keyframes slideDown {
+
+      from { transform: translate(-50%, -40px); opacity: 0; }
+
+      to { transform: translate(-50%, 0); opacity: 1; }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       8. RESPONSIVE BREAKPOINTS (Desktop First Design)
+
+       ========================================================================== */
+
+    @media (max-width: 1550px) {
+
+      /* Drop font size down to ensure it stays snug in center */
+
+      .nav-link {
+
+        font-size: 0.7rem;
+
+        padding: 5px 6px;
+
+      }
+
+      .brand {
+
+        font-size: 1.3rem;
+
+        gap: 8px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 32px;
+
+        height: 32px;
+
+      }
+
+    }
+
+
+
+    /* Nest Hub Max and smaller laptop scaling (1200px to 1366px) */
+
+    @media (max-width: 1366px) and (min-width: 1201px) {
+
+      .nav-link {
+
+        font-size: 0.65rem;
+
+        padding: 4px 4px;
+
+        gap: 2px;
+
+      }
+
+      .brand {
+
+        font-size: 1.15rem;
+
+        gap: 6px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 28px;
+
+        height: 28px;
+
+      }
+
+      .nav-controls {
+
+        gap: 6px;
+
+      }
+
+      .login-btn {
+
+        padding: 8px 12px;
+
+        font-size: 0.8rem;
+
+      }
+
+      .control-btn {
+
+        width: 36px;
+
+        height: 36px;
+
+      }
+
+      .control-btn-icon {
+
+        width: 16px;
+
+        height: 16px;
+
+      }
+
+    }
+
+
+
+    /* Tablet and mobile view collapse under 1200px */
+
+    @media (max-width: 1200px) {
+
+      /* Hide center menu & right desktop-controls */
+
+      .nav-menu, .nav-controls {
+
+        display: none;
+
+      }
+
+      
+
+      .mobile-nav-toggle {
+
+        display: flex; /* Show Hamburger in header */
+
+      }
+
+
+
+      .navbar-container {
+
+        padding: 0 16px;
+
+      }
+
+
+
+      .navbar-wrapper {
+
+        top: 15px;
+
+        width: 92%;
+
+      }
+
+      
+
+      .hero {
+
+        margin-top: 130px;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       FOOTER STYLES (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== */
+
+    .footer-wrapper {
+
+      margin-top: 100px;
+
+      padding: 60px 24px 30px 24px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border-top: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+
+
+    .footer-container {
+
+      max-width: 1540px;
+
+      margin: 0 auto;
+
+      width: 100%;
+
+    }
+
+
+
+    .footer-grid {
+
+      display: grid;
+
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+
+      gap: 40px;
+
+    }
+
+
+
+    .footer-col {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    /* Footer logo matches main logo size and responsive rules automatically */
+
+
+
+    .footer-title {
+
+      font-family: var(--font-heading);
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      margin-bottom: 20px;
+
+      position: relative;
+
+      padding-bottom: 8px;
+
+    }
+
+
+
+    .footer-title::after {
+
+      content: '';
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 30px;
+
+      height: 3px;
+
+      background: var(--accent-gradient);
+
+      border-radius: 2px;
+
+    }
+
+
+
+    [dir="rtl"] .footer-title::after {
+
+      left: auto;
+
+      right: 0;
+
+    }
+
+
+
+    .footer-text {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .footer-links-list, .footer-contact-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+
+
+    .footer-link-item {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      transition: all 0.25s ease;
+
+      display: inline-block;
+
+      width: fit-content;
+
+    }
+
+
+
+    .footer-link-item:hover {
+
+      color: var(--accent-primary);
+
+      transform: translateX(4px);
+
+    }
+
+
+
+    [dir="rtl"] .footer-link-item:hover {
+
+      transform: translateX(-4px);
+
+    }
+
+
+
+    .footer-contact-list li {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+    }
+
+
+
+    .contact-icon {
+
+      width: 16px;
+
+      height: 16px;
+
+      color: var(--accent-primary);
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .social-links {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 16px;
+
+    }
+
+
+
+    .social-icon-btn {
+
+      width: 36px;
+
+      height: 36px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .social-icon-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+    }
+
+
+
+    .social-icon-btn svg {
+
+      width: 16px;
+
+      height: 16px;
+
+    }
+
+
+
+    .newsletter-form {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 10px;
+
+    }
+
+
+
+    .newsletter-input {
+
+      flex-grow: 1;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-primary);
+
+      padding: 0 14px;
+
+      font-family: inherit;
+
+      font-size: 0.82rem;
+
+      color: var(--text-primary);
+
+      transition: border-color 0.25s ease;
+
+    }
+
+
+
+    .newsletter-input:focus {
+
+      outline: none;
+
+      border-color: var(--accent-primary);
+
+    }
+
+
+
+    .newsletter-btn {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      transition: all 0.25s ease;
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+
+
+    .newsletter-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    .footer-divider {
+
+      height: 1px;
+
+      background-color: var(--border-color);
+
+      margin: 40px 0 25px 0;
+
+    }
+
+
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+    }
+
+
+
+    .footer-bottom-links {
+
+      display: flex;
+
+      gap: 20px;
+
+    }
+
+
+
+    .footer-bottom-link {
+
+      color: var(--text-muted);
+
+      transition: color 0.2s ease;
+
+    }
+
+
+
+    .footer-bottom-link:hover {
+
+      color: var(--accent-primary);
+
+    }
+
+
+
+    /* Footer Responsive Grid */
+
+    @media (max-width: 1200px) {
+
+      .footer-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 2;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 1;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       LOCK TYPES SPECIFIC STYLES
+
+       ========================================================================== */
+
+    .lock-container {
+
+      max-width: 1400px;
+
+      margin: 120px auto 60px;
+
+      padding: 0 24px;
+
+    }
+
+    
+
+    .lock-hero {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+      margin-bottom: 80px;
+
+    }
+
+    
+
+    .lock-hero-text h1 {
+
+      font-size: clamp(2.5rem, 5vw, 4rem);
+
+      line-height: 1.1;
+
+      margin-bottom: 24px;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+    
+
+    .lock-hero-text p {
+
+      font-size: 1.125rem;
+
+      color: var(--text-secondary);
+
+      margin-bottom: 32px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    .lock-hero-visual {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 40px;
+
+      box-shadow: var(--shadow-lg);
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      aspect-ratio: 1;
+
+    }
+
+    
+
+    /* Exploded Deadbolt hotspots */
+
+    .section-deadbolts {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1.1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .exploded-deadbolt-box {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 32px;
+
+      box-shadow: var(--shadow-md);
+
+      position: relative;
+
+    }
+
+    
+
+    .deadbolt-diagram-svg {
+
+      width: 100%;
+
+      height: auto;
+
+      max-height: 280px;
+
+    }
+
+    
+
+    .hotspot-point {
+
+      cursor: pointer;
+
+      fill: var(--accent-primary);
+
+      stroke: #fff;
+
+      stroke-width: 2;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .hotspot-point:hover, .hotspot-point.active {
+
+      fill: #ef4444;
+
+      r: 8px;
+
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+
+    }
+
+    
+
+    /* Smart Locks Touchpad Mockup */
+
+    .section-smart-locks {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .smart-lock-grid {
+
+      display: grid;
+
+      grid-template-columns: 1.1fr 0.9fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+    }
+
+    
+
+    .smart-touchpad-card {
+
+      background: #0f172a;
+
+      border-radius: 24px;
+
+      border: 4px solid #334155;
+
+      padding: 24px;
+
+      box-shadow: var(--shadow-lg);
+
+      max-width: 320px;
+
+      margin: 0 auto;
+
+      color: #fff;
+
+    }
+
+    
+
+    .touchpad-screen {
+
+      background: #1e293b;
+
+      border-radius: 12px;
+
+      padding: 16px;
+
+      text-align: center;
+
+      margin-bottom: 20px;
+
+      border: 1px solid #475569;
+
+    }
+
+    
+
+    .touchpad-status {
+
+      font-size: 1.1rem;
+
+      font-weight: 700;
+
+      color: #38bdf8;
+
+      margin-bottom: 4px;
+
+    }
+
+    
+
+    .touchpad-digit-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 12px;
+
+    }
+
+    
+
+    .touchpad-btn {
+
+      background: #334155;
+
+      border: none;
+
+      border-radius: 50%;
+
+      width: 60px;
+
+      height: 60px;
+
+      font-size: 1.25rem;
+
+      font-weight: 600;
+
+      color: #fff;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      transition: all 0.2s ease;
+
+      margin: 0 auto;
+
+    }
+
+    
+
+    .touchpad-btn:hover {
+
+      background: #475569;
+
+      color: var(--accent-primary);
+
+    }
+
+    
+
+    .touchpad-btn:active {
+
+      transform: scale(0.95);
+
+    }
+
+    
+
+    .touchpad-fingerprint-sensor {
+
+      width: 64px;
+
+      height: 64px;
+
+      border-radius: 50%;
+
+      border: 2px dashed #0284c7;
+
+      margin: 20px auto 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      cursor: pointer;
+
+      color: #0284c7;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .touchpad-fingerprint-sensor:hover {
+
+      border-color: #38bdf8;
+
+      color: #38bdf8;
+
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+
+    }
+
+    
+
+    .touchpad-fingerprint-sensor.scanning {
+
+      animation: fingerprintScan 1.2s infinite alternate ease-in-out;
+
+      color: #4ade80;
+
+      border-color: #4ade80;
+
+    }
+
+    
+
+    @keyframes fingerprintScan {
+
+      from { transform: scale(1); box-shadow: 0 0 5px rgba(74, 222, 128, 0.2); }
+
+      to { transform: scale(1.08); box-shadow: 0 0 15px rgba(74, 222, 128, 0.6); }
+
+    }
+
+    
+
+    /* Keyless Entry Fob Remote */
+
+    .section-keyless-entry {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .keyless-fob-visualizer {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 40px;
+
+      box-shadow: var(--shadow-md);
+
+      text-align: center;
+
+      position: relative;
+
+    }
+
+    
+
+    .fob-device {
+
+      width: 120px;
+
+      height: 200px;
+
+      background: #1e293b;
+
+      border: 3px solid #475569;
+
+      border-radius: 24px;
+
+      margin: 0 auto 30px;
+
+      position: relative;
+
+      padding: 20px 10px;
+
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+
+    }
+
+    
+
+    .fob-btn {
+
+      width: 50px;
+
+      height: 50px;
+
+      border-radius: 50%;
+
+      background: #334155;
+
+      border: 2px solid #475569;
+
+      margin: 12px auto;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #94a3b8;
+
+      transition: all 0.2s ease;
+
+    }
+
+    
+
+    .fob-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      color: var(--accent-primary);
+
+    }
+
+    
+
+    .fob-btn:active {
+
+      transform: scale(0.95);
+
+    }
+
+    
+
+    .fob-signal-ring {
+
+      position: absolute;
+
+      top: 50%;
+
+      left: 50%;
+
+      width: 120px;
+
+      height: 120px;
+
+      margin-top: -60px;
+
+      margin-left: -60px;
+
+      border: 2px solid var(--accent-primary);
+
+      border-radius: 50%;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+    }
+
+    
+
+    .fob-signal-ring.active {
+
+      animation: signalPulse 1s ease-out forwards;
+
+    }
+
+    
+
+    @keyframes signalPulse {
+
+      0% { transform: scale(0.6); opacity: 1; }
+
+      100% { transform: scale(2.2); opacity: 0; }
+
+    }
+
+    
+
+    /* High Security Shear Line Pins */
+
+    .section-high-security {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .high-security-visualizer {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+    }
+
+    
+
+    .cylinder-interactive-box {
+
+      background: var(--bg-secondary);
+
+      border-radius: 16px;
+
+      border: 1px solid var(--border-color);
+
+      padding: 32px;
+
+      box-shadow: var(--shadow-sm);
+
+      text-align: center;
+
+    }
+
+    
+
+    .cylinder-pin-stack-svg {
+
+      width: 100%;
+
+      max-width: 340px;
+
+      height: auto;
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .cylinder-pin {
+
+      transition: transform 0.4s ease;
+
+    }
+
+    
+
+    .cylinder-key-slide {
+
+      transition: transform 0.5s ease;
+
+    }
+
+    
+
+    /* Electronic Locks Time Planner */
+
+    .section-electronic-locks {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1.1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .electronic-schedule-card {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 32px;
+
+      box-shadow: var(--shadow-md);
+
+      text-align: left;
+
+    }
+
+    
+
+    /* Lock Comparison Table & Filtration */
+
+    .section-comparison-guide {
+
+      margin-bottom: 80px;
+
+      text-align: center;
+
+    }
+
+    
+
+    .comparison-filters {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-bottom: 32px;
+
+    }
+
+    
+
+    .comp-table-wrapper {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      overflow-x: auto;
+
+      border: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+    
+
+    .comp-table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+    }
+
+    
+
+    .comp-table th, .comp-table td {
+
+      padding: 20px 24px;
+
+      text-align: left;
+
+    }
+
+    
+
+    .comp-table th {
+
+      background: var(--bg-tertiary);
+
+      font-weight: 600;
+
+      border-bottom: 2px solid var(--border-color);
+
+    }
+
+    
+
+    .comp-table tr:not(:last-child) td {
+
+      border-bottom: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .comp-table tr.highlighted {
+
+      background: var(--accent-glow);
+
+    }
+
+    
+
+    .comp-badge {
+
+      display: inline-block;
+
+      padding: 4px 10px;
+
+      border-radius: 20px;
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+    }
+
+    
+
+    .comp-badge.high {
+
+      background: rgba(16, 185, 129, 0.1);
+
+      color: #10b981;
+
+    }
+
+    
+
+    .comp-badge.med {
+
+      background: rgba(245, 158, 11, 0.1);
+
+      color: #f59e0b;
+
+    }
+
+    
+
+    .comp-badge.premium {
+
+      background: var(--accent-glow);
+
+      color: var(--accent-primary);
+
+      border: 1px solid rgba(212,175,55,0.2);
+
+    }
+
+    
+
+    /* Layout Helpers & Responsive */
+
+    .sec-header {
+
+      margin-bottom: 48px;
+
+      text-align: left;
+
+    }
+
+    
+
+    .sec-badge {
+
+      display: inline-block;
+
+      padding: 6px 12px;
+
+      background: var(--accent-glow);
+
+      color: var(--accent-primary);
+
+      border-radius: 20px;
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 16px;
+
+      border: 1px solid rgba(212,175,55,0.2);
+
+    }
+
+    
+
+    .sec-title {
+font-weight: 500;
+font-size: clamp(2rem, 3.5vw, 2.75rem);
+
+      color: var(--text-primary);
+
+      margin-bottom: 16px;
+
+      line-height: 1.2;
+
+    }
+
+    
+
+    .sec-desc {
+
+      color: var(--text-secondary);
+
+      font-size: 1.1rem;
+
+      max-width: 700px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    @media (max-width: 1024px) {
+
+      .lock-hero, .section-deadbolts, .smart-lock-grid, .section-keyless-entry, .high-security-visualizer, .section-electronic-locks {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+      }
+
+    }
+
+      @media (max-width: 480px) {
+
+      .home-section {
+
+        padding: 50px 16px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 992px) {
+
+      /* Stack inline grid columns on mobile/tablet viewports, excluding auto-fit/auto-fill grids */
+
+      div[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      div[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]) {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 30px !important;
+
+      }
+
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+  <!-- Background Grids and Meshes -->
+
+  <div class="bg-grid"></div>
+
+  <div class="bg-mesh-1"></div>
+
+  <div class="bg-mesh-2"></div>
+
+
+
+  <!-- Mobile Drawer Overlay -->
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+
+
+  <!-- Interactive Mobile Slide-out Navigation Drawer -->
+
+  <aside class="mobile-drawer" id="mobileDrawer">
+
+    <!-- Header with Brand on Left and Back Button on Right -->
+
+    <div class="mobile-drawer-header">
+
+      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
+
+        <!-- Hexagon cyber key SVG logo based on Lock -->
+
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+      <!-- Back Chevron Arrow Button on Top Right -->
+
+      <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu">
+
+        <svg class="back-icon" viewBox="0 0 24 24">
+
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        </svg>
+
+        <span>Back</span>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- Inside Hamburger Menu Content (13 links) -->
+
+    <nav class="mobile-menu-list">
+
+      <!-- Home Submenu inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Home</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./index.html" class="mobile-submenu-link">Home 1</a>
+
+          <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Other Links (Arranged directly in mobile menu list) -->
+
+      <a href="./About.html" class="mobile-menu-link">About</a>
+
+      
+
+      <a href="./Emergency.html" class="mobile-menu-link">
+
+        <span>Emergency</span>
+
+      </a>
+
+      
+
+      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
+
+      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
+
+      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
+
+      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
+
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+
+      <a href="./Service.html" class="mobile-menu-link">Service</a>
+
+      <a href="./Security.html" class="mobile-menu-link">Security</a>
+
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+
+
+      <!-- Dashboard inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Dashboard</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Footer of Drawer containing remaining items (Toggles & Login) -->
+
+    <div class="drawer-footer">
+
+      <div class="drawer-controls-row">
+
+        <!-- Drawer Dark Mode Toggle -->
+
+        <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+          <span>Theme</span>
+
+        </button>
+
+
+
+        <!-- Drawer RTL Toggle -->
+
+        <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+          <span>L/R Mirror</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Drawer Login Button -->
+
+      <a href="./login.html" class="login-btn" id="drawerLoginBtn" style="text-decoration: none; cursor: pointer;">
+
+        <svg class="padlock-svg" viewBox="0 0 24 24">
+
+          <path class="padlock-shackle" id="drawerShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+          <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+          <circle cx="12" cy="16" r="1.5" />
+
+        </svg>
+
+        <span>Login</span>
+
+      </a>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- Single-Deck floating Header (Logo Left, Menu Center, Toggles & CTA Right) -->
+
+  <header class="navbar-wrapper">
+
+    <div class="navbar-container" id="mainNavbar">
+
+      <!-- Glow ambient overlay following user mouse -->
+
+      <div class="navbar-glow-overlay" id="navGlow"></div>
+
+
+
+      <!-- Left: Logo based on Lock -->
+
+      <a href="index.html" class="brand">
+
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- Lock Shackle -->
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <!-- Lock Body (Shield shape) -->
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+
+          <!-- Center Keyhole -->
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+
+
+      <!-- Center: Navigation Menu (Desktop/Laptop View) -->
+
+      <ul class="nav-menu">
+
+        <!-- Home (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./index.html" class="nav-link">
+
+            <span>Home</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel">
+
+            <a href="./index.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 1</span>
+
+              </div>
+
+            </a>
+
+            <a href="./home 2.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 2</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+
+
+        <!-- Direct Links arranged side-by-side in center -->
+
+        <li class="nav-item">
+
+          <a href="./About.html" class="nav-link">About</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Emergency.html" class="nav-link">Emergency</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Residential.html" class="nav-link">Residential</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Commercial.html" class="nav-link">Commercial</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Pricing.html" class="nav-link">Pricing</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Service.html" class="nav-link">Service</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security.html" class="nav-link">Security</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Reviews.html" class="nav-link">Reviews</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Contact.html" class="nav-link">Contact</a>
+
+        </li>
+
+
+
+        <!-- Dashboard (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./Dashboard.html" class="nav-link">
+
+            <span>Dashboard</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel dropdown-right">
+
+            <a href="./Admin.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Admin Dashboard</span>
+
+              </div>
+
+            </a>
+
+            <a href="./User.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">User Dashboard</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+
+
+      <!-- Right: Controls & CTA button (Desktop/Laptop View) -->
+
+      <div class="nav-controls">
+
+        <!-- Right to Left Toggle -->
+
+        <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+        </button>
+
+
+
+        <!-- Dark Mode Toggle -->
+
+        <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+        </button>
+
+
+
+        <!-- Login Button with dynamic Padlock -->
+
+        <a href="./login.html" class="login-btn" id="loginBtn" style="text-decoration: none; cursor: pointer;">
+
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+
+            <!-- Padlock shackle path that moves on hover -->
+
+            <path class="padlock-shackle" id="desktopShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+            <circle cx="12" cy="16" r="1.5" />
+
+          </svg>
+
+          <span>Login</span>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Hamburger button for mobile/laptop drawer trigger -->
+
+      <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+
+        <svg class="hamburger-icon" viewBox="0 0 24 24">
+
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+
+        </svg>
+
+      </button>
+
+
+
+    </div>
+
+  </header>
+
+
+
+  <main class="lock-container" id="lock-guide">
+
+    <!-- Section 1: Hero Section -->
+
+    <section class="lock-hero">
+
+      <div class="lock-hero-text">
+
+        <div class="sec-badge">Engineering Safety</div>
+
+        <h1>The Architecture of Modern Lock Systems</h1>
+
+        <p>Explore the mechanics, electronic circuits, and physics behind residential and commercial lock systems. From traditional pin-tumbler deadbolts to cutting-edge biometric locks, understand how different lock types secure your assets and choose the right lock for your property.</p>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+
+          <a href="#comparison-guide" class="login-btn" style="text-shadow: none; box-shadow: 0 4px 15px var(--accent-glow);">
+
+            <span>Compare Lock Types</span>
+
+          </a>
+
+          <a href="#selector-quiz" class="control-btn" style="width: auto; height: auto; padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+
+            <span>Lock Selector Quiz</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="lock-hero-visual">
+
+        <svg viewBox="0 0 400 400" style="width: 100%; height: auto; stroke: var(--accent-primary); fill: none; stroke-width: 1.5;">
+
+          <defs>
+
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+
+              <path d="M 20 0 L 0 0 0 20" stroke="rgba(212,175,55,0.06)" stroke-width="1"/>
+
+            </pattern>
+
+          </defs>
+
+          <rect width="100%" height="100%" fill="url(#grid)" rx="20" />
+
+          <circle cx="200" cy="200" r="120" stroke-dasharray="8 8" stroke="var(--accent-secondary)" stroke-width="2">
+
+            <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite"/>
+
+          </circle>
+
+          <circle cx="200" cy="200" r="90" stroke-dasharray="2 4" />
+
+          <path d="M150 180 V130 A50 50 0 0 1 250 130 V180 H270 V300 H130 V180 Z" stroke-width="3" />
+
+          <circle cx="200" cy="225" r="16" fill="rgba(212,175,55,0.1)"/>
+
+          <path d="M197 225 L195 260 H205 L203 225 Z" />
+
+          <line x1="50" y1="200" x2="350" y2="200" stroke="rgba(212,175,55,0.2)" stroke-dasharray="5 5" />
+
+          <line x1="200" y1="50" x2="200" y2="350" stroke="rgba(212,175,55,0.2)" stroke-dasharray="5 5" />
+
+          <text x="60" y="70" fill="var(--text-muted)" font-family="monospace" font-size="10">SYS_REF: LOCK_SEC_94</text>
+
+          <text x="280" y="340" fill="var(--text-muted)" font-family="monospace" font-size="10">SCALE: 1:1.25</text>
+
+        </svg>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 2: Deadbolt Locks -->
+
+    <section class="section-deadbolts" id="deadbolts">
+
+      <div class="exploded-deadbolt-box">
+
+        <h3 style="margin-bottom: 20px; font-size: 1.25rem;">Interactive Exploded Deadbolt</h3>
+
+        <svg class="deadbolt-diagram-svg" viewBox="0 0 600 300" style="background: rgba(255,255,255,0.01);">
+
+          <path d="M 280 10 L 280 290" stroke="var(--border-color)" stroke-width="4" stroke-dasharray="6 6" />
+
+          
+
+          <g transform="translate(60, 50)">
+
+            <rect x="0" y="30" width="100" height="80" rx="10" fill="var(--bg-tertiary)" stroke="var(--accent-primary)" stroke-width="2" />
+
+            <text x="50" y="25" fill="var(--text-muted)" font-size="12" text-anchor="middle">Cylinder Outer Casing</text>
+
+            <rect x="25" y="50" width="50" height="40" rx="5" fill="rgba(212,175,55,0.1)" stroke="var(--accent-secondary)" stroke-width="1.5" />
+
+            <circle class="hotspot-point active" id="hs-plug" cx="50" cy="70" r="10" />
+
+            <text x="50" y="74" fill="white" font-size="10" text-anchor="middle" font-weight="bold" pointer-events="none">1</text>
+
+          </g>
+
+
+
+          <g transform="translate(180, 20)">
+
+            <rect x="10" y="20" width="80" height="60" rx="5" fill="none" stroke="var(--text-muted)" stroke-dasharray="3 3" />
+
+            <path d="M 25 80 L 25 30 M 40 80 L 40 30 M 55 80 L 55 30 M 70 80 L 70 30" stroke="var(--accent-secondary)" stroke-width="2" />
+
+            <circle class="hotspot-point" id="hs-pins" cx="50" cy="50" r="10" />
+
+            <text x="50" y="54" fill="white" font-size="10" text-anchor="middle" font-weight="bold" pointer-events="none">2</text>
+
+            <text x="50" y="15" fill="var(--text-muted)" font-size="12" text-anchor="middle">Pin Stack</text>
+
+          </g>
+
+
+
+          <g transform="translate(320, 100)">
+
+            <rect x="0" y="0" width="120" height="44" rx="5" fill="rgba(212,175,55,0.15)" stroke="var(--accent-primary)" stroke-width="2" />
+
+            <line x1="0" y1="22" x2="30" y2="22" stroke="var(--accent-secondary)" stroke-width="3" />
+
+            <circle class="hotspot-point" id="hs-bolt" cx="60" cy="22" r="10" />
+
+            <text x="60" y="26" fill="white" font-size="10" text-anchor="middle" font-weight="bold" pointer-events="none">3</text>
+
+            <text x="60" y="-8" fill="var(--text-muted)" font-size="12" text-anchor="middle">Solid Steel Bolt</text>
+
+          </g>
+
+
+
+          <g transform="translate(480, 90)">
+
+            <rect x="0" y="0" width="40" height="110" rx="5" fill="var(--bg-tertiary)" stroke="var(--text-muted)" stroke-width="2" />
+
+            <rect x="10" y="30" width="20" height="50" rx="2" fill="none" stroke="var(--accent-secondary)" stroke-width="2" />
+
+            <circle class="hotspot-point" id="hs-strike" cx="20" cy="55" r="10" />
+
+            <text x="20" y="59" fill="white" font-size="10" text-anchor="middle" font-weight="bold" pointer-events="none">4</text>
+
+            <text x="20" y="-8" fill="var(--text-muted)" font-size="12" text-anchor="middle">Strike Plate</text>
+
+          </g>
+
+
+
+          <path d="M 160 90 L 320 120" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+          <path d="M 230 80 L 320 120" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+          <path d="M 440 122 L 480 145" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+        </svg>
+
+        <div style="margin-top: 16px; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+
+          Click the numbers to dissect the lock components.
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="sec-badge">Standard Defense</div>
+
+        <h2 class="sec-title">Deadbolt Locks</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">The backbone of residential door security. Deadbolts resist physical force and lock picking because their bolt cannot be shimmied or retracted unless the lock cylinder is rotated using the correct physical key.</p>
+
+        
+
+        <div id="deadbolt-info-card" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm); min-height: 120px;">
+
+          <h4 id="db-component-title" style="color: var(--accent-primary); margin-bottom: 8px; font-size: 1rem;">1. Keyway Cylinder Plug</h4>
+
+          <p id="db-component-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">The core of the deadbolt. The plug rotates when the correct key is inserted, retracting the bolt mechanism. Antigravity deadbolts feature spool or mushroom pins to resist lock-picking.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 3: Smart Locks -->
+
+    <section class="section-smart-locks" id="smart-locks">
+
+      <div class="smart-lock-grid">
+
+        <div>
+
+          <div class="sec-badge">Smart Innovation</div>
+
+          <h2 class="sec-title">Keyless Smart Locks</h2>
+
+          <p class="sec-desc" style="margin-bottom: 24px;">Smart locks offer premium convenience with temporary passcode generation, biometric authorization, and smart home automation. Monitor access logs, issue digital guest keys, and lock/unlock your door remotely.</p>
+
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+
+            <img src="images/smart_lock_install.png" alt="Smart Lock Installation" style="width: 110px; height: 110px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border-color);" />
+
+            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4;">
+
+              <strong>Featured Technology:</strong> Built with AES-256 digital encryption and anti-peep keypad screens, preventing password snooping by nearby intruders.
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="smart-touchpad-card">
+
+            <div class="touchpad-screen">
+
+              <div class="touchpad-status" id="touchpadDisplay">ENTER PIN</div>
+
+              <div id="touchpadIndicator" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">PASSCODE: 2 0 2 6</div>
+
+            </div>
+
+            <div class="touchpad-digit-grid">
+
+              <button class="touchpad-btn num-btn">1</button>
+
+              <button class="touchpad-btn num-btn">2</button>
+
+              <button class="touchpad-btn num-btn">3</button>
+
+              <button class="touchpad-btn num-btn">4</button>
+
+              <button class="touchpad-btn num-btn">5</button>
+
+              <button class="touchpad-btn num-btn">6</button>
+
+              <button class="touchpad-btn num-btn">7</button>
+
+              <button class="touchpad-btn num-btn">8</button>
+
+              <button class="touchpad-btn num-btn">9</button>
+
+              <button class="touchpad-btn" id="touchpadClearBtn" style="font-size: 0.85rem; background: #ef4444;">CLR</button>
+
+              <button class="touchpad-btn num-btn">0</button>
+
+              <button class="touchpad-btn" id="touchpadEnterBtn" style="font-size: 0.85rem; background: #22c55e;">ENT</button>
+
+            </div>
+
+            <div class="touchpad-fingerprint-sensor" id="fingerprintBtn">
+
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+
+                <path d="M12 2a10 10 0 0 0-8 8.16M12 2a10 10 0 0 1 8 8.16M4 12c0 2 1.5 5 8 5s8-3 8-5M12 6a6 6 0 0 0-4.8 5M12 6a6 6 0 0 1 4.8 5M8.5 14a4 4 0 0 0 7 0" />
+
+                <path d="M12 10v4" stroke-linecap="round" />
+
+              </svg>
+
+            </div>
+
+            <div style="font-size: 0.72rem; color: #64748b; text-align: center; margin-top: 10px;">
+
+              Press fingerprint sensor to scan biometrics
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 4: Keyless Entry Systems -->
+
+    <section class="section-keyless-entry" id="keyless-entry">
+
+      <div class="keyless-fob-visualizer">
+
+        <div class="fob-device">
+
+          <div class="fob-signal-ring" id="fobSignalRing"></div>
+
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: #64748b; margin: 0 auto 10px; border: 2px solid #1e293b;" id="fobLed"></div>
+
+          
+
+          <button class="fob-btn" id="fobLockBtn" aria-label="Fob Lock">
+
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+
+          </button>
+
+          
+
+          <button class="fob-btn" id="fobUnlockBtn" aria-label="Fob Unlock">
+
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+
+          </button>
+
+          
+
+          <button class="fob-btn" id="fobPanicBtn" style="color: #ef4444;" aria-label="Fob Panic">
+
+            <span style="font-size: 0.7rem; font-weight: 800;">PANIC</span>
+
+          </button>
+
+        </div>
+
+        <div id="fobStatusText" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);">FOB STATUS: STANDBY</div>
+
+      </div>
+
+      <div>
+
+        <div class="sec-badge">Automotive & commercial</div>
+
+        <h2 class="sec-title">Keyless Entry Systems</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">Keyless entry systems bypass the physical key completely. Using RF (Radio Frequency) fobs or Bluetooth-enabled smartphones, the lock detects authorization from several feet away and automatically releases the latch for hands-free convenience.</p>
+
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm);">
+
+          <h4 style="margin-bottom: 6px; font-size: 0.95rem;">Rolling Code Technology</h4>
+
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Every button press sends an encrypted rolling key code. The lock changes the required entry key immediately after each scan, rendering intercepted wireless cloning attacks completely useless.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 5: High Security Locks -->
+
+    <section class="section-high-security" id="high-security">
+
+      <div class="high-security-visualizer">
+
+        <div>
+
+          <div class="sec-badge">Ultimate Protection</div>
+
+          <h2 class="sec-title">High Security Locks</h2>
+
+          <p class="sec-desc" style="margin-bottom: 24px;">Designed to withstand professional picking, drilling, and bumping attacks. High security cylinders incorporate hardened steel rods to break drill bits, complex keyways, and sidebars requiring secondary alignment pins.</p>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm); margin-bottom: 20px;">
+
+            <h4 style="margin-bottom: 6px; font-size: 0.95rem; color: var(--accent-primary);">Shear Line Physics</h4>
+
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Standard cylinders unlock when all split pins align at the boundary of the rotating plug (shear line). High-security locks multiply this protection by adding sidebars and complex angle cuts on the key.</p>
+
+          </div>
+
+        </div>
+
+        <div class="cylinder-interactive-box">
+
+          <h3 style="margin-bottom: 20px; font-size: 1.1rem;">Precision Shear Line Simulation</h3>
+
+          <svg class="cylinder-pin-stack-svg" viewBox="0 0 300 200" style="background: rgba(255,255,255,0.01);">
+
+            <rect x="20" y="20" width="260" height="150" fill="none" stroke="var(--text-muted)" stroke-width="2" />
+
+            <rect x="50" y="70" width="200" height="80" fill="rgba(212,175,55,0.05)" stroke="var(--accent-secondary)" stroke-width="2" id="cylinderPlugOutline" style="transform-origin: 150px 110px; transition: transform 0.4s ease;" />
+
+            
+
+            <line x1="20" y1="70" x2="280" y2="70" stroke="#ef4444" stroke-dasharray="4 2" stroke-width="2" id="shearLineGuide" />
+
+            
+
+            <path id="keyGraphic" d="M -80 120 L 100 120 L 120 115 L 140 120 L 160 112 L 180 120 L 220 120" stroke="var(--accent-primary)" stroke-width="3" fill="none" style="transition: transform 0.1s ease;" />
+
+
+
+            <g transform="translate(80, 0)">
+
+              <path d="M 0 20 L 0 40" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="2 2" />
+
+              <rect class="cylinder-pin driver-pin" id="driver1" x="-8" y="40" width="16" height="30" fill="#f59e0b" rx="2" style="transition: transform 0.1s ease;" />
+
+              <rect class="cylinder-pin key-pin" id="keyPin1" x="-8" y="70" width="16" height="36" fill="#d4af37" rx="2" style="transition: transform 0.1s ease;" />
+
+            </g>
+
+
+
+            <g transform="translate(130, 0)">
+
+              <path d="M 0 20 L 0 40" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="2 2" />
+
+              <rect class="cylinder-pin driver-pin" id="driver2" x="-8" y="30" width="16" height="30" fill="#f59e0b" rx="2" style="transition: transform 0.1s ease;" />
+
+              <rect class="cylinder-pin key-pin" id="keyPin2" x="-8" y="60" width="16" height="46" fill="#d4af37" rx="2" style="transition: transform 0.1s ease;" />
+
+            </g>
+
+
+
+            <g transform="translate(180, 0)">
+
+              <path d="M 0 20 L 0 40" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="2 2" />
+
+              <rect class="cylinder-pin driver-pin" id="driver3" x="-8" y="45" width="16" height="30" fill="#f59e0b" rx="2" style="transition: transform 0.1s ease;" />
+
+              <rect class="cylinder-pin key-pin" id="keyPin3" x="-8" y="75" width="16" height="26" fill="#d4af37" rx="2" style="transition: transform 0.1s ease;" />
+
+            </g>
+
+
+
+            <g transform="translate(230, 0)">
+
+              <path d="M 0 20 L 0 40" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="2 2" />
+
+              <rect class="cylinder-pin driver-pin" id="driver4" x="-8" y="25" width="16" height="30" fill="#f59e0b" rx="2" style="transition: transform 0.1s ease;" />
+
+              <rect class="cylinder-pin key-pin" id="keyPin4" x="-8" y="55" width="16" height="52" fill="#d4af37" rx="2" style="transition: transform 0.1s ease;" />
+
+            </g>
+
+            
+
+            <text x="150" y="180" fill="var(--text-muted)" font-size="11" text-anchor="middle" id="shearLineStatus">Cylinder Status: LOCKED</text>
+
+          </svg>
+
+          
+
+          <div style="margin-bottom: 12px; text-align: left;">
+
+            <label for="keySlider" style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 6px;">Insert Key:</label>
+
+            <input type="range" id="keySlider" min="0" max="100" value="0" style="width: 100%; accent-color: var(--accent-primary);" />
+
+          </div>
+
+          <div style="font-size: 0.75rem; color: var(--text-muted);">
+
+            Slide the key slowly to align the driver-key boundaries with the shear line guide. (Target: ~68% insertion).
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 6: Electronic Locks -->
+
+    <section class="section-electronic-locks" id="electronic-locks">
+
+      <div class="electronic-schedule-card">
+
+        <h3 style="margin-bottom: 16px; font-size: 1.15rem; color: var(--accent-primary);">Active Access Scheduler</h3>
+
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">Simulate access permissions by selecting security profiles. Watch the employee clearance status update in real-time.</p>
+
+        
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+
+          <button class="control-btn shift-btn active" id="shiftMorning" style="width: auto; height: auto; padding: 8px 14px; font-size: 0.78rem; border-radius: 8px;">Morning Shift (9 AM - 5 PM)</button>
+
+          <button class="control-btn shift-btn" id="shiftNight" style="width: auto; height: auto; padding: 8px 14px; font-size: 0.78rem; border-radius: 8px;">Night Shift (5 PM - 1 AM)</button>
+
+          <button class="control-btn shift-btn" id="shiftRestricted" style="width: auto; height: auto; padding: 8px 14px; font-size: 0.78rem; border-radius: 8px; color: #ef4444; border-color: rgba(239,68,68,0.2);">System Lockdown</button>
+
+        </div>
+
+
+
+        <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px;">
+
+            <span>Current Status:</span>
+
+            <span id="systemStatusBadge" style="font-weight: 700; color: #10b981; text-transform: uppercase;">MORNING OPERATIONAL</span>
+
+          </div>
+
+          <div style="font-size: 0.76rem; color: var(--text-muted);">
+
+            Allowed access hours: <span id="allowedAccessHours" style="color: var(--text-primary); font-weight: 600;">09:00 - 17:00</span>
+
+          </div>
+
+        </div>
+
+
+
+        <div style="font-size: 0.84rem; font-weight: 700; margin-bottom: 10px;">Security Verification Console</div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;" id="verificationList">
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+            <div style="font-size: 0.8rem;">
+
+              <strong>Alice Chen</strong> (IT Staff - Cards scan at 10:15 AM)
+
+            </div>
+
+            <span class="comp-badge high" style="padding: 2px 8px; font-size: 0.7rem;">GRANTED</span>
+
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+            <div style="font-size: 0.8rem;">
+
+              <strong>Bob Miller</strong> (Facilities - Cards scan at 08:30 PM)
+
+            </div>
+
+            <span class="comp-badge med" style="padding: 2px 8px; font-size: 0.7rem; background: rgba(239, 68, 68, 0.1); color: #ef4444;">DENIED</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="sec-badge">Electronic Control</div>
+
+        <h2 class="sec-title">Electronic & Magnetic Locks</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">For commercial environments requiring automated high-traffic access control. Electromagnetic locks (Maglocks) use strong electric currents to create pull forces up to 1200 lbs, keeping doors shut until power is routed away by a scanner or panic bar sensor.</p>
+
+        <div style="display: flex; gap: 16px; align-items: center;">
+
+          <img src="images/access_control.png" alt="Electronic Access Control" style="width: 100px; height: 100px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border-color);" />
+
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.45;">
+
+            <strong>Integrates with:</strong> Intercom monitors, automated scheduling, alarm bypass controllers, and facility fire exit overrides (fail-safe operation).
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 7: Lock Comparison Guide -->
+
+    <section class="section-comparison-guide" id="comparison-guide">
+
+      <div class="sec-header" style="text-align: center; margin-bottom: 30px;">
+
+        <div class="sec-badge">Comparison matrix</div>
+
+        <h2 class="sec-title" style="margin: 0 auto 16px;">Lock Comparison Guide</h2>
+
+        <p class="sec-desc" style="margin: 0 auto; max-width: 600px;">Sort and filter our premium lock categories to compare safety levels, features, and target applications.</p>
+
+      </div>
+
+
+
+      <div class="comparison-filters">
+
+        <input type="text" id="compSearch" placeholder="Search lock types..." style="padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none; font-size: 0.85rem; min-width: 200px;" />
+
+        
+
+        <select id="compSecurityFilter" style="padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none; font-size: 0.85rem;">
+
+          <option value="all">Security Level (All)</option>
+
+          <option value="High">High Security</option>
+
+          <option value="Premium">Premium</option>
+
+          <option value="Ultimate">Ultimate</option>
+
+        </select>
+
+        
+
+        <select id="compKeylessFilter" style="padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none; font-size: 0.85rem;">
+
+          <option value="all">Keyless Capability (All)</option>
+
+          <option value="yes">Keyless (Yes)</option>
+
+          <option value="no">Keyless (No)</option>
+
+        </select>
+
+      </div>
+
+
+
+      <div class="comp-table-wrapper">
+
+        <table class="comp-table" id="comparisonTable">
+
+          <thead>
+
+            <tr>
+
+              <th>Lock Type</th>
+
+              <th>Security Level</th>
+
+              <th>Keyless?</th>
+
+              <th>Avg. Price</th>
+
+              <th>Best For</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr data-security="High" data-keyless="no">
+
+              <td style="font-weight: 600;">Double Cylinder Deadbolt</td>
+
+              <td><span class="comp-badge high">High</span></td>
+
+              <td>No</td>
+
+              <td>$</td>
+
+              <td>Front Doors & Residential Entrances</td>
+
+            </tr>
+
+            <tr data-security="Premium" data-keyless="yes">
+
+              <td style="font-weight: 600;">Smart Biometric Lock</td>
+
+              <td><span class="comp-badge premium">Premium</span></td>
+
+              <td>Yes</td>
+
+              <td>$$$</td>
+
+              <td>Rental Properties, Offices & Modern Smart Homes</td>
+
+            </tr>
+
+            <tr data-security="High" data-keyless="yes">
+
+              <td style="font-weight: 600;">Wireless Keyless Fob</td>
+
+              <td><span class="comp-badge high">High</span></td>
+
+              <td>Yes</td>
+
+              <td>$$$</td>
+
+              <td>Vehicles & Shared Commercial Gates</td>
+
+            </tr>
+
+            <tr data-security="Ultimate" data-keyless="no">
+
+              <td style="font-weight: 600;">High-Security Medeco Pin</td>
+
+              <td><span class="comp-badge premium" style="color:#22c55e; background: rgba(34,197,94,0.1); border-color:rgba(34,197,94,0.2);">Ultimate</span></td>
+
+              <td>No</td>
+
+              <td>$$</td>
+
+              <td>Storefronts & Government Offices</td>
+
+            </tr>
+
+            <tr data-security="Ultimate" data-keyless="yes">
+
+              <td style="font-weight: 600;">Electromagnetic Maglock</td>
+
+              <td><span class="comp-badge premium" style="color:#22c55e; background: rgba(34,197,94,0.1); border-color:rgba(34,197,94,0.2);">Ultimate</span></td>
+
+              <td>Yes</td>
+
+              <td>$$$$</td>
+
+              <td>High-Traffic Commercial Emergency Exits</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Section 8: Interactive Lock Selector -->
+
+    <section class="section-selector-quiz" id="selector-quiz" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 50px 30px; margin-bottom: 100px; text-align: center; box-shadow: var(--shadow-lg);">
+
+      <div class="sec-badge">Smart recommendation</div>
+
+      <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Lock Finder Quiz</h2>
+
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; font-size: 1rem;">Answer three quick questions to discover the ideal lock configuration for your safety goals.</p>
+
+      
+
+      <div style="max-width: 680px; margin: 0 auto; text-align: left;" id="quizForm">
+
+        <!-- Question 1 -->
+
+        <div style="margin-bottom: 24px;">
+
+          <label style="font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; display: block;">1. Where is the lock being installed?</label>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+            <label style="border: 2px solid var(--accent-primary); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: rgba(212,175,55,0.06);" class="quiz-option-label">
+
+              <input type="radio" name="quizLocation" value="res" checked style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Residential Door</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizLocation" value="comm" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Commercial Office</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizLocation" value="veh" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Automotive Gate</div>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Question 2 -->
+
+        <div style="margin-bottom: 24px;">
+
+          <label style="font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; display: block;">2. What is your primary priority?</label>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+            <label style="border: 2px solid var(--accent-primary); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: rgba(212,175,55,0.06);" class="quiz-option-label">
+
+              <input type="radio" name="quizPriority" value="convenience" checked style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Keyless Convenience</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizPriority" value="strength" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Physical Strength</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizPriority" value="remote" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Remote App Access</div>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Question 3 -->
+
+        <div style="margin-bottom: 30px;">
+
+          <label style="font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; display: block;">3. What is your budget category?</label>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+            <label style="border: 2px solid var(--accent-primary); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: rgba(212,175,55,0.06);" class="quiz-option-label">
+
+              <input type="radio" name="quizBudget" value="low" checked style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Economical ($)</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizBudget" value="medium" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Moderate ($$)</div>
+
+            </label>
+
+            <label style="border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; display: block; background: var(--bg-primary);" class="quiz-option-label">
+
+              <input type="radio" name="quizBudget" value="high" style="display: none;" />
+
+              <div style="font-weight: 700; font-size: 0.85rem;">Premium ($$$)</div>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+
+        <button type="button" id="quizSubmitBtn" class="login-btn" style="width: 100%; height: 46px; justify-content: center; border-radius: 12px;">
+
+          <span>Evaluate Recommendations</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Result Panel -->
+
+      <div id="quizResultPanel" style="display: none; max-width: 600px; margin: 40px auto 0; padding: 30px; border-radius: 16px; border: 2px solid var(--accent-primary); background: var(--bg-primary); text-align: center; animation: fadeIn 0.4s ease;">
+
+        <div style="font-size: 0.85rem; color: var(--accent-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Your Recommended Lock Solution</div>
+
+        <h3 id="quizResultTitle" style="font-size: 1.6rem; margin-bottom: 12px; color: var(--text-primary);">Smart Biometric Touchpad Lock</h3>
+
+        <p id="quizResultDesc" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Matches your preference for Keyless Convenience in a residential door environment. Offers passcode and fingerprint credentials.</p>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+
+          <a href="#contact" class="login-btn">
+
+            <span>Schedule Installation</span>
+
+          </a>
+
+          <button type="button" class="control-btn" id="quizResetBtn" style="width: auto; height: auto; padding: 10px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+
+            <span>Retake Quiz</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ==========================================================================
+
+       FOOTER SECTION (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== -->
+
+  <footer class="footer-wrapper">
+
+    <div class="footer-container">
+
+      
+
+      <!-- Footer Grid -->
+
+      <div class="footer-grid">
+
+        
+
+        <!-- Column 1: Brand & About -->
+
+        <div class="footer-col brand-col">
+
+          <a href="index.html" class="brand" style="margin-bottom: 16px;">
+
+            <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+              <defs>
+
+                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                  <stop offset="0%" stop-color="var(--accent-primary)" />
+
+                  <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+                </linearGradient>
+
+              </defs>
+
+              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
+
+              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
+
+            </svg>
+
+            <span>LOCKSMITH</span>
+
+          </a>
+
+          <p class="footer-text">
+
+            Licensed, bonded, and insured mobile emergency locksmith services. Rapid lockout assistance, security audits, and keyless automation systems. Available 24 hours.
+
+          </p>
+
+          <div class="social-links">
+
+            <a href="#facebook" class="social-icon-btn" aria-label="Facebook">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+
+            </a>
+
+            <a href="#twitter" class="social-icon-btn" aria-label="Twitter">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+
+            </a>
+
+            <a href="#instagram" class="social-icon-btn" aria-label="Instagram">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Column 2: Locksmith Services -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Locksmith Services</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="Emergency.html" class="footer-link-item">Emergency Services</a></li>
+
+            <li><a href="Residential.html" class="footer-link-item">Residential Locksmith</a></li>
+
+            <li><a href="Commercial.html" class="footer-link-item">Commercial Locksmith</a></li>
+
+            <li><a href="#security" class="footer-link-item">Security Installation</a></li>
+
+            <li><a href="#lock-guide" class="footer-link-item">Lock Types Guide</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 3: Resources & Info -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Resources & Info</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="#about" class="footer-link-item">About Our Team</a></li>
+
+            <li><a href="Pricing.html" class="footer-link-item">Pricing & Estimates</a></li>
+
+            <li><a href="#service-areas" class="footer-link-item">Service Areas Map</a></li>
+
+            <li><a href="#resources" class="footer-link-item">Security Blog & Tips</a></li>
+
+            <li><a href="#reviews" class="footer-link-item">Reviews & Testimonials</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 5: Newsletter Sign-up -->
+
+        <div class="footer-col newsletter-col">
+
+          <h3 class="footer-title">Secure News & Offers</h3>
+
+          <p class="footer-text" style="margin-bottom: 12px;">Subscribe for safety tips & special lock installation deals.</p>
+
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+
+            <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required class="newsletter-input" />
+
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+
+              <svg class="padlock-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #fff;">
+
+                <path d="M7 11V7a5 5 0 0 1 10 0v4M4 11h16v11H4z" fill="none" stroke-width="2.5" />
+
+              </svg>
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Divider line -->
+
+      <div class="footer-divider"></div>
+
+
+
+      <!-- Footer Bottom -->
+
+      <div class="footer-bottom">
+
+        <p class="copyright">&copy; 2026 LOCKSMITH. All rights reserved. Licensed Locksmith #LIC-9428-A.</p>
+
+        <div class="footer-bottom-links">
+
+          <a href="#privacy" class="footer-bottom-link">Privacy Policy</a>
+
+          <a href="#terms" class="footer-bottom-link">Terms of Service</a>
+
+          <a href="#licensing" class="footer-bottom-link">Licensing Details</a>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ==========================================================================
+
+       9. INTERACTIVE JAVASCRIPT CONTROLLERS
+
+       ========================================================================== */ -->
+
+  <script>
+
+    // 9.1 Theme Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+
+    
+
+    function initTheme() {
+
+      const savedTheme = localStorage.getItem('theme');
+
+      if (savedTheme === 'light') {
+
+        document.documentElement.classList.remove('dark');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+      }
+
+    }
+
+    
+
+    function toggleTheme() {
+
+      if (document.documentElement.classList.contains('dark')) {
+
+        document.documentElement.classList.remove('dark');
+
+        localStorage.setItem('theme', 'light');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+        localStorage.setItem('theme', 'dark');
+
+      }
+
+    }
+
+
+
+    initTheme();
+
+    darkModeBtn.addEventListener('click', toggleTheme);
+
+    drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+
+
+    // 9.2 RTL Layout Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+
+    
+
+    function toggleRtl() {
+
+      const currentDir = document.documentElement.dir || 'ltr';
+
+      if (currentDir === 'ltr') {
+
+        document.documentElement.dir = 'rtl';
+
+      } else {
+
+        document.documentElement.dir = 'ltr';
+
+      }
+
+    }
+
+
+
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+
+    drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+
+
+    // 9.3 Ambient Cursor Tracker in Navbar Container
+
+    const mainNavbar = document.getElementById('mainNavbar');
+
+    const navGlow = document.getElementById('navGlow');
+
+
+
+    if (mainNavbar && navGlow) {
+
+      mainNavbar.addEventListener('mousemove', (e) => {
+
+        const rect = mainNavbar.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        
+
+        mainNavbar.style.setProperty('--mouse-x', `${x}px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `${y}px`);
+
+      });
+
+
+
+      mainNavbar.addEventListener('mouseleave', () => {
+
+        // Reset glow offscreen when mouse leaves
+
+        mainNavbar.style.setProperty('--mouse-x', `-999px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `-999px`);
+
+      });
+
+    }
+
+
+
+    // 9.4 Mobile Drawer Controller (Drawer + Overlay + Back/Close triggers)
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+
+
+    function openMobileDrawer() {
+
+      mobileDrawer.classList.add('open');
+
+      drawerOverlay.classList.add('active');
+
+      document.body.style.overflow = 'hidden'; // Stop page scrolling
+
+    }
+
+
+
+    function closeMobileDrawer() {
+
+      mobileDrawer.classList.remove('open');
+
+      drawerOverlay.classList.remove('active');
+
+      document.body.style.overflow = ''; // Resume page scrolling
+
+    }
+
+
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+
+    drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+
+
+    // 9.5 Drawer Accordion Submenu Collapses
+
+    const accordionTriggers = document.querySelectorAll('.drawer-accordion-trigger');
+
+
+
+    accordionTriggers.forEach(trigger => {
+
+      trigger.addEventListener('click', () => {
+
+        // Toggle active submenu container height
+
+        const submenu = trigger.nextElementSibling;
+
+        const chevron = trigger.querySelector('.chevron-icon');
+
+        
+
+        if (submenu.classList.contains('open')) {
+
+          submenu.classList.remove('open');
+
+          chevron.style.transform = 'rotate(0deg)';
+
+        } else {
+
+          // Close others first for a clean accordian flow
+
+          accordionTriggers.forEach(otherTrigger => {
+
+            const otherSub = otherTrigger.nextElementSibling;
+
+            const otherChevron = otherTrigger.querySelector('.chevron-icon');
+
+            if (otherSub && otherSub.classList.contains('open') && otherSub !== submenu) {
+
+              otherSub.classList.remove('open');
+
+              otherChevron.style.transform = 'rotate(0deg)';
+
+            }
+
+          });
+
+          
+
+          submenu.classList.add('open');
+
+          chevron.style.transform = 'rotate(180deg)';
+
+        }
+
+      });
+
+    });
+
+
+
+    // 9.6 Login Button Hover Shackle micro-interactions (Dual-Bind: Desktop & Mobile Drawer)
+
+    const loginBtn = document.getElementById('loginBtn');
+
+    const drawerLoginBtn = document.getElementById('drawerLoginBtn');
+
+    const desktopShackle = document.getElementById('desktopShackle');
+
+    const drawerShackle = document.getElementById('drawerShackle');
+
+
+
+    loginBtn.addEventListener('mouseenter', () => {
+
+      desktopShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    loginBtn.addEventListener('mouseleave', () => {
+
+      desktopShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    drawerLoginBtn.addEventListener('mouseenter', () => {
+
+      drawerShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    drawerLoginBtn.addEventListener('mouseleave', () => {
+
+      drawerShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    // 9.7 Active Page Highlighter
+
+    function highlightActivePage() {
+
+      const path = window.location.pathname;
+
+      let page = path.split("/").pop();
+
+      if (!page || page === "") {
+
+        page = "index.html";
+
+      }
+
+      page = decodeURIComponent(page);
+
+
+
+      const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+
+      const dropdownItems = document.querySelectorAll('.nav-menu .dropdown-item');
+
+
+
+      const getFilename = (href) => {
+
+        if (!href) return "";
+
+        return href.replace(/^\.\//, "").split("/").pop();
+
+      };
+
+
+
+      let activeFound = false;
+
+
+
+      dropdownItems.forEach(item => {
+
+        const hrefFilename = getFilename(item.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          item.classList.add('active-link');
+
+          const parentNavItem = item.closest('.nav-item');
+
+          if (parentNavItem) {
+
+            parentNavItem.classList.add('active');
+
+          }
+
+          activeFound = true;
+
+        }
+
+      });
+
+
+
+      if (!activeFound) {
+
+        navLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            const parentNavItem = link.closest('.nav-item');
+
+            if (parentNavItem) {
+
+              parentNavItem.classList.add('active');
+
+            }
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+
+
+      const mobileLinks = document.querySelectorAll('.mobile-menu-list .mobile-menu-link');
+
+      const mobileSubLinks = document.querySelectorAll('.mobile-menu-list .mobile-submenu-link');
+
+
+
+      let mobileActiveFound = false;
+
+
+
+      mobileSubLinks.forEach(subLink => {
+
+        const hrefFilename = getFilename(subLink.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          subLink.classList.add('active-link');
+
+          const submenu = subLink.closest('.mobile-submenu');
+
+          if (submenu) {
+
+            submenu.classList.add('open');
+
+            const trigger = submenu.previousElementSibling;
+
+            if (trigger && trigger.querySelector('.chevron-icon')) {
+
+              trigger.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+
+            }
+
+          }
+
+          mobileActiveFound = true;
+
+        }
+
+      });
+
+
+
+      if (!mobileActiveFound) {
+
+        mobileLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+    }
+
+
+
+    highlightActivePage();
+
+
+
+    // 9.7 Deadbolt Locks Hotspot Anatomy Controller
+
+    const deadboltHotspots = {
+
+      'hs-plug': {
+
+        title: '1. Keyway Cylinder Plug',
+
+        desc: 'The core of the deadbolt. The plug rotates when the correct key is inserted, retracting the bolt mechanism. Antigravity deadbolts feature spool or mushroom pins to resist lock-picking.'
+
+      },
+
+      'hs-pins': {
+
+        title: '2. Pin Tumbler Stack',
+
+        desc: 'A series of split brass pin stacks (driver and key pins) pushed down by springs. Only the matching cuts of a physical key align the pins exactly with the shear line, releasing the rotation block.'
+
+      },
+
+      'hs-bolt': {
+
+        title: '3. Solid Steel Bolt',
+
+        desc: 'The heavy-duty bolt that extends into the door frame. Many deadbolts include hardened steel inserts inside the bolt to spin freely, preventing saw-cut attacks.'
+
+      },
+
+      'hs-strike': {
+
+        title: '4. Heavy-Duty Strike Plate',
+
+        desc: 'The metal plate fastened to the door jamb with 3-inch steel screws. This anchors the deadbolt deep into the wood framing, resisting battering and kick-in attempts.'
+
+      }
+
+    };
+
+    Object.keys(deadboltHotspots).forEach(id => {
+
+      const el = document.getElementById(id);
+
+      if (el) {
+
+        el.addEventListener('click', () => {
+
+          Object.keys(deadboltHotspots).forEach(hid => {
+
+            const element = document.getElementById(hid);
+
+            if (element) element.classList.remove('active');
+
+          });
+
+          el.classList.add('active');
+
+          document.getElementById('db-component-title').innerText = deadboltHotspots[id].title;
+
+          document.getElementById('db-component-desc').innerText = deadboltHotspots[id].desc;
+
+        });
+
+      }
+
+    });
+
+
+
+    // 9.8 Smart Locks Keypad Passcode & Biometric Simulator
+
+    const touchpadDisplay = document.getElementById('touchpadDisplay');
+
+    const numBtns = document.querySelectorAll('.num-btn');
+
+    let enteredPin = '';
+
+
+
+    numBtns.forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        if (enteredPin.length < 6) {
+
+          enteredPin += btn.innerText;
+
+          touchpadDisplay.innerText = '* '.repeat(enteredPin.length).trim();
+
+          touchpadDisplay.style.color = '#38bdf8';
+
+        }
+
+      });
+
+    });
+
+
+
+    const touchpadClearBtn = document.getElementById('touchpadClearBtn');
+
+    if (touchpadClearBtn) {
+
+      touchpadClearBtn.addEventListener('click', () => {
+
+        enteredPin = '';
+
+        touchpadDisplay.innerText = 'ENTER PIN';
+
+        touchpadDisplay.style.color = '#38bdf8';
+
+      });
+
+    }
+
+
+
+    const touchpadEnterBtn = document.getElementById('touchpadEnterBtn');
+
+    if (touchpadEnterBtn) {
+
+      touchpadEnterBtn.addEventListener('click', () => {
+
+        if (enteredPin === '2026') {
+
+          touchpadDisplay.innerText = 'UNLOCKED';
+
+          touchpadDisplay.style.color = '#22c55e';
+
+          setTimeout(() => {
+
+            enteredPin = '';
+
+            touchpadDisplay.innerText = 'ENTER PIN';
+
+            touchpadDisplay.style.color = '#38bdf8';
+
+          }, 2000);
+
+        } else {
+
+          touchpadDisplay.innerText = 'ACCESS DENIED';
+
+          touchpadDisplay.style.color = '#ef4444';
+
+          setTimeout(() => {
+
+            enteredPin = '';
+
+            touchpadDisplay.innerText = 'ENTER PIN';
+
+            touchpadDisplay.style.color = '#38bdf8';
+
+          }, 1500);
+
+        }
+
+      });
+
+    }
+
+
+
+    const fingerprintBtn = document.getElementById('fingerprintBtn');
+
+    if (fingerprintBtn) {
+
+      fingerprintBtn.addEventListener('click', () => {
+
+        fingerprintBtn.classList.add('scanning');
+
+        touchpadDisplay.innerText = 'SCANNING...';
+
+        touchpadDisplay.style.color = '#e2e8f0';
+
+        
+
+        setTimeout(() => {
+
+          fingerprintBtn.classList.remove('scanning');
+
+          touchpadDisplay.innerText = 'ACCESS GRANTED';
+
+          touchpadDisplay.style.color = '#22c55e';
+
+          
+
+          setTimeout(() => {
+
+            touchpadDisplay.innerText = 'ENTER PIN';
+
+            touchpadDisplay.style.color = '#38bdf8';
+
+          }, 2000);
+
+        }, 1200);
+
+      });
+
+    }
+
+
+
+    // 9.9 Keyless Entry Fob Signal Pulse Wave Emitter
+
+    const fobLockBtn = document.getElementById('fobLockBtn');
+
+    const fobUnlockBtn = document.getElementById('fobUnlockBtn');
+
+    const fobPanicBtn = document.getElementById('fobPanicBtn');
+
+    const fobSignalRing = document.getElementById('fobSignalRing');
+
+    const fobLed = document.getElementById('fobLed');
+
+    const fobStatusText = document.getElementById('fobStatusText');
+
+
+
+    function triggerFobPulse(color, text) {
+
+      if (fobSignalRing) {
+
+        fobSignalRing.classList.remove('active');
+
+        void fobSignalRing.offsetWidth; 
+
+        fobSignalRing.classList.add('active');
+
+      }
+
+      if (fobLed) {
+
+        fobLed.style.background = color;
+
+        fobLed.style.boxShadow = `0 0 10px ${color}`;
+
+      }
+
+      if (fobStatusText) {
+
+        fobStatusText.innerText = text;
+
+      }
+
+      
+
+      setTimeout(() => {
+
+        if (fobLed) {
+
+          fobLed.style.background = '#64748b';
+
+          fobLed.style.boxShadow = 'none';
+
+        }
+
+      }, 800);
+
+    }
+
+
+
+    if (fobLockBtn) {
+
+      fobLockBtn.addEventListener('click', () => {
+
+        triggerFobPulse('#f59e0b', 'FOB STATUS: LOCKED (ROLLING CODE SENT)');
+
+      });
+
+    }
+
+    if (fobUnlockBtn) {
+
+      fobUnlockBtn.addEventListener('click', () => {
+
+        triggerFobPulse('#22c55e', 'FOB STATUS: UNLOCKED');
+
+      });
+
+    }
+
+    if (fobPanicBtn) {
+
+      fobPanicBtn.addEventListener('click', () => {
+
+        triggerFobPulse('#ef4444', 'FOB STATUS: PANIC ALARM ACTIVE!');
+
+      });
+
+    }
+
+
+
+    // 9.10 High Security Pins Cylinder Slider alignment physics
+
+    const keySlider = document.getElementById('keySlider');
+
+    const keyGraphic = document.getElementById('keyGraphic');
+
+    const cylinderPlugOutline = document.getElementById('cylinderPlugOutline');
+
+    const shearLineGuide = document.getElementById('shearLineGuide');
+
+    const shearLineStatus = document.getElementById('shearLineStatus');
+
+
+
+    const pins = [
+
+      { driver: document.getElementById('driver1'), key: document.getElementById('keyPin1'), factor: 0.5 },
+
+      { driver: document.getElementById('driver2'), key: document.getElementById('keyPin2'), factor: -0.3 },
+
+      { driver: document.getElementById('driver3'), key: document.getElementById('keyPin3'), factor: 0.4 },
+
+      { driver: document.getElementById('driver4'), key: document.getElementById('keyPin4'), factor: -0.6 }
+
+    ];
+
+
+
+    if (keySlider) {
+
+      keySlider.addEventListener('input', () => {
+
+        const val = parseInt(keySlider.value, 10);
+
+        
+
+        if (keyGraphic) {
+
+          keyGraphic.style.transform = `translateX(${val * 1.3}px)`;
+
+        }
+
+        
+
+        pins.forEach(p => {
+
+          if (p.driver && p.key) {
+
+            const offset = (68 - val) * p.factor;
+
+            p.driver.style.transform = `translateY(${offset}px)`;
+
+            p.key.style.transform = `translateY(${offset}px)`;
+
+          }
+
+        });
+
+        
+
+        if (val === 68) {
+
+          if (shearLineStatus) {
+
+            shearLineStatus.innerText = 'Cylinder Status: SHEAR LINE ALIGNED - UNLOCKED!';
+
+            shearLineStatus.style.fill = '#22c55e';
+
+          }
+
+          if (shearLineGuide) shearLineGuide.setAttribute('stroke', '#22c55e');
+
+          if (cylinderPlugOutline) cylinderPlugOutline.style.transform = 'rotate(12deg)';
+
+        } else {
+
+          if (shearLineStatus) {
+
+            shearLineStatus.innerText = 'Cylinder Status: LOCKED';
+
+            shearLineStatus.style.fill = 'var(--text-muted)';
+
+          }
+
+          if (shearLineGuide) shearLineGuide.setAttribute('stroke', '#ef4444');
+
+          if (cylinderPlugOutline) cylinderPlugOutline.style.transform = 'rotate(0deg)';
+
+        }
+
+      });
+
+    }
+
+
+
+    // 9.11 Electronic Shift Scheduler Control Panel
+
+    const shiftMorning = document.getElementById('shiftMorning');
+
+    const shiftNight = document.getElementById('shiftNight');
+
+    const shiftRestricted = document.getElementById('shiftRestricted');
+
+    const systemStatusBadge = document.getElementById('systemStatusBadge');
+
+    const allowedAccessHours = document.getElementById('allowedAccessHours');
+
+    const verificationList = document.getElementById('verificationList');
+
+
+
+    const shiftButtons = [shiftMorning, shiftNight, shiftRestricted];
+
+
+
+    function activateShift(activeBtn) {
+
+      shiftButtons.forEach(btn => {
+
+        if (btn) btn.classList.remove('active');
+
+      });
+
+      if (activeBtn) activeBtn.classList.add('active');
+
+    }
+
+
+
+    if (shiftMorning) {
+
+      shiftMorning.addEventListener('click', () => {
+
+        activateShift(shiftMorning);
+
+        if (systemStatusBadge) {
+
+          systemStatusBadge.innerText = 'MORNING OPERATIONAL';
+
+          systemStatusBadge.style.color = '#10b981';
+
+        }
+
+        if (allowedAccessHours) allowedAccessHours.innerText = '09:00 - 17:00';
+
+        if (verificationList) {
+
+          verificationList.innerHTML = `
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Alice Chen</strong> (IT Staff - Cards scan at 10:15 AM)</div>
+
+              <span class="comp-badge high" style="padding: 2px 8px; font-size: 0.7rem;">GRANTED</span>
+
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Bob Miller</strong> (Facilities - Cards scan at 08:30 PM)</div>
+
+              <span class="comp-badge med" style="padding: 2px 8px; font-size: 0.7rem; background: rgba(239, 68, 68, 0.1); color: #ef4444;">DENIED</span>
+
+            </div>
+
+          `;
+
+        }
+
+      });
+
+    }
+
+
+
+    if (shiftNight) {
+
+      shiftNight.addEventListener('click', () => {
+
+        activateShift(shiftNight);
+
+        if (systemStatusBadge) {
+
+          systemStatusBadge.innerText = 'NIGHT SHIFT ACTIVE';
+
+          systemStatusBadge.style.color = '#f59e0b';
+
+        }
+
+        if (allowedAccessHours) allowedAccessHours.innerText = '17:00 - 01:00';
+
+        if (verificationList) {
+
+          verificationList.innerHTML = `
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Alice Chen</strong> (IT Staff - Cards scan at 10:15 AM)</div>
+
+              <span class="comp-badge med" style="padding: 2px 8px; font-size: 0.7rem; background: rgba(239, 68, 68, 0.1); color: #ef4444;">DENIED</span>
+
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Bob Miller</strong> (Facilities - Cards scan at 08:30 PM)</div>
+
+              <span class="comp-badge high" style="padding: 2px 8px; font-size: 0.7rem;">GRANTED</span>
+
+            </div>
+
+          `;
+
+        }
+
+      });
+
+    }
+
+
+
+    if (shiftRestricted) {
+
+      shiftRestricted.addEventListener('click', () => {
+
+        activateShift(shiftRestricted);
+
+        if (systemStatusBadge) {
+
+          systemStatusBadge.innerText = 'SYSTEM LOCKDOWN';
+
+          systemStatusBadge.style.color = '#ef4444';
+
+        }
+
+        if (allowedAccessHours) allowedAccessHours.innerText = '00:00 - 00:00';
+
+        if (verificationList) {
+
+          verificationList.innerHTML = `
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Alice Chen</strong> (IT Staff - Cards scan at 10:15 AM)</div>
+
+              <span class="comp-badge med" style="padding: 2px 8px; font-size: 0.7rem; background: rgba(239, 68, 68, 0.1); color: #ef4444;">DENIED</span>
+
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-tertiary); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+
+              <div style="font-size: 0.8rem;"><strong>Bob Miller</strong> (Facilities - Cards scan at 08:30 PM)</div>
+
+              <span class="comp-badge med" style="padding: 2px 8px; font-size: 0.7rem; background: rgba(239, 68, 68, 0.1); color: #ef4444;">DENIED</span>
+
+            </div>
+
+          `;
+
+        }
+
+      });
+
+    }
+
+
+
+    // 9.12 Lock Comparison Guide Sorting and Search Filters
+
+    const compSearch = document.getElementById('compSearch');
+
+    const compSecurityFilter = document.getElementById('compSecurityFilter');
+
+    const compKeylessFilter = document.getElementById('compKeylessFilter');
+
+    const comparisonTableRows = document.querySelectorAll('#comparisonTable tbody tr');
+
+
+
+    function filterComparisonTable() {
+
+      const searchVal = compSearch ? compSearch.value.toLowerCase() : '';
+
+      const securityVal = compSecurityFilter ? compSecurityFilter.value : 'all';
+
+      const keylessVal = compKeylessFilter ? compKeylessFilter.value : 'all';
+
+
+
+      comparisonTableRows.forEach(row => {
+
+        const text = row.innerText.toLowerCase();
+
+        const security = row.getAttribute('data-security');
+
+        const keyless = row.getAttribute('data-keyless');
+
+
+
+        const matchesSearch = text.includes(searchVal);
+
+        const matchesSecurity = (securityVal === 'all' || security === securityVal);
+
+        const matchesKeyless = (keylessVal === 'all' || keyless === keylessVal);
+
+
+
+        if (matchesSearch && matchesSecurity && matchesKeyless) {
+
+          row.style.display = '';
+
+        } else {
+
+          row.style.display = 'none';
+
+        }
+
+      });
+
+    }
+
+
+
+    if (compSearch) compSearch.addEventListener('input', filterComparisonTable);
+
+    if (compSecurityFilter) compSecurityFilter.addEventListener('change', filterComparisonTable);
+
+    if (compKeylessFilter) compKeylessFilter.addEventListener('change', filterComparisonTable);
+
+
+
+    // 9.13 Quick Lock Selector Quiz Recommender Engine
+
+    const quizForm = document.getElementById('quizForm');
+
+    const quizSubmitBtn = document.getElementById('quizSubmitBtn');
+
+    const quizResultPanel = document.getElementById('quizResultPanel');
+
+    const quizResultTitle = document.getElementById('quizResultTitle');
+
+    const quizResultDesc = document.getElementById('quizResultDesc');
+
+    const quizResetBtn = document.getElementById('quizResetBtn');
+
+    const optionLabels = document.querySelectorAll('.quiz-option-label');
+
+
+
+    optionLabels.forEach(label => {
+
+      label.addEventListener('click', () => {
+
+        const radio = label.querySelector('input[type="radio"]');
+
+        if (radio) {
+
+          radio.checked = true;
+
+          const groupName = radio.name;
+
+          document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+
+            const lbl = r.closest('.quiz-option-label');
+
+            if (lbl) {
+
+              lbl.style.border = '1px solid var(--border-color)';
+
+              lbl.style.background = 'var(--bg-primary)';
+
+            }
+
+          });
+
+          label.style.border = '2px solid var(--accent-primary)';
+
+          label.style.background = 'rgba(212,175,55,0.06)';
+
+        }
+
+      });
+
+    });
+
+
+
+    if (quizSubmitBtn) {
+
+      quizSubmitBtn.addEventListener('click', () => {
+
+        const locationEl = document.querySelector('input[name="quizLocation"]:checked');
+
+        const priorityEl = document.querySelector('input[name="quizPriority"]:checked');
+
+        const budgetEl = document.querySelector('input[name="quizBudget"]:checked');
+
+        
+
+        const location = locationEl ? locationEl.value : 'res';
+
+        const priority = priorityEl ? priorityEl.value : 'convenience';
+
+        const budget = budgetEl ? budgetEl.value : 'low';
+
+
+
+        let title = '';
+
+        let desc = '';
+
+
+
+        if (location === 'veh') {
+
+          title = 'Wireless Keyless Fob System';
+
+          desc = 'Perfect choice for vehicles or perimeter gates. Integrates rolling codes to secure automotive interfaces against wireless sniffing and cloning attempts.';
+
+        } else if (priority === 'convenience' && (budget === 'high' || budget === 'medium')) {
+
+          title = 'Smart Biometric Touchpad Lock';
+
+          desc = 'Matches your preference for Keyless Convenience. Enables multiple PIN passcodes, temporary guest combinations, and high-precision fingerprint scanning for modern properties.';
+
+        } else if (priority === 'strength' || budget === 'low') {
+
+          title = 'Heavy-Duty Double Cylinder Deadbolt';
+
+          desc = 'Recommended for maximum physical defense and high-strength locking. Its solid steel core resists sawing, kick-ins, and bypass techniques at an economical price.';
+
+        } else {
+
+          title = 'Electromagnetic Smart Access System';
+
+          desc = 'An ideal commercial setup. Combines a maglock with scheduling and remote RFID card authentication for maximum flexibility and access logging.';
+
+        }
+
+
+
+        if (quizResultTitle) quizResultTitle.innerText = title;
+
+        if (quizResultDesc) quizResultDesc.innerText = desc;
+
+
+
+        if (quizForm) quizForm.style.display = 'none';
+
+        if (quizResultPanel) quizResultPanel.style.display = 'block';
+
+      });
+
+    }
+
+
+
+    if (quizResetBtn) {
+
+      quizResetBtn.addEventListener('click', () => {
+
+        if (quizResultPanel) quizResultPanel.style.display = 'none';
+
+        if (quizForm) quizForm.style.display = 'block';
+
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+

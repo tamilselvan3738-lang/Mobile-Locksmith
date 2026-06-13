@@ -1,0 +1,6070 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium Mobile Locksmith Navigation Showcase</title>
+
+  <!-- SEO Meta Tags -->
+
+  <meta name="description" content="Stunning showcase of a highly interactive, responsive, dark-mode and RTL-capable navigation system for Mobile Locksmith services.">
+
+  <meta name="author" content="Antigravity">
+
+  
+
+  <!-- Premium Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+  <style>
+
+    /* ==========================================================================
+
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+
+       ========================================================================== */
+
+    :root {
+
+      /* Typography */
+
+      --font-heading: 'Outfit', sans-serif;
+
+      --font-body: 'Inter', sans-serif;
+
+
+
+      /* Colors - Light Mode Defaults */
+
+      --bg-primary: #f8fafc;
+
+      --bg-secondary: #ffffff;
+
+      --bg-tertiary: #f1f5f9;
+
+      --text-primary: #0f172a;
+
+      --text-secondary: #475569;
+
+      --text-muted: #94a3b8;
+
+      
+
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+
+      --accent-glow: rgba(212, 175, 55, 0.15);
+
+      
+
+      --danger-primary: #ef4444;      /* Emergency Red */
+
+      --danger-glow: rgba(239, 68, 68, 0.4);
+
+      
+
+      --border-color: rgba(15, 23, 42, 0.08);
+
+      --nav-bg: rgba(255, 255, 255, 0.7);
+
+      --nav-border: rgba(255, 255, 255, 0.5);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+
+      
+
+      /* Grid Ambient Animation Colors */
+
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+
+
+      /* Layout */
+
+      --nav-height: 74px;
+
+      --border-radius: 20px;
+
+      --transition-speed: 0.3s;
+
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    /* Dark Mode Overrides */
+
+    html.dark {
+
+      --bg-primary: #0b0f19;
+
+      --bg-secondary: #111827;
+
+      --bg-tertiary: #1f2937;
+
+      --text-primary: #f8fafc;
+
+      --text-secondary: #94a3b8;
+
+      --text-muted: #64748b;
+
+      
+
+      --accent-primary: #ffd700;      /* Bright Gold */
+
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+
+      --accent-glow: rgba(255, 215, 0, 0.25);
+
+      
+
+      --danger-primary: #ff4757;
+
+      --danger-glow: rgba(255, 71, 87, 0.6);
+
+      
+
+      --border-color: rgba(255, 255, 255, 0.08);
+
+      --nav-bg: rgba(11, 15, 25, 0.65);
+
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+
+      
+
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       2. RESET & BASE STYLES (Supports RTL Smooth Transitions)
+
+       ========================================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+
+                  border-color var(--transition-speed) var(--transition-timing), 
+
+                  color var(--transition-speed) var(--transition-timing);
+
+    }
+
+
+
+    body {
+
+      font-family: var(--font-body);
+
+      background-color: var(--bg-primary);
+
+      color: var(--text-primary);
+
+      min-height: 140vh; /* Allow scrolling to show floating header effect */
+
+      overflow-x: hidden;
+
+      position: relative;
+
+    }
+
+
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+
+
+    a {
+
+      text-decoration: none;
+
+      color: inherit;
+
+    }
+
+
+
+    ul {
+
+      list-style: none;
+
+    }
+
+
+
+    button {
+
+      background: none;
+
+      border: none;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* RTL Transition Support */
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    
+
+    [dir="rtl"] {
+
+      text-align: right;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       3. AMBIENT BACKGROUND SYSTEM (Showcases Glassmorphism)
+
+       ========================================================================== */
+
+    .bg-grid {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      background-size: 40px 40px;
+
+      background-image: 
+
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+
+    }
+
+
+
+    .bg-mesh-1, .bg-mesh-2 {
+
+      position: fixed;
+
+      width: 600px;
+
+      height: 600px;
+
+      border-radius: 50%;
+
+      filter: blur(140px);
+
+      z-index: -2;
+
+      opacity: 0.8;
+
+      pointer-events: none;
+
+      animation: float 20s infinite alternate ease-in-out;
+
+    }
+
+
+
+    .bg-mesh-1 {
+
+      top: -10%;
+
+      left: -10%;
+
+      background: var(--mesh-color-1);
+
+    }
+
+
+
+    .bg-mesh-2 {
+
+      bottom: 10%;
+
+      right: -10%;
+
+      background: var(--mesh-color-2);
+
+      animation-delay: -5s;
+
+    }
+
+
+
+    @keyframes float {
+
+      0% { transform: translate(0, 0) scale(1); }
+
+      100% { transform: translate(100px, 50px) scale(1.2); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       4. SINGLE-DECK GLOWING NAVIGATION HEADER (Logo Left, Menu Center, Controls Right)
+
+       ========================================================================== */
+
+    .navbar-wrapper {
+
+      position: fixed;
+
+      top: 20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 96%;
+
+      max-width: 1640px;
+
+      z-index: 1000;
+
+      animation: slideDown 0.8s var(--transition-timing);
+
+    }
+
+
+
+    .navbar-container {
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-md);
+
+      height: var(--nav-height);
+
+      border-radius: var(--border-radius);
+
+      padding: 0 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: relative;
+
+      overflow: visible; /* Vital for dropdown panels */
+
+    }
+
+
+
+    /* Ambient Cursor Tracker Overlay inside navbar container */
+
+    .navbar-glow-overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      border-radius: var(--border-radius);
+
+      pointer-events: none;
+
+      background: radial-gradient(
+
+        120px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+
+        rgba(0, 242, 254, 0.08),
+
+        transparent 80%
+
+      );
+
+      z-index: 1;
+
+    }
+
+
+
+    /* RTL horizontal adjustments */
+
+    [dir="rtl"] .navbar-wrapper {
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    /* 4.1 CREATIVE UNIQUE BRAND LOGO (Hexagon Cyber-Key Logo - Left Aligned) */
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-family: var(--font-heading);
+
+      font-size: 1.45rem;
+
+      font-weight: 800;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      z-index: 10;
+
+      position: relative;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Logo based on Lock */
+
+    .brand-logo-svg {
+
+      width: 38px;
+
+      height: 38px;
+
+      fill: none;
+
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+
+      animation: pulseLogo 3s infinite ease-in-out;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    .brand:hover .brand-logo-svg {
+
+      transform: scale(1.1) rotate(5deg);
+
+    }
+
+
+
+    @keyframes pulseLogo {
+
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+
+    }
+
+
+
+    /* 4.2 NAVIGATION LINKS (Centered Group - Hidden in Mobile/Tablet Views) */
+
+    .nav-menu {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 2px;
+
+      flex-grow: 1;
+
+      height: 100%;
+
+      z-index: 2;
+
+      padding: 0 16px;
+
+    }
+
+
+
+    .nav-item {
+
+      position: relative;
+
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+
+
+    .nav-link {
+
+      font-family: var(--font-body);
+
+      font-size: 0.78rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      padding: 6px 8px;
+
+      border-radius: 8px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 3px;
+
+      white-space: nowrap;
+
+      transition: color 0.25s ease, background-color 0.25s ease;
+
+    }
+
+
+
+    .nav-link:hover, .nav-item.active .nav-link {
+
+      color: var(--text-primary);
+
+      background-color: rgba(255, 255, 255, 0.05);
+
+    }
+
+
+
+    html.dark .nav-link:hover, html.dark .nav-item.active .nav-link {
+
+      background-color: rgba(255, 255, 255, 0.03);
+
+    }
+
+
+
+    /* Down Chevron indicator */
+
+    .chevron-icon {
+
+      width: 11px;
+
+      height: 11px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    .nav-item:hover .chevron-icon {
+
+      transform: rotate(180deg);
+
+    }
+
+
+
+    /* 4.3 SUBMENU PANEL SYSTEM (Dropdowns restricted to Home & Dashboard ONLY) */
+
+    .dropdown-panel {
+
+      position: absolute;
+
+      top: calc(var(--nav-height) - 10px);
+
+      left: 50%;
+
+      transform: translateX(-50%) rotateX(-12deg) translateY(12px);
+
+      width: max-content;
+
+      max-width: 340px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 16px;
+
+      padding: 12px;
+
+      box-shadow: var(--shadow-lg);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: 100;
+
+      transform-origin: top center;
+
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+
+                  transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .nav-item:hover .dropdown-panel {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+      transform: translateX(-50%) rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Alignments for end-aligned components (Dashboard dropdown alignment) */
+
+    .dropdown-right {
+
+      left: auto;
+
+      right: 0;
+
+      transform: rotateX(-12deg) translateY(12px);
+
+    }
+
+    
+
+    [dir="rtl"] .dropdown-right {
+
+      right: auto;
+
+      left: 0;
+
+    }
+
+
+
+    .nav-item:hover .dropdown-right {
+
+      transform: rotateX(0deg) translateY(0);
+
+    }
+
+
+
+    /* Dropdown Item Styling */
+
+    .dropdown-item {
+
+      border-radius: 10px;
+
+      padding: 10px 12px;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+    }
+
+
+
+    .dropdown-item:hover {
+
+      background-color: var(--bg-tertiary);
+
+      transform: translateY(-2px);
+
+    }
+
+
+
+    .dropdown-item-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: var(--accent-primary);
+
+      stroke-width: 2;
+
+      fill: none;
+
+      flex-shrink: 0;
+
+      margin-top: 2px;
+
+    }
+
+
+
+    .dropdown-item-content {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    .dropdown-item-title {
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      margin-bottom: 2px;
+
+    }
+
+
+
+    .dropdown-item-desc {
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.3;
+
+    }
+
+
+
+    /* Pulsing Emergency Indicator badge */
+
+    .emergency-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--danger-primary);
+
+      border-radius: 50%;
+
+      margin-inline-start: 6px;
+
+      box-shadow: 0 0 0 0 var(--danger-glow);
+
+      animation: pulseEmergency 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+
+    }
+
+
+
+    @keyframes pulseEmergency {
+
+      0% { box-shadow: 0 0 0 0 var(--danger-glow); }
+
+      70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); }
+
+      100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       5. CONTROLS (Toggles & Action Buttons - Right Aligned)
+
+       ========================================================================== */
+
+    .nav-controls {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      z-index: 10;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    /* Circular Utility Toggle Button Styles */
+
+    .control-btn {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .control-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 12px var(--accent-glow);
+
+    }
+
+
+
+    .control-btn-icon {
+
+      width: 18px;
+
+      height: 18px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.2;
+
+      fill: none;
+
+      transition: transform 0.4s var(--transition-timing);
+
+    }
+
+
+
+    /* Sun/Moon Morphing Specifics */
+
+    .sun-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .moon-icon {
+
+      display: none;
+
+    }
+
+    
+
+    html.dark .sun-icon {
+
+      display: block;
+
+      animation: rotateSun 10s infinite linear;
+
+    }
+
+
+
+    @keyframes rotateSun {
+
+      0% { transform: rotate(0deg); }
+
+      100% { transform: rotate(360deg); }
+
+    }
+
+
+
+    /* RTL Switch Animation */
+
+    .rtl-icon {
+
+      transition: transform 0.4s ease;
+
+    }
+
+
+
+    [dir="rtl"] .rtl-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    /* 5.1 LOGIN BUTTON WITH MICRO-ANIMATION & GRADIENT GLOW */
+
+    .login-btn {
+
+      padding: 10px 18px;
+
+      border-radius: 12px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: #ffffff;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      transition: all 0.25s var(--transition-timing);
+
+    }
+
+
+
+    .login-btn::before {
+
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+
+      left: -50%;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255, 255, 255, 0.25),
+
+        transparent
+
+      );
+
+      transform: skewX(-25deg);
+
+      transition: 0.75s ease;
+
+    }
+
+
+
+    .login-btn:hover::before {
+
+      left: 125%;
+
+    }
+
+
+
+    .login-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 6px 20px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    /* SVG Lock Animation details */
+
+    .padlock-svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      fill: none;
+
+      stroke: #ffffff;
+
+      stroke-width: 2.5;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+
+    }
+
+
+
+    .padlock-shackle {
+
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      transform-origin: 12px 6px;
+
+    }
+
+
+
+    .login-btn:hover .padlock-shackle {
+
+      transform: translateY(-2px) rotate(45deg);
+
+    }
+
+
+
+    /* ==========================================================================
+
+       6. MOBILE RESPONSIVE HAMBURGER & INTERACTIVE DRAWER
+
+       ========================================================================== */
+
+    .mobile-nav-toggle {
+
+      display: none;
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border-color);
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+    }
+
+
+
+    .hamburger-icon {
+
+      width: 20px;
+
+      height: 20px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.3s ease;
+
+    }
+
+
+
+    /* Mobile Menu Drawer Panel */
+
+    .mobile-drawer {
+
+      position: fixed;
+
+      top: 0;
+
+      right: -100%;
+
+      width: 330px;
+
+      max-width: 100%;
+
+      height: 100vh;
+
+      background-color: var(--bg-secondary);
+
+      border-left: 1px solid var(--border-color);
+
+      box-shadow: var(--shadow-lg);
+
+      z-index: 1100;
+
+      padding: 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      overflow-y: auto;
+
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer {
+
+      right: auto;
+
+      left: -100%;
+
+      border-left: none;
+
+      border-right: 1px solid var(--border-color);
+
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+
+
+
+    .mobile-drawer.open {
+
+      right: 0;
+
+    }
+
+
+
+    [dir="rtl"] .mobile-drawer.open {
+
+      left: 0;
+
+      right: auto;
+
+    }
+
+
+
+    .mobile-drawer-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border-color);
+
+      padding-bottom: 15px;
+
+      margin-bottom: 10px;
+
+      position: relative;
+
+    }
+
+
+
+    /* PRO STYLES Back Button in mobile drawer (Top Right) */
+
+    .back-btn {
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      padding: 6px 12px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-tertiary);
+
+      color: var(--text-primary);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    
+
+
+
+    .back-btn:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 2px 8px var(--accent-glow);
+
+      transform: translateX(-2px);
+
+    }
+
+
+
+    [dir="rtl"] .back-btn:hover {
+
+      transform: translateX(2px);
+
+    }
+
+
+
+    .back-icon {
+
+      width: 14px;
+
+      height: 14px;
+
+      stroke: currentColor;
+
+      stroke-width: 2.5;
+
+      fill: none;
+
+      transition: transform 0.25s ease;
+
+    }
+
+
+
+    [dir="rtl"] .back-icon {
+
+      transform: scaleX(-1);
+
+    }
+
+
+
+    .mobile-menu-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      flex-grow: 1;
+
+      overflow-y: auto;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    /* Scrollbar styles for list inside drawer */
+
+    .mobile-menu-list::-webkit-scrollbar {
+
+      width: 4px;
+
+    }
+
+    .mobile-menu-list::-webkit-scrollbar-thumb {
+
+      background: var(--border-color);
+
+      border-radius: 4px;
+
+    }
+
+
+
+    .mobile-menu-item {
+
+      width: 100%;
+
+    }
+
+
+
+    .mobile-menu-link {
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 8px 0;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    }
+
+
+
+    .mobile-submenu {
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding-inline-start: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      transition: max-height 0.3s ease-out;
+
+    }
+
+
+
+    .mobile-submenu.open {
+
+      max-height: 500px;
+
+      margin-top: 6px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .mobile-submenu-link {
+
+      font-size: 0.84rem;
+
+      color: var(--text-secondary);
+
+      padding: 6px 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+
+    /* Bottom drawer container for remaining content (RTL, Dark Mode, Login) */
+
+    .drawer-footer {
+
+      border-top: 1px solid var(--border-color);
+
+      padding-top: 16px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .drawer-controls-row {
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+
+
+    .drawer-controls-row .control-btn {
+
+      flex: 1;
+
+      border-radius: 12px;
+
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      font-size: 0.82rem;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .drawer-footer .login-btn {
+
+      width: 100%;
+
+      height: 46px;
+
+      justify-content: center;
+
+      border-radius: 12px;
+
+    }
+
+
+
+    .drawer-overlay {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background-color: rgba(15, 23, 42, 0.5);
+
+      backdrop-filter: blur(4px);
+
+      z-index: 1050;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+
+
+    .drawer-overlay.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+
+    /* ==========================================================================
+
+       7. HERO & COMPANION SHOWCASE CONTENT (Provides Visual Depth)
+
+       ========================================================================== */
+
+    .hero {
+
+      margin-top: 170px;
+
+      padding: 40px 24px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      max-width: 950px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      z-index: 10;
+
+      position: relative;
+
+    }
+
+
+
+    .hero-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 6px 14px;
+
+      border-radius: 30px;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      color: var(--text-secondary);
+
+      box-shadow: var(--shadow-sm);
+
+      margin-bottom: 24px;
+
+    }
+
+
+
+    .hero-badge-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      background-color: var(--accent-secondary);
+
+      border-radius: 50%;
+
+    }
+
+
+
+    .hero-title {
+
+      font-family: var(--font-heading);
+
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+
+      font-weight: 600;
+
+      line-height: 1.15;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .hero-gradient {
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+
+    .hero-desc {
+
+      font-size: clamp(1rem, 2vw, 1.18rem);
+
+      color: var(--text-secondary);
+
+      max-width: 680px;
+
+      line-height: 1.6;
+
+      margin-bottom: 36px;
+
+    }
+
+
+
+    /* Creative Locks interactive Grid component */
+
+    .dashboard-preview {
+
+      width: 100%;
+
+      background-color: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 20px;
+
+      box-shadow: var(--shadow-lg);
+
+      padding: 30px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+
+      margin-top: 20px;
+
+      text-align: start;
+
+    }
+
+
+
+    .preview-card {
+
+      border: 1px solid var(--border-color);
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      background-color: var(--bg-primary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .preview-card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+
+    }
+
+
+
+    .card-icon-wrapper {
+
+      width: 44px;
+
+      height: 44px;
+
+      border-radius: 10px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      margin-bottom: 16px;
+
+    }
+
+
+
+    .card-title {
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      margin-bottom: 6px;
+
+    }
+
+
+
+    .card-desc {
+
+      font-size: 0.82rem;
+
+      color: var(--text-muted);
+
+      line-height: 1.4;
+
+    }
+
+
+
+    /* Keyframe Animations */
+
+    @keyframes slideDown {
+
+      from { transform: translate(-50%, -40px); opacity: 0; }
+
+      to { transform: translate(-50%, 0); opacity: 1; }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       8. RESPONSIVE BREAKPOINTS (Desktop First Design)
+
+       ========================================================================== */
+
+    @media (max-width: 1550px) {
+
+      /* Drop font size down to ensure it stays snug in center */
+
+      .nav-link {
+
+        font-size: 0.7rem;
+
+        padding: 5px 6px;
+
+      }
+
+      .brand {
+
+        font-size: 1.3rem;
+
+        gap: 8px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 32px;
+
+        height: 32px;
+
+      }
+
+    }
+
+
+
+    /* Nest Hub Max and smaller laptop scaling (1200px to 1366px) */
+
+    @media (max-width: 1366px) and (min-width: 1201px) {
+
+      .nav-link {
+
+        font-size: 0.65rem;
+
+        padding: 4px 4px;
+
+        gap: 2px;
+
+      }
+
+      .brand {
+
+        font-size: 1.15rem;
+
+        gap: 6px;
+
+      }
+
+      .brand-logo-svg {
+
+        width: 28px;
+
+        height: 28px;
+
+      }
+
+      .nav-controls {
+
+        gap: 6px;
+
+      }
+
+      .login-btn {
+
+        padding: 8px 12px;
+
+        font-size: 0.8rem;
+
+      }
+
+      .control-btn {
+
+        width: 36px;
+
+        height: 36px;
+
+      }
+
+      .control-btn-icon {
+
+        width: 16px;
+
+        height: 16px;
+
+      }
+
+    }
+
+
+
+    /* Tablet and mobile view collapse under 1200px */
+
+    @media (max-width: 1200px) {
+
+      /* Hide center menu & right desktop-controls */
+
+      .nav-menu, .nav-controls {
+
+        display: none;
+
+      }
+
+      
+
+      .mobile-nav-toggle {
+
+        display: flex; /* Show Hamburger in header */
+
+      }
+
+
+
+      .navbar-container {
+
+        padding: 0 16px;
+
+      }
+
+
+
+      .navbar-wrapper {
+
+        top: 15px;
+
+        width: 92%;
+
+      }
+
+      
+
+      .hero {
+
+        margin-top: 130px;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       FOOTER STYLES (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== */
+
+    .footer-wrapper {
+
+      margin-top: 100px;
+
+      padding: 60px 24px 30px 24px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background-color: var(--nav-bg);
+
+      backdrop-filter: blur(20px);
+
+      -webkit-backdrop-filter: blur(20px);
+
+      border-top: 1px solid var(--nav-border);
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+
+
+    .footer-container {
+
+      max-width: 1540px;
+
+      margin: 0 auto;
+
+      width: 100%;
+
+    }
+
+
+
+    .footer-grid {
+
+      display: grid;
+
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+
+      gap: 40px;
+
+    }
+
+
+
+    .footer-col {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+
+    /* Footer logo matches main logo size and responsive rules automatically */
+
+
+
+    .footer-title {
+
+      font-family: var(--font-heading);
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      color: var(--text-primary);
+
+      margin-bottom: 20px;
+
+      position: relative;
+
+      padding-bottom: 8px;
+
+    }
+
+
+
+    .footer-title::after {
+
+      content: '';
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 30px;
+
+      height: 3px;
+
+      background: var(--accent-gradient);
+
+      border-radius: 2px;
+
+    }
+
+
+
+    [dir="rtl"] .footer-title::after {
+
+      left: auto;
+
+      right: 0;
+
+    }
+
+
+
+    .footer-text {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .footer-links-list, .footer-contact-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+
+
+    .footer-link-item {
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+      transition: all 0.25s ease;
+
+      display: inline-block;
+
+      width: fit-content;
+
+    }
+
+
+
+    .footer-link-item:hover {
+
+      color: var(--accent-primary);
+
+      transform: translateX(4px);
+
+    }
+
+
+
+    [dir="rtl"] .footer-link-item:hover {
+
+      transform: translateX(-4px);
+
+    }
+
+
+
+    .footer-contact-list li {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 0.82rem;
+
+      color: var(--text-secondary);
+
+    }
+
+
+
+    .contact-icon {
+
+      width: 16px;
+
+      height: 16px;
+
+      color: var(--accent-primary);
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .social-links {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 16px;
+
+    }
+
+
+
+    .social-icon-btn {
+
+      width: 36px;
+
+      height: 36px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border-color);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-secondary);
+
+      background-color: var(--bg-secondary);
+
+      transition: all 0.25s ease;
+
+    }
+
+
+
+    .social-icon-btn:hover {
+
+      color: var(--text-primary);
+
+      border-color: var(--accent-primary);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+    }
+
+
+
+    .social-icon-btn svg {
+
+      width: 16px;
+
+      height: 16px;
+
+    }
+
+
+
+    .newsletter-form {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 10px;
+
+    }
+
+
+
+    .newsletter-input {
+
+      flex-grow: 1;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-primary);
+
+      padding: 0 14px;
+
+      font-family: inherit;
+
+      font-size: 0.82rem;
+
+      color: var(--text-primary);
+
+      transition: border-color 0.25s ease;
+
+    }
+
+
+
+    .newsletter-input:focus {
+
+      outline: none;
+
+      border-color: var(--accent-primary);
+
+    }
+
+
+
+    .newsletter-btn {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 8px;
+
+      background: var(--accent-gradient);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      transition: all 0.25s ease;
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+
+
+    .newsletter-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 4px 10px var(--accent-glow);
+
+      filter: brightness(1.05);
+
+    }
+
+
+
+    .footer-divider {
+
+      height: 1px;
+
+      background-color: var(--border-color);
+
+      margin: 40px 0 25px 0;
+
+    }
+
+
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      font-size: 0.76rem;
+
+      color: var(--text-muted);
+
+    }
+
+
+
+    .footer-bottom-links {
+
+      display: flex;
+
+      gap: 20px;
+
+    }
+
+
+
+    .footer-bottom-link {
+
+      color: var(--text-muted);
+
+      transition: color 0.2s ease;
+
+    }
+
+
+
+    .footer-bottom-link:hover {
+
+      color: var(--accent-primary);
+
+    }
+
+
+
+    /* Footer Responsive Grid */
+
+    @media (max-width: 1200px) {
+
+      .footer-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 2;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+      }
+
+      .brand-col {
+
+        grid-column: span 1;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+    }
+
+
+
+    /* ==========================================================================
+
+       COMMERCIAL LOCKSMITH SPECIFIC STYLES
+
+       ========================================================================== */
+
+    .commercial-container {
+
+      max-width: 1400px;
+
+      margin: 120px auto 60px;
+
+      padding: 0 24px;
+
+    }
+
+    
+
+    .commercial-hero {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+      margin-bottom: 80px;
+
+    }
+
+    
+
+    .comm-hero-text h1 {
+
+      font-size: clamp(2.5rem, 5vw, 4rem);
+
+      line-height: 1.1;
+
+      margin-bottom: 24px;
+
+      background: var(--accent-gradient);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+    
+
+    .comm-hero-text p {
+
+      font-size: 1.125rem;
+
+      color: var(--text-secondary);
+
+      margin-bottom: 32px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    .comm-hero-img-wrapper {
+
+      position: relative;
+
+      border-radius: var(--border-radius);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-lg);
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .comm-hero-img-wrapper img {
+
+      width: 100%;
+
+      height: auto;
+
+      display: block;
+
+      transition: transform 0.5s ease;
+
+    }
+
+    
+
+    .comm-hero-img-wrapper:hover img {
+
+      transform: scale(1.05);
+
+    }
+
+    
+
+    /* Access Control Visualizer */
+
+    .section-access-control {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1.1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .access-visualizer-card {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 32px;
+
+      box-shadow: var(--shadow-md);
+
+      position: relative;
+
+    }
+
+    
+
+    .access-log-screen {
+
+      background: #090d16;
+
+      border-radius: 12px;
+
+      padding: 16px;
+
+      font-family: monospace;
+
+      font-size: 0.875rem;
+
+      color: #38bdf8;
+
+      height: 200px;
+
+      overflow-y: hidden;
+
+      border: 1px solid rgba(56, 189, 248, 0.2);
+
+      margin-bottom: 24px;
+
+    }
+
+    
+
+    .access-log-entry {
+
+      margin-bottom: 8px;
+
+      opacity: 0;
+
+      transform: translateY(10px);
+
+      animation: entryFadeIn 0.5s forwards;
+
+    }
+
+    
+
+    @keyframes entryFadeIn {
+
+      to { opacity: 1; transform: translateY(0); }
+
+    }
+
+    
+
+    .log-success { color: #4ade80; }
+
+    .log-warning { color: #facc15; }
+
+    .log-danger { color: #f87171; }
+
+    
+
+    .interactive-badge-scanner {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 16px;
+
+      padding: 24px;
+
+      border: 2px dashed var(--border-color);
+
+      border-radius: 16px;
+
+      cursor: pointer;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: var(--bg-primary);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .interactive-badge-scanner:hover {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 0 15px var(--accent-glow);
+
+    }
+
+    
+
+    .scanner-glow-effect {
+
+      position: absolute;
+
+      top: -100%;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 20px;
+
+      background: linear-gradient(180deg, transparent, var(--accent-primary), transparent);
+
+      opacity: 0.5;
+
+    }
+
+    
+
+    .interactive-badge-scanner.scanning .scanner-glow-effect {
+
+      animation: scanAnim 1.5s infinite linear;
+
+    }
+
+    
+
+    @keyframes scanAnim {
+
+      0% { top: -20px; }
+
+      100% { top: 120%; }
+
+    }
+
+    
+
+    /* Master Key Architecture */
+
+    .section-master-key {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .master-key-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 48px;
+
+      align-items: flex-start;
+
+    }
+
+    
+
+    .hierarchy-tree {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 32px;
+
+      position: relative;
+
+    }
+
+    .hierarchy-tree::before {
+
+      content: '';
+
+      position: absolute;
+
+      top: 40px;
+
+      height: 336px;
+
+      width: 2px;
+
+      background: var(--border-color);
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: 0;
+
+    }
+
+    
+
+    .hierarchy-node {
+
+      background: var(--bg-secondary);
+
+      border: 1px solid var(--border-color);
+
+      padding: 16px 24px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      width: 100%;
+
+      max-width: 420px;
+
+      text-align: center;
+
+      position: relative;
+
+      box-shadow: var(--shadow-sm);
+
+      z-index: 1;
+
+    }
+
+    
+
+    .hierarchy-node:hover, .hierarchy-node.active {
+
+      border-color: var(--accent-primary);
+
+      box-shadow: 0 0 15px var(--accent-glow);
+
+      transform: translateY(-2px);
+
+    }
+
+    
+
+    .hierarchy-node-title {
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+      font-size: 1.05rem;
+
+    }
+
+    
+
+    .hierarchy-node-desc {
+
+      font-size: 0.8rem;
+
+      color: var(--text-secondary);
+
+      margin-top: 4px;
+
+    }
+
+    
+
+    /* High Security Flip Cards */
+
+    .section-high-security {
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .high-security-row {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 48px;
+
+      align-items: center;
+
+      margin-top: 40px;
+
+    }
+
+    .high-security-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 24px;
+
+      margin-top: 40px;
+
+    }
+
+    
+
+    .hs-card {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 32px 24px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-sm);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .hs-card:hover {
+
+      transform: translateY(-8px);
+
+      border-color: var(--accent-primary);
+
+      box-shadow: var(--shadow-lg);
+
+    }
+
+    
+
+    .hs-card-icon {
+
+      width: 64px;
+
+      height: 64px;
+
+      margin: 0 auto 24px;
+
+      background: var(--bg-tertiary);
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--accent-primary);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .hs-card:hover .hs-card-icon {
+
+      background: var(--accent-primary);
+
+      color: var(--bg-secondary);
+
+    }
+
+    
+
+    /* Panic Bar Exit Simulator */
+
+    .section-panic-bar {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .panic-simulator-box {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 40px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-md);
+
+      position: relative;
+
+    }
+
+    
+
+    .sim-door {
+
+      width: 200px;
+
+      height: 320px;
+
+      background: #1f2937;
+
+      border: 8px solid #374151;
+
+      border-radius: 4px;
+
+      margin: 0 auto 30px;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      transition: background-color 0.5s ease;
+
+    }
+
+    
+
+    .sim-panic-bar {
+
+      width: 170px;
+
+      height: 24px;
+
+      background: #e5e7eb;
+
+      border-radius: 12px;
+
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+      cursor: pointer;
+
+      position: relative;
+
+      transition: all 0.1s ease;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-weight: 700;
+
+      font-size: 0.75rem;
+
+      color: #374151;
+
+      user-select: none;
+
+    }
+
+    
+
+    .sim-panic-bar:active, .sim-panic-bar.depressed {
+
+      transform: scaleY(0.8) translateY(2px);
+
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+      background: #9ca3af;
+
+    }
+
+    
+
+    .door-indicator {
+
+      position: absolute;
+
+      top: 20px;
+
+      width: 16px;
+
+      height: 16px;
+
+      border-radius: 50%;
+
+      background: #ef4444;
+
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    /* File Cabinet Section */
+
+    .section-file-cabinet {
+
+      background: var(--bg-tertiary);
+
+      border-radius: var(--border-radius);
+
+      padding: 60px 40px;
+
+      margin-bottom: 100px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1.1fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .fc-vulnerability-checker {
+
+      background: var(--bg-secondary);
+
+      border-radius: 16px;
+
+      padding: 32px;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    
+
+    .fc-item {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 16px;
+
+      margin-bottom: 20px;
+
+      padding-bottom: 16px;
+
+      border-bottom: 1px solid var(--border-color);
+
+      text-align: left;
+
+    }
+
+    
+
+    .fc-item:last-child {
+
+      margin-bottom: 0;
+
+      padding-bottom: 0;
+
+      border-bottom: none;
+
+    }
+
+    
+
+    /* Custom Toggle Switch */
+
+    .sec-toggle {
+
+      position: relative;
+
+      display: inline-block;
+
+      width: 44px;
+
+      height: 24px;
+
+      flex-shrink: 0;
+
+    }
+
+    
+
+    .sec-toggle input {
+
+      opacity: 0;
+
+      width: 0;
+
+      height: 0;
+
+    }
+
+    
+
+    .toggle-slider {
+
+      position: absolute;
+
+      cursor: pointer;
+
+      top: 0;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 0;
+
+      background-color: #cbd5e1;
+
+      transition: .4s;
+
+      border-radius: 24px;
+
+    }
+
+    
+
+    .toggle-slider:before {
+
+      position: absolute;
+
+      content: "";
+
+      height: 16px;
+
+      width: 16px;
+
+      left: 4px;
+
+      bottom: 4px;
+
+      background-color: white;
+
+      transition: .4s;
+
+      border-radius: 50%;
+
+    }
+
+    
+
+    input:checked + .toggle-slider {
+
+      background-color: var(--accent-primary);
+
+    }
+
+    
+
+    input:checked + .toggle-slider:before {
+
+      transform: translateX(20px);
+
+    }
+
+    
+
+    /* Business Rekeying Comparison Table */
+
+    .section-business-rekey {
+
+      margin-bottom: 100px;
+
+    }
+
+    
+
+    .rekey-comparison-table-wrapper {
+
+      overflow-x: auto;
+
+      width: 100%;
+
+      margin-top: 40px;
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      background: var(--bg-secondary);
+
+      box-shadow: var(--shadow-sm);
+
+    }
+
+    .rekey-comparison-table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+    }
+
+    
+
+    .rekey-comparison-table th, .rekey-comparison-table td {
+
+      padding: 20px 24px;
+
+      text-align: left;
+
+    }
+
+    
+
+    .rekey-comparison-table th {
+
+      background: var(--bg-tertiary);
+
+      font-weight: 600;
+
+      border-bottom: 2px solid var(--border-color);
+
+    }
+
+    
+
+    .rekey-comparison-table tr:not(:last-child) td {
+
+      border-bottom: 1px solid var(--border-color);
+
+    }
+
+    
+
+    /* Security Consultation Form */
+
+    .section-consultation {
+
+      background: var(--bg-secondary);
+
+      border-radius: var(--border-radius);
+
+      border: 1px solid var(--border-color);
+
+      padding: 60px 40px;
+
+      margin-bottom: 80px;
+
+      box-shadow: var(--shadow-md);
+
+      text-align: left;
+
+    }
+
+    
+
+    .consultation-form-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 32px;
+
+      margin-top: 32px;
+
+    }
+
+    
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+    }
+
+    
+
+    .form-label {
+
+      font-weight: 600;
+
+      color: var(--text-primary);
+
+    }
+
+    
+
+    .form-input, .form-select, .form-textarea {
+
+      padding: 14px 18px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border-color);
+
+      background: var(--bg-primary);
+
+      color: var(--text-primary);
+
+      font-family: inherit;
+
+      font-size: 1rem;
+
+      transition: border-color 0.3s ease;
+
+    }
+
+    
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+
+      border-color: var(--accent-primary);
+
+      outline: none;
+
+    }
+
+    
+
+    .form-options-row {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 16px;
+
+    }
+
+    
+
+    .option-btn {
+
+      background: var(--bg-primary);
+
+      border: 1px solid var(--border-color);
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      font-weight: 500;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+
+    .option-btn:hover, .option-btn.selected {
+
+      border-color: var(--accent-primary);
+
+      color: var(--accent-primary);
+
+      background: var(--accent-glow);
+
+    }
+
+    
+
+    .submit-btn-comm {
+
+      background: var(--accent-gradient);
+
+      color: #0b0f19;
+
+      font-weight: 700;
+
+      padding: 16px 32px;
+
+      border-radius: 12px;
+
+      font-size: 1.1rem;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      transition: all 0.3s ease;
+
+      box-shadow: 0 4px 15px var(--accent-glow);
+
+      margin-top: 24px;
+
+      border: none;
+
+    }
+
+    
+
+    .submit-btn-comm:hover {
+
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+
+      transform: translateY(-2px);
+
+    }
+
+    
+
+    /* Layout Helpers & Responsive */
+
+    .sec-header {
+
+      margin-bottom: 48px;
+
+    }
+
+    
+
+    .sec-badge {
+
+      display: inline-block;
+
+      padding: 6px 12px;
+
+      background: var(--accent-glow);
+
+      color: var(--accent-primary);
+
+      border-radius: 20px;
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 16px;
+
+      border: 1px solid rgba(212,175,55,0.2);
+
+    }
+
+    
+
+    .sec-title {
+font-weight: 500;
+font-size: clamp(2rem, 3.5vw, 2.75rem);
+
+      color: var(--text-primary);
+
+      margin-bottom: 16px;
+
+      line-height: 1.2;
+
+    }
+
+    
+
+    .sec-desc {
+
+      color: var(--text-secondary);
+
+      font-size: 1.1rem;
+
+      max-width: 700px;
+
+      line-height: 1.6;
+
+    }
+
+    
+
+    @media (max-width: 1024px) {
+
+      .commercial-hero, .section-access-control, .master-key-grid, .section-panic-bar, .section-file-cabinet, .consultation-form-grid, .high-security-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+      }
+
+      .high-security-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+      }
+
+    }
+
+    
+
+    @media (max-width: 640px) {
+
+      .high-security-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .form-options-row {
+
+        grid-template-columns: 1fr;
+
+      }
+
+    }
+
+      @media (max-width: 480px) {
+
+      .home-section {
+
+        padding: 50px 16px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 992px) {
+
+      /* Stack inline grid columns on mobile/tablet viewports, excluding auto-fit/auto-fill grids */
+
+      div[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      div[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+
+      section[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]) {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 30px !important;
+
+      }
+
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+  <!-- Background Grids and Meshes -->
+
+  <div class="bg-grid"></div>
+
+  <div class="bg-mesh-1"></div>
+
+  <div class="bg-mesh-2"></div>
+
+
+
+  <!-- Mobile Drawer Overlay -->
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+
+
+  <!-- Interactive Mobile Slide-out Navigation Drawer -->
+
+  <aside class="mobile-drawer" id="mobileDrawer">
+
+    <!-- Header with Brand on Left and Back Button on Right -->
+
+    <div class="mobile-drawer-header">
+
+      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
+
+        <!-- Hexagon cyber key SVG logo based on Lock -->
+
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+      <!-- Back Chevron Arrow Button on Top Right -->
+
+      <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu">
+
+        <svg class="back-icon" viewBox="0 0 24 24">
+
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        </svg>
+
+        <span>Back</span>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- Inside Hamburger Menu Content (13 links) -->
+
+    <nav class="mobile-menu-list">
+
+      <!-- Home Submenu inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Home</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./index.html" class="mobile-submenu-link">Home 1</a>
+
+          <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Other Links (Arranged directly in mobile menu list) -->
+
+      <a href="./About.html" class="mobile-menu-link">About</a>
+
+      
+
+      <a href="./Emergency.html" class="mobile-menu-link">
+
+        <span>Emergency</span>
+
+      </a>
+
+      
+
+      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
+
+      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
+
+      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
+
+      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
+
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+
+      <a href="./Service.html" class="mobile-menu-link">Service</a>
+
+      <a href="./Security.html" class="mobile-menu-link">Security</a>
+
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+
+
+      <!-- Dashboard inside Drawer (Accordion) -->
+
+      <div class="mobile-menu-item">
+
+        <button class="mobile-menu-link drawer-accordion-trigger">
+
+          <span>Dashboard</span>
+
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+        </button>
+
+        <div class="mobile-submenu">
+
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Footer of Drawer containing remaining items (Toggles & Login) -->
+
+    <div class="drawer-footer">
+
+      <div class="drawer-controls-row">
+
+        <!-- Drawer Dark Mode Toggle -->
+
+        <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+          <span>Theme</span>
+
+        </button>
+
+
+
+        <!-- Drawer RTL Toggle -->
+
+        <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+          <span>L/R Mirror</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Drawer Login Button -->
+
+      <a href="./login.html" class="login-btn" id="drawerLoginBtn" style="text-decoration: none; cursor: pointer;">
+
+        <svg class="padlock-svg" viewBox="0 0 24 24">
+
+          <path class="padlock-shackle" id="drawerShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+          <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+          <circle cx="12" cy="16" r="1.5" />
+
+        </svg>
+
+        <span>Login</span>
+
+      </a>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- Single-Deck floating Header (Logo Left, Menu Center, Toggles & CTA Right) -->
+
+  <header class="navbar-wrapper">
+
+    <div class="navbar-container" id="mainNavbar">
+
+      <!-- Glow ambient overlay following user mouse -->
+
+      <div class="navbar-glow-overlay" id="navGlow"></div>
+
+
+
+      <!-- Left: Logo based on Lock -->
+
+      <a href="index.html" class="brand">
+
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+          <defs>
+
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- Lock Shackle -->
+
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+          <!-- Lock Body (Shield shape) -->
+
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+
+          <!-- Center Keyhole -->
+
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+
+        </svg>
+
+        <span>LOCKSMITH</span>
+
+      </a>
+
+
+
+      <!-- Center: Navigation Menu (Desktop/Laptop View) -->
+
+      <ul class="nav-menu">
+
+        <!-- Home (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./index.html" class="nav-link">
+
+            <span>Home</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel">
+
+            <a href="./index.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 1</span>
+
+              </div>
+
+            </a>
+
+            <a href="./home 2.html" class="dropdown-item">
+
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Home 2</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+
+
+        <!-- Direct Links arranged side-by-side in center -->
+
+        <li class="nav-item">
+
+          <a href="./About.html" class="nav-link">About</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Emergency.html" class="nav-link">Emergency</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Residential.html" class="nav-link">Residential</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Commercial.html" class="nav-link">Commercial</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Pricing.html" class="nav-link">Pricing</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Service.html" class="nav-link">Service</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Security.html" class="nav-link">Security</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Reviews.html" class="nav-link">Reviews</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a href="./Contact.html" class="nav-link">Contact</a>
+
+        </li>
+
+
+
+        <!-- Dashboard (Submenu Dropdown) -->
+
+        <li class="nav-item">
+
+          <a href="./Dashboard.html" class="nav-link">
+
+            <span>Dashboard</span>
+
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+
+          </a>
+
+          <div class="dropdown-panel dropdown-right">
+
+            <a href="./Admin.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">Admin Dashboard</span>
+
+              </div>
+
+            </a>
+
+            <a href="./User.html" class="dropdown-item">
+
+              
+
+              <div class="dropdown-item-content">
+
+                <span class="dropdown-item-title">User Dashboard</span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+
+
+      <!-- Right: Controls & CTA button (Desktop/Laptop View) -->
+
+      <div class="nav-controls">
+
+        <!-- Right to Left Toggle -->
+
+        <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+
+        </button>
+
+
+
+        <!-- Dark Mode Toggle -->
+
+        <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+
+          <!-- Sun SVG -->
+
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+
+            <circle cx="12" cy="12" r="5" />
+
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+
+          </svg>
+
+          <!-- Moon SVG -->
+
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+
+          </svg>
+
+        </button>
+
+
+
+        <!-- Login Button with dynamic Padlock -->
+
+        <a href="./login.html" class="login-btn" id="loginBtn" style="text-decoration: none; cursor: pointer;">
+
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+
+            <!-- Padlock shackle path that moves on hover -->
+
+            <path class="padlock-shackle" id="desktopShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+
+            <circle cx="12" cy="16" r="1.5" />
+
+          </svg>
+
+          <span>Login</span>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Hamburger button for mobile/laptop drawer trigger -->
+
+      <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+
+        <svg class="hamburger-icon" viewBox="0 0 24 24">
+
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+
+        </svg>
+
+      </button>
+
+
+
+    </div>
+
+  </header>
+
+
+
+
+
+  <!-- Main Content Wrapper -->
+
+  <main class="commercial-container">
+
+
+
+    <!-- SECTION 1: OFFICE LOCK SYSTEMS (Hero) -->
+
+    <section class="commercial-hero">
+
+      <div class="comm-hero-text">
+
+        <span class="sec-badge">Enterprise Security</span>
+
+        <h1>Office Lock Systems <span>Built for Scale</span></h1>
+
+        <p>
+
+          Protect your physical assets, corporate intelligence, and workforce. We design, install, and service heavy-duty, commercial-grade lock systems engineered for complex modern office spaces, high-traffic corridors, and restricted sectors.
+
+        </p>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+
+          <a href="#consultation" class="submit-btn-comm" style="margin-top: 0; padding: 14px 28px; text-decoration: none;">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 18px; height: 18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11l2 2 4-4"/></svg>
+
+            <span>Book Audit</span>
+
+          </a>
+
+          <a href="#access-control" class="option-btn" style="display: flex; align-items: center; justify-content: center; padding: 14px 28px; text-decoration: none;">
+
+            <span>Explore Access Control</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="comm-hero-img-wrapper">
+
+        <img src="images/commercial_hero.png" alt="Luxury modern glass entrance doors at a corporate building lobby">
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 2: ACCESS CONTROL SOLUTIONS -->
+
+    <section id="access-control" class="section-access-control">
+
+      <div class="access-visualizer-card">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+
+          <h4 style="font-weight:600; color: var(--text-primary);">Access Control Simulator</h4>
+
+          <span style="font-size: 0.75rem; background: var(--border-color); padding: 4px 8px; border-radius: 4px; color: var(--accent-primary);">ACTIVE</span>
+
+        </div>
+
+        <div class="access-log-screen" id="accessLogScreen">
+
+          <div class="access-log-entry log-success">> System Initialized. Awaiting credential scan...</div>
+
+        </div>
+
+        <div class="interactive-badge-scanner" id="badgeScanner">
+
+          <div class="scanner-glow-effect"></div>
+
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; color: var(--accent-primary); margin-bottom: 8px;">
+
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+
+            <path d="M7 8h10M7 12h5" />
+
+            <circle cx="17" cy="14" r="1.5" />
+
+          </svg>
+
+          <span style="font-weight: 600; font-size: 0.95rem;">TAP ACCESS KEY / BADGE</span>
+
+          <span style="font-size: 0.75rem; color: var(--text-secondary);">Click to simulate credential verification</span>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <span class="sec-badge">Biometrics & Keyless</span>
+
+        <h2 class="sec-title">Next-Gen Access Control Solutions</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Replace outdated physical keys with secure, traceable digital credentials. Our access control integrations allow administrators to monitor entry logs, manage access groups, and revoke permissions instantly.
+
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;">
+
+          <ul style="display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary);">
+
+            <li style="display: flex; align-items: center; gap: 12px;">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+              <span>Biometric Recognition (Fingerprint & Facial)</span>
+
+            </li>
+
+            <li style="display: flex; align-items: center; gap: 12px;">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+              <span>NFC, Bluetooth, & RFID Smart Cards</span>
+
+            </li>
+
+            <li style="display: flex; align-items: center; gap: 12px;">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width: 18px; height: 18px; color: var(--accent-primary);"><path d="M20 6L9 17l-5-5"/></svg>
+
+              <span>Cloud-Based Management Dashboard</span>
+
+            </li>
+
+          </ul>
+
+          <div class="comm-hero-img-wrapper">
+
+            <img src="images/access_control.png" alt="Biometric access control wall reader with glowing indicators">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 3: MASTER KEY SYSTEMS -->
+
+    <section id="master-key" class="section-master-key">
+
+      <div class="master-key-grid">
+
+        <div>
+
+          <span class="sec-badge">Key Hierarchies</span>
+
+          <h2 class="sec-title">Custom Master Key Systems</h2>
+
+          <p class="sec-desc" style="margin-bottom: 24px;">
+
+            Optimize management workflows by allowing supervisors access to all rooms while restricting staff access to specific zones. Our precision master key blueprints provide efficient multi-tier cylinder pinning.
+
+          </p>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); margin-bottom: 24px;">
+
+            <p id="hierarchyResultText" style="font-weight: 500; line-height: 1.6; min-height: 80px;">
+
+              Click on any tier on the right to visualize access privileges and see how master key systems organize building clearance levels.
+
+            </p>
+
+          </div>
+
+          <div class="comm-hero-img-wrapper">
+
+            <img src="images/master_key.png" alt="Commercial solid brass lock cylinders and keys on blueprint layout">
+
+          </div>
+
+        </div>
+
+        <div class="hierarchy-tree">
+
+          <div class="hierarchy-node" data-level="ggmk">
+
+            <div class="hierarchy-node-title">Great Grand Master (GGMK)</div>
+
+            <div class="hierarchy-node-desc">Access to all facilities and locations</div>
+
+          </div>
+
+          <div class="hierarchy-node" data-level="gmk">
+
+            <div class="hierarchy-node-title">Grand Master Key (GMK)</div>
+
+            <div class="hierarchy-node-desc">Access to a specific building or wing</div>
+
+          </div>
+
+          <div class="hierarchy-node" data-level="mk">
+
+            <div class="hierarchy-node-title">Master Key (MK)</div>
+
+            <div class="hierarchy-node-desc">Access to specific departments (e.g. IT)</div>
+
+          </div>
+
+          <div class="hierarchy-node" data-level="sk">
+
+            <div class="hierarchy-node-title">Standard User Key (SK)</div>
+
+            <div class="hierarchy-node-desc">Access only to a single designated office</div>
+
+          </div>
+
+          <!-- Interactive System Specs Card -->
+          <div class="hierarchy-specs-card" style="width: 100%; max-width: 420px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); margin-top: 10px; transition: all 0.3s ease; z-index: 1;">
+            <h4 style="font-weight: 700; margin-bottom: 16px; font-size: 1.05rem; color: var(--accent-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; text-align: left; margin-top: 0;">
+              System Specifications <span id="specsTierBadge" style="float: right; font-size: 0.75rem; background: var(--border-color); padding: 2px 8px; border-radius: 20px; font-weight: 600; text-transform: uppercase; color: var(--text-primary);">Tier 4 (Enterprise)</span>
+            </h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.85rem; text-align: left;">
+              <div>
+                <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">Duplication Control</span>
+                <strong id="specsDupControl" style="color: var(--text-primary); font-weight: 600;">Dual-Authorized Signature</strong>
+              </div>
+              <div>
+                <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">Keyway Security</span>
+                <strong id="specsKeyway" style="color: var(--text-primary); font-weight: 600;">Primus XP / Patented</strong>
+              </div>
+              <div>
+                <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">Cylinder Pins</span>
+                <strong id="specsPins" style="color: var(--text-primary); font-weight: 600;">7-Pin SFIC (Interchangeable)</strong>
+              </div>
+              <div>
+                <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">Bitting Capacity</span>
+                <strong id="specsBitting" style="color: var(--text-primary); font-weight: 600;">16,384 Codes (MACS Guard)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cylinder Chamber Pin Alignment Visualizer -->
+          <div class="cylinder-visualizer-card" style="width: 100%; max-width: 420px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); margin-top: 24px; transition: all 0.3s ease; z-index: 1;">
+            <h4 style="font-weight: 700; margin-bottom: 16px; font-size: 1.05rem; color: var(--accent-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; text-align: left; margin-top: 0;">
+              Chamber Pin Egress Simulator <span style="float: right; font-size: 0.7rem; color: var(--text-muted); font-weight: 400;">Interactive Mechanics</span>
+            </h4>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 16px; text-align: left;">
+              Watch how the cylinder's master split pins align to create dual shear lines when different key cuts are inserted.
+            </p>
+            
+            <!-- Pin Chambers Display -->
+            <div style="display: flex; justify-content: space-around; background: var(--bg-primary); border-radius: 8px; padding: 16px; height: 130px; position: relative; border: 1px solid var(--border-color); overflow: hidden;">
+              <!-- Shear line horizontal indicator -->
+              <div style="position: absolute; top: 50px; left: 0; right: 0; height: 2px; background: dashed rgba(239, 68, 68, 0.4); border-top: 1px dashed var(--danger-primary); z-index: 1;">
+                <span style="position: absolute; right: 8px; top: -14px; font-size: 0.6rem; color: var(--danger-primary); font-weight: 600; text-transform: uppercase;">Shear Line</span>
+              </div>
+              
+              <!-- Chamber 1 -->
+              <div class="pin-chamber" style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 100%; position: relative;">
+                <div style="position: absolute; top: 0; bottom: 0; left: 8px; right: 8px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; z-index: 0;"></div>
+                <div class="pin-stack" id="stackChamber1" style="display: flex; flex-direction: column; align-items: center; width: 100%; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateY(0px); z-index: 2;">
+                  <div class="pin-driver" style="width: 14px; height: 25px; background: #64748b; border: 1px solid #475569; border-radius: 2px;"></div>
+                  <div class="pin-master" style="width: 14px; height: 12px; background: var(--accent-primary); border: 1px solid var(--accent-secondary); border-radius: 2px;"></div>
+                  <div class="pin-key" style="width: 14px; height: 35px; background: #d97706; border: 1px solid #b45309; border-radius: 2px 2px 4px 4px;"></div>
+                </div>
+              </div>
+              
+              <!-- Chamber 2 -->
+              <div class="pin-chamber" style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 100%; position: relative;">
+                <div style="position: absolute; top: 0; bottom: 0; left: 8px; right: 8px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; z-index: 0;"></div>
+                <div class="pin-stack" id="stackChamber2" style="display: flex; flex-direction: column; align-items: center; width: 100%; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateY(0px); z-index: 2;">
+                  <div class="pin-driver" style="width: 14px; height: 25px; background: #64748b; border: 1px solid #475569; border-radius: 2px;"></div>
+                  <div class="pin-master" style="width: 14px; height: 16px; background: var(--accent-primary); border: 1px solid var(--accent-secondary); border-radius: 2px;"></div>
+                  <div class="pin-key" style="width: 14px; height: 30px; background: #d97706; border: 1px solid #b45309; border-radius: 2px 2px 4px 4px;"></div>
+                </div>
+              </div>
+              
+              <!-- Chamber 3 -->
+              <div class="pin-chamber" style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 100%; position: relative;">
+                <div style="position: absolute; top: 0; bottom: 0; left: 8px; right: 8px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; z-index: 0;"></div>
+                <div class="pin-stack" id="stackChamber3" style="display: flex; flex-direction: column; align-items: center; width: 100%; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateY(0px); z-index: 2;">
+                  <div class="pin-driver" style="width: 14px; height: 25px; background: #64748b; border: 1px solid #475569; border-radius: 2px;"></div>
+                  <div class="pin-master" style="width: 14px; height: 10px; background: var(--accent-primary); border: 1px solid var(--accent-secondary); border-radius: 2px;"></div>
+                  <div class="pin-key" style="width: 14px; height: 38px; background: #d97706; border: 1px solid #b45309; border-radius: 2px 2px 4px 4px;"></div>
+                </div>
+              </div>
+              
+              <!-- Chamber 4 -->
+              <div class="pin-chamber" style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 100%; position: relative;">
+                <div style="position: absolute; top: 0; bottom: 0; left: 8px; right: 8px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; z-index: 0;"></div>
+                <div class="pin-stack" id="stackChamber4" style="display: flex; flex-direction: column; align-items: center; width: 100%; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform: translateY(0px); z-index: 2;">
+                  <div class="pin-driver" style="width: 14px; height: 25px; background: #64748b; border: 1px solid #475569; border-radius: 2px;"></div>
+                  <div class="pin-master" style="width: 14px; height: 8px; background: var(--accent-primary); border: 1px solid var(--accent-secondary); border-radius: 2px;"></div>
+                  <div class="pin-key" style="width: 14px; height: 42px; background: #d97706; border: 1px solid #b45309; border-radius: 2px 2px 4px 4px;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Visual Alignment Status -->
+            <div style="margin-top: 12px; font-size: 0.78rem; text-align: left; display: flex; justify-content: space-between; align-items: center;">
+              <span>Shear Status: <strong id="shearStatusText" style="color: var(--danger-primary); transition: color 0.3s ease;">Locked (Pins Unaligned)</strong></span>
+              <span id="shearMatchBadge" style="background: rgba(239, 68, 68, 0.1); color: var(--danger-primary); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; transition: all 0.3s ease;">Blocked</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 4: HIGH SECURITY LOCKS -->
+
+    <section id="high-security" class="section-high-security">
+
+      <div class="sec-header" style="text-align: center;">
+
+        <span class="sec-badge">Forced Entry Resistance</span>
+
+        <h2 class="sec-title" style="margin: 0 auto 16px; max-width: 800px;">High-Security Heavy-Duty Locks</h2>
+
+        <p class="sec-desc" style="margin: 0 auto; text-align: center;">
+
+          Ensure robust defence against drill, pick, and bump attempts. We install ANSI Grade 1 deadbolts and mortise locks that withstand severe force.
+
+        </p>
+
+      </div>
+
+      <div class="high-security-row">
+
+        <div class="high-security-grid" style="margin-top: 0;">
+
+          <div class="hs-card">
+
+            <div class="hs-card-icon">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+            </div>
+
+            <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 1.15rem;">ANSI Grade 1</h4>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">Tested to withstand 1 million cycles and heavy physical force.</p>
+
+          </div>
+
+          <div class="hs-card">
+
+            <div class="hs-card-icon">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.778-7.778zM12 12l.01-.01M16 8l.01-.01"/></svg>
+
+            </div>
+
+            <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 1.15rem;">Key Control</h4>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">Duplication restricted to authorized center cardholders only.</p>
+
+          </div>
+
+          <div class="hs-card">
+
+            <div class="hs-card-icon">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+
+            </div>
+
+            <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 1.15rem;">Pick Resistance</h4>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">Hardened anti-drill plates and complex spool-pin layouts.</p>
+
+          </div>
+
+          <div class="hs-card">
+
+            <div class="hs-card-icon">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+
+            </div>
+
+            <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 1.15rem;">Heavy Mortise</h4>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">Solid brass latch bolts housed inside reinforced steel casing.</p>
+
+          </div>
+
+        </div>
+
+        <div class="comm-hero-img-wrapper">
+
+          <img src="images/high_security.png" alt="Heavy duty commercial mortise lock mechanism cutaway showing complex pin layout">
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 5: PANIC BAR INSTALLATION -->
+
+    <section id="panic-bar" class="section-panic-bar">
+
+      <div class="panic-simulator-box">
+
+        <div class="door-indicator" id="doorIndicator"></div>
+
+        <div class="sim-door" id="simDoor">
+
+          <div class="sim-panic-bar" id="panicBarBtn">PUSH TO EXIT</div>
+
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary);" id="simStatus">Status: Door Locked (Solenoid Engaged)</p>
+
+      </div>
+
+      <div>
+
+        <span class="sec-badge">Life Safety & Compliance</span>
+
+        <h2 class="sec-title">Commercial Panic Bar Installation</h2>
+
+        <p class="sec-desc" style="margin-bottom: 24px;">
+
+          Meet building safety codes, ADA compliance guidelines, and emergency egress regulations. We install premium exit devices (crash bars) that guarantee instantaneous mechanical opening during evacuation.
+
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+
+            <div style="display: flex; gap: 16px; align-items: flex-start;">
+
+              <div style="background: var(--accent-glow); padding: 8px; border-radius: 8px; color: var(--accent-primary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:20px; height:20px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+
+              <div>
+
+                <h5 style="font-weight:600; margin-bottom: 4px;">ADA Compliance</h5>
+
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Egress mechanisms operable with zero twisting or tight grasping.</p>
+
+              </div>
+
+            </div>
+
+            <div style="display: flex; gap: 16px; align-items: flex-start;">
+
+              <div style="background: var(--accent-glow); padding: 8px; border-radius: 8px; color: var(--accent-primary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:20px; height:20px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+
+              <div>
+
+                <h5 style="font-weight:600; margin-bottom: 4px;">Electrified Egress</h5>
+
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Integrate panic bars with fire alarms for automatic override unlock.</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="comm-hero-img-wrapper">
+
+            <img src="images/panic_bar.png" alt="Sleek commercial exit door with stainless steel panic crash bar hardware">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 6: FILE CABINET SECURITY -->
+
+    <section id="file-cabinet" class="section-file-cabinet">
+
+      <div class="comm-hero-img-wrapper">
+
+        <img src="images/file_cabinet.png" alt="Black steel file cabinet drawer close-up featuring electronic keypad lock and blue LED indicators">
+
+      </div>
+
+      <div class="fc-vulnerability-checker">
+
+        <span class="sec-badge">Asset Protection</span>
+
+        <h4 style="font-weight: 700; margin-bottom: 20px; color: var(--text-primary); font-size: 1.5rem;">File Cabinet & Inventory Security</h4>
+
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px;">
+
+          Secure confidential employee records, intellectual property, financial documentation, and retail inventory from internal and external threat vectors.
+
+        </p>
+
+        
+
+        <div class="fc-item">
+
+          <label class="sec-toggle">
+
+            <input type="checkbox" id="checkAudit">
+
+            <span class="toggle-slider"></span>
+
+          </label>
+
+          <div>
+
+            <h5 style="font-weight:600; font-size:0.95rem;">Authorized Key Audits</h5>
+
+            <p style="font-size:0.8rem; color: var(--text-secondary);">Log and trace which employees possess physical desk/drawer access keys.</p>
+
+          </div>
+
+        </div>
+
+        
+
+        <div class="fc-item">
+
+          <label class="sec-toggle">
+
+            <input type="checkbox" id="checkGrade">
+
+            <span class="toggle-slider"></span>
+
+          </label>
+
+          <div>
+
+            <h5 style="font-weight:600; font-size:0.95rem;">Anti-Bypass Lock Cylinders</h5>
+
+            <p style="font-size:0.8rem; color: var(--text-secondary);">Upgrade standard file cabinet wafer locks to pick/shim resistant cores.</p>
+
+          </div>
+
+        </div>
+
+        
+
+        <div class="fc-item">
+
+          <label class="sec-toggle">
+
+            <input type="checkbox" id="checkDigital">
+
+            <span class="toggle-slider"></span>
+
+          </label>
+
+          <div>
+
+            <h5 style="font-weight:600; font-size:0.95rem;">Keyless Digital Lock retrofits</h5>
+
+            <p style="font-size:0.8rem; color: var(--text-secondary);">Switch cabinet security to digital PIN pads or RFID swipe tags for instant audit logs.</p>
+
+          </div>
+
+        </div>
+
+        
+
+        <div style="margin-top: 24px; padding: 12px; background: var(--bg-primary); border-radius: 8px; text-align: center;">
+
+          <span style="font-size: 0.85rem; font-weight: 600;" id="vulnerabilityScoreText">Current Vulnerability: HIGH risk</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 7: BUSINESS REKEYING -->
+
+    <section id="business-rekey" class="section-business-rekey">
+
+      <div class="sec-header" style="text-align: center;">
+
+        <span class="sec-badge">Staff Transitions & Turnover</span>
+
+        <h2 class="sec-title" style="margin: 0 auto 16px;">Professional Business Rekeying</h2>
+
+        <p class="sec-desc" style="margin: 0 auto; text-align: center;">
+
+          Quickly re-establish security controls after personnel transitions. Rekeying allows you to render old keys useless by altering the internal cylinder structure without costly hardware replacements.
+
+        </p>
+
+      </div>
+
+      
+
+      <div class="rekey-comparison-table-wrapper">
+
+      <table class="rekey-comparison-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Security Factor</th>
+
+            <th>Physical Cylinder Rekeying</th>
+
+            <th>Digital Access Control Updates</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td style="font-weight:600;">Cost Efficiency</td>
+
+            <td>Low cost initial setup, high labor cost during re-entry events.</td>
+
+            <td>Higher initial setup hardware cost, virtually free instant key card revocation.</td>
+
+          </tr>
+
+          <tr>
+
+            <td style="font-weight:600;">Time of Transition</td>
+
+            <td>Requires physical visit from locksmith to repin lock housings.</td>
+
+            <td>Completed in seconds via central cloud console interface.</td>
+
+          </tr>
+
+          <tr>
+
+            <td style="font-weight:600;">Key Management Control</td>
+
+            <td>Possibility of unauthorized key duplicates.</td>
+
+            <td>Zero replication possible. Dual encrypted tokens.</td>
+
+          </tr>
+
+          <tr>
+
+            <td style="font-weight:600;">Activity Tracking Logs</td>
+
+            <td>None (passive lock systems).</td>
+
+            <td>Full audit trail with timestamp logs for every entry.</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 8: SECURITY CONSULTATION -->
+
+    <section id="consultation" class="section-consultation">
+
+      <div class="sec-header">
+
+        <span class="sec-badge">Expert Consultation</span>
+
+        <h2 class="sec-title">Schedule Commercial Security Consultation</h2>
+
+        <p class="sec-desc">
+
+          Plan an on-site audit with our certified corporate locksmith security consultants. We analyze building weaknesses, access paths, emergency exit compliance, and security lock upgrades.
+
+        </p>
+
+      </div>
+
+      
+
+      <form class="consultation-form-grid" onsubmit="event.preventDefault(); alert('Security consultation requested! Our lead commercial locksmith will call you in 15 minutes.');">
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+
+          <div class="form-group">
+
+            <label class="form-label">Company Name</label>
+
+            <input type="text" placeholder="e.g. Acme Corporation" required class="form-input">
+
+          </div>
+
+          
+
+          <div class="form-group">
+
+            <label class="form-label">Contact Name & Role</label>
+
+            <input type="text" placeholder="e.g. Jane Doe (Facilities Manager)" required class="form-input">
+
+          </div>
+
+          
+
+          <div class="form-group">
+
+            <label class="form-label">Contact Phone</label>
+
+            <input type="tel" placeholder="(555) 000-0000" required class="form-input">
+
+          </div>
+
+        </div>
+
+        
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+
+          <div class="form-group">
+
+            <label class="form-label">Business Scale</label>
+
+            <div class="form-options-row">
+
+              <div class="option-btn selected" onclick="selectBusinessScale(this, 'Small Office')">Small</div>
+
+              <div class="option-btn" onclick="selectBusinessScale(this, 'Medium Corporate')">Medium</div>
+
+              <div class="option-btn" onclick="selectBusinessScale(this, 'Enterprise Facility')">Enterprise</div>
+
+            </div>
+
+            <input type="hidden" id="selectedScale" value="Small Office">
+
+          </div>
+
+          
+
+          <div class="form-group">
+
+            <label class="form-label">Security Focus</label>
+
+            <select class="form-select" id="securityFocusSelect">
+
+              <option value="Biometric Access Control">Biometric Access Control</option>
+
+              <option value="Master Key Design">Master Key Systems</option>
+
+              <option value="ANSI Grade 1 Cylinder Upgrades">High Security Locks</option>
+
+              <option value="ADA Exit Device Compliance">Panic Bar Exit Hardware</option>
+
+              <option value="Full Facility Audit">Comprehensive Security Audit</option>
+
+            </select>
+
+          </div>
+
+          
+
+          <div class="form-group">
+
+            <label class="form-label">Additional Detail</label>
+
+            <textarea placeholder="Tell us about your locks, doors, or compliance goals..." rows="3" class="form-textarea"></textarea>
+
+          </div>
+
+        </div>
+
+        
+
+        <div style="grid-column: span 2; display: flex; justify-content: flex-end;">
+
+          <button type="submit" class="submit-btn-comm">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 20px; height: 20px;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+
+            <span>Request Commercial Callback</span>
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+
+  </main>
+
+  <!-- ==========================================================================
+
+       FOOTER SECTION (Matches Navbar Aesthetics, Colors & Font Sizes)
+
+       ========================================================================== -->
+
+  <footer class="footer-wrapper">
+
+    <div class="footer-container">
+
+      
+
+      <!-- Footer Grid -->
+
+      <div class="footer-grid">
+
+        
+
+        <!-- Column 1: Brand & About -->
+
+        <div class="footer-col brand-col">
+
+          <a href="index.html" class="brand" style="margin-bottom: 16px;">
+
+            <svg class="brand-logo-svg" viewBox="0 0 100 100">
+
+              <defs>
+
+                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                  <stop offset="0%" stop-color="var(--accent-primary)" />
+
+                  <stop offset="100%" stop-color="var(--accent-secondary)" />
+
+                </linearGradient>
+
+              </defs>
+
+              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
+
+              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
+
+              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
+
+            </svg>
+
+            <span>LOCKSMITH</span>
+
+          </a>
+
+          <p class="footer-text">
+
+            Licensed, bonded, and insured mobile emergency locksmith services. Rapid lockout assistance, security audits, and keyless automation systems. Available 24 hours.
+
+          </p>
+
+          <div class="social-links">
+
+            <a href="#facebook" class="social-icon-btn" aria-label="Facebook">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+
+            </a>
+
+            <a href="#twitter" class="social-icon-btn" aria-label="Twitter">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+
+            </a>
+
+            <a href="#instagram" class="social-icon-btn" aria-label="Instagram">
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Column 2: Locksmith Services -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Locksmith Services</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="Emergency.html" class="footer-link-item">Emergency Services</a></li>
+
+            <li><a href="Residential.html" class="footer-link-item">Residential Locksmith</a></li>
+
+            <li><a href="Commercial.html" class="footer-link-item">Commercial Locksmith</a></li>
+
+            <li><a href="Security Installationl.html" class="footer-link-item">Security Installation</a></li>
+
+            <li><a href="Lock Types.html" class="footer-link-item">Lock Types Guide</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 3: Resources & Info -->
+
+        <div class="footer-col">
+
+          <h3 class="footer-title">Resources & Info</h3>
+
+          <ul class="footer-links-list">
+
+            <li><a href="#about" class="footer-link-item">About Our Team</a></li>
+
+            <li><a href="Pricing.html" class="footer-link-item">Pricing & Estimates</a></li>
+
+            <li><a href="#service-areas" class="footer-link-item">Service Areas Map</a></li>
+
+            <li><a href="#resources" class="footer-link-item">Security Blog & Tips</a></li>
+
+            <li><a href="#reviews" class="footer-link-item">Reviews & Testimonials</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Column 5: Newsletter Sign-up -->
+
+        <div class="footer-col newsletter-col">
+
+          <h3 class="footer-title">Secure News & Offers</h3>
+
+          <p class="footer-text" style="margin-bottom: 12px;">Subscribe for safety tips & special lock installation deals.</p>
+
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+
+            <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required class="newsletter-input" />
+
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+
+              <svg class="padlock-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #fff;">
+
+                <path d="M7 11V7a5 5 0 0 1 10 0v4M4 11h16v11H4z" fill="none" stroke-width="2.5" />
+
+              </svg>
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Divider line -->
+
+      <div class="footer-divider"></div>
+
+
+
+      <!-- Footer Bottom -->
+
+      <div class="footer-bottom">
+
+        <p class="copyright">&copy; 2026 LOCKSMITH. All rights reserved. Licensed Locksmith #LIC-9428-A.</p>
+
+        <div class="footer-bottom-links">
+
+          <a href="#privacy" class="footer-bottom-link">Privacy Policy</a>
+
+          <a href="#terms" class="footer-bottom-link">Terms of Service</a>
+
+          <a href="#licensing" class="footer-bottom-link">Licensing Details</a>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ==========================================================================
+
+       9. INTERACTIVE JAVASCRIPT CONTROLLERS
+
+       ========================================================================== */ -->
+
+  <script>
+
+    // 9.1 Theme Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+
+    
+
+    function initTheme() {
+
+      const savedTheme = localStorage.getItem('theme');
+
+      if (savedTheme === 'light') {
+
+        document.documentElement.classList.remove('dark');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+      }
+
+    }
+
+    
+
+    function toggleTheme() {
+
+      if (document.documentElement.classList.contains('dark')) {
+
+        document.documentElement.classList.remove('dark');
+
+        localStorage.setItem('theme', 'light');
+
+      } else {
+
+        document.documentElement.classList.add('dark');
+
+        localStorage.setItem('theme', 'dark');
+
+      }
+
+    }
+
+
+
+    initTheme();
+
+    darkModeBtn.addEventListener('click', toggleTheme);
+
+    drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+
+
+    // 9.2 RTL Layout Controllers (Dual-Bind: Header & Drawer buttons)
+
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+
+    
+
+    function toggleRtl() {
+
+      const currentDir = document.documentElement.dir || 'ltr';
+
+      if (currentDir === 'ltr') {
+
+        document.documentElement.dir = 'rtl';
+
+      } else {
+
+        document.documentElement.dir = 'ltr';
+
+      }
+
+    }
+
+
+
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+
+    drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+
+
+    // 9.3 Ambient Cursor Tracker in Navbar Container
+
+    const mainNavbar = document.getElementById('mainNavbar');
+
+    const navGlow = document.getElementById('navGlow');
+
+
+
+    if (mainNavbar && navGlow) {
+
+      mainNavbar.addEventListener('mousemove', (e) => {
+
+        const rect = mainNavbar.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        
+
+        mainNavbar.style.setProperty('--mouse-x', `${x}px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `${y}px`);
+
+      });
+
+
+
+      mainNavbar.addEventListener('mouseleave', () => {
+
+        // Reset glow offscreen when mouse leaves
+
+        mainNavbar.style.setProperty('--mouse-x', `-999px`);
+
+        mainNavbar.style.setProperty('--mouse-y', `-999px`);
+
+      });
+
+    }
+
+
+
+    // 9.4 Mobile Drawer Controller (Drawer + Overlay + Back/Close triggers)
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+
+
+    function openMobileDrawer() {
+
+      mobileDrawer.classList.add('open');
+
+      drawerOverlay.classList.add('active');
+
+      document.body.style.overflow = 'hidden'; // Stop page scrolling
+
+    }
+
+
+
+    function closeMobileDrawer() {
+
+      mobileDrawer.classList.remove('open');
+
+      drawerOverlay.classList.remove('active');
+
+      document.body.style.overflow = ''; // Resume page scrolling
+
+    }
+
+
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+
+    drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+
+
+    // 9.5 Drawer Accordion Submenu Collapses
+
+    const accordionTriggers = document.querySelectorAll('.drawer-accordion-trigger');
+
+
+
+    accordionTriggers.forEach(trigger => {
+
+      trigger.addEventListener('click', () => {
+
+        // Toggle active submenu container height
+
+        const submenu = trigger.nextElementSibling;
+
+        const chevron = trigger.querySelector('.chevron-icon');
+
+        
+
+        if (submenu.classList.contains('open')) {
+
+          submenu.classList.remove('open');
+
+          chevron.style.transform = 'rotate(0deg)';
+
+        } else {
+
+          // Close others first for a clean accordian flow
+
+          accordionTriggers.forEach(otherTrigger => {
+
+            const otherSub = otherTrigger.nextElementSibling;
+
+            const otherChevron = otherTrigger.querySelector('.chevron-icon');
+
+            if (otherSub && otherSub.classList.contains('open') && otherSub !== submenu) {
+
+              otherSub.classList.remove('open');
+
+              otherChevron.style.transform = 'rotate(0deg)';
+
+            }
+
+          });
+
+          
+
+          submenu.classList.add('open');
+
+          chevron.style.transform = 'rotate(180deg)';
+
+        }
+
+      });
+
+    });
+
+
+
+    // 9.6 Login Button Hover Shackle micro-interactions (Dual-Bind: Desktop & Mobile Drawer)
+
+    const loginBtn = document.getElementById('loginBtn');
+
+    const drawerLoginBtn = document.getElementById('drawerLoginBtn');
+
+    const desktopShackle = document.getElementById('desktopShackle');
+
+    const drawerShackle = document.getElementById('drawerShackle');
+
+
+
+    loginBtn.addEventListener('mouseenter', () => {
+
+      desktopShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    loginBtn.addEventListener('mouseleave', () => {
+
+      desktopShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    drawerLoginBtn.addEventListener('mouseenter', () => {
+
+      drawerShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+
+    });
+
+    drawerLoginBtn.addEventListener('mouseleave', () => {
+
+      drawerShackle.style.transform = 'translateY(0) rotate(0)';
+
+    });
+
+
+
+    // 9.7 Active Page Highlighter
+
+    function highlightActivePage() {
+
+      const path = window.location.pathname;
+
+      let page = path.split("/").pop();
+
+      if (!page || page === "") {
+
+        page = "index.html";
+
+      }
+
+      page = decodeURIComponent(page);
+
+
+
+      const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+
+      const dropdownItems = document.querySelectorAll('.nav-menu .dropdown-item');
+
+
+
+      const getFilename = (href) => {
+
+        if (!href) return "";
+
+        return href.replace(/^\.\//, "").split("/").pop();
+
+      };
+
+
+
+      let activeFound = false;
+
+
+
+      dropdownItems.forEach(item => {
+
+        const hrefFilename = getFilename(item.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          item.classList.add('active-link');
+
+          const parentNavItem = item.closest('.nav-item');
+
+          if (parentNavItem) {
+
+            parentNavItem.classList.add('active');
+
+          }
+
+          activeFound = true;
+
+        }
+
+      });
+
+
+
+      if (!activeFound) {
+
+        navLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            const parentNavItem = link.closest('.nav-item');
+
+            if (parentNavItem) {
+
+              parentNavItem.classList.add('active');
+
+            }
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+
+
+      const mobileLinks = document.querySelectorAll('.mobile-menu-list .mobile-menu-link');
+
+      const mobileSubLinks = document.querySelectorAll('.mobile-menu-list .mobile-submenu-link');
+
+
+
+      let mobileActiveFound = false;
+
+
+
+      mobileSubLinks.forEach(subLink => {
+
+        const hrefFilename = getFilename(subLink.getAttribute('href'));
+
+        if (hrefFilename && hrefFilename === page) {
+
+          subLink.classList.add('active-link');
+
+          const submenu = subLink.closest('.mobile-submenu');
+
+          if (submenu) {
+
+            submenu.classList.add('open');
+
+            const trigger = submenu.previousElementSibling;
+
+            if (trigger && trigger.querySelector('.chevron-icon')) {
+
+              trigger.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+
+            }
+
+          }
+
+          mobileActiveFound = true;
+
+        }
+
+      });
+
+
+
+      if (!mobileActiveFound) {
+
+        mobileLinks.forEach(link => {
+
+          const hrefFilename = getFilename(link.getAttribute('href'));
+
+          if (hrefFilename && hrefFilename === page) {
+
+            link.classList.add('active-link');
+
+          }
+
+        });
+
+      }
+
+    }
+
+
+
+    highlightActivePage();
+
+
+
+    // ==========================================================================
+
+    // COMMERCIAL PAGE INTERACTIVE CONTROLLERS
+
+    // ==========================================================================
+
+
+
+    // 1. Access Control Scanner & Log Simulator
+
+    const badgeScanner = document.getElementById('badgeScanner');
+
+    const accessLogScreen = document.getElementById('accessLogScreen');
+
+    
+
+    const sampleAccessLogs = [
+
+      { text: "SWIPE CARD READ: Card #9420 (Jane Austin - HR)", status: "log-success" },
+
+      { text: "ACCESS GRANTED: Sector 2 Office Entrance", status: "log-success" },
+
+      { text: "BIOMETRIC ATTEMPT: Fingerprint Scanner #03", status: "log-success" },
+
+      { text: "ACCESS DENIED: Card #1280 (Expired Guest) - Security alert sent", status: "log-danger" },
+
+      { text: "DOOR SOLENOID RELEASED: Server Room Main Entry", status: "log-success" },
+
+      { text: "SYSTEM TRIGGER: Office Lock System Lockout bypass check", status: "log-warning" }
+
+    ];
+
+    
+
+    if (badgeScanner && accessLogScreen) {
+
+      badgeScanner.addEventListener('click', () => {
+
+        if (badgeScanner.classList.contains('scanning')) return;
+
+        
+
+        badgeScanner.classList.add('scanning');
+
+        
+
+        // Add "Scanning credential..."
+
+        const scanLine = document.createElement('div');
+
+        scanLine.className = 'access-log-entry';
+
+        scanLine.innerText = "> CREDENTIAL SWIPE DETECTED. Verifying digital tokens...";
+
+        accessLogScreen.appendChild(scanLine);
+
+        accessLogScreen.scrollTop = accessLogScreen.scrollHeight;
+
+        
+
+        setTimeout(() => {
+
+          badgeScanner.classList.remove('scanning');
+
+          
+
+          // Pick a random log entry
+
+          const log = sampleAccessLogs[Math.floor(Math.random() * sampleAccessLogs.length)];
+
+          const entry = document.createElement('div');
+
+          entry.className = `access-log-entry ${log.status}`;
+
+          entry.innerText = `> ${log.text}`;
+
+          accessLogScreen.appendChild(entry);
+
+          
+
+          // Keep only last 8 entries in view
+
+          while (accessLogScreen.children.length > 8) {
+
+            accessLogScreen.removeChild(accessLogScreen.firstChild);
+
+          }
+
+          
+
+          accessLogScreen.scrollTop = accessLogScreen.scrollHeight;
+
+        }, 1200);
+
+      });
+
+    }
+
+    
+
+    // 2. Master Key Hierarchy Click Interactions
+
+    const nodes = document.querySelectorAll('.hierarchy-node');
+
+    const resultText = document.getElementById('hierarchyResultText');
+
+    
+
+    const hierarchyPrivileges = {
+
+      ggmk: "Great Grand Master Key (GGMK) has maximum system authorization. It can open all cylinder locks across the entire corporate campus, including corporate office suites, IT server rooms, financial file cabinets, and exterior parking garages.",
+
+      gmk: "Grand Master Key (GMK) has authorization for a single designated building or distinct facility wing. It bypasses department divisions but will not open doors in other connected buildings.",
+
+      mk: "Master Key (MK) is limited to a single department or organizational unit. For example, the IT Master Key opens all server closets and technical labs but is locked out of accounting, HR, and marketing offices.",
+
+      sk: "Standard User Key (SK) is the lowest privilege level. It can open only one single door (e.g. employee's desk drawer, office lock system, or individual entry door)."
+
+    };
+
+    const hierarchySpecs = {
+      ggmk: {
+        tier: "Tier 4 (Enterprise)",
+        dup: "Dual-Authorized Signature",
+        keyway: "Primus XP / Patented",
+        pins: "7-Pin SFIC (Interchangeable)",
+        bitting: "16,384 Codes (MACS Guard)"
+      },
+      gmk: {
+        tier: "Tier 3 (Facility)",
+        dup: "Verification Registry",
+        keyway: "Everest 29 R Restricted",
+        pins: "6/7-Pin Interchangeable Core",
+        bitting: "4,096 Codes (Bitting Matrix)"
+      },
+      mk: {
+        tier: "Tier 2 (Departmental)",
+        dup: "Manager Sign-off Required",
+        keyway: "Patented Everest System",
+        pins: "6-Pin Solid Brass Cylinder",
+        bitting: "1,024 Codes (Pin Segregation)"
+      },
+      sk: {
+        tier: "Tier 1 (Individual)",
+        dup: "Standard Work Order",
+        keyway: "Everest Open Keyway",
+        pins: "5/6-Pin Cylinder Egress",
+        bitting: "Single Code (Locked Profile)"
+      }
+    };
+
+    const specsTierBadge = document.getElementById('specsTierBadge');
+    const specsDupControl = document.getElementById('specsDupControl');
+    const specsKeyway = document.getElementById('specsKeyway');
+    const specsPins = document.getElementById('specsPins');
+    const specsBitting = document.getElementById('specsBitting');
+
+    const visualizerOffsets = {
+      ggmk: {
+        offsets: ["13px", "9px", "15px", "17px"],
+        status: "Unlocked (GGMK Shear Line Clear)",
+        badge: "Access Granted",
+        badgeBg: "rgba(212, 175, 55, 0.15)",
+        badgeColor: "var(--accent-primary)"
+      },
+      gmk: {
+        offsets: ["13px", "9px", "15px", "25px"],
+        status: "Unlocked (GMK Segment Aligned)",
+        badge: "Access Granted",
+        badgeBg: "rgba(212, 175, 55, 0.15)",
+        badgeColor: "var(--accent-primary)"
+      },
+      mk: {
+        offsets: ["13px", "9px", "25px", "25px"],
+        status: "Unlocked (MK Segment Aligned)",
+        badge: "Access Granted",
+        badgeBg: "rgba(212, 175, 55, 0.15)",
+        badgeColor: "var(--accent-primary)"
+      },
+      sk: {
+        offsets: ["25px", "25px", "25px", "25px"],
+        status: "Unlocked (User Shear Line Clear)",
+        badge: "Access Granted",
+        badgeBg: "rgba(212, 175, 55, 0.15)",
+        badgeColor: "var(--accent-primary)"
+      }
+    };
+
+    const stackChamber1 = document.getElementById('stackChamber1');
+    const stackChamber2 = document.getElementById('stackChamber2');
+    const stackChamber3 = document.getElementById('stackChamber3');
+    const stackChamber4 = document.getElementById('stackChamber4');
+    const shearStatusText = document.getElementById('shearStatusText');
+    const shearMatchBadge = document.getElementById('shearMatchBadge');
+
+    if (nodes && resultText) {
+
+      nodes.forEach(node => {
+
+        node.addEventListener('click', () => {
+
+          // Remove active class from all
+
+          nodes.forEach(n => n.classList.remove('active'));
+
+          // Add to clicked
+
+          node.classList.add('active');
+
+          
+
+          const level = node.getAttribute('data-level');
+
+          resultText.style.opacity = 0;
+
+          setTimeout(() => {
+
+            resultText.innerText = hierarchyPrivileges[level];
+
+            resultText.style.opacity = 1;
+
+            resultText.style.transition = 'opacity 0.3s ease';
+
+          }, 150);
+
+          // Update specs
+          const specs = hierarchySpecs[level];
+          if (specs) {
+            if (specsTierBadge) specsTierBadge.innerText = specs.tier;
+            if (specsDupControl) specsDupControl.innerText = specs.dup;
+            if (specsKeyway) specsKeyway.innerText = specs.keyway;
+            if (specsPins) specsPins.innerText = specs.pins;
+            if (specsBitting) specsBitting.innerText = specs.bitting;
+          }
+
+          // Update pin animations
+          const visualizer = visualizerOffsets[level];
+          if (visualizer) {
+            if (stackChamber1) stackChamber1.style.transform = `translateY(${visualizer.offsets[0]})`;
+            if (stackChamber2) stackChamber2.style.transform = `translateY(${visualizer.offsets[1]})`;
+            if (stackChamber3) stackChamber3.style.transform = `translateY(${visualizer.offsets[2]})`;
+            if (stackChamber4) stackChamber4.style.transform = `translateY(${visualizer.offsets[3]})`;
+            
+            if (shearStatusText) {
+              shearStatusText.innerText = visualizer.status;
+              shearStatusText.style.color = "var(--accent-primary)";
+            }
+            if (shearMatchBadge) {
+              shearMatchBadge.innerText = visualizer.badge;
+              shearMatchBadge.style.background = visualizer.badgeBg;
+              shearMatchBadge.style.color = visualizer.badgeColor;
+            }
+          }
+
+        });
+
+      });
+
+    }
+
+    
+
+    // 3. Panic Bar Simulator
+
+    const panicBarBtn = document.getElementById('panicBarBtn');
+
+    const simDoor = document.getElementById('simDoor');
+
+    const doorIndicator = document.getElementById('doorIndicator');
+
+    const simStatus = document.getElementById('simStatus');
+
+    
+
+    if (panicBarBtn && simDoor && doorIndicator && simStatus) {
+
+      panicBarBtn.addEventListener('click', () => {
+
+        if (panicBarBtn.classList.contains('depressed')) return;
+
+        
+
+        panicBarBtn.classList.add('depressed');
+
+        simDoor.style.backgroundColor = '#10b981'; // Green door open state
+
+        doorIndicator.style.backgroundColor = '#10b981'; // Green indicator
+
+        doorIndicator.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.8)';
+
+        simStatus.innerText = "Status: Door Unlocked (Mechanical Egress Released)";
+
+        
+
+        setTimeout(() => {
+
+          panicBarBtn.classList.remove('depressed');
+
+          simDoor.style.backgroundColor = '#1f2937';
+
+          doorIndicator.style.backgroundColor = '#ef4444';
+
+          doorIndicator.style.boxShadow = '0 0 10px rgba(239, 68, 68, 0.5)';
+
+          simStatus.innerText = "Status: Door Locked (Solenoid Engaged)";
+
+        }, 2500);
+
+      });
+
+    }
+
+    
+
+    // 4. File Cabinet Vulnerability Checker
+
+    const checkAudit = document.getElementById('checkAudit');
+
+    const checkGrade = document.getElementById('checkGrade');
+
+    const checkDigital = document.getElementById('checkDigital');
+
+    const scoreText = document.getElementById('vulnerabilityScoreText');
+
+    
+
+    function updateVulnerability() {
+
+      if (!scoreText) return;
+
+      let score = 0;
+
+      if (checkAudit && checkAudit.checked) score += 1;
+
+      if (checkGrade && checkGrade.checked) score += 1;
+
+      if (checkDigital && checkDigital.checked) score += 1;
+
+      
+
+      if (score === 0) {
+
+        scoreText.innerText = "Current Vulnerability: HIGH risk (Action recommended)";
+
+        scoreText.style.color = '#f87171';
+
+      } else if (score === 1) {
+
+        scoreText.innerText = "Current Vulnerability: MODERATE risk";
+
+        scoreText.style.color = '#facc15';
+
+      } else if (score === 2) {
+
+        scoreText.innerText = "Current Vulnerability: LOW risk";
+
+        scoreText.style.color = '#60a5fa';
+
+      } else {
+
+        scoreText.innerText = "Current Vulnerability: SECURE (Premium Grade)";
+
+        scoreText.style.color = '#4ade80';
+
+      }
+
+    }
+
+    
+
+    if (checkAudit) checkAudit.addEventListener('change', updateVulnerability);
+
+    if (checkGrade) checkGrade.addEventListener('change', updateVulnerability);
+
+    if (checkDigital) checkDigital.addEventListener('change', updateVulnerability);
+
+    
+
+    // 5. Consultation Option Selectors
+
+    function selectBusinessScale(element, scaleValue) {
+
+      const parent = element.parentElement;
+
+      const options = parent.querySelectorAll('.option-btn');
+
+      options.forEach(opt => opt.classList.remove('selected'));
+
+      element.classList.add('selected');
+
+      
+
+      const hiddenInput = document.getElementById('selectedScale');
+
+      if (hiddenInput) {
+
+        hiddenInput.value = scaleValue;
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+

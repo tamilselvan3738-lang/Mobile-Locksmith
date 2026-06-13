@@ -1,0 +1,386 @@
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES & OPTIMIZATIONS
+   Centralized styling to enforce mobile-first responsiveness across all pages.
+   ========================================================================== */
+
+/* 1. GLOBAL RESET & BASE OPTIMIZATIONS */
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Ensure text inside grids, flex items, and tables stays inside containers */
+p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, div {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+/* Image scaling */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Responsive Table Container using modern :has selector */
+div:has(> table),
+section:has(> table),
+.comp-table-wrapper,
+.matrix-table-container {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Force table headers/rows to maintain readable widths on small screens */
+@media (max-width: 768px) {
+  table {
+    min-width: 600px !important;
+  }
+}
+
+/* 2. RESPONSIVE TYPOGRAPHY (Fluid scale based on viewport) */
+@media (max-width: 1024px) {
+  h1, .hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem) !important;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem) !important;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 1.8rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.6rem) !important;
+    line-height: 1.25 !important;
+  }
+  h2 {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+  }
+  h3 {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  .hero-desc, .sec-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* 3. HERO & SECTION PADDINGS (Consistent premium margins) */
+@media (max-width: 768px) {
+  section, 
+  .home-section, 
+  .about-section, 
+  .contact-section, 
+  .sec-resource-section, 
+  .service-section, 
+  .reviews-section,
+  .checklist-section,
+  .calculator-faq-section {
+    padding: 40px 16px !important;
+    margin-top: 30px !important;
+  }
+
+  .hero-section, 
+  .about-hero-split, 
+  .contact-hero-split, 
+  .commercial-hero, 
+  .lock-hero, 
+  .pricing-hero, 
+  .residential-hero, 
+  .reviews-section.rev-hero, 
+  .security-hero {
+    padding: 100px 16px 40px 16px !important;
+    margin-top: 0 !important;
+    min-height: auto !important;
+  }
+  
+  .footer-wrapper {
+    padding: 40px 16px 20px 16px !important;
+    margin-top: 60px !important;
+  }
+}
+
+/* 4. LAYOUT GRID STACKING & WIDTH ADAPTATIONS */
+@media (max-width: 1024px) {
+  /* Grids and multi-column elements stacked vertically */
+  .hero-section,
+  .about-hero-split,
+  .about-visual-split,
+  .contact-hero-split,
+  .coverage-split-layout,
+  .commercial-hero,
+  .master-key-grid,
+  .high-security-grid,
+  .emergency-hero,
+  .dispatch-simulator-section,
+  .calc-faq-grid,
+  .simulator-container,
+  .pricing-hero,
+  .compare-chart-grid,
+  .install-builder-grid,
+  .residential-hero,
+  .upgrade-interactive-card,
+  .assessment-grid,
+  .reviews-section.rev-hero,
+  .story-item,
+  .security-hero,
+  .security-hero-container,
+  .service-hero-section,
+  .wear-layout,
+  .tutorial-content-pane,
+  .audit-layout,
+  .radar-layout,
+  .section-access-control,
+  .section-master-key,
+  .section-high-security,
+  .section-panic-bar,
+  .section-file-cabinet,
+  .section-business-rekey,
+  .section-deadbolts,
+  .section-smart-locks,
+  .section-keyless-entry,
+  .section-electronic-locks,
+  .section-hub-dashboard,
+  .section-alarm-systems,
+  .section-doorbells,
+  .section-motion-sensors,
+  .section-intercom,
+  .section-remote-monitor,
+  .dashboard-layout,
+  .comp-table-wrapper,
+  .maintenance-module-grid,
+  .audit-results-grid,
+  .upgrade-interactive-card {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Reset layout flex/grid wrapper widths */
+  .hero, .hero-desc, .sec-desc, .est-card, .footer-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Dashboard Sidebar Stacking (Removed to support hamburger menu drawer on mobile/tablet) */
+}
+
+/* 5. SPECIFIC BREAKPOINT OPTIMIZATIONS */
+
+/* Max Width 768px (Tablet viewports) */
+@media (max-width: 768px) {
+  /* Hide desktop-oriented interactive visualizers or scale them */
+  .hero-image-container, .hero-image-frame, .about-hero-visual, .lock-hero-visual, .comm-hero-img-wrapper, .sec-hero-img-wrapper {
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Force stack elements that are 2-col or 3-col grids */
+  .result-grid, .video-grid, .story-stats {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Platform integration row elements scaling */
+  .platform-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Adjust timeline item cards */
+  .timeline-node {
+    min-width: 250px !important;
+    max-width: 280px !important;
+  }
+}
+
+/* Max Width 480px (Smartphones) */
+@media (max-width: 480px) {
+  /* Ensure proper spacing on the main layout wrapper */
+  .navbar-wrapper {
+    width: 94% !important;
+    top: 10px !important;
+  }
+  
+  .navbar-container {
+    padding: 0 12px !important;
+  }
+
+  /* Mobile menu drawer width to prevent horizontal overflow */
+  .mobile-drawer {
+    width: 285px !important;
+    padding: 16px !important;
+  }
+
+  .drawer-controls-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* Buttons expand to full width inside actions groups */
+  .hero-actions, .cta-group, .btn-group, .actions-row, .wizard-actions, .doorbell-btn-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions a, .hero-actions button, 
+  .cta-group a, .cta-group button, 
+  .btn-group a, .btn-group button, 
+  .wizard-actions button,
+  .doorbell-btn-row button,
+  .doorbell-btn-row a {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Grid layouts targeting 1 column */
+  .platform-row, .tips-layout-grid, .reviews-grid, .comp-layout, .science-grid, .checklist-grid, .stat-grid, .kanban-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Header stats elements */
+  .hero-stats-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    text-align: center;
+  }
+
+  /* Cards, error pages, and login/signup boxes */
+  .login-card, .register-card, .est-card, .glass-card, .preview-card, .error-wrapper {
+    padding: 24px 16px !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Max Width 320px (Ultra-small mobile screens like iPhone SE) */
+@media (max-width: 320px) {
+  .navbar-wrapper {
+    width: 96% !important;
+  }
+  
+  .brand {
+    font-size: 1.1rem !important;
+    gap: 4px !important;
+  }
+  
+  .brand-logo-svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .mobile-drawer {
+    width: 250px !important;
+    padding: 12px !important;
+  }
+  
+  .login-card, .register-card {
+    padding: 16px 10px !important;
+  }
+
+  .back-btn {
+    padding: 4px 8px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* 6. DARK / LIGHT MODE & RTL ALIGNMENT FIXES */
+
+/* RTL Chevron and Arrow mirroring */
+[dir="rtl"] .arrow-icon,
+[dir="rtl"] .chevron-icon:not(.down-chevron),
+[dir="rtl"] .back-btn svg,
+[dir="rtl"] .control-btn-icon {
+  transform: scaleX(-1) !important;
+}
+
+/* Fix RTL toggle button icon centering */
+.control-btn-icon.rtl-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  text-align: center !important;
+}
+
+/* Reset showcase reverse directions on mobile */
+@media (max-width: 992px) {
+  .showcase-grid.reverse {
+    direction: ltr !important;
+  }
+  [dir="rtl"] .showcase-grid.reverse {
+    direction: rtl !important;
+  }
+}
+
+/* Floating Action Button (FAB) position overrides for RTL and responsiveness */
+@media (max-width: 768px) {
+  .fab-container {
+    bottom: 15px !important;
+    right: 15px !important;
+  }
+  [dir="rtl"] .fab-container {
+    left: 15px !important;
+    right: auto !important;
+  }
+}
+
+/* ==========================================================================
+   7. ACTIVE PAGE NAVIGATION HIGHLIGHTS
+   ========================================================================== */
+.nav-item.active > .nav-link,
+.nav-link.active-link {
+  color: var(--accent-primary) !important;
+  background-color: rgba(212, 175, 55, 0.08) !important;
+}
+
+html.dark .nav-item.active > .nav-link,
+html.dark .nav-link.active-link {
+  background-color: rgba(255, 215, 0, 0.05) !important;
+}
+
+/* Dropdown items active state styling */
+.dropdown-item.active-link {
+  color: var(--accent-primary) !important;
+  background-color: var(--bg-tertiary) !important;
+  border-left: 3px solid var(--accent-primary) !important;
+}
+
+[dir="rtl"] .dropdown-item.active-link {
+  border-left: none !important;
+  border-right: 3px solid var(--accent-primary) !important;
+}
+
+/* Mobile drawer links active state styling */
+.mobile-menu-link.active-link {
+  color: var(--accent-primary) !important;
+  background-color: rgba(212, 175, 55, 0.06) !important;
+  border-left: 4px solid var(--accent-primary) !important;
+  padding-left: 12px !important;
+}
+
+[dir="rtl"] .mobile-menu-link.active-link {
+  border-left: none !important;
+  border-right: 4px solid var(--accent-primary) !important;
+  padding-left: 0 !important;
+  padding-right: 12px !important;
+}
+
+.mobile-submenu-link.active-link {
+  color: var(--accent-primary) !important;
+  font-weight: 700 !important;
+}
+

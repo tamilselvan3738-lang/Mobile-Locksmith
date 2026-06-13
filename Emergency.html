@@ -1,0 +1,2988 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24/7 Emergency Lockout Assistance | Mobile Locksmith</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Get immediate 24/7 emergency locksmith services. Home, car, and office lockout assistance, broken key extraction, and rapid dispatch response.">
+  <meta name="author" content="Antigravity">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+       ========================================================================== */
+    :root {
+      /* Typography */
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      /* Colors - Light Mode Defaults */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+      --accent-glow: rgba(212, 175, 55, 0.15);
+      
+      --danger-primary: #ef4444;      /* Emergency Red */
+      --danger-glow: rgba(239, 68, 68, 0.4);
+      
+      --border-color: rgba(15, 23, 42, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.7);
+      --nav-border: rgba(255, 255, 255, 0.5);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+      
+      /* Grid Ambient Animation Colors */
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+      /* Layout */
+      --nav-height: 74px;
+      --border-radius: 20px;
+      --transition-speed: 0.3s;
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Dark Mode Overrides */
+    html.dark {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-primary: #ffd700;      /* Bright Gold */
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+      --accent-glow: rgba(255, 215, 0, 0.25);
+      
+      --danger-primary: #ff4757;
+      --danger-glow: rgba(255, 71, 87, 0.6);
+      
+      --border-color: rgba(255, 255, 255, 0.08);
+      --nav-bg: rgba(11, 15, 25, 0.65);
+      --nav-border: rgba(255, 255, 255, 0.08);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+      
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE STYLES
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+                  border-color var(--transition-speed) var(--transition-timing), 
+                  color var(--transition-speed) var(--transition-timing);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       3. AMBIENT BACKGROUND SYSTEM
+       ========================================================================== */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    }
+
+    .bg-mesh-1, .bg-mesh-2 {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -2;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .bg-mesh-1 {
+      top: -10%;
+      left: -10%;
+      background: var(--mesh-color-1);
+    }
+
+    .bg-mesh-2 {
+      bottom: 10%;
+      right: -10%;
+      background: var(--mesh-color-2);
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 50px) scale(1.2); }
+    }
+
+    /* ==========================================================================
+       4. HEADER & NAVIGATION
+       ========================================================================== */
+    .navbar-wrapper {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 96%;
+      max-width: 1640px;
+      z-index: 1000;
+      animation: slideDown 0.8s var(--transition-timing);
+    }
+
+    .navbar-container {
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--nav-border);
+      box-shadow: var(--shadow-md);
+      height: var(--nav-height);
+      border-radius: var(--border-radius);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: visible;
+    }
+
+    .navbar-glow-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius);
+      pointer-events: none;
+      background: radial-gradient(
+        120px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(0, 242, 254, 0.08),
+        transparent 80%
+      );
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 10;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-svg {
+      width: 38px;
+      height: 38px;
+      fill: none;
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+      animation: pulseLogo 3s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover .brand-logo-svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      flex-grow: 1;
+      height: 100%;
+      z-index: 2;
+      padding: 0 16px;
+    }
+
+    .nav-item {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 6px 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+      transition: color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .nav-link:hover, .nav-item.active .nav-link {
+      color: var(--text-primary);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    html.dark .nav-link:hover, html.dark .nav-item.active .nav-link {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .chevron-icon {
+      width: 11px;
+      height: 11px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-item:hover .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(var(--nav-height) - 10px);
+      left: 50%;
+      transform: translateX(-50%) rotateX(-12deg) translateY(12px);
+      width: max-content;
+      max-width: 340px;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      transform-origin: top center;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-item:hover .dropdown-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) rotateX(0deg) translateY(0);
+    }
+
+    .dropdown-right {
+      left: auto;
+      right: 0;
+      transform: rotateX(-12deg) translateY(12px);
+    }
+    
+    [dir="rtl"] .dropdown-right {
+      right: auto;
+      left: 0;
+    }
+
+    .nav-item:hover .dropdown-right {
+      transform: rotateX(0deg) translateY(0);
+    }
+
+    .dropdown-item {
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--bg-tertiary);
+      transform: translateY(-2px);
+    }
+
+    .dropdown-item-icon {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent-primary);
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .dropdown-item-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dropdown-item-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .dropdown-item-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .emergency-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 8px;
+      height: 8px;
+      background-color: var(--danger-primary);
+      border-radius: 50%;
+      margin-inline-start: 6px;
+      box-shadow: 0 0 0 0 var(--danger-glow);
+      animation: pulseEmergency 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+
+    @keyframes pulseEmergency {
+      0% { box-shadow: 0 0 0 0 var(--danger-glow); }
+      70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s var(--transition-timing);
+    }
+
+    .control-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .control-btn-icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+      transition: transform 0.4s var(--transition-timing);
+    }
+
+    .sun-icon {
+      display: none;
+    }
+    
+    html.dark .moon-icon {
+      display: none;
+    }
+    
+    html.dark .sun-icon {
+      display: block;
+      animation: rotateSun 10s infinite linear;
+    }
+
+    @keyframes rotateSun {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .rtl-icon {
+      transition: transform 0.4s ease;
+    }
+
+    [dir="rtl"] .rtl-icon {
+      transform: scaleX(-1);
+    }
+
+    .login-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s var(--transition-timing);
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      );
+      transform: skewX(-25deg);
+      transition: 0.75s ease;
+    }
+
+    .login-btn:hover::before {
+      left: 125%;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+      filter: brightness(1.05);
+    }
+
+    .padlock-svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .padlock-shackle {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: 12px 6px;
+    }
+
+    .login-btn:hover .padlock-shackle {
+      transform: translateY(-2px) rotate(45deg);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+    }
+
+    .hamburger-icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    /* Mobile Menu Drawer Panel */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 330px;
+      max-width: 100%;
+      height: 100vh;
+      background-color: var(--bg-secondary);
+      border-left: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+      z-index: 1100;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [dir="rtl"] .mobile-drawer {
+      right: auto;
+      left: -100%;
+      border-left: none;
+      border-right: 1px solid var(--border-color);
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    [dir="rtl"] .mobile-drawer.open {
+      left: 0;
+      right: auto;
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .back-btn {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    
+
+    .back-btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 2px 8px var(--accent-glow);
+      transform: translateX(-2px);
+    }
+
+    [dir="rtl"] .back-btn:hover {
+      transform: translateX(2px);
+    }
+
+    .back-icon {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+
+    [dir="rtl"] .back-icon {
+      transform: scaleX(-1);
+    }
+
+    .mobile-menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .mobile-menu-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .mobile-menu-list::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    .mobile-menu-item {
+      width: 100%;
+    }
+
+    .mobile-menu-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      padding-inline-start: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-submenu.open {
+      max-height: 500px;
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .mobile-submenu-link {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drawer-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .drawer-controls-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .drawer-controls-row .control-btn {
+      flex: 1;
+      border-radius: 12px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ==========================================================================
+       5. UNIQUE & CREATIVE EMERGENCY SECTIONS STYLING
+       ========================================================================== */
+    .emergency-container {
+      max-width: 1540px;
+      margin: 140px auto 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* Section Global Headers */
+    .sec-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .sec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: var(--danger-primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .sec-title {
+      font-weight: 500;
+font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .sec-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Card styling */
+    .glass-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .glass-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-primary);
+    }
+
+    /* Section 1: Hero Section (Emergency Hub) */
+    .emergency-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 40px 0 80px 0;
+    }
+
+    .hero-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 6px 14px;
+      border-radius: 50px;
+      color: var(--danger-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--danger-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 var(--danger-glow);
+      animation: pulseEmergency 1.4s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+
+    .hero-title-large {
+      font-weight: 600;
+font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title-large span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .emergency-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .call-now-btn {
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      box-shadow: 0 4px 15px var(--danger-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .call-now-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px var(--danger-glow);
+      filter: brightness(1.1);
+    }
+
+    .dispatch-card-container {
+      position: relative;
+    }
+
+    .hud-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hud-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .hud-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .hud-map-wrapper {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .hud-map-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      filter: brightness(0.9) contrast(1.1);
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(11, 15, 25, 0.6) 100%);
+      pointer-events: none;
+    }
+
+    .hud-timer-widget {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hud-timer-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hud-timer-value {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-primary);
+    }
+
+    .dispatch-log {
+      padding: 16px 20px;
+      background-color: var(--bg-tertiary);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .log-line {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .log-time {
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+
+    /* Section 2 to 5: Lockout Services Showcases (Alternating Creative Panels) */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .showcase-grid.reverse {
+      direction: rtl;
+    }
+    
+    .showcase-grid.reverse > * {
+      direction: ltr; /* Reset text direction for internal items */
+    }
+
+    .showcase-content {
+      max-width: 580px;
+    }
+
+    .showcase-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .showcase-title {
+      font-weight: 500;
+font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .showcase-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .tech-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .spec-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .spec-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+      flex-shrink: 0;
+    }
+
+    .spec-text {
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .spec-text span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .showcase-image-frame {
+      position: relative;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      aspect-ratio: 4/3;
+    }
+
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition-timing);
+    }
+
+    .showcase-image-frame:hover .showcase-img {
+      transform: scale(1.05);
+    }
+
+    /* Hotspot markers on images */
+    .image-hotspot {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: var(--accent-primary);
+      border-radius: 50%;
+      border: 3px solid white;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: pulseHotspot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseHotspot {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+      50% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+    }
+
+    .hotspot-tooltip {
+      position: absolute;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      width: 140px;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-md);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 10;
+    }
+
+    .image-hotspot:hover + .hotspot-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 6: Real-time Live Dispatch & Tracking Simulator */
+    .dispatch-simulator-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .simulator-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .sim-settings {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-form-group {
+      margin-bottom: 20px;
+    }
+
+    .sim-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .sim-select, .sim-input {
+      width: 100%;
+      height: 48px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0 16px;
+      font-family: inherit;
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .sim-select:focus, .sim-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .sim-btn {
+      width: 100%;
+      height: 52px;
+      background: var(--accent-gradient);
+      color: white;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 10px;
+    }
+
+    .sim-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+
+    .sim-display-screen {
+      background-color: #0b0f19;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 360px;
+    }
+
+    .sim-radar {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .sim-radar::before {
+      content: '';
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .sim-radar::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.05);
+    }
+
+    .sim-radar-sweep {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(from 0deg, rgba(212, 175, 55, 0.12) 0deg, transparent 90deg);
+      border-radius: 50%;
+      animation: rotateRadar 4s infinite linear;
+    }
+
+    @keyframes rotateRadar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .sim-vehicle-icon {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-color: var(--accent-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-primary);
+      top: 40px;
+      left: 60px;
+      opacity: 0;
+      transition: all 4s linear;
+    }
+
+    .sim-vehicle-icon.moving {
+      opacity: 1;
+      top: 90px;
+      left: 90px;
+    }
+
+    .sim-status-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .sim-progress-track {
+      width: 100%;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .sim-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--accent-gradient);
+      transition: width 4s linear;
+    }
+
+    .sim-info-box {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    /* Section 7: Proactive Lockout Preparedness Checklist */
+    .checklist-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .checklist-card {
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .checklist-card.checked {
+      border-color: var(--accent-primary);
+      background-color: rgba(212, 175, 55, 0.02);
+    }
+
+    .check-box-ui {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checklist-card:hover .check-box-ui {
+      border-color: var(--accent-primary);
+    }
+
+    .checklist-card.checked .check-box-ui {
+      border-color: var(--accent-primary);
+      background-color: var(--accent-primary);
+    }
+
+    .check-icon {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 3;
+      fill: none;
+      display: none;
+    }
+
+    .checklist-card.checked .check-icon {
+      display: block;
+    }
+
+    .check-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .check-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section 8: Emergency Cost Calculator & FAQs */
+    .calculator-faq-section {
+      padding: 80px 0 100px 0;
+    }
+
+    .calc-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .calc-container {
+      padding: 30px;
+    }
+
+    .calc-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+
+    .slider-group {
+      margin-bottom: 28px;
+    }
+
+    .slider-group {
+      margin-bottom: 28px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slider-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .slider-value {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+
+    .calc-range {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-tertiary);
+      border-radius: 3px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .calc-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      cursor: pointer;
+      box-shadow: 0 0 5px var(--accent-glow);
+      transition: transform 0.1s;
+    }
+
+    .calc-range::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .price-output-box {
+      background-color: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px dashed var(--border-color);
+    }
+
+    .price-total {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .price-guarantee {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* FAQ Collapsible Items */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .faq-trigger:hover {
+      background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    .faq-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent-primary);
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      border-top: 0 solid var(--border-color);
+    }
+
+    .faq-content p {
+      padding: 20px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .faq-item.open .faq-content {
+      max-height: 200px;
+      border-top-width: 1px;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(135deg);
+    }
+
+    /* ==========================================================================
+       6. FOOTER SECTION
+       ========================================================================== */
+    .footer-wrapper {
+      padding: 60px 24px 30px 24px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--nav-border);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+      gap: 40px;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--accent-gradient);
+      border-radius: 2px;
+    }
+
+    [dir="rtl"] .footer-title::after {
+      left: auto;
+      right: 0;
+    }
+
+    .footer-text {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .footer-links-list, .footer-contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-item {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .footer-link-item:hover {
+      color: var(--accent-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .footer-link-item:hover {
+      transform: translateX(-4px);
+    }
+
+    .footer-contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-primary);
+      flex-shrink: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+      transition: all 0.25s ease;
+    }
+
+    .social-icon-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--accent-glow);
+    }
+
+    .social-icon-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .newsletter-input {
+      flex-grow: 1;
+      height: 42px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      transition: border-color 0.25s ease;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .newsletter-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--accent-glow);
+      filter: brightness(1.05);
+    }
+
+    .footer-divider {
+      height: 1px;
+      background-color: var(--border-color);
+      margin: 40px 0 25px 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-link {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer-bottom-link:hover {
+      color: var(--accent-primary);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .navbar-wrapper {
+        top: 15px;
+        width: 92%;
+      }
+      .navbar-container {
+        padding: 0 16px;
+      }
+      .nav-menu, .nav-controls {
+        display: none;
+      }
+      .mobile-nav-toggle {
+        display: flex;
+      }
+      .emergency-hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-bottom: 50px;
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 50px 0;
+      }
+      .showcase-grid.reverse {
+        direction: ltr;
+      }
+      .simulator-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .calc-faq-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      .brand-col {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 1550px) {
+      .nav-link {
+        font-size: 0.7rem;
+        padding: 5px 6px;
+      }
+      .brand {
+        font-size: 1.3rem;
+        gap: 8px;
+      }
+      .brand-logo-svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 1366px) and (min-width: 1201px) {
+      .nav-link {
+        font-size: 0.65rem;
+        padding: 4px 4px;
+        gap: 2px;
+      }
+      .brand {
+        font-size: 1.15rem;
+        gap: 6px;
+      }
+      .brand-logo-svg {
+        width: 28px;
+        height: 28px;
+      }
+      .nav-controls {
+        gap: 6px;
+      }
+      .login-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+      .control-btn {
+        width: 36px;
+        height: 36px;
+      }
+      .control-btn-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .brand-col {
+        grid-column: span 1;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .emergency-container {
+        margin-top: 110px;
+      }
+    }
+      @media (max-width: 480px) {
+      .home-section {
+        padding: 50px 16px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      /* Stack inline grid columns on mobile/tablet viewports, excluding auto-fit/auto-fill grids */
+      div[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+      div[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+      section[style*="display: grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]),
+      section[style*="display:grid"]:not([style*="auto-fit"]):not([style*="auto-fill"]) {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Grids and Meshes -->
+  <div class="bg-grid"></div>
+  <div class="bg-mesh-1"></div>
+  <div class="bg-mesh-2"></div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Interactive Mobile Slide-out Navigation Drawer -->
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <!-- Header with Brand on Left and Back Button on Right -->
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
+        <!-- Hexagon cyber key SVG logo based on Lock -->
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+            </linearGradient>
+          </defs>
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
+        </svg>
+        <span>LOCKSMITH</span>
+      </a>
+      <!-- Back Chevron Arrow Button on Top Right -->
+      <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu">
+        <svg class="back-icon" viewBox="0 0 24 24">
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span>Back</span>
+      </button>
+    </div>
+
+    <!-- Inside Hamburger Menu Content (13 links) -->
+    <nav class="mobile-menu-list">
+      <!-- Home Submenu inside Drawer (Accordion) -->
+      <div class="mobile-menu-item">
+        <button class="mobile-menu-link drawer-accordion-trigger">
+          <span>Home</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobile-submenu">
+          <a href="./index.html" class="mobile-submenu-link">Home 1</a>
+          <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
+        </div>
+      </div>
+
+      <!-- Other Links (Arranged directly in mobile menu list) -->
+      <a href="./About.html" class="mobile-menu-link">About</a>
+      
+      <a href="./Emergency.html" class="mobile-menu-link">
+        <span>Emergency</span>
+      </a>
+      
+      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
+      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
+      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
+      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+      <a href="./Service.html" class="mobile-menu-link">Service</a>
+      <a href="./Security.html" class="mobile-menu-link">Security</a>
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+      <!-- Dashboard inside Drawer (Accordion) -->
+      <div class="mobile-menu-item">
+        <button class="mobile-menu-link drawer-accordion-trigger">
+          <span>Dashboard</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobile-submenu">
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Footer of Drawer containing remaining items (Toggles & Login) -->
+    <div class="drawer-footer">
+      <div class="drawer-controls-row">
+        <!-- Drawer Dark Mode Toggle -->
+        <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+          <!-- Sun SVG -->
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+          </svg>
+          <!-- Moon SVG -->
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+          </svg>
+          <span>Theme</span>
+        </button>
+
+        <!-- Drawer RTL Toggle -->
+        <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+          <span>L/R Mirror</span>
+        </button>
+      </div>
+
+      <!-- Drawer Login Button -->
+      <a href="./login.html" class="login-btn" id="drawerLoginBtn" style="text-decoration: none; cursor: pointer;">
+        <svg class="padlock-svg" viewBox="0 0 24 24">
+          <path class="padlock-shackle" id="drawerShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+          <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+          <circle cx="12" cy="16" r="1.5" />
+        </svg>
+        <span>Login</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Single-Deck floating Header (Logo Left, Menu Center, Toggles & CTA Right) -->
+  <header class="navbar-wrapper">
+    <div class="navbar-container" id="mainNavbar">
+      <!-- Glow ambient overlay following user mouse -->
+      <div class="navbar-glow-overlay" id="navGlow"></div>
+
+      <!-- Left: Logo based on Lock -->
+      <a href="index.html" class="brand">
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+            </linearGradient>
+          </defs>
+          <!-- Lock Shackle -->
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+          <!-- Lock Body (Shield shape) -->
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+          <!-- Center Keyhole -->
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+        </svg>
+        <span>LOCKSMITH</span>
+      </a>
+
+      <!-- Center: Navigation Menu (Desktop/Laptop View) -->
+      <ul class="nav-menu">
+        <!-- Home (Submenu Dropdown) -->
+        <li class="nav-item">
+          <a href="./index.html" class="nav-link">
+            <span>Home</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel">
+            <a href="./index.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Home 1</span>
+              </div>
+            </a>
+            <a href="./home 2.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Home 2</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <!-- Direct Links arranged side-by-side in center -->
+        <li class="nav-item">
+          <a href="./About.html" class="nav-link">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Emergency.html" class="nav-link">Emergency</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Residential.html" class="nav-link">Residential</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Commercial.html" class="nav-link">Commercial</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Pricing.html" class="nav-link">Pricing</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Service.html" class="nav-link">Service</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Security.html" class="nav-link">Security</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Reviews.html" class="nav-link">Reviews</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="./Contact.html" class="nav-link">Contact</a>
+        </li>
+
+        <!-- Dashboard (Submenu Dropdown) -->
+        <li class="nav-item">
+          <a href="./Dashboard.html" class="nav-link">
+            <span>Dashboard</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel dropdown-right">
+            <a href="./Admin.html" class="dropdown-item">
+              
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Admin Dashboard</span>
+              </div>
+            </a>
+            <a href="./User.html" class="dropdown-item">
+              
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">User Dashboard</span>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Right: Controls & CTA button (Desktop/Laptop View) -->
+      <div class="nav-controls">
+        <!-- Right to Left Toggle -->
+        <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+          <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+          <!-- Sun SVG -->
+          <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+          </svg>
+          <!-- Moon SVG -->
+          <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <!-- Login Button with dynamic Padlock -->
+        <a href="./login.html" class="login-btn" id="loginBtn" style="text-decoration: none; cursor: pointer;">
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+            <!-- Padlock shackle path that moves on hover -->
+            <path class="padlock-shackle" id="desktopShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+            <circle cx="12" cy="16" r="1.5" />
+          </svg>
+          <span>Login</span>
+        </a>
+      </div>
+
+      <!-- Hamburger button for mobile/laptop drawer trigger -->
+      <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <svg class="hamburger-icon" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Emergency Content Sections -->
+  <main class="emergency-container">
+    
+    <!-- SECTION 1: HERO (Emergency Lockout Hub) -->
+    <section class="emergency-hero">
+      <div class="hero-content">
+        <div class="hero-badge-live">
+          <span class="pulse-dot"></span>
+          <span>Live Dispatch Active | 24/7 Response</span>
+        </div>
+        <h1 class="hero-title-large">Rapid <span>Emergency Lockout</span> Response</h1>
+        <p class="hero-description">
+          Locked out of your home, car, or office? Our certified mobile locksmith units are patrolling your local area now. Armed with advanced, non-destructive tools, we guarantee entry with minimal disruption.
+        </p>
+        <div class="emergency-actions">
+          <a href="tel:18005555625" class="call-now-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 20px; height: 20px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Call Emergency Dispatch</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Dispatch HUD Mockup -->
+      <div class="dispatch-card-container">
+        <div class="glass-card">
+          <div class="hud-header">
+            <span class="hud-title">Dispatch Status HUD</span>
+            <span class="hud-status">
+              <span class="pulse-dot" style="background-color: var(--accent-primary);"></span>
+              GPS TRACKING ACTIVE
+            </span>
+          </div>
+          <div class="hud-map-wrapper">
+            <img class="hud-map-img" src="images/hero_dispatch_map.png" alt="Emergency dispatch tracking map">
+            <div class="hud-overlay"></div>
+            <div class="hud-timer-widget">
+              <div>
+                <p class="hud-timer-label">Average Response Time</p>
+                <p style="font-size: 0.8rem; font-weight: 500;">Your Location</p>
+              </div>
+              <div class="hud-timer-value" id="responseTimer">18m 42s</div>
+            </div>
+          </div>
+          <div class="dispatch-log" id="dispatchLogs">
+            <div class="log-line"><span class="log-time">[11:20:05]</span> System initialization completed.</div>
+            <div class="log-line"><span class="log-time">[11:20:12]</span> Patrol vehicle #04 reporting active.</div>
+            <div class="log-line"><span class="log-time">[11:21:40]</span> Mapping localized signal coordinates.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: HOME LOCKOUT ASSISTANCE -->
+    <section class="showcase-grid" id="home-lockout">
+      <div class="showcase-content">
+        <span class="showcase-tag">Home Lockout Assistance</span>
+        <h2 class="showcase-title">Swift & Non-Destructive Home Entry Solutions</h2>
+        <p class="showcase-desc">
+          Losing access to your residence shouldn't mean replacing your door structure. We utilize specialized lock decoding tools to bypass high-security pins, bypass latch mechanisms, and decode keyways harmlessly.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Zero Damage Policy<span>No drilled cylinders or broken panels.</span></div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Rapid Bypass Technique<span>Usually decoded in under 5 minutes.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-image-frame">
+        <img class="showcase-img" src="images/home_lockout_assistance.png" alt="Residential smart lock bypass work">
+        <div class="image-hotspot" style="top: 45%; left: 63%;"></div>
+        <div class="hotspot-tooltip" style="top: 25%; left: 60%;">Smart Cylinder Decoding</div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CAR LOCKOUT ASSISTANCE -->
+    <section class="showcase-grid reverse" id="car-lockout">
+      <div class="showcase-content">
+        <span class="showcase-tag">Car Lockout Assistance</span>
+        <h2 class="showcase-title">Advanced Proximity & Keyless Auto Entry</h2>
+        <p class="showcase-desc">
+          Modern cars are mobile computers. Standard lockpicks will trigger lockouts. We use safe, specialized air wedges, laser key decoders, and onboard OBD diagnostic decoders to safely reprogram access credentials on-site.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Transponder Programming<span>OBD computer link for immediate synchronization.</span></div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-linecap="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Laser-Key Cutting<span>Precision robotic cutters inside mobile vans.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-image-frame">
+        <img class="showcase-img" src="images/car_lockout_assistance.png" alt="Locksmith programming vehicle keyless transponder">
+        <div class="image-hotspot" style="top: 50%; left: 45%;"></div>
+        <div class="hotspot-tooltip" style="top: 30%; left: 40%;">Transponder ECU Override</div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: OFFICE LOCKOUT SERVICES -->
+    <section class="showcase-grid" id="office-lockout">
+      <div class="showcase-content">
+        <span class="showcase-tag">Office Lockout Services</span>
+        <h2 class="showcase-title">Enterprise Security Override & Lock Resets</h2>
+        <p class="showcase-desc">
+          Lockouts disrupt business operations. Our specialized team overrides master key systems, biometric control panels, and magnetic latch devices, maintaining complete hardware integrity to minimize downtime.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-linecap="round"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Access Control Override<span>Biometric and digital card interface resets.</span></div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round"/><path d="M22 4L12 14.01l-3-3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Zero-Downtime Guarantee<span>Quick, coordinated entry to preserve shift logs.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-image-frame">
+        <img class="showcase-img" src="images/office_lockout_assistance.png" alt="Office building biometric security interface">
+        <div class="image-hotspot" style="top: 55%; left: 65%;"></div>
+        <div class="hotspot-tooltip" style="top: 35%; left: 60%;">Biometric Access Node</div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BROKEN KEY EXTRACTION -->
+    <section class="showcase-grid reverse" id="broken-key">
+      <div class="showcase-content">
+        <span class="showcase-tag">Broken Key Extraction</span>
+        <h2 class="showcase-title">Micro-Precision Retrieval & Cylinder Protection</h2>
+        <p class="showcase-desc">
+          When a key shears off inside the lock, amateur attempts push the shard further into the cylinder, ruining the pins. We use micro-extractors to grasp the key spine and withdraw it, preserving the original lock body.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">Surgical Key Retrieval<span>Precision micro-picks slide past cylinder shear lines.</span></div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round"/></svg>
+            </div>
+            <div class="spec-text">On-Site Key Replacement<span>Duplicates cut directly from key fragments.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-image-frame">
+        <img class="showcase-img" src="images/broken_key_extraction.png" alt="Locksmith extracting broken brass key from cylinder">
+        <div class="image-hotspot" style="top: 48%; left: 48%;"></div>
+        <div class="hotspot-tooltip" style="top: 28%; left: 43%;">Precision Needle Work</div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: LIVE INTERACTIVE DISPATCH TRACKER -->
+    <section class="dispatch-simulator-section">
+      <div class="sec-header">
+        <span class="sec-badge">Interactive</span>
+        <h2 class="sec-title">Simulate a Local Locksmith Dispatch</h2>
+        <p class="sec-desc">Test the speed of our localized dispatcher. Select your scenario and location below to test our emergency tracking system.</p>
+      </div>
+
+      <div class="glass-card simulator-container">
+        <div class="sim-settings">
+          <div>
+            <div class="sim-form-group">
+              <label class="sim-label" for="scenarioSelect">Select Lockout Scenario</label>
+              <select class="sim-select" id="scenarioSelect">
+                <option value="Home">Home Lockout Assistance</option>
+                <option value="Car">Car Lockout Assistance</option>
+                <option value="Office">Office Lockout Services</option>
+                <option value="BrokenKey">Broken Key Extraction</option>
+              </select>
+            </div>
+            <div class="sim-form-group">
+              <label class="sim-label" for="locationInput">Your Current Zip Code / City Sector</label>
+              <input class="sim-input" type="text" id="locationInput" placeholder="e.g. 90210 or Downtown" value="Downtown">
+            </div>
+          </div>
+          <button class="sim-btn" id="startSimBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 18px; height: 18px;"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            <span>Simulate Quick Dispatch</span>
+          </button>
+        </div>
+
+        <div class="sim-display-screen" id="simDisplay">
+          <div class="sim-radar">
+            <div class="sim-radar-sweep"></div>
+            <div class="sim-vehicle-icon" id="simVehicle"></div>
+          </div>
+          <div class="sim-status-text" id="simStatus">Standing By...</div>
+          <div class="sim-progress-track">
+            <div class="sim-progress-fill" id="simProgress"></div>
+          </div>
+          <div class="sim-info-box" id="simInfo">Fill out coordinates and click dispatch to simulate system.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: PROACTIVE PREPAREDNESS CHECKLIST -->
+    <section class="checklist-section">
+      <div class="sec-header">
+        <span class="sec-badge">Safety Guidelines</span>
+        <h2 class="sec-title">Emergency Preparedness Checklist</h2>
+        <p class="sec-desc">What to do while waiting for your technician. Stay safe and ensure a seamless entry process.</p>
+      </div>
+
+      <div class="checklist-grid">
+        <!-- Item 1 -->
+        <div class="glass-card checklist-card" onclick="toggleChecklist(this)">
+          <div class="check-box-ui">
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h3 class="check-title">Move to a Safe, Well-lit Area</h3>
+            <p class="check-desc">If you are locked out late at night or in an unfamiliar neighborhood, wait in a nearby open business or under streetlights.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="glass-card checklist-card" onclick="toggleChecklist(this)">
+          <div class="check-box-ui">
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h3 class="check-title">Prepare Proof of Occupancy</h3>
+            <p class="check-desc">To satisfy security regulations, have your ID, mail, lease, or vehicle registration ready to verify ownership.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="glass-card checklist-card" onclick="toggleChecklist(this)">
+          <div class="check-box-ui">
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h3 class="check-title">Clear the Path / Lock Area</h3>
+            <p class="check-desc">Ensure the immediate doorway or vehicle side panel is accessible so the technician can deploy entry equipment immediately.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="glass-card checklist-card" onclick="toggleChecklist(this)">
+          <div class="check-box-ui">
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h3 class="check-title">Verify Technician ID</h3>
+            <p class="check-desc">Upon arrival, check the technician's official company uniform and locksmith licensing papers for total peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: COST ESTIMATOR & FAQS -->
+    <section class="calculator-faq-section">
+      <div class="calc-faq-grid">
+        
+        <!-- Interactive cost calculator -->
+        <div class="glass-card calc-container">
+          <h3 class="calc-title">Emergency Rate Estimator</h3>
+          
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Complexity of Lock</span>
+              <span class="slider-value" id="complexVal">Standard Cylinder</span>
+            </div>
+            <input class="calc-range" type="range" id="complexSlider" min="1" max="3" value="1">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Time of Day</span>
+              <span class="slider-value" id="timeVal">Day Shift (8 AM - 6 PM)</span>
+            </div>
+            <input class="calc-range" type="range" id="timeSlider" min="1" max="3" value="1">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Distance to Location</span>
+              <span class="slider-value" id="distVal">Within 5 miles</span>
+            </div>
+            <input class="calc-range" type="range" id="distSlider" min="1" max="3" value="1">
+          </div>
+
+          <div class="price-output-box">
+            <div class="price-total" id="estimatedPrice">$85 - $110</div>
+            <div class="price-guarantee">Estimated price window including trip charge and labor. No hidden fees.</div>
+          </div>
+        </div>
+
+        <!-- FAQs Accordion -->
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Will bypassing my lock damage the door?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>No. 98% of lockouts are resolved without damage using specialized latch-shims, Lishi decoders, or lockpicks. Lock drilling is only used as a last resort for lock failures.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>How fast will a locksmith arrive?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Our average arrival time is 15-25 minutes. However, weather conditions, active dispatch queues, and rush-hour traffic can cause slight variances.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Can you open digital keys or smart locks?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Yes. Our technicians carry electronic override keys, cylinder lockpicks (for secondary manual keyholes), and hardware interface links to safely open smart locks.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Do you require proof of ownership?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Absolutely. For security and liability reasons, we require verify identification and proof of residence or vehicle registration before commencing any opening work.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="brand" style="margin-bottom: 16px;">
+            <svg class="brand-logo-svg" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-primary)" />
+                  <stop offset="100%" stop-color="var(--accent-secondary)" />
+                </linearGradient>
+              </defs>
+              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
+              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
+              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
+            </svg>
+            <span>LOCKSMITH</span>
+          </a>
+          <p class="footer-text">
+            Licensed, bonded, and insured mobile emergency locksmith services. Rapid lockout assistance, security audits, and keyless automation systems. Available 24 hours.
+          </p>
+          <div class="social-links">
+            <a href="#facebook" class="social-icon-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#twitter" class="social-icon-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#instagram" class="social-icon-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Locksmith Services</h3>
+          <ul class="footer-links-list">
+            <li><a href="Emergency.html" class="footer-link-item">Emergency Services</a></li>
+            <li><a href="Residential.html" class="footer-link-item">Residential Locksmith</a></li>
+            <li><a href="Commercial.html" class="footer-link-item">Commercial Locksmith</a></li>
+            <li><a href="Security Installationl.html" class="footer-link-item">Security Installation</a></li>
+            <li><a href="Lock Types.html" class="footer-link-item">Lock Types Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Resources & Info</h3>
+          <ul class="footer-links-list">
+            <li><a href="navbar.html#about" class="footer-link-item">About Our Team</a></li>
+            <li><a href="Pricing.html" class="footer-link-item">Pricing & Estimates</a></li>
+            <li><a href="navbar.html#service-areas" class="footer-link-item">Service Areas Map</a></li>
+            <li><a href="navbar.html#resources" class="footer-link-item">Security Box & Tips</a></li>
+            <li><a href="navbar.html#reviews" class="footer-link-item">Reviews & Testimonials</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col newsletter-col">
+          <h3 class="footer-title">Secure News & Offers</h3>
+          <p class="footer-text" style="margin-bottom: 12px;">Subscribe for safety tips & special lock installation deals.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required class="newsletter-input" />
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+              <svg class="padlock-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #fff;">
+                <path d="M7 11V7a5 5 0 0 1 10 0v4M4 11h16v11H4z" fill="none" stroke-width="2.5" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 LOCKSMITH. All rights reserved. Licensed Locksmith #LIC-9428-A.</p>
+        <div class="footer-bottom-links">
+          <a href="#privacy" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#terms" class="footer-bottom-link">Terms of Service</a>
+          <a href="#licensing" class="footer-bottom-link">Licensing Details</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Controllers -->
+  <script>
+    // 1. Theme Control (Dual-Bind)
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+    
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    }
+    
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    initTheme();
+    darkModeBtn.addEventListener('click', toggleTheme);
+    drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+    // 2. RTL Layout Control (Dual-Bind)
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+    
+    function toggleRtl() {
+      const currentDir = document.documentElement.dir || 'ltr';
+      if (currentDir === 'ltr') {
+        document.documentElement.dir = 'rtl';
+      } else {
+        document.documentElement.dir = 'ltr';
+      }
+    }
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+    drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+    // 3. Ambient Cursor Tracker in Navbar
+    const mainNavbar = document.getElementById('mainNavbar');
+    const navGlow = document.getElementById('navGlow');
+
+    if (mainNavbar && navGlow) {
+      mainNavbar.addEventListener('mousemove', (e) => {
+        const rect = mainNavbar.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        mainNavbar.style.setProperty('--mouse-x', `${x}px`);
+        mainNavbar.style.setProperty('--mouse-y', `${y}px`);
+      });
+
+      mainNavbar.addEventListener('mouseleave', () => {
+        mainNavbar.style.setProperty('--mouse-x', `-999px`);
+        mainNavbar.style.setProperty('--mouse-y', `-999px`);
+      });
+    }
+
+    // 4. Mobile Drawer Controllers
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openMobileDrawer() {
+      mobileDrawer.classList.add('open');
+      drawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileDrawer() {
+      mobileDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+    drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+    // Accordion inside Mobile Drawer
+    const accordionTriggers = document.querySelectorAll('.drawer-accordion-trigger');
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const submenu = trigger.nextElementSibling;
+        const chevron = trigger.querySelector('.chevron-icon');
+        
+        if (submenu.classList.contains('open')) {
+          submenu.classList.remove('open');
+          chevron.style.transform = 'rotate(0deg)';
+        } else {
+          accordionTriggers.forEach(otherTrigger => {
+            const otherSub = otherTrigger.nextElementSibling;
+            const otherChevron = otherTrigger.querySelector('.chevron-icon');
+            if (otherSub && otherSub.classList.contains('open') && otherSub !== submenu) {
+              otherSub.classList.remove('open');
+              otherChevron.style.transform = 'rotate(0deg)';
+            }
+          });
+          submenu.classList.add('open');
+          chevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // Login Button Hover Shackle micro-interactions
+    const loginBtn = document.getElementById('loginBtn');
+    const drawerLoginBtn = document.getElementById('drawerLoginBtn');
+    const desktopShackle = document.getElementById('desktopShackle');
+    const drawerShackle = document.getElementById('drawerShackle');
+
+    if (loginBtn && desktopShackle) {
+      loginBtn.addEventListener('mouseenter', () => {
+        desktopShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+      });
+      loginBtn.addEventListener('mouseleave', () => {
+        desktopShackle.style.transform = 'translateY(0) rotate(0)';
+      });
+    }
+
+    if (drawerLoginBtn && drawerShackle) {
+      drawerLoginBtn.addEventListener('mouseenter', () => {
+        drawerShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+      });
+      drawerLoginBtn.addEventListener('mouseleave', () => {
+        drawerShackle.style.transform = 'translateY(0) rotate(0)';
+      });
+    }
+
+    // 9.7 Active Page Highlighter
+    function highlightActivePage() {
+      const path = window.location.pathname;
+      let page = path.split("/").pop();
+      if (!page || page === "") {
+        page = "index.html";
+      }
+      page = decodeURIComponent(page);
+
+      const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+      const dropdownItems = document.querySelectorAll('.nav-menu .dropdown-item');
+
+      const getFilename = (href) => {
+        if (!href) return "";
+        return href.replace(/^\.\//, "").split("/").pop();
+      };
+
+      let activeFound = false;
+
+      dropdownItems.forEach(item => {
+        const hrefFilename = getFilename(item.getAttribute('href'));
+        if (hrefFilename && hrefFilename === page) {
+          item.classList.add('active-link');
+          const parentNavItem = item.closest('.nav-item');
+          if (parentNavItem) {
+            parentNavItem.classList.add('active');
+          }
+          activeFound = true;
+        }
+      });
+
+      if (!activeFound) {
+        navLinks.forEach(link => {
+          const hrefFilename = getFilename(link.getAttribute('href'));
+          if (hrefFilename && hrefFilename === page) {
+            const parentNavItem = link.closest('.nav-item');
+            if (parentNavItem) {
+              parentNavItem.classList.add('active');
+            }
+            link.classList.add('active-link');
+          }
+        });
+      }
+
+      const mobileLinks = document.querySelectorAll('.mobile-menu-list .mobile-menu-link');
+      const mobileSubLinks = document.querySelectorAll('.mobile-menu-list .mobile-submenu-link');
+
+      let mobileActiveFound = false;
+
+      mobileSubLinks.forEach(subLink => {
+        const hrefFilename = getFilename(subLink.getAttribute('href'));
+        if (hrefFilename && hrefFilename === page) {
+          subLink.classList.add('active-link');
+          const submenu = subLink.closest('.mobile-submenu');
+          if (submenu) {
+            submenu.classList.add('open');
+            const trigger = submenu.previousElementSibling;
+            if (trigger && trigger.querySelector('.chevron-icon')) {
+              trigger.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+            }
+          }
+          mobileActiveFound = true;
+        }
+      });
+
+      if (!mobileActiveFound) {
+        mobileLinks.forEach(link => {
+          const hrefFilename = getFilename(link.getAttribute('href'));
+          if (hrefFilename && hrefFilename === page) {
+            link.classList.add('active-link');
+          }
+        });
+      }
+    }
+
+    highlightActivePage();
+
+    // 5. Emergency HUD Live Timer
+    const responseTimer = document.getElementById('responseTimer');
+    const dispatchLogs = document.getElementById('dispatchLogs');
+    let totalSeconds = 1122; // 18m 42s in seconds
+    
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      return `${m}m ${s < 10 ? '0' : ''}${s}s`;
+    }
+
+    function addLogLine(text) {
+      const now = new Date();
+      const timeStr = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds() < 10 ? '0' : ''}${now.getSeconds()}`;
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.innerHTML = `<span class="log-time">[${timeStr}]</span> ${text}`;
+      dispatchLogs.appendChild(line);
+      dispatchLogs.scrollTop = dispatchLogs.scrollHeight;
+    }
+
+    setInterval(() => {
+      if (totalSeconds > 120) {
+        totalSeconds--;
+        responseTimer.textContent = formatTime(totalSeconds);
+      }
+    }, 1000);
+
+    // Mock logs added periodically
+    const mockEvents = [
+      "GPS triangulation refining user sector.",
+      "Dispatch confirmed by technician Jordan S.",
+      "Traffic patterns analyzed: clear routing via Expressway.",
+      "ETA confirmed at less than 15 minutes."
+    ];
+    let eventIdx = 0;
+    
+    setInterval(() => {
+      if (eventIdx < mockEvents.length) {
+        addLogLine(mockEvents[eventIdx]);
+        eventIdx++;
+      }
+    }, 25000);
+
+    // 6. Interactive Dispatch Simulator
+    const startSimBtn = document.getElementById('startSimBtn');
+    const simDisplay = document.getElementById('simDisplay');
+    const simStatus = document.getElementById('simStatus');
+    const simProgress = document.getElementById('simProgress');
+    const simVehicle = document.getElementById('simVehicle');
+    const simInfo = document.getElementById('simInfo');
+    const scenarioSelect = document.getElementById('scenarioSelect');
+    const locationInput = document.getElementById('locationInput');
+
+    startSimBtn.addEventListener('click', () => {
+      startSimBtn.disabled = true;
+      simProgress.style.width = '0%';
+      simVehicle.classList.remove('moving');
+      simStatus.textContent = "Locating Technician...";
+      simInfo.textContent = `Connecting to nearest dispatch server for your ${scenarioSelect.value} lockout in ${locationInput.value}...`;
+
+      setTimeout(() => {
+        simStatus.textContent = "Vehicle Dispatched!";
+        simInfo.textContent = "Technician: Marcus Vance | Vehicle: Transit Van #04 | Plate: 7X8-G92";
+        simProgress.style.width = '100%';
+        simVehicle.classList.add('moving');
+        
+        setTimeout(() => {
+          simStatus.textContent = "Technician Arrived!";
+          simInfo.textContent = "Marcus Vance is on scene. Please verify credentials.";
+          startSimBtn.disabled = false;
+        }, 4000); // 4s transit
+      }, 1500);
+    });
+
+    // 7. Toggle Preparedness Checklist
+    function toggleChecklist(card) {
+      card.classList.toggle('checked');
+    }
+
+    // 8. Cost Estimator Calculator
+    const complexSlider = document.getElementById('complexSlider');
+    const timeSlider = document.getElementById('timeSlider');
+    const distSlider = document.getElementById('distSlider');
+    
+    const complexVal = document.getElementById('complexVal');
+    const timeVal = document.getElementById('timeVal');
+    const distVal = document.getElementById('distVal');
+    const estimatedPrice = document.getElementById('estimatedPrice');
+
+    const complexLabels = ["Standard Cylinder", "Mortise / Deadbolt", "Smart Lock Override"];
+    const timeLabels = ["Day Shift (8 AM - 6 PM)", "Evening Shift (6 PM - Midnight)", "Night Shift (Midnight - 8 AM)"];
+    const distLabels = ["Within 5 miles", "5 to 15 miles", "Over 15 miles"];
+
+    function updatePrice() {
+      const c = parseInt(complexSlider.value);
+      const t = parseInt(timeSlider.value);
+      const d = parseInt(distSlider.value);
+
+      complexVal.textContent = complexLabels[c - 1];
+      timeVal.textContent = timeLabels[t - 1];
+      distVal.textContent = distLabels[d - 1];
+
+      // Math logic for price
+      let baseMin = 65;
+      let baseMax = 90;
+
+      if (c === 2) { baseMin += 25; baseMax += 35; }
+      else if (c === 3) { baseMin += 55; baseMax += 75; }
+
+      if (t === 2) { baseMin += 20; baseMax += 25; }
+      else if (t === 3) { baseMin += 45; baseMax += 60; }
+
+      if (d === 2) { baseMin += 15; baseMax += 20; }
+      else if (d === 3) { baseMin += 35; baseMax += 50; }
+
+      estimatedPrice.textContent = `$${baseMin} - $${baseMax}`;
+    }
+
+    complexSlider.addEventListener('input', updatePrice);
+    timeSlider.addEventListener('input', updatePrice);
+    distSlider.addEventListener('input', updatePrice);
+    updatePrice();
+
+    // 9. FAQ accordion control
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const isOpen = item.classList.contains('open');
+        
+        // Close all first
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

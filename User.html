@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Premium Mobile Locksmith</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Secure and responsive mechanical and digital access user control center. Locksmith bookings, key code vault, and tracking.">
+  <meta name="author" content="Antigravity">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN SYSTEM (Fluid Tokens & HSL-tailored colors)
+       ========================================================================== */
+    :root {
+      /* Typography */
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      /* Colors - Light Mode Defaults */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+      --accent-glow: rgba(212, 175, 55, 0.15);
+      
+      --danger-primary: #ef4444;      /* Emergency Red */
+      --danger-glow: rgba(239, 68, 68, 0.4);
+      
+      --border-color: rgba(15, 23, 42, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.7);
+      --nav-border: rgba(255, 255, 255, 0.5);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+      
+      /* Grid Ambient Animation Colors */
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+      /* Layout */
+      --border-radius: 20px;
+      --transition-speed: 0.3s;
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Dark Mode Overrides */
+    html.dark {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-primary: #ffd700;      /* Bright Gold */
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+      --accent-glow: rgba(255, 215, 0, 0.25);
+      
+      --danger-primary: #ff4757;
+      --danger-glow: rgba(255, 71, 87, 0.6);
+      
+      --border-color: rgba(255, 255, 255, 0.08);
+      --nav-bg: rgba(11, 15, 25, 0.65);
+      --nav-border: rgba(255, 255, 255, 0.08);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+      
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE STYLES (Supports RTL Smooth Transitions)
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+                  border-color var(--transition-speed) var(--transition-timing), 
+                  color var(--transition-speed) var(--transition-timing);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* RTL Transition Support */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       3. AMBIENT BACKGROUND SYSTEM (Showcases Glassmorphism)
+       ========================================================================== */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    }
+
+    .bg-mesh-1, .bg-mesh-2 {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -2;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .bg-mesh-1 {
+      top: -10%;
+      left: -10%;
+      background: var(--mesh-color-1);
+    }
+
+    .bg-mesh-2 {
+      bottom: 10%;
+      right: -10%;
+      background: var(--mesh-color-2);
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 50px) scale(1.2); }
+    }
+
+    /* ==========================================================================
+       DASHBOARD CUSTOM STYLES
+       ========================================================================== */
+    .dashboard-wrapper {
+      margin-top: 40px;
+      padding: 0 24px;
+      max-width: 1640px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      min-height: calc(100vh - 40px - 400px);
+    }
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .db-sidebar {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 24px 16px;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 40px;
+      z-index: 100;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .db-sidebar-header {
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      padding: 0 8px 12px 8px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .db-sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .db-sidebar-nav::-webkit-scrollbar {
+      width: 4px;
+    }
+    .db-sidebar-nav::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    .db-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .db-nav-item:hover, .db-nav-item.active {
+      color: var(--text-primary);
+      background-color: var(--bg-tertiary);
+    }
+
+    .db-nav-item.active {
+      border-left: 3px solid var(--accent-primary);
+      background-color: rgba(212, 175, 55, 0.08);
+      padding-left: 11px;
+    }
+
+    html.dark .db-nav-item.active {
+      background-color: rgba(255, 215, 0, 0.05);
+    }
+
+    .db-nav-icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .db-nav-item.active .db-nav-icon {
+      stroke: var(--accent-primary);
+    }
+
+    /* Theme buttons styling */
+    .control-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .control-btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 6px var(--accent-glow);
+    }
+
+    .control-btn-icon {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    html.dark .sun-icon { display: block; }
+    html.dark .moon-icon { display: none; }
+    html:not(.dark) .sun-icon { display: none; }
+    html:not(.dark) .moon-icon { display: block; }
+
+    .db-main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .db-panel {
+      display: none;
+      animation: dbFadeIn 0.4s var(--transition-timing);
+    }
+
+    .db-panel.active {
+      display: block;
+    }
+
+    @keyframes dbFadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .panel-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: var(--font-heading);
+    }
+
+    .panel-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .db-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transition: all 0.3s ease;
+      margin-bottom: 24px;
+    }
+
+    .db-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 130px;
+      margin-bottom: 0;
+    }
+
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .stat-card-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-card-value {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-top: 8px;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--bg-tertiary);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+    }
+
+    .db-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.82rem;
+    }
+
+    .db-table th {
+      background-color: var(--bg-tertiary);
+      padding: 14px 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .db-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .db-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .db-table tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.015);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .status-pending { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+    .status-scheduled { background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    .status-inprogress { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+    .status-completed { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+    .status-emergency { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .status-active { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+    .status-inactive { background-color: rgba(100, 116, 139, 0.1); color: #64748b; }
+
+    .btn-action {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .btn-action:hover {
+      border-color: var(--accent-primary);
+      background-color: var(--bg-secondary);
+      box-shadow: 0 2px 6px var(--accent-glow);
+    }
+
+    .btn-action-primary {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-action-primary:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 4px 10px var(--accent-glow);
+    }
+
+    .btn-action-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-action-danger:hover {
+      background-color: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+    }
+
+    /* Mobile responsive hamburger toggle & drawer overlay */
+    .mobile-nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+      cursor: pointer;
+      transition: all var(--transition-speed) var(--transition-timing);
+    }
+
+    .mobile-nav-toggle:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .hamburger-icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    /* Premium Custom Styling for Mobile Drawer Controls & Logout Buttons */
+    .db-mobile-controls-row {
+      display: none;
+    }
+
+    .logout-nav-item {
+      color: var(--danger-primary) !important;
+      border-top: 1px solid var(--border-color);
+      margin-top: 15px !important;
+      padding-top: 15px !important;
+      justify-content: center;
+    }
+
+    .logout-nav-item:hover {
+      background-color: rgba(255, 71, 87, 0.1) !important;
+      color: var(--danger-primary) !important;
+      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.1) !important;
+    }
+
+    .logout-nav-item .db-nav-icon {
+      stroke: var(--danger-primary) !important;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-btn {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      -webkit-text-fill-color: var(--text-primary) !important;
+    }
+
+    .back-btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 2px 8px var(--accent-glow);
+      transform: translateX(-2px);
+    }
+
+    [dir="rtl"] .back-btn:hover {
+      transform: translateX(2px);
+    }
+
+    .back-icon {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+
+    [dir="rtl"] .back-icon {
+      transform: scaleX(-1);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      padding: 0 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      transition: border-color 0.25s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    textarea.form-control {
+      height: auto;
+      padding: 10px 12px;
+    }
+
+    /* Live Vehicle Map Styling */
+    .map-container {
+      width: 100%;
+      height: 400px;
+      background-color: var(--bg-tertiary);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-overlay-card {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 260px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    /* SVG Map elements */
+    .map-road { fill: none; stroke: rgba(100, 116, 139, 0.15); stroke-width: 6; stroke-linecap: round; }
+    .map-road-main { stroke: rgba(100, 116, 139, 0.25); stroke-width: 10; }
+    .map-river { fill: none; stroke: rgba(0, 200, 255, 0.15); stroke-width: 18; stroke-linecap: round; }
+    .map-block { fill: rgba(100, 116, 139, 0.05); stroke: rgba(100, 116, 139, 0.05); stroke-width: 1; }
+    .map-vehicle { cursor: pointer; transition: transform 0.4s ease; }
+    .map-vehicle-dot { fill: var(--accent-primary); stroke: #ffffff; stroke-width: 2; }
+    .map-vehicle-pulse { fill: var(--accent-primary); opacity: 0.4; animation: mapPulse 1.8s infinite ease-out; }
+    .map-user-dot { fill: #ef4444; stroke: #ffffff; stroke-width: 2; }
+    .map-user-pulse { fill: #ef4444; opacity: 0.3; animation: mapPulse 1.5s infinite ease-out; }
+    
+    @keyframes mapPulse {
+      0% { r: 5; opacity: 0.8; }
+      100% { r: 18; opacity: 0; }
+    }
+
+    /* Secure Key Code Vault keypad */
+    .vault-wrapper {
+      max-width: 380px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .vault-display {
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+    }
+
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .keypad-btn {
+      height: 52px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .keypad-btn:hover {
+      border-color: var(--accent-primary);
+      background-color: var(--bg-secondary);
+      transform: scale(1.05);
+    }
+
+    .keypad-btn-clear {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-primary);
+    }
+
+    .keypad-btn-enter {
+      background: var(--accent-gradient);
+      color: #0b0f19;
+      font-size: 1.05rem;
+    }
+    
+    html.dark .keypad-btn-enter {
+      color: #0b0f19;
+    }
+
+    /* Credit Card Wallet Styling */
+    .credit-card {
+      width: 100%;
+      max-width: 320px;
+      height: 190px;
+      perspective: 1000px;
+      margin: 0 auto 24px auto;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .card-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: linear-gradient(135deg, #ffd700 0%, #aa7c11 100%);
+      border-radius: 16px;
+      padding: 24px;
+      color: #0b0f19;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    }
+    html.dark .card-front {
+      background: linear-gradient(135deg, #2a2202 0%, #0c0f13 100%);
+      border: 1.5px solid rgba(255, 215, 0, 0.25);
+      color: #f8fafc;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    .card-chip {
+      width: 36px;
+      height: 26px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+      border-radius: 4px;
+    }
+    .card-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-align: right;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+    .card-number {
+      font-family: monospace;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      margin-top: 15px;
+    }
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .card-label {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+    .card-name, .card-expiry {
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* Live Activity Stream */
+    .stream-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stream-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.78rem;
+    }
+    .stream-item:last-child {
+      border-bottom: none;
+    }
+    .stream-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .stream-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stream-time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Switch toggles */
+    .switch-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      user-select: none;
+      padding: 8px 0;
+    }
+    .switch-input {
+      display: none;
+    }
+    .switch-slider {
+      width: 42px;
+      height: 22px;
+      background-color: var(--bg-tertiary);
+      border-radius: 20px;
+      position: relative;
+      transition: background-color 0.25s ease;
+      border: 1px solid var(--border-color);
+    }
+    .switch-slider::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+    }
+    .switch-input:checked + .switch-slider {
+      background-color: var(--accent-primary);
+    }
+    .switch-input:checked + .switch-slider::before {
+      transform: translateX(20px);
+    }
+
+    /* Toast Notification Stack */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast-card {
+      background: var(--bg-secondary);
+      border-left: 4px solid var(--accent-primary);
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      min-width: 280px;
+      max-width: 380px;
+      backdrop-filter: blur(10px);
+      pointer-events: auto;
+      animation: toastSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes toastSlideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Modals styling */
+    .db-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .db-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .db-modal {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .db-modal-overlay.active .db-modal {
+      transform: translateY(0);
+    }
+    .db-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .db-modal-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .db-modal-close {
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* ==========================================================================
+       8. RESPONSIVE BREAKPOINTS (Desktop First Design)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .db-sidebar {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        width: 300px;
+        height: 100vh;
+        z-index: 1100;
+        background-color: var(--bg-secondary);
+        border: none;
+        border-left: 1px solid var(--border-color);
+        border-radius: 0;
+        box-shadow: var(--shadow-lg);
+        transition: right 0.4s var(--transition-timing);
+        padding: 24px 16px;
+        display: flex;
+        flex-direction: column;
+      }
+      .db-sidebar.open {
+        right: 0;
+      }
+      [dir="rtl"] .db-sidebar {
+        right: auto;
+        left: -320px;
+        border-left: none;
+        border-right: 1px solid var(--border-color);
+        transition: left 0.4s var(--transition-timing);
+      }
+      [dir="rtl"] .db-sidebar.open {
+        left: 0;
+      }
+      .db-sidebar-header {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .db-sidebar-header #closeDrawerBtn {
+        display: flex !important;
+      }
+      .db-sidebar-header .control-btn#darkModeBtn,
+      .db-sidebar-header .control-btn#rtlToggleBtn {
+        display: none !important;
+      }
+      .db-mobile-controls-row {
+        display: flex !important;
+        gap: 12px;
+        padding: 8px 14px;
+        margin-top: 10px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 15px;
+      }
+      .db-mobile-controls-row .control-btn {
+        flex: 1;
+        height: 42px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--text-secondary);
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+      }
+      .db-mobile-controls-row .control-btn:hover {
+        color: var(--text-primary);
+        border-color: var(--accent-primary);
+        box-shadow: 0 4px 12px var(--accent-glow);
+      }
+      .db-sidebar-nav {
+        flex-direction: column;
+        overflow-y: auto;
+        white-space: normal;
+        padding-bottom: 0;
+        max-height: calc(100vh - 120px);
+        gap: 6px;
+      }
+      .db-nav-item {
+        padding: 11px 14px;
+        white-space: normal;
+        display: flex;
+      }
+      .db-nav-item.active {
+        border-left: 3px solid var(--accent-primary);
+        border-bottom: none;
+        padding-left: 11px;
+        padding-bottom: 11px;
+      }
+      .db-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .header-controls-group {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      .brand {
+        margin-top: 4px; /* Align brand logo vertically with the top of the hamburger button */
+      }
+      .mobile-nav-toggle {
+        display: flex !important;
+      }
+      .db-panel div[style*="display: grid"],
+      .db-panel div[style*="display:grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+
+    /* Top-Right Back Button styling */
+    .db-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .back-to-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+      text-decoration: none;
+      transition: all var(--transition-speed) var(--transition-timing);
+    }
+    .back-to-home-btn:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+      color: var(--text-primary);
+    }
+    .back-to-home-btn-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent-primary);
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.25s ease;
+    }
+    .back-to-home-btn:hover .back-to-home-btn-icon {
+      transform: translateX(-4px);
+    }
+    /* RTL mirroring */
+    [dir="rtl"] .back-to-home-btn-icon {
+      transform: scaleX(-1);
+    }
+    [dir="rtl"] .back-to-home-btn:hover .back-to-home-btn-icon {
+      transform: scaleX(-1) translateX(-4px);
+    }
+    .header-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-wrapper {
+        margin-top: 30px;
+      }
+      .back-to-home-btn {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+      }
+    }
+
+    /* Brand Logo & Text Styling */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 10;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-svg {
+      width: 38px;
+      height: 38px;
+      fill: none;
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+      animation: pulseLogo 3s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover .brand-logo-svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Background Grids and Meshes -->
+  <div class="bg-grid"></div>
+  <div class="bg-mesh-1"></div>
+  <div class="bg-mesh-2"></div>
+
+  <!-- Main Dashboard Section -->
+  <main class="dashboard-wrapper">
+    <!-- Top Header Bar with Back Button & Hamburger Menu -->
+    <div class="db-header-row">
+      <a href="index.html" class="brand" style="font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="logoGradientUser" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+            </linearGradient>
+          </defs>
+          <!-- Lock Shackle -->
+          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientUser)" stroke-width="8" stroke-linecap="round" fill="none" />
+          <!-- Lock Body (Shield shape) -->
+          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientUser)" stroke-width="8" stroke-linejoin="round" />
+          <!-- Center Keyhole -->
+          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientUser)" />
+        </svg>
+        <span style="font-family: var(--font-heading); font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LOCKSMITH</span>
+      </a>
+      <div class="header-controls-group">
+        <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <svg class="hamburger-icon" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to home">
+          <svg class="back-to-home-btn-icon" viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </div>
+    <div class="dashboard-layout">
+      
+      <!-- Dashboard Sidebar Navigation -->
+      <aside class="db-sidebar" id="mobileDrawer">
+        <div class="db-sidebar-header" style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="db-nav-icon" style="stroke: var(--accent-primary); width: 22px; height: 22px;" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span style="font-size: 0.95rem;">USER PORTAL</span>
+          </div>
+          <!-- Theme toggler & close button -->
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button class="control-btn" id="darkModeBtn" aria-label="Toggle theme" title="Toggle theme">
+              <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/></svg>
+              <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/></svg>
+            </button>
+            <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle direction" title="Toggle layout direction">
+              <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+            </button>
+            <button class="back-btn" id="closeDrawerBtn" aria-label="Close menu" style="display: none;">
+              <svg class="back-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none;">
+                <path d="M15 19l-7-7 7-7" />
+              </svg>
+              <span style="font-size: 0.75rem;">Back</span>
+            </button>
+          </div>
+        </div>
+        
+        <nav class="db-sidebar-nav">
+          <div class="db-nav-item active" data-tab="profile">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>My Profile</span>
+          </div>
+          <div class="db-nav-item" data-tab="schedule">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Schedule Service</span>
+          </div>
+          <div class="db-nav-item" data-tab="emergency" style="color: var(--danger-primary);">
+            <svg class="db-nav-icon" style="stroke: var(--danger-primary);" viewBox="0 0 24 24"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="1"/></svg>
+            <span style="font-weight: 700;">Emergency Lockout</span>
+          </div>
+          <div class="db-nav-item" data-tab="tracking">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+            <span>Track Vehicle</span>
+          </div>
+          <div class="db-nav-item" data-tab="appointments">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>My Appointments</span>
+          </div>
+          <div class="db-nav-item" data-tab="rekey">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            <span>Rekey Requests</span>
+          </div>
+          <div class="db-nav-item" data-tab="history">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/></svg>
+            <span>Service History</span>
+          </div>
+          <div class="db-nav-item" data-tab="receipts">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>Digital Receipts</span>
+          </div>
+          <div class="db-nav-item" data-tab="keycodes">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="12" y1="15" x2="12" y2="17"/></svg>
+            <span>Saved Key Codes</span>
+          </div>
+          <div class="db-nav-item" data-tab="addresses">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Saved Addresses</span>
+          </div>
+          <div class="db-nav-item" data-tab="quote">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Request Quote</span>
+          </div>
+          <div class="db-nav-item" data-tab="payments">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Payment History</span>
+          </div>
+          <div class="db-nav-item" data-tab="notifications">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span>Notifications</span>
+          </div>
+          <div class="db-nav-item" data-tab="settings">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
+          </div>
+          <!-- Mobile-only controls row (placed after Settings inside hamburger menu) -->
+          <div class="db-mobile-controls-row">
+            <button class="control-btn" id="drawerDarkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+              <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/></svg>
+              <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/></svg>
+              <span>Theme</span>
+            </button>
+            <button class="control-btn" id="drawerRtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+              <i class="fa-solid fa-right-left control-btn-icon rtl-icon" style="font-size: 14px;"></i>
+              <span>RTL</span>
+            </button>
+          </div>
+          
+          <div class="db-nav-item" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;" onclick="window.location.href='Residential.html'">
+            <svg class="db-nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Exit Dashboard</span>
+          </div>
+          <!-- Logout button -->
+          <div class="db-nav-item logout-nav-item" onclick="window.location.href='login.html'">
+            <svg class="db-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            <span>Logout</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Panel Display Container -->
+      <section class="db-main-content">
+        
+        <!-- 1. MY PROFILE PANEL -->
+        <div class="db-panel active" id="panel-profile">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">My Profile</h1>
+              <p class="panel-subtitle">Manage your contact information, credentials, and gold membership tier.</p>
+            </div>
+            <span class="status-badge status-completed" style="font-weight: 700; font-size: 0.8rem; border: 1px solid var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow)">
+              Gold Shield Status
+            </span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; align-items: start;">
+            <!-- Profile Info Form -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">Account Details</h2>
+              <form id="form-profile" onsubmit="saveProfile(event)">
+                <div class="form-group">
+                  <label class="form-label" for="prof-name">Full Name</label>
+                  <input type="text" class="form-control" id="prof-name" value="Alex Mercer" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prof-email">Email Address</label>
+                  <input type="email" class="form-control" id="prof-email" value="alex.mercer@cybernet.io" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prof-phone">Phone Number</label>
+                  <input type="tel" class="form-control" id="prof-phone" value="+1 (555) 018-9482" required>
+                </div>
+                <button type="submit" class="btn-action btn-action-primary" style="margin-top: 10px;">Save Profile Changes</button>
+              </form>
+            </div>
+
+            <!-- Profile Security Card -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px;">Security & MFA</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Protect your credentials and saved keys with multi-factor authentication.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <label class="switch-label">
+                  <span>Enable Two-Factor Authentication</span>
+                  <input type="checkbox" class="switch-input" id="toggle-mfa" checked onchange="showToast('Two-Factor Authentication toggled.')">
+                  <span class="switch-slider"></span>
+                </label>
+                <label class="switch-label">
+                  <span>Require PIN to Reveal Key Codes</span>
+                  <input type="checkbox" class="switch-input" id="toggle-pin-vault" checked onchange="showToast('Key Vault protection status updated.')">
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <button class="btn-action" style="width: 100%; justify-content: center;" onclick="showToast('Password reset link sent to your email!')">Change Account Password</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. SCHEDULE SERVICE PANEL -->
+        <div class="db-panel" id="panel-schedule">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Schedule Locksmith Service</h1>
+              <p class="panel-subtitle">Book high-security cylinder replacements, digital smart locks, and rekeys.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; align-items: start;">
+            <!-- Booking Form -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">Service Wizard</h2>
+              <form id="form-booking" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                  <label class="form-label" for="book-service">Select Service Type</label>
+                  <select class="form-control" id="book-service" required onchange="calculateBookingTotal()">
+                    <option value="rekey" data-price="95">Residential Cylinder Rekeying ($95.00)</option>
+                    <option value="smartlock" data-price="185">Smart Lock Integration & Setup ($185.00)</option>
+                    <option value="cctv" data-price="295">Secure Access CCTV Install ($295.00)</option>
+                    <option value="deadbolt" data-price="145">High-Security Deadbolt Fitting ($145.00)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                  <div>
+                    <label class="form-label" for="book-date">Preferred Date</label>
+                    <input type="date" class="form-control" id="book-date" required>
+                  </div>
+                  <div>
+                    <label class="form-label" for="book-time">Time Window</label>
+                    <select class="form-control" id="book-time" required>
+                      <option value="Morning">Morning (8:00 AM - 12:00 PM)</option>
+                      <option value="Afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                      <option value="Evening">Evening (4:00 PM - 8:00 PM)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="book-address">Installation Address</label>
+                  <select class="form-control" id="book-address" required>
+                    <option value="1">Home - 452 Oak Avenue, Beverly Hills, CA 90210</option>
+                    <option value="2">Office - 998 Wilshire Blvd, Los Angeles, CA 90024</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="book-notes">Special Instructions (Access details, key brands, etc.)</label>
+                  <textarea class="form-control" id="book-notes" rows="3" placeholder="Garage door keypad code is #8843. Need Schlage keyway matching."></textarea>
+                </div>
+                <button type="submit" class="btn-action btn-action-primary" style="margin-top: 10px;">Confirm & Book Appointment</button>
+              </form>
+            </div>
+
+            <!-- Billing Estimator Card -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px;">Price Calculator</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Estimated breakdown of service callout, hardware units, and technician labor.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.82rem; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Base Service Callout:</span>
+                  <strong id="est-base">$45.00</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Labor / Fitting charge:</span>
+                  <strong id="est-labor">$50.00</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Membership Discount:</span>
+                  <strong style="color: #10b981;">-$10.00</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Sales Tax (8.25%):</span>
+                  <strong id="est-tax">$6.60</strong>
+                </div>
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.95rem; font-weight: 700;">Estimated Total:</span>
+                <strong id="est-total" style="font-size: 1.45rem; color: var(--accent-primary); font-family: var(--font-heading);">$91.60</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. EMERGENCY LOCKOUT PANEL -->
+        <div class="db-panel" id="panel-emergency">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title" style="color: var(--danger-primary);">Emergency Lockout Dispatch</h1>
+              <p class="panel-subtitle">Immediate response bypasses. Locksmiths dispatched in real-time.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; align-items: start;">
+            <!-- Trigger Emergency Dispatch -->
+            <div class="db-card" style="margin-bottom: 0; border-color: rgba(239, 68, 68, 0.25);">
+              <div id="sos-trigger-view" style="text-align: center; padding: 20px 0;">
+                <div class="emergency-badge" style="width: 20px; height: 20px; margin: 0 auto 16px auto;"></div>
+                <h2 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--danger-primary);">Initiate SOS Dispatch Protocol</h2>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto;">
+                  Confirming this trigger alerts all roaming vans in your zone. A certified specialist will bypass your lock within 15-20 minutes.
+                </p>
+                
+                <div class="form-group" style="max-width: 380px; margin: 0 auto 20px auto; text-align: left;">
+                  <label class="form-label" for="emerg-lockout-type">Lockout Category</label>
+                  <select class="form-control" id="emerg-lockout-type">
+                    <option value="Home">Home / Apartment Lockout</option>
+                    <option value="Auto">Vehicle Lockout (Key Locked Inside)</option>
+                    <option value="Commercial">Business / Office Access Bypass</option>
+                    <option value="Safe">High-Security Vault Lockout</option>
+                  </select>
+                </div>
+
+                <div class="form-group" style="max-width: 380px; margin: 0 auto 24px auto; text-align: left;">
+                  <label class="form-label" for="emerg-address">Lockout Location</label>
+                  <select class="form-control" id="emerg-address">
+                    <option value="Home">Home - 452 Oak Avenue, Beverly Hills, CA 90210</option>
+                    <option value="Office">Office - 998 Wilshire Blvd, Los Angeles, CA 90024</option>
+                    <option value="Current">Current GPS Coordinates (Detected)</option>
+                  </select>
+                </div>
+                
+                <button class="btn-action btn-action-danger" style="padding: 14px 28px; font-size: 1rem; border-radius: 12px; box-shadow: 0 0 20px var(--danger-glow)" onclick="triggerSOS()">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="1"/></svg>
+                  <span>Broadcast SOS Bypass Alert</span>
+                </button>
+              </div>
+
+              <!-- Active SOS status -->
+              <div id="sos-active-view" style="display: none; padding: 10px 0;">
+                <div style="display: flex; gap: 15px; align-items: center; background-color: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                  <span class="emergency-badge" style="width: 16px; height: 16px;"></span>
+                  <div style="flex-grow: 1;">
+                    <h4 style="color: var(--danger-primary); font-size: 0.95rem;">SOS DISPATCH PROTOCOL ACTIVE</h4>
+                    <span style="font-size: 0.76rem; color: var(--text-secondary);">Technician assigned: <strong>Dave Miller (Van B)</strong> is en route.</span>
+                  </div>
+                  <button class="btn-action btn-action-danger" style="padding: 6px 12px;" onclick="cancelSOS()">Cancel SOS</button>
+                </div>
+
+                <div class="stat-grid" style="margin-bottom: 0;">
+                  <div class="db-card stat-card" style="padding: 16px; border-color: rgba(239, 68, 68, 0.15);">
+                    <span class="stat-card-title">Estimated Arrival</span>
+                    <div class="stat-card-value" style="color: var(--danger-primary);" id="emerg-eta">14:59 mins</div>
+                  </div>
+                  <div class="db-card stat-card" style="padding: 16px;">
+                    <span class="stat-card-title">Distance Remaining</span>
+                    <div class="stat-card-value">2.4 miles</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emergency Guidelines -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 14px;">Bypass Safety Guidelines</h2>
+              <ul style="font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 10px;">
+                <li style="display: flex; gap: 8px;">
+                  <span style="color: var(--danger-primary); font-weight: 700;">1.</span>
+                  <span><strong>Verify Ownership:</strong> You must present a government ID matching the address or car registration before entry is bypassed.</span>
+                </li>
+                <li style="display: flex; gap: 8px;">
+                  <span style="color: var(--danger-primary); font-weight: 700;">2.</span>
+                  <span><strong>Stay in Safe Area:</strong> If locked out late, wait in a well-lit location or a nearby open business until the locksmith van arrives.</span>
+                </li>
+                <li style="display: flex; gap: 8px;">
+                  <span style="color: var(--danger-primary); font-weight: 700;">3.</span>
+                  <span><strong>Cancel immediately:</strong> If you find your keys, cancel the broadcast quickly to redirect the technician.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. TRACK VEHICLE PANEL -->
+        <div class="db-panel" id="panel-tracking">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Track Locksmith Vehicle</h1>
+              <p class="panel-subtitle">Real-time GPS tracking of your assigned mobile locksmith specialist.</p>
+            </div>
+            <span class="status-badge status-scheduled" id="tracking-status-badge">No active job</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: start;">
+            <!-- GPS Map Container -->
+            <div class="db-card" style="padding: 0; margin-bottom: 0;">
+              <div class="map-container">
+                <div class="map-overlay-card">
+                  <h3 style="font-size: 0.86rem; margin-bottom: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;" id="track-overlay-title">Fleet Dispatch Detail</h3>
+                  <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.74rem;" id="track-overlay-content">
+                    <span style="color: var(--text-secondary);">No technician currently traveling to your location. Start an SOS lockout or book a service.</span>
+                  </div>
+                </div>
+                <!-- Interactive city map vector -->
+                <svg viewBox="0 0 1000 400" width="100%" height="100%" style="background-color: var(--bg-tertiary);">
+                  <rect class="map-block" x="30" y="30" width="180" height="90" rx="4"/>
+                  <rect class="map-block" x="250" y="30" width="220" height="90" rx="4"/>
+                  <rect class="map-block" x="510" y="30" width="250" height="90" rx="4"/>
+                  <rect class="map-block" x="800" y="30" width="170" height="90" rx="4"/>
+
+                  <rect class="map-block" x="30" y="160" width="180" height="110" rx="4"/>
+                  <rect class="map-block" x="250" y="160" width="130" height="110" rx="4"/>
+                  <rect class="map-block" x="420" y="160" width="180" height="110" rx="4"/>
+                  <rect class="map-block" x="640" y="160" width="120" height="110" rx="4"/>
+                  <rect class="map-block" x="800" y="160" width="170" height="110" rx="4"/>
+
+                  <rect class="map-block" x="30" y="300" width="290" height="70" rx="4"/>
+                  <rect class="map-block" x="360" y="300" width="220" height="70" rx="4"/>
+                  <rect class="map-block" x="620" y="300" width="350" height="70" rx="4"/>
+
+                  <path class="map-river" d="M-10,340 C300,340 400,200 700,200 S900,80 1020,80"/>
+
+                  <path class="map-road" d="M0,140 L1000,140"/>
+                  <path class="map-road" d="M0,285 L1000,285"/>
+                  <path class="map-road map-road-main" d="M230,0 L230,400"/>
+                  <path class="map-road" d="M400,0 L400,400"/>
+                  <path class="map-road" d="M620,0 L620,400"/>
+                  <path class="map-road map-road-main" d="M785,0 L785,400"/>
+
+                  <!-- User Home Pin Coordinates: x: 230, y: 285 (Home address node) -->
+                  <g class="map-vehicle" id="gps-user">
+                    <circle class="map-user-pulse" cx="230" cy="285" r="10"/>
+                    <circle class="map-user-dot" cx="230" cy="285" r="6"/>
+                  </g>
+
+                  <!-- Roaming Van A -->
+                  <g class="map-vehicle" id="gps-van-a">
+                    <circle class="map-vehicle-pulse" cx="785" cy="140" r="10"/>
+                    <circle class="map-vehicle-dot" cx="785" cy="140" r="6"/>
+                  </g>
+
+                  <!-- Emergency SOS Van B -->
+                  <g class="map-vehicle" id="gps-van-b" style="display: none;">
+                    <circle class="map-vehicle-pulse" cx="785" cy="285" r="10" style="fill: var(--danger-primary);"/>
+                    <circle class="map-vehicle-dot" cx="785" cy="285" r="6" style="fill: var(--danger-primary);"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Technician Details card -->
+            <div class="db-card" style="margin-bottom: 0;" id="tech-profile-card">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px;">Assigned Tech</h2>
+              <div style="text-align: center; padding: 10px 0;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--bg-tertiary); margin: 0 auto 16px auto; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-primary)">
+                  <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3 style="font-size: 1rem; margin-bottom: 4px;">Dave Miller</h3>
+                <span class="status-badge status-completed" style="font-size: 0.65rem; margin-bottom: 14px;">4.9 ★ Rating</span>
+                
+                <div style="text-align: left; font-size: 0.76rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 16px;">
+                  <div>License ID: <strong>LIC-8832</strong></div>
+                  <div>Response Vehicle: <strong>Transit Sprinter Van B</strong></div>
+                  <div>License Plate: <strong>382-LK9</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. MY APPOINTMENTS PANEL -->
+        <div class="db-panel" id="panel-appointments">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">My Appointments</h1>
+              <p class="panel-subtitle">Manage upcoming smart lock integrations or mechanical hardware installations.</p>
+            </div>
+          </div>
+
+          <div class="db-card">
+            <div class="table-container">
+              <table class="db-table" id="appointments-table">
+                <thead>
+                  <tr>
+                    <th>Job ID</th>
+                    <th>Service Type</th>
+                    <th>Date & Time</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-appt-id="SR-1934">
+                    <td style="font-weight: 700;">#SR-1934</td>
+                    <td>Smart Lock Installation (Yale Assure 2)</td>
+                    <td>June 18, 2026 at 9:00 AM</td>
+                    <td>Home (452 Oak Avenue)</td>
+                    <td><span class="status-badge status-scheduled">scheduled</span></td>
+                    <td>
+                      <button class="btn-action" onclick="rescheduleAppt('SR-1934')">Reschedule</button>
+                      <button class="btn-action btn-action-danger" onclick="cancelAppt('SR-1934')">Cancel</button>
+                    </td>
+                  </tr>
+                  <tr data-appt-id="SR-1933">
+                    <td style="font-weight: 700;">#SR-1933</td>
+                    <td>High-Security Medeco Deadbolt Fitment</td>
+                    <td>June 22, 2026 at 2:00 PM</td>
+                    <td>Office (998 Wilshire Blvd)</td>
+                    <td><span class="status-badge status-scheduled">scheduled</span></td>
+                    <td>
+                      <button class="btn-action" onclick="rescheduleAppt('SR-1933')">Reschedule</button>
+                      <button class="btn-action btn-action-danger" onclick="cancelAppt('SR-1933')">Cancel</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. REKEY REQUESTS PANEL -->
+        <div class="db-panel" id="panel-rekey">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Rekey Cylinders Configuration</h1>
+              <p class="panel-subtitle">Alter internal lock pins so past keys no longer bypass security.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; align-items: start;">
+            <!-- Configuration form -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">Rekey Specifications</h2>
+              <form onsubmit="event.preventDefault(); showToast('Rekey request submitted. Locksmith will contact you to verify brand keyways.');">
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                  <div>
+                    <label class="form-label" for="rekey-locks-num">Number of Cylinders</label>
+                    <input type="number" class="form-control" id="rekey-locks-num" min="1" max="20" value="4">
+                  </div>
+                  <div>
+                    <label class="form-label" for="rekey-cylinder-type">Key Matching style</label>
+                    <select class="form-control" id="rekey-cylinder-type">
+                      <option value="alike">Keyed Alike (One key fits all)</option>
+                      <option value="diff">Keyed Different (Separate keys)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="rekey-brand">Lock Brand (if known)</label>
+                  <select class="form-control" id="rekey-brand">
+                    <option value="schlage">Schlage (SC1 Keyway)</option>
+                    <option value="kwikset">Kwikset (KW1 Keyway)</option>
+                    <option value="medeco">Medeco (High Security)</option>
+                    <option value="yale">Yale (Y1 Keyway)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Master Key System Requirement</label>
+                  <label class="switch-label">
+                    <span>Include Master Key hierarchy control (Multi-level access)</span>
+                    <input type="checkbox" class="switch-input" id="rekey-master-key">
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-action btn-action-primary" style="margin-top: 10px;">Submit Rekey Configuration</button>
+              </form>
+            </div>
+
+            <!-- Lock explanation -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 14px;">Why Rekey Instead of Replace?</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;">
+                Rekeying is the cost-effective way to reset security. The locksmith swaps the brass tumbler pins inside the cylinder core to match a new key pattern, rendering all previous keys useless.
+              </p>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+                You don't buy expensive new lock handles or deadbolt casings—only the internal cylinders are reset.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. SERVICE HISTORY PANEL -->
+        <div class="db-panel" id="panel-history">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Service History</h1>
+              <p class="panel-subtitle">Ledger of past completed mechanical locksmith and electronic integrations.</p>
+            </div>
+          </div>
+
+          <div class="db-card">
+            <div class="table-container">
+              <table class="db-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Job ID</th>
+                    <th>Service Details</th>
+                    <th>Technician</th>
+                    <th>Cost</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>May 12, 2026</td>
+                    <td style="font-weight: 700;">#SR-1891</td>
+                    <td>Rekey Front, Back, and Side Door Cylinders</td>
+                    <td>John Doe</td>
+                    <td>$185.00</td>
+                    <td><span class="status-badge status-completed">completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Jan 08, 2026</td>
+                    <td style="font-weight: 700;">#SR-1521</td>
+                    <td>Emergency Car Unlock Service</td>
+                    <td>Alex Mercer</td>
+                    <td>$145.00</td>
+                    <td><span class="status-badge status-completed">completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nov 14, 2025</td>
+                    <td style="font-weight: 700;">#SR-0921</td>
+                    <td>Commercial CCTV Camera Calibration</td>
+                    <td>Alfred Penny</td>
+                    <td>$495.00</td>
+                    <td><span class="status-badge status-completed">completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. DIGITAL RECEIPTS PANEL -->
+        <div class="db-panel" id="panel-receipts">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Digital Receipts</h1>
+              <p class="panel-subtitle">Review breakdowns and print invoice records for tax or insurance claims.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; align-items: start;">
+            <!-- Receipts list -->
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+              <div class="db-card" style="margin-bottom: 0; padding: 18px; cursor: pointer; border-left: 4px solid var(--accent-primary);" onclick="loadReceipt('SR-1891', 'May 12, 2026', 'Rekeying Cylinders', '185.00', '95.00', '40.00', '50.00', '15.00')">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong style="font-size: 0.88rem;">Receipt #SR-1891</strong>
+                  <strong style="color: var(--accent-primary);">$185.00</strong>
+                </div>
+                <div style="font-size: 0.74rem; color: var(--text-muted);">Dated: May 12, 2026 • Rekeying</div>
+              </div>
+
+              <div class="db-card" style="margin-bottom: 0; padding: 18px; cursor: pointer;" onclick="loadReceipt('SR-1521', 'Jan 08, 2026', 'Emergency Car Bypass', '145.00', '95.00', '0.00', '50.00', '11.96')">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong style="font-size: 0.88rem;">Receipt #SR-1521</strong>
+                  <strong style="color: var(--accent-primary);">$145.00</strong>
+                </div>
+                <div style="font-size: 0.74rem; color: var(--text-muted);">Dated: Jan 08, 2026 • Car lockout</div>
+              </div>
+            </div>
+
+            <!-- Receipt Detail Display -->
+            <div class="db-card" style="margin-bottom: 0; border: 1px dashed var(--border-color);">
+              <div id="receipt-detail-invoice">
+                <div style="display: flex; justify-content: space-between; border-bottom: 2px dashed var(--border-color); padding-bottom: 16px; margin-bottom: 16px;">
+                  <div>
+                    <h3 style="font-size: 1.1rem; color: var(--accent-primary);">LOCKSMITH PORTAL</h3>
+                    <span style="font-size: 0.72rem; color: var(--text-muted);">Billed to: Alex Mercer</span>
+                  </div>
+                  <div style="text-align: right;">
+                    <strong style="font-size: 0.88rem;" id="rec-id">Invoice #SR-1891</strong>
+                    <div style="font-size: 0.72rem; color: var(--text-muted);" id="rec-date">May 12, 2026</div>
+                  </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.8rem; margin-bottom: 24px;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <span>Base Service Callout:</span>
+                    <span id="rec-base">$95.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span>Lock Hardware / Pin sets:</span>
+                    <span id="rec-hardware">$40.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span>Technician Labor:</span>
+                    <span id="rec-labor">$50.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span>Taxes (8.25%):</span>
+                    <span id="rec-tax">$15.00</span>
+                  </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border-color); padding-top: 16px; margin-top: 16px;">
+                  <span style="font-weight: 700; font-size: 0.95rem;">Amount Charged (USD):</span>
+                  <strong style="font-size: 1.35rem; color: var(--accent-primary); font-family: var(--font-heading);" id="rec-total">$185.00</strong>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px;">
+                  <button class="btn-action" onclick="window.print()">Print Receipt</button>
+                  <button class="btn-action btn-action-primary" onclick="showToast('Downloading Receipt PDF...')">Download PDF</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. SAVED KEY CODES PANEL -->
+        <div class="db-panel" id="panel-keycodes">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Saved Key Cryptography Vault</h1>
+              <p class="panel-subtitle">Manage mechanical key bitting cuts and backup security codes securely.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.2fr 1.8fr; gap: 30px; align-items: start;">
+            <!-- Secure entry keypad -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.1rem; margin-bottom: 8px;">Vault Authorization</h2>
+              <p style="font-size: 0.74rem; color: var(--text-secondary); margin-bottom: 16px;">Input security PIN to decrypt key codes. Default: <strong>1234</strong></p>
+              
+              <div class="vault-wrapper">
+                <div class="vault-display">
+                  <div class="display-stars" id="vault-stars">••••</div>
+                </div>
+                <div class="keypad-grid">
+                  <button class="keypad-btn" onclick="pressVaultKey('1')">1</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('2')">2</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('3')">3</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('4')">4</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('5')">5</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('6')">6</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('7')">7</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('8')">8</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('9')">9</button>
+                  <button class="keypad-btn keypad-btn-clear" onclick="clearVaultKey()">C</button>
+                  <button class="keypad-btn" onclick="pressVaultKey('0')">0</button>
+                  <button class="keypad-btn keypad-btn-enter" onclick="submitVaultKey()">Decrypt</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vault details display -->
+            <div class="db-card" style="margin-bottom: 0; min-height: 400px; display: flex; align-items: center; justify-content: center;" id="vault-locked-state">
+              <div style="text-align: center; max-width: 320px;">
+                <svg viewBox="0 0 24 24" width="48" height="48" stroke="var(--text-muted)" stroke-width="1.5" fill="none" style="margin-bottom: 16px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <h3 style="font-size: 1rem; margin-bottom: 6px;">Keyway Data Encrypted</h3>
+                <p style="font-size: 0.76rem; color: var(--text-secondary);">Unlock the vault to view bitting patterns, pin codes, and deadbolt profiles.</p>
+              </div>
+            </div>
+
+            <!-- Decrypted info -->
+            <div class="db-card" style="margin-bottom: 0; min-height: 400px; display: none;" id="vault-unlocked-state">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px; color: #10b981; display: flex; align-items: center; gap: 8px;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Decrypted Key Vault
+              </h2>
+              <div class="table-container">
+                <table class="db-table">
+                  <thead>
+                    <tr>
+                      <th>Keyway / Lock Location</th>
+                      <th>Key Brand</th>
+                      <th>Bitting Code (Cuts)</th>
+                      <th>Copy Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Front Entrance Deadbolt</td>
+                      <td>Schlage SC1</td>
+                      <td style="font-family: monospace; font-size: 0.95rem; font-weight: 700;">2-4-5-1-3</td>
+                      <td><span style="color:#10b981;">Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td>Office Glass Door Entry</td>
+                      <td>Kwikset KW1</td>
+                      <td style="font-family: monospace; font-size: 0.95rem; font-weight: 700;">5-3-2-6-4</td>
+                      <td><span style="color:#10b981;">Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td>Rear Garage Padlock</td>
+                      <td>Yale Y1</td>
+                      <td style="font-family: monospace; font-size: 0.95rem; font-weight: 700;">1-1-4-5-2</td>
+                      <td><span>Uncut Backup</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <button class="btn-action" style="margin-top: 20px;" onclick="lockVault()">Lock Vault</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. SAVED ADDRESSES PANEL -->
+        <div class="db-panel" id="panel-addresses">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Saved Address Book</h1>
+              <p class="panel-subtitle">Manage locations where you require locksmith dispatch access.</p>
+            </div>
+            <button class="btn-action btn-action-primary" onclick="toggleModal('modal-add-address', true)">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M12 5v14M5 12h14"/></svg>
+              <span>Add Address</span>
+            </button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;" id="addresses-grid">
+            <div class="db-card" style="margin-bottom:0;" data-addr-card="1">
+              <h3 style="font-size: 1.1rem; margin-bottom: 6px;">Home Address</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;">
+                452 Oak Avenue, Beverly Hills, CA 90210
+              </p>
+              <div style="font-size: 0.72rem; color: var(--text-muted); border-top:1px solid var(--border-color); padding-top:12px; display: flex; justify-content: space-between;">
+                <span>Gate Code: <strong>#4902</strong></span>
+                <span class="status-badge status-completed" style="font-size:0.6rem;">default</span>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 8px;">
+                <button class="btn-action" style="padding: 4px 8px; font-size: 0.7rem;" onclick="showToast('Editing Home Address Details')">Edit</button>
+                <button class="btn-action btn-action-danger" style="padding: 4px 8px; font-size: 0.7rem;" onclick="removeAddress(1)">Delete</button>
+              </div>
+            </div>
+
+            <div class="db-card" style="margin-bottom:0;" data-addr-card="2">
+              <h3 style="font-size: 1.1rem; margin-bottom: 6px;">Commercial Office</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;">
+                998 Wilshire Blvd, Los Angeles, CA 90024
+              </p>
+              <div style="font-size: 0.72rem; color: var(--text-muted); border-top:1px solid var(--border-color); padding-top:12px; display: flex; justify-content: space-between;">
+                <span>Office Code: <strong>Suite 12A</strong></span>
+                <span></span>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 8px;">
+                <button class="btn-action" style="padding: 4px 8px; font-size: 0.7rem;" onclick="showToast('Editing Office Address Details')">Edit</button>
+                <button class="btn-action btn-action-danger" style="padding: 4px 8px; font-size: 0.7rem;" onclick="removeAddress(2)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. REQUEST QUOTE PANEL -->
+        <div class="db-panel" id="panel-quote">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Request a Security Quote</h1>
+              <p class="panel-subtitle">Estimate security projects or submit images of lock cylinders for precise fitting pricing.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; align-items: start;">
+            <!-- Quote Request form -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">Quote Estimator & Upload</h2>
+              <form id="form-quote" onsubmit="submitQuoteRequest(event)">
+                <div class="form-group">
+                  <label class="form-label" for="quote-project">Project Scope</label>
+                  <select class="form-control" id="quote-project" required onchange="calculateQuoteEstimation()">
+                    <option value="1" data-price="450">Commercial Master Key Setup ($450+)</option>
+                    <option value="2" data-price="950">Integrated Alarm & CCTV System ($950+)</option>
+                    <option value="3" data-price="220">Smart Locks Retrofit ($220+)</option>
+                    <option value="4" data-price="120">Mechanical Lock Upgrade ($120+)</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="quote-qty">Quantity of Units (Locks/Cameras)</label>
+                  <input type="number" class="form-control" id="quote-qty" value="3" min="1" max="50" onchange="calculateQuoteEstimation()">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="quote-photo">Upload Current Lock Image (for cylinder identification)</label>
+                  <input type="file" class="form-control" id="quote-photo" style="padding: 8px;">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="quote-notes">Additional Security Specifications</label>
+                  <textarea class="form-control" id="quote-notes" rows="3" placeholder="I have Schlage locks currently. Looking to upgrade to smart touch pad."></textarea>
+                </div>
+
+                <button type="submit" class="btn-action btn-action-primary" style="margin-top: 10px;">Submit Quote Request</button>
+              </form>
+            </div>
+
+            <!-- Quote price calculator -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px;">Dynamic Estimation</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Real-time approximate costs based on hardware items and matching hourly labor tariffs.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.82rem; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Project Base Units:</span>
+                  <strong id="q-est-base">$450.00</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Multi-Unit Quantity:</span>
+                  <strong id="q-est-qty">x 3</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Gold Membership Discount:</span>
+                  <strong style="color:#10b981;">-10%</strong>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.95rem; font-weight: 700;">Estimate:</span>
+                <strong id="q-est-total" style="font-size: 1.45rem; color: var(--accent-primary); font-family: var(--font-heading);">$1,215.00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. PAYMENT HISTORY PANEL -->
+        <div class="db-panel" id="panel-payments">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Billing & Payment History</h1>
+              <p class="panel-subtitle">Manage credit card credentials and review paid account ledgers.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.2fr 1.8fr; gap: 30px; align-items: start;">
+            <!-- Credit Card wallet manager -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.1rem; margin-bottom: 16px;">Saved Card</h2>
+              
+              <!-- Visual Credit Card -->
+              <div class="credit-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-chip"></div>
+                    <div class="card-logo">LOCKSMITH GOLD</div>
+                    <div class="card-number" id="cc-number">•••• •••• •••• 4242</div>
+                    <div class="card-bottom">
+                      <div>
+                        <span class="card-label">Card Holder</span>
+                        <div class="card-name" id="cc-holder">Alex Mercer</div>
+                      </div>
+                      <div>
+                        <span class="card-label">Expires</span>
+                        <div class="card-expiry" id="cc-expiry">12/29</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Update credit card form -->
+              <form id="form-cc" onsubmit="updateCardDetails(event)">
+                <div class="form-group">
+                  <label class="form-label" for="cc-input-number">Card Number</label>
+                  <input type="text" class="form-control" id="cc-input-number" placeholder="4111 2222 3333 4444" required oninput="syncCreditCardDisplay()">
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px;">
+                  <div>
+                    <label class="form-label" for="cc-input-holder">Card Holder</label>
+                    <input type="text" class="form-control" id="cc-input-holder" placeholder="Alex Mercer" required oninput="syncCreditCardDisplay()">
+                  </div>
+                  <div>
+                    <label class="form-label" for="cc-input-expiry">Expiry</label>
+                    <input type="text" class="form-control" id="cc-input-expiry" placeholder="12/29" required oninput="syncCreditCardDisplay()">
+                  </div>
+                </div>
+                <button type="submit" class="btn-action btn-action-primary" style="width:100%; justify-content:center; margin-top: 10px;">Update Saved Card</button>
+              </form>
+            </div>
+
+            <!-- Payment log table -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 16px;">Billing Ledger</h2>
+              <div class="table-container">
+                <table class="db-table" id="payments-table">
+                  <thead>
+                    <tr>
+                      <th>Transaction Date</th>
+                      <th>Invoice ID</th>
+                      <th>Method</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-trans-id="8843">
+                      <td>May 12, 2026</td>
+                      <td>#INV-1891</td>
+                      <td>Visa ****4242</td>
+                      <td>$185.00</td>
+                      <td><span class="status-badge status-completed">charged</span></td>
+                    </tr>
+                    <tr data-trans-id="8842">
+                      <td>Jan 08, 2026</td>
+                      <td>#INV-1521</td>
+                      <td>Visa ****4242</td>
+                      <td>$145.00</td>
+                      <td><span class="status-badge status-completed">charged</span></td>
+                    </tr>
+                    <tr data-trans-id="8841">
+                      <td>Nov 14, 2025</td>
+                      <td>#INV-0921</td>
+                      <td>Visa ****4242</td>
+                      <td>$495.00</td>
+                      <td><span class="status-badge status-completed">charged</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. NOTIFICATIONS PANEL -->
+        <div class="db-panel" id="panel-notifications">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">My Notifications</h1>
+              <p class="panel-subtitle">Historical alerts on vehicle dispatches, security codes, and quotes.</p>
+            </div>
+            <button class="btn-action" onclick="clearAllNotifications()">Clear All</button>
+          </div>
+
+          <div class="db-card">
+            <div class="stream-container" id="notifications-stream">
+              <div class="stream-item">
+                <div class="stream-dot" style="background-color: var(--accent-primary);"></div>
+                <div class="stream-content">
+                  <span>Welcome to the Premium Locksmith Portal! Your Gold Shield status is now active.</span>
+                  <span class="stream-time">June 13, 2026</span>
+                </div>
+              </div>
+              <div class="stream-item">
+                <div class="stream-dot" style="background-color: #10b981;"></div>
+                <div class="stream-content">
+                  <span>Payment of <strong>$185.00</strong> collected successfully for invoice #INV-1891.</span>
+                  <span class="stream-time">May 12, 2026</span>
+                </div>
+              </div>
+              <div class="stream-item">
+                <div class="stream-dot" style="background-color: #3b82f6;"></div>
+                <div class="stream-content">
+                  <span>Security Tip: Master keys should be audited every 6 months. Lock pins wear out naturally.</span>
+                  <span class="stream-time">May 01, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. SETTINGS PANEL -->
+        <div class="db-panel" id="panel-settings">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Account Preferences</h1>
+              <p class="panel-subtitle">Configure notification targets, billing rules, and general interface preferences.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.5fr 1.5fr; gap: 30px; align-items: start;">
+            <!-- Preferences Form -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">Notification Preferences</h2>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <label class="switch-label">
+                  <span>SMS Technician Dispatch Alerts</span>
+                  <input type="checkbox" class="switch-input" id="set-sms-dispatch" checked onchange="showToast('Preferences updated.')">
+                  <span class="switch-slider"></span>
+                </label>
+                <label class="switch-label">
+                  <span>Email Monthly Statements & Receipts</span>
+                  <input type="checkbox" class="switch-input" id="set-email-receipts" checked onchange="showToast('Preferences updated.')">
+                  <span class="switch-slider"></span>
+                </label>
+                <label class="switch-label">
+                  <span>Announcements & Security Tip Alerts</span>
+                  <input type="checkbox" class="switch-input" id="set-tips" onchange="showToast('Preferences updated.')">
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Interface configuration -->
+            <div class="db-card" style="margin-bottom: 0;">
+              <h2 style="font-size: 1.15rem; margin-bottom: 20px;">System Preferences</h2>
+              <form onsubmit="event.preventDefault(); showToast('Preferred settings saved.');">
+                <div class="form-group">
+                  <label class="form-label" for="set-lang">Preferred Language</label>
+                  <select class="form-control" id="set-lang">
+                    <option value="en">English (US)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="de">Deutsch (DE)</option>
+                    <option value="ar">العربية (AR)</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="set-zone">Default Dispatch Zone</label>
+                  <select class="form-control" id="set-zone">
+                    <option value="1">Los Angeles Metro</option>
+                    <option value="2">San Francisco Bay</option>
+                    <option value="3">San Diego County</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn-action btn-action-primary" style="margin-top: 10px;">Save Prefs</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Add New Address Modal -->
+  <div class="db-modal-overlay" id="modal-add-address">
+    <div class="db-modal">
+      <div class="db-modal-header">
+        <h2 class="db-modal-title">Add Saved Address</h2>
+        <span class="db-modal-close" onclick="toggleModal('modal-add-address', false)">&times;</span>
+      </div>
+      <form id="form-add-address" onsubmit="addAddressSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="addr-label">Label (e.g. Office, Vacation Home)</label>
+          <input type="text" class="form-control" id="addr-label" placeholder="Vacation Home" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="addr-value">Full Address</label>
+          <input type="text" class="form-control" id="addr-value" placeholder="102 Pacific Coast Hwy, Malibu, CA 90265" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="addr-notes">Access Instructions (Gates/Suite/Codes)</label>
+          <input type="text" class="form-control" id="addr-notes" placeholder="Gate Code: #2293">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+          <button type="button" class="btn-action" onclick="toggleModal('modal-add-address', false)">Cancel</button>
+          <button type="submit" class="btn-action btn-action-primary">Add Address</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Modules & Simulations -->
+  <script>
+    // Theme Switcher
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    }
+    
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    initTheme();
+    if (darkModeBtn) darkModeBtn.addEventListener('click', toggleTheme);
+    const drawerDarkModeBtn = document.getElementById('drawerDarkModeBtn');
+    if (drawerDarkModeBtn) drawerDarkModeBtn.addEventListener('click', toggleTheme);
+
+    // Layout Mirroring (RTL Support)
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+    function toggleRtl() {
+      const currentDir = document.documentElement.dir || 'ltr';
+      if (currentDir === 'ltr') {
+        document.documentElement.dir = 'rtl';
+      } else {
+        document.documentElement.dir = 'ltr';
+      }
+    }
+    if (rtlToggleBtn) rtlToggleBtn.addEventListener('click', toggleRtl);
+    const drawerRtlToggleBtn = document.getElementById('drawerRtlToggleBtn');
+    if (drawerRtlToggleBtn) drawerRtlToggleBtn.addEventListener('click', toggleRtl);
+
+    // Mobile Drawer Controller (Drawer + Overlay + Back/Close triggers)
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.add('open');
+      if (drawerOverlay) drawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.remove('open');
+      if (drawerOverlay) drawerOverlay.classList.remove('active');
+      document.body.style.overflow = ''; 
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeMobileDrawer);
+
+    // Tab Router Switching Logic
+    const sidebarItems = document.querySelectorAll('.db-nav-item');
+    const dashboardPanels = document.querySelectorAll('.db-panel');
+
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const tabName = item.getAttribute('data-tab');
+        if (!tabName) return; // Exit portal link
+        
+        // Remove active class
+        sidebarItems.forEach(i => i.classList.remove('active'));
+        dashboardPanels.forEach(p => p.classList.remove('active'));
+        
+        // Set active on click
+        item.classList.add('active');
+        const activePanel = document.getElementById(`panel-${tabName}`);
+        if (activePanel) {
+          activePanel.classList.add('active');
+        }
+      });
+    });
+
+    // Modal Control System
+    function toggleModal(modalId, show) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        if (show) {
+          modal.style.display = 'flex';
+          setTimeout(() => modal.classList.add('active'), 10);
+        } else {
+          modal.classList.remove('active');
+          setTimeout(() => modal.style.display = 'none', 300);
+        }
+      }
+    }
+
+    // Toast Notification System
+    function showToast(message, borderStyle = 'var(--accent-primary)') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast-card';
+      toast.style.borderLeftColor = borderStyle;
+      toast.innerHTML = `
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+      
+      // Auto dismiss
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Append to live feed
+    function appendActivityFeed(text, color = 'var(--accent-primary)') {
+      const feed = document.getElementById('notifications-stream');
+      if (!feed) return;
+      const item = document.createElement('div');
+      item.className = 'stream-item';
+      item.innerHTML = `
+        <div class="stream-dot" style="background-color: ${color};"></div>
+        <div class="stream-content">
+          <span>${text}</span>
+          <span class="stream-time">Just now</span>
+        </div>
+      `;
+      feed.insertBefore(item, feed.firstChild);
+    }
+
+    // Profile Management
+    function saveProfile(event) {
+      event.preventDefault();
+      const name = document.getElementById('prof-name').value;
+      showToast(`Account Profile updated for ${name}!`, '#10b981');
+      appendActivityFeed(`Profile updated: Name changed to <strong>${name}</strong>`, '#10b981');
+    }
+
+    // Booking Wizard calculator
+    function calculateBookingTotal() {
+      const serviceSelect = document.getElementById('book-service');
+      const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+      const hardwarePrice = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+      
+      const baseFee = 45;
+      const laborFee = 50;
+      const discount = -10;
+      
+      const subtotal = baseFee + laborFee + discount + hardwarePrice;
+      const tax = parseFloat((subtotal * 0.0825).toFixed(2));
+      const total = subtotal + tax;
+      
+      document.getElementById('est-base').innerText = `$${baseFee.toFixed(2)}`;
+      document.getElementById('est-labor').innerText = `$${(laborFee + hardwarePrice).toFixed(2)}`;
+      document.getElementById('est-tax').innerText = `$${tax.toFixed(2)}`;
+      document.getElementById('est-total').innerText = `$${total.toFixed(2)}`;
+    }
+    
+    // Booking Form submit
+    function submitBooking(event) {
+      event.preventDefault();
+      const serviceSelect = document.getElementById('book-service');
+      const serviceName = serviceSelect.options[serviceSelect.selectedIndex].text.split(' ($')[0];
+      const dateVal = document.getElementById('book-date').value;
+      const timeVal = document.getElementById('book-time').value;
+      const addrSelect = document.getElementById('book-address');
+      const addrLabel = addrSelect.options[addrSelect.selectedIndex].text.split(' - ')[0];
+      
+      const id = `SR-${Math.floor(Math.random() * 900) + 1935}`;
+      const newRow = document.createElement('tr');
+      newRow.setAttribute('data-appt-id', id);
+      newRow.innerHTML = `
+        <td style="font-weight: 700;">#${id}</td>
+        <td>${serviceName}</td>
+        <td>${dateVal} at ${timeVal}</td>
+        <td>${addrLabel}</td>
+        <td><span class="status-badge status-scheduled">scheduled</span></td>
+        <td>
+          <button class="btn-action" onclick="rescheduleAppt('${id}')">Reschedule</button>
+          <button class="btn-action btn-action-danger" onclick="cancelAppt('${id}')">Cancel</button>
+        </td>
+      `;
+      
+      document.getElementById('appointments-table').querySelector('tbody').appendChild(newRow);
+      document.getElementById('form-booking').reset();
+      calculateBookingTotal();
+      
+      showToast(`Appointment #${id} booked successfully!`, '#10b981');
+      appendActivityFeed(`Appointment <strong>#${id}</strong> scheduled: ${serviceName}`, '#10b981');
+    }
+
+    // Cancel appointment
+    function cancelAppt(apptId) {
+      if (confirm(`Cancel service appointment #${apptId}?`)) {
+        const row = document.querySelector(`[data-appt-id="${apptId}"]`);
+        if (row) {
+          row.remove();
+          showToast(`Appointment #${apptId} has been cancelled.`, 'var(--danger-primary)');
+          appendActivityFeed(`Service job #${apptId} cancelled.`, 'var(--danger-primary)');
+        }
+      }
+    }
+
+    // Reschedule appointment
+    function rescheduleAppt(apptId) {
+      const newTime = prompt("Enter new preferred date/time (e.g. June 25, 2026 at 10:00 AM):");
+      if (newTime) {
+        const row = document.querySelector(`[data-appt-id="${apptId}"]`);
+        if (row) {
+          row.cells[2].innerText = newTime;
+          showToast(`Appointment #${apptId} rescheduled to ${newTime}.`);
+          appendActivityFeed(`Rescheduled #${apptId} to ${newTime}.`);
+        }
+      }
+    }
+
+    // Address book remove
+    function removeAddress(id) {
+      const card = document.querySelector(`[data-addr-card="${id}"]`);
+      if (card && confirm("Are you sure you want to delete this address?")) {
+        card.remove();
+        showToast("Address deleted.", 'var(--danger-primary)');
+      }
+    }
+
+    // Address add
+    function addAddressSubmit(event) {
+      event.preventDefault();
+      const label = document.getElementById('addr-label').value;
+      const addr = document.getElementById('addr-value').value;
+      const notes = document.getElementById('addr-notes').value || "No special entry instructions";
+      
+      const newCard = document.createElement('div');
+      const id = Math.floor(Math.random() * 900) + 3;
+      newCard.className = 'db-card';
+      newCard.style.marginBottom = '0';
+      newCard.setAttribute('data-addr-card', id);
+      newCard.innerHTML = `
+        <h3 style="font-size: 1.1rem; margin-bottom: 6px;">${label}</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;">
+          ${addr}
+        </p>
+        <div style="font-size: 0.72rem; color: var(--text-muted); border-top:1px solid var(--border-color); padding-top:12px; display: flex; justify-content: space-between;">
+          <span>Code: <strong>${notes}</strong></span>
+          <span></span>
+        </div>
+        <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 8px;">
+          <button class="btn-action" style="padding: 4px 8px; font-size: 0.7rem;" onclick="showToast('Editing ${label} Details')">Edit</button>
+          <button class="btn-action btn-action-danger" style="padding: 4px 8px; font-size: 0.7rem;" onclick="removeAddress(${id})">Delete</button>
+        </div>
+      `;
+      
+      document.getElementById('addresses-grid').appendChild(newCard);
+      toggleModal('modal-add-address', false);
+      document.getElementById('form-add-address').reset();
+      showToast(`Address label "${label}" added to vault!`, '#10b981');
+    }
+
+    // Digital receipts loading
+    function loadReceipt(id, date, type, total, base, hardware, labor, tax) {
+      document.getElementById('rec-id').innerText = `Invoice #${id}`;
+      document.getElementById('rec-date').innerText = date;
+      document.getElementById('rec-base').innerText = `$${base}`;
+      document.getElementById('rec-hardware').innerText = `$${hardware}`;
+      document.getElementById('rec-labor').innerText = `$${labor}`;
+      document.getElementById('rec-tax').innerText = `$${tax}`;
+      document.getElementById('rec-total').innerText = `$${total}`;
+      showToast(`Receipt details for #${id} loaded!`);
+    }
+
+    // Key Vault keypad scripts
+    let vaultInputPin = "";
+    function pressVaultKey(num) {
+      if (vaultInputPin.length < 4) {
+        vaultInputPin += num;
+        updateVaultDisplay();
+      }
+    }
+    function clearVaultKey() {
+      vaultInputPin = "";
+      updateVaultDisplay();
+    }
+    function updateVaultDisplay() {
+      const display = document.getElementById('vault-stars');
+      display.innerText = "•".repeat(vaultInputPin.length) + "•".repeat(Math.max(0, 4 - vaultInputPin.length));
+    }
+    function submitVaultKey() {
+      if (vaultInputPin === "1234") {
+        document.getElementById('vault-locked-state').style.display = 'none';
+        document.getElementById('vault-unlocked-state').style.display = 'block';
+        showToast("Keyway data decrypted successfully!", '#10b981');
+        appendActivityFeed("Secure Key Vault Decrypted", '#10b981');
+        vaultInputPin = "";
+        updateVaultDisplay();
+      } else {
+        showToast("Access Denied: Invalid PIN code", 'var(--danger-primary)');
+        vaultInputPin = "";
+        updateVaultDisplay();
+      }
+    }
+    function lockVault() {
+      document.getElementById('vault-locked-state').style.display = 'flex';
+      document.getElementById('vault-unlocked-state').style.display = 'none';
+      showToast("Key Vault lock re-secured.");
+    }
+
+    // Quote estimator calculator
+    function calculateQuoteEstimation() {
+      const scopeSelect = document.getElementById('quote-project');
+      const unitCost = parseFloat(scopeSelect.options[scopeSelect.selectedIndex].getAttribute('data-price')) || 0;
+      const qty = parseInt(document.getElementById('quote-qty').value) || 1;
+      
+      const subtotal = unitCost * qty;
+      const discount = subtotal * 0.10; // Gold discount
+      const total = subtotal - discount;
+      
+      document.getElementById('q-est-base').innerText = `$${unitCost.toFixed(2)}`;
+      document.getElementById('q-est-qty').innerText = `x ${qty}`;
+      document.getElementById('q-est-total').innerText = `$${total.toFixed(2)}`;
+    }
+    function submitQuoteRequest(event) {
+      event.preventDefault();
+      const scopeSelect = document.getElementById('quote-project');
+      const projectName = scopeSelect.options[scopeSelect.selectedIndex].text.split(' ($')[0];
+      const qtyVal = document.getElementById('quote-qty').value;
+      const id = Math.floor(Math.random() * 900) + 1201;
+      
+      showToast(`Security quote request #QT-${id} submitted!`, '#3b82f6');
+      appendActivityFeed(`Quote submitted: <strong>#QT-${id}</strong> - ${projectName} (qty: ${qtyVal})`, '#3b82f6');
+      document.getElementById('form-quote').reset();
+      calculateQuoteEstimation();
+    }
+
+    // Credit Card interactive displays
+    function syncCreditCardDisplay() {
+      const numInput = document.getElementById('cc-input-number').value || "•••• •••• •••• 4242";
+      const nameInput = document.getElementById('cc-input-holder').value || "Alex Mercer";
+      const expiryInput = document.getElementById('cc-input-expiry').value || "12/29";
+      
+      document.getElementById('cc-number').innerText = formatCardNum(numInput);
+      document.getElementById('cc-holder').innerText = nameInput;
+      document.getElementById('cc-expiry').innerText = expiryInput;
+    }
+    function formatCardNum(val) {
+      const clean = val.replace(/\s+/g, '');
+      const chunks = clean.match(/.{1,4}/g);
+      return chunks ? chunks.join(' ') : val;
+    }
+    function updateCardDetails(event) {
+      event.preventDefault();
+      const cleanNum = document.getElementById('cc-input-number').value.slice(-4);
+      
+      const tableRows = document.getElementById('payments-table').querySelectorAll('tbody tr');
+      tableRows.forEach(row => {
+        row.cells[2].innerText = `Visa ****${cleanNum}`;
+      });
+      
+      showToast("Billing credit card details saved successfully!", '#10b981');
+      document.getElementById('form-cc').reset();
+    }
+
+    // Clear notifications stream
+    function clearAllNotifications() {
+      const stream = document.getElementById('notifications-stream');
+      if (stream) {
+        stream.innerHTML = `<div style="text-align:center; padding: 24px; color: var(--text-muted); font-size:0.8rem;">No notifications remaining.</div>`;
+        showToast("Cleared notification ledger.");
+      }
+    }
+
+    // Emergency Lockout dispatch trigger
+    let sosInterval = null;
+    function triggerSOS() {
+      const type = document.getElementById('emerg-lockout-type').value;
+      
+      document.getElementById('sos-trigger-view').style.display = 'none';
+      document.getElementById('sos-active-view').style.display = 'block';
+      
+      document.getElementById('tracking-status-badge').innerText = "SOS Dispatch Active";
+      document.getElementById('tracking-status-badge').className = "status-badge status-emergency";
+      
+      const vanB = document.getElementById('gps-van-b');
+      if (vanB) vanB.style.display = 'block';
+      
+      document.getElementById('track-overlay-title').innerText = "SOS LOCKOUT: Dave Miller";
+      document.getElementById('track-overlay-content').innerHTML = `
+        <div>Lockout Category: <strong>${type}</strong></div>
+        <div>Assigned: <strong>Dave Miller (Van B)</strong></div>
+        <div>Current Speed: <strong>38 mph (city grid)</strong></div>
+        <div>ETA: <strong style="color:var(--danger-primary);" id="track-overlay-eta">15:00</strong></div>
+      `;
+      
+      showToast("Emergency lockout SOS broadcast initiated!", 'var(--danger-primary)');
+      appendActivityFeed(`SOS Lockout request broadcasted for <strong>${type}</strong>`, 'var(--danger-primary)');
+      
+      let secondsLeft = 900;
+      if (sosInterval) clearInterval(sosInterval);
+      sosInterval = setInterval(() => {
+        secondsLeft--;
+        const mins = Math.floor(secondsLeft / 60);
+        const secs = secondsLeft % 60;
+        const timeStr = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        
+        document.getElementById('emerg-eta').innerText = `${timeStr} mins`;
+        const mapEta = document.getElementById('track-overlay-eta');
+        if (mapEta) mapEta.innerText = timeStr;
+        
+        if (secondsLeft <= 0) {
+          clearInterval(sosInterval);
+          showToast("Technician has arrived at your address!");
+        }
+      }, 1000);
+      
+      setTimeout(() => {
+        showToast("GPS vehicle tracking is now active. View dispatcher location.");
+      }, 1500);
+    }
+    
+    function cancelSOS() {
+      if (confirm("Cancel emergency lockout service broadcast? Callout fees may apply.")) {
+        if (sosInterval) clearInterval(sosInterval);
+        
+        document.getElementById('sos-trigger-view').style.display = 'block';
+        document.getElementById('sos-active-view').style.display = 'none';
+        
+        document.getElementById('tracking-status-badge').innerText = "No active job";
+        document.getElementById('tracking-status-badge').className = "status-badge status-scheduled";
+        
+        const vanB = document.getElementById('gps-van-b');
+        if (vanB) vanB.style.display = 'none';
+        
+        document.getElementById('track-overlay-title').innerText = "Fleet Dispatch Detail";
+        document.getElementById('track-overlay-content').innerHTML = `
+          <span style="color: var(--text-secondary);">No technician currently traveling to your location. Start an SOS lockout or book a service.</span>
+        `;
+        
+        showToast("Emergency lockout request cancelled.", 'var(--danger-primary)');
+        appendActivityFeed("SOS lockout broadcast cancelled by user.", 'var(--danger-primary)');
+      }
+    }
+
+    // Vehicle Map Glide Simulation
+    function simulateVehiclesMovement() {
+      const vanA = document.getElementById('gps-van-a');
+      const vanB = document.getElementById('gps-van-b');
+      
+      const vanANodes = [{x: 785, y: 140}, {x: 785, y: 285}, {x: 620, y: 285}, {x: 620, y: 140}];
+      const vanBNodes = [{x: 785, y: 285}, {x: 620, y: 285}, {x: 400, y: 285}, {x: 400, y: 140}, {x: 230, y: 140}, {x: 230, y: 285}];
+
+      let indexA = 0;
+      let indexB = 0;
+
+      setInterval(() => {
+        indexA = (indexA + 1) % vanANodes.length;
+        updateVanPosition(vanA, vanANodes[indexA]);
+        
+        if (vanB && vanB.style.display === 'block') {
+          if (indexB < vanBNodes.length - 1) {
+            indexB++;
+            updateVanPosition(vanB, vanBNodes[indexB]);
+          } else {
+            clearInterval(sosInterval);
+            document.getElementById('emerg-eta').innerText = "Arrived";
+            const mapEta = document.getElementById('track-overlay-eta');
+            if (mapEta) mapEta.innerText = "Arrived";
+            showToast("Dave Miller has arrived at your location!");
+            appendActivityFeed("SOS locksmith has arrived at dispatch site.", '#10b981');
+          }
+        } else {
+          indexB = 0;
+          updateVanPosition(vanB, vanBNodes[0]);
+        }
+      }, 5000);
+    }
+
+    function updateVanPosition(gElement, coords) {
+      if (gElement) {
+        const circles = gElement.querySelectorAll('circle');
+        circles.forEach(c => {
+          c.setAttribute('cx', coords.x);
+          c.setAttribute('cy', coords.y);
+        });
+      }
+    }
+
+    simulateVehiclesMovement();
+  </script>
+</body>
+</html>

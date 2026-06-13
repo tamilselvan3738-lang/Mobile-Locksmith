@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Premium Mobile Locksmith</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Secure login portal for Mobile Locksmith services. Access your dashboard, manage lock services, and review security settings.">
+  <meta name="author" content="Antigravity">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN SYSTEM (HSL-tailored colors matching other pages)
+       ========================================================================== */
+    :root {
+      /* Typography */
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      /* Colors - Light Mode Defaults */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --accent-primary: #d4af37;      /* Metallic Gold / Brass */
+      --accent-secondary: #aa7c11;    /* Deep Gold */
+      --accent-gradient: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+      --accent-glow: rgba(212, 175, 55, 0.15);
+      
+      --border-color: rgba(15, 23, 42, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.7);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 50px -12px rgba(15, 23, 42, 0.08);
+      
+      --grid-line-color: rgba(15, 23, 42, 0.04);
+      --mesh-color-1: rgba(212, 175, 55, 0.05);
+      --mesh-color-2: rgba(170, 124, 17, 0.05);
+
+      --border-radius: 20px;
+      --transition-speed: 0.3s;
+      --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Dark Mode Overrides */
+    html.dark {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-primary: #ffd700;      /* Bright Gold */
+      --accent-secondary: #f39c12;    /* Amber Orange/Gold */
+      --accent-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+      --accent-glow: rgba(255, 215, 0, 0.25);
+      
+      --border-color: rgba(255, 255, 255, 0.08);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+      
+      --grid-line-color: rgba(255, 255, 255, 0.02);
+      --mesh-color-1: rgba(255, 215, 0, 0.03);
+      --mesh-color-2: rgba(243, 156, 18, 0.03);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE STYLES
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color var(--transition-speed) var(--transition-timing), 
+                  border-color var(--transition-speed) var(--transition-timing), 
+                  color var(--transition-speed) var(--transition-timing);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       3. AMBIENT BACKGROUND SYSTEM
+       ========================================================================== */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    }
+
+    .bg-mesh-1, .bg-mesh-2 {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -2;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .bg-mesh-1 {
+      top: -10%;
+      left: -10%;
+      background: var(--mesh-color-1);
+    }
+
+    .bg-mesh-2 {
+      bottom: 10%;
+      right: -10%;
+      background: var(--mesh-color-2);
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 50px) scale(1.2); }
+    }
+
+    /* ==========================================================================
+       4. TOP RIGHT FLOATING CONTROLS
+       ========================================================================== */
+    .top-controls {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    [dir="rtl"] .top-controls {
+      right: auto;
+      left: 24px;
+    }
+
+    .control-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background-color: var(--bg-secondary);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s var(--transition-timing);
+      cursor: pointer;
+    }
+
+    .control-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .control-btn-icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+      transition: transform 0.4s var(--transition-timing);
+    }
+
+    /* Sun/Moon Morphing Specifics */
+    .sun-icon {
+      display: none;
+    }
+    
+    html.dark .moon-icon {
+      display: none;
+    }
+    
+    html.dark .sun-icon {
+      display: block;
+      animation: rotateSun 10s infinite linear;
+    }
+
+    @keyframes rotateSun {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .rtl-icon {
+      transition: transform 0.4s ease;
+    }
+
+    [dir="rtl"] .rtl-icon {
+      transform: scaleX(-1);
+    }
+
+    /* ==========================================================================
+       5. CENTERED GLASSMORPHIC LOGIN CARD
+       ========================================================================== */
+    .login-container {
+      min-height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0);
+      transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    html.dark .login-card {
+      background-color: rgba(17, 24, 39, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Centered Brand Styling */
+    .brand-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .brand-logo-svg {
+      width: 42px;
+      height: 42px;
+      fill: none;
+      filter: drop-shadow(0 0 4px var(--accent-glow));
+      animation: pulseLogo 3s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover .brand-logo-svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-glow)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+    }
+
+    /* ==========================================================================
+       6. FORM CONTROLS & INPUTS
+       ========================================================================== */
+    .form-group {
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 0 16px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    /* Password field styling with visibility icon spacing */
+    .password-input-wrapper .form-input {
+      padding-right: 48px;
+    }
+
+    [dir="rtl"] .password-input-wrapper .form-input {
+      padding-right: 16px;
+      padding-left: 48px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+      z-index: 5;
+    }
+
+    [dir="rtl"] .password-toggle {
+      right: auto;
+      left: 16px;
+    }
+
+    .password-toggle:hover {
+      color: var(--text-primary);
+    }
+
+    .password-toggle-icon {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+    }
+
+    /* Customized checkbox styles */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+      cursor: pointer;
+      user-select: none;
+      width: fit-content;
+    }
+
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .custom-checkbox {
+      height: 20px;
+      width: 20px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .checkbox-container:hover input ~ .custom-checkbox {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 6px var(--accent-glow);
+    }
+
+    .checkbox-container input:checked ~ .custom-checkbox {
+      background: var(--accent-gradient);
+      border-color: transparent;
+    }
+
+    .custom-checkbox svg {
+      display: none;
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: white;
+      stroke-width: 3;
+    }
+
+    .checkbox-container input:checked ~ .custom-checkbox svg {
+      display: block;
+    }
+
+    .checkbox-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+
+    .checkbox-container:hover .checkbox-label {
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       7. BUTTONS (Login Button & Signup Button)
+       ========================================================================== */
+    .login-btn {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s var(--transition-timing);
+      cursor: pointer;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      );
+      transform: skewX(-25deg);
+      transition: 0.75s ease;
+    }
+
+    .login-btn:hover::before {
+      left: 125%;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+      filter: brightness(1.05);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .padlock-svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .padlock-shackle {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: 12px 6px;
+    }
+
+    .login-btn:hover .padlock-shackle {
+      transform: translateY(-2px) rotate(45deg);
+    }
+
+    /* Signup secondary button styling */
+    .signup-container {
+      margin-top: 16px;
+    }
+
+    .signup-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      border: 1.5px solid var(--accent-primary);
+      color: var(--accent-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      background-color: transparent;
+    }
+
+    .signup-btn:hover {
+      background-color: var(--accent-glow);
+      color: var(--accent-secondary);
+      border-color: var(--accent-secondary);
+      transform: translateY(-2px);
+    }
+
+    .signup-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       8. SOCIAL LOGINS (Google, Facebook, Apple)
+       ========================================================================== */
+    .divider-wrapper {
+      display: flex;
+      align-items: center;
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    .divider-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: var(--border-color);
+    }
+
+    .divider-text {
+      padding: 0 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .social-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .social-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+      background-color: var(--bg-tertiary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .social-icon {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.25s ease;
+    }
+
+    .social-btn:hover .social-icon {
+      transform: scale(1.08);
+    }
+
+    /* Brand-specific Colors on Hover (Sleek style) */
+    .social-btn.google:hover {
+      color: #ea4335;
+    }
+    .social-btn.facebook:hover {
+      color: #1877f2;
+    }
+    .social-btn.apple:hover {
+      color: var(--text-primary);
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Ambient System -->
+  <div class="bg-grid"></div>
+  <div class="bg-mesh-1"></div>
+  <div class="bg-mesh-2"></div>
+
+  <!-- Floating Utility controls (Top Right) -->
+  <div class="top-controls">
+    <!-- RTL Layout Toggle -->
+    <button class="control-btn" id="rtlToggleBtn" aria-label="Toggle layout direction" title="Right to Left Toggle">
+      <i class="fa-solid fa-right-left control-btn-icon rtl-icon"></i>
+    </button>
+
+    <!-- Dark Mode Theme Toggle -->
+    <button class="control-btn" id="darkModeBtn" aria-label="Toggle dark mode" title="Dark Mode Toggle">
+      <!-- Sun SVG (Dark Mode active) -->
+      <svg class="control-btn-icon sun-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5" />
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/>
+      </svg>
+      <!-- Moon SVG (Light Mode active) -->
+      <svg class="control-btn-icon moon-icon" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Centered Login Layout -->
+  <main class="login-container">
+    <div class="login-card">
+      
+      <!-- Brand Logo Header -->
+      <div class="brand-container">
+        <a href="index.html" class="brand">
+          <svg class="brand-logo-svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-primary)" />
+                <stop offset="100%" stop-color="var(--accent-secondary)" />
+              </linearGradient>
+            </defs>
+            <!-- Lock Shackle -->
+            <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+            <!-- Lock Body (Shield shape) -->
+            <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
+            <!-- Center Keyhole -->
+            <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
+          </svg>
+          <span>LOCKSMITH</span>
+        </a>
+      </div>
+
+      <!-- Credentials Form -->
+      <form id="loginForm" onsubmit="event.preventDefault(); alert('Authentication simulated successfully!');">
+        
+        <!-- Username input -->
+        <div class="form-group">
+          <label for="usernameInput" class="form-label">Username or Email</label>
+          <div class="input-wrapper">
+            <input type="text" id="usernameInput" class="form-input" placeholder="e.g. secure@example.com" required autocomplete="username">
+          </div>
+        </div>
+
+        <!-- Password input with eye toggle icon -->
+        <div class="form-group">
+          <label for="passwordInput" class="form-label">Password</label>
+          <div class="input-wrapper password-input-wrapper">
+            <input type="password" id="passwordInput" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+              <!-- Eye Open SVG -->
+              <svg class="password-toggle-icon eye-open" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2.2" />
+              </svg>
+              <!-- Eye Closed SVG -->
+              <svg class="password-toggle-icon eye-closed" viewBox="0 0 24 24" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Checkbox: Remember me -->
+        <label class="checkbox-container">
+          <input type="checkbox" id="rememberMeInput">
+          <span class="custom-checkbox">
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12" stroke="currentColor"/>
+            </svg>
+          </span>
+          <span class="checkbox-label">Remember me for 30 days</span>
+        </label>
+
+        <!-- Submit Login Button with Shackle Animation -->
+        <button type="submit" class="login-btn" id="submitBtn">
+          <svg class="padlock-svg" viewBox="0 0 24 24">
+            <path class="padlock-shackle" id="btnShackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
+            <rect x="4" y="11" width="16" height="11" rx="2" ry="2" fill="currentColor" fill-opacity="0.1" />
+            <circle cx="12" cy="16" r="1.5" />
+          </svg>
+          <span>Log In</span>
+        </button>
+
+      </form>
+
+      <!-- Separator: Continue with other -->
+      <div class="divider-wrapper">
+        <span class="divider-line"></span>
+        <span class="divider-text">Or continue with</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <!-- Social Logins (Google, Facebook, Apple) -->
+      <div class="social-wrapper">
+        <!-- Google Button -->
+        <button type="button" class="social-btn google" aria-label="Continue with Google" onclick="alert('Google login simulated successfully.');">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+          </svg>
+        </button>
+
+        <!-- Facebook Button -->
+        <button type="button" class="social-btn facebook" aria-label="Continue with Facebook" onclick="alert('Facebook login simulated successfully.');">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </button>
+
+        <!-- Apple Button -->
+        <button type="button" class="social-btn apple" aria-label="Continue with Apple" onclick="alert('Apple login simulated successfully.');">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.5-.63.73-1.18 1.87-1.03 2.97 1.1.09 2.23-.59 2.96-1.41z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Signup Redirect Button -->
+      <div class="signup-container">
+        <a href="registeration.html" class="signup-btn" id="signupBtn">
+          Create New Account
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       9. INTERACTIVE JAVASCRIPT CONTROLLERS
+       ========================================================================== -->
+  <script>
+    // 9.1 Theme Controllers (Dual-Bind Theme controls)
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    }
+    
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    initTheme();
+    darkModeBtn.addEventListener('click', toggleTheme);
+
+    // 9.2 RTL Layout Controllers (Text direction toggle)
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+    
+    function initRtl() {
+      const savedRtl = localStorage.getItem('rtl');
+      if (savedRtl === 'rtl') {
+        document.documentElement.dir = 'rtl';
+      } else {
+        document.documentElement.dir = 'ltr';
+      }
+    }
+
+    function toggleRtl() {
+      const currentDir = document.documentElement.dir || 'ltr';
+      if (currentDir === 'ltr') {
+        document.documentElement.dir = 'rtl';
+        localStorage.setItem('rtl', 'rtl');
+      } else {
+        document.documentElement.dir = 'ltr';
+        localStorage.setItem('rtl', 'ltr');
+      }
+    }
+
+    initRtl();
+    rtlToggleBtn.addEventListener('click', toggleRtl);
+
+    // 9.3 Password Visibility Toggle Action
+    const passwordInput = document.getElementById('passwordInput');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const eyeOpen = passwordToggle.querySelector('.eye-open');
+    const eyeClosed = passwordToggle.querySelector('.eye-closed');
+
+    passwordToggle.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeOpen.style.display = 'none';
+        eyeClosed.style.display = 'block';
+        passwordToggle.setAttribute('aria-label', 'Hide password');
+      } else {
+        passwordInput.type = 'password';
+        eyeOpen.style.display = 'block';
+        eyeClosed.style.display = 'none';
+        passwordToggle.setAttribute('aria-label', 'Show password');
+      }
+    });
+
+    // 9.4 Submit Padlock micro-animation shackle trigger
+    const submitBtn = document.getElementById('submitBtn');
+    const btnShackle = document.getElementById('btnShackle');
+
+    submitBtn.addEventListener('mouseenter', () => {
+      btnShackle.style.transform = 'translateY(-2px) rotate(45deg)';
+    });
+    submitBtn.addEventListener('mouseleave', () => {
+      btnShackle.style.transform = 'translateY(0) rotate(0)';
+    });
+  </script>
+</body>
+</html>
