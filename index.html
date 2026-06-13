@@ -218,13 +218,16 @@
 
 
 
-    h1, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6 {
       font-family: var(--font-heading);
+      color: var(--text-primary);
+    }
+
+    h1, h3, h4, h5, h6 {
       font-weight: 700;
     }
 
     h2 {
-      font-family: var(--font-heading);
       font-weight: 500;
     }
 
@@ -255,6 +258,8 @@
       border: none;
 
       font-family: inherit;
+
+      color: inherit;
 
       cursor: pointer;
 
@@ -2676,6 +2681,8 @@
 
       letter-spacing: -0.01em;
 
+      color: var(--text-primary);
+
     }
 
     .sec-desc {
@@ -2890,6 +2897,8 @@
 
       margin-bottom: 2px;
 
+      color: var(--text-primary);
+
     }
 
     .audit-card-text p {
@@ -3080,6 +3089,47 @@
 
     }
 
+    /* Radar Map SVG Elements Styling */
+    .map-road {
+      fill: none;
+      stroke: rgba(100, 116, 139, 0.15);
+      stroke-width: 6;
+      stroke-linecap: round;
+    }
+    .map-road-main {
+      stroke: rgba(100, 116, 139, 0.25);
+      stroke-width: 10;
+    }
+    .map-river {
+      fill: none;
+      stroke: rgba(0, 200, 255, 0.15);
+      stroke-width: 18;
+      stroke-linecap: round;
+    }
+    .map-block {
+      fill: rgba(100, 116, 139, 0.05);
+      stroke: rgba(100, 116, 139, 0.05);
+      stroke-width: 1;
+    }
+    .map-vehicle {
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    .map-vehicle-dot {
+      fill: var(--accent-primary);
+      stroke: #ffffff;
+      stroke-width: 2;
+    }
+    .map-vehicle-pulse {
+      fill: var(--accent-primary);
+      opacity: 0.4;
+      animation: mapPulse 1.8s infinite ease-out;
+    }
+    @keyframes mapPulse {
+      0% { r: 5; opacity: 0.8; }
+      100% { r: 18; opacity: 0; }
+    }
+
     .radar-console {
 
       display: flex;
@@ -3101,6 +3151,8 @@
       border-radius: 10px;
 
       background-color: var(--bg-secondary);
+
+      color: var(--text-primary);
 
       cursor: pointer;
 
