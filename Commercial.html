@@ -1540,6 +1540,8 @@
 
       font-weight: 600;
 
+      width: auto;
+
     }
 
 
@@ -3378,6 +3380,26 @@
 
     }
 
+    .form-column {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 20px;
+
+    }
+
+    .form-submit-row {
+
+      grid-column: span 2;
+
+      display: flex;
+
+      justify-content: flex-end;
+
+    }
+
     
 
     .form-group {
@@ -3608,6 +3630,22 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
       }
 
+      .section-consultation {
+
+        padding: 40px 24px;
+
+        margin-bottom: 60px;
+
+      }
+
+      .form-submit-row {
+
+        grid-column: span 1;
+
+        justify-content: flex-start;
+
+      }
+
     }
 
     
@@ -3626,6 +3664,20 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
       }
 
+      .form-submit-row {
+
+        justify-content: stretch;
+
+      }
+
+      .submit-btn-comm {
+
+        width: 100%;
+
+        margin-top: 16px;
+
+      }
+
     }
 
       @media (max-width: 480px) {
@@ -3633,6 +3685,14 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
       .home-section {
 
         padding: 50px 16px;
+
+      }
+
+      .section-consultation {
+
+        padding: 30px 16px;
+
+        margin-bottom: 40px;
 
       }
 
@@ -4924,7 +4984,7 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
       <form class="consultation-form-grid" onsubmit="event.preventDefault(); alert('Security consultation requested! Our lead commercial locksmith will call you in 15 minutes.');">
 
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="form-column">
 
           <div class="form-group">
 
@@ -4958,7 +5018,7 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
         
 
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="form-column">
 
           <div class="form-group">
 
@@ -5014,7 +5074,7 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
         
 
-        <div style="grid-column: span 2; display: flex; justify-content: flex-end;">
+        <div class="form-submit-row">
 
           <button type="submit" class="submit-btn-comm">
 

@@ -1540,6 +1540,8 @@
 
       font-weight: 600;
 
+      width: auto;
+
     }
 
 
@@ -2762,6 +2764,30 @@
 
     }
 
+    .comm-hero-img-wrapper {
+
+      width: 100%;
+
+      border-radius: 12px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border-color);
+
+    }
+
+    .comm-hero-img-wrapper img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
     
 
     /* Alarm System Keypad */
@@ -3400,6 +3426,26 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
       }
 
+      .section-hub-dashboard {
+
+        padding: 40px 24px;
+
+        margin-bottom: 60px;
+
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .hub-zones-list {
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+      }
+
     }
 
       @media (max-width: 480px) {
@@ -3407,6 +3453,20 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
       .home-section {
 
         padding: 50px 16px;
+
+      }
+
+      .section-hub-dashboard {
+
+        padding: 30px 16px;
+
+        margin-bottom: 40px;
+
+      }
+
+      .hub-dashboard-mockup {
+
+        padding: 16px;
 
       }
 
