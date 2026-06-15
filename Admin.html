@@ -816,6 +816,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
+      touch-action: none;
     }
 
     .drawer-overlay.active {
@@ -2021,6 +2022,7 @@
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
       }
       .db-sidebar.open {
@@ -3652,7 +3654,19 @@
         if (activePanel) {
           activePanel.classList.add('active');
         }
+
+        // Close mobile drawer and restore scroll
+        if (window.innerWidth <= 1024) {
+          closeMobileDrawer();
+        }
       });
+    });
+
+    // Clean up mobile drawer scroll locks on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) {
+        closeMobileDrawer();
+      }
     });
 
     // Modal Control System
