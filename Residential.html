@@ -1786,6 +1786,10 @@ font-size: clamp(2.5rem, 5vw, 4rem);
 
       align-items: center;
 
+      flex-wrap: wrap;
+
+      gap: 12px;
+
     }
 
 
@@ -3183,6 +3187,44 @@ font-size: clamp(1.8rem, 3vw, 2.4rem);
       .residential-container {
 
         margin-top: 110px;
+
+      }
+
+      .hero-image-wrapper {
+
+        aspect-ratio: auto !important;
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding: 16px;
+
+        background: var(--bg-secondary);
+
+      }
+
+      .hero-door-img {
+
+        height: auto !important;
+
+        border-radius: 8px;
+
+        margin-bottom: 12px;
+
+      }
+
+      .hero-overlay-tag {
+
+        position: static !important;
+
+        width: 100% !important;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 6px;
 
       }
 
