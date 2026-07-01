@@ -628,15 +628,157 @@
       transform: scale(1.08);
     }
 
-    /* Brand-specific Colors on Hover */
-    .social-btn.google:hover {
-      color: #ea4335;
+    /* Brand-specific Social Buttons (consistent with Google) */
+    .social-btn.facebook {
+      color: #1877f2 !important;
+      border-color: rgba(24, 119, 242, 0.25) !important;
     }
     .social-btn.facebook:hover {
-      color: #1877f2;
+      border-color: #1877f2 !important;
+      box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3) !important;
+    }
+    .social-btn.apple {
+      color: var(--text-primary) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
     }
     .social-btn.apple:hover {
+      border-color: var(--text-primary) !important;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2) !important;
+    }
+  
+    /* Brand Logo & Spacing Overrides */
+    .brand {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+    }
+    .brand-lock {
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-primary);
+    }
+    .brand-smith {
+      font-weight: 500;
       color: var(--text-primary);
+    }
+    .nav-menu {
+      gap: 12px !important;
+    }
+    .nav-link {
+      font-size: 0.88rem !important;
+      padding: 8px 14px !important;
+      gap: 5px !important;
+    }
+
+    /* Background suitability & opacity overrides */
+    .bg-mesh-1, .bg-mesh-2 {
+      opacity: 0.25 !important;
+      filter: blur(160px) !important;
+    }
+    .bg-grid {
+      opacity: 0.4 !important;
+    }
+
+    /* CTA Button Styles & Hover Highlighters */
+    .btn-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      border-radius: 10px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: var(--text-secondary) !important;
+      background-color: var(--bg-secondary) !important;
+      border: 1px solid var(--border-color) !important;
+      cursor: pointer !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all 0.25s ease !important;
+      text-decoration: none !important;
+    }
+    .btn-action:hover {
+      color: var(--text-primary) !important;
+      border-color: var(--accent-primary) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px var(--accent-glow) !important;
+    }
+    .btn-action-primary {
+      color: #ffffff !important;
+      background: var(--accent-gradient) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+    }
+    .btn-action-primary:hover {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 6px 20px var(--accent-glow) !important;
+      filter: brightness(1.1) !important;
+    }
+
+    /* Commercial and Security Installation button overrides */
+    .submit-btn-comm {
+      background: var(--accent-gradient) !important;
+      color: #0b0f19 !important;
+      font-weight: 700 !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+      text-decoration: none !important;
+    }
+    .submit-btn-comm:hover {
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+      transform: translateY(-2px) !important;
+      border-color: #ffffff !important;
+      color: #0b0f19 !important;
+    }
+    .option-btn {
+      background: var(--bg-primary) !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      color: var(--text-secondary) !important;
+      text-decoration: none !important;
+    }
+    .option-btn:hover, .option-btn.selected {
+      border-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+      background: var(--accent-glow) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Hero section spacing & layout overrides */
+    .hero-section {
+      grid-template-columns: 1.15fr 0.85fr !important;
+      gap: 20px !important;
+    }
+
+    /* CCTV Visual Alignment overrides */
+    .sec-hero-img-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Emergency simulation contrast overrides */
+    .sim-display-screen .sim-status-text {
+      color: #ffffff !important;
+    }
+    .sim-display-screen .sim-info-box {
+      color: #94a3b8 !important;
     }
   </style>
   <link rel="stylesheet" href="responsive.css">
@@ -678,23 +820,28 @@
       
       <!-- Brand Logo Header -->
       <div class="brand-container">
-        <a href="index.html" class="brand">
-          <svg class="brand-logo-svg" viewBox="0 0 100 100">
-            <defs>
-              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="var(--accent-primary)" />
-                <stop offset="100%" stop-color="var(--accent-secondary)" />
-              </linearGradient>
-            </defs>
-            <!-- Lock Shackle -->
-            <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
-            <!-- Lock Body (Shield shape) -->
-            <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
-            <!-- Center Keyhole -->
-            <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
-          </svg>
-          <span>LOCKSMITH</span>
-        </a>
+        <a href="index.html" class="brand" style="text-decoration: none;">
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+            </linearGradient>
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="4" stroke-dasharray="140 10 30 10" fill="none" filter="url(#logoGlow)" />
+          <path d="M35,46 V34 a15,15 0 0,1 30,0 V46" stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path d="M22,46 H78 V66 C78,80 50,90 50,90 C50,90 22,80 22,66 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="6" stroke-linejoin="round" />
+          <circle cx="50" cy="58" r="5" fill="url(#logoGradient)" />
+          <path d="M48,58 L46,76 H54 L52,58 Z" fill="url(#logoGradient)" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-lock">LOCK</span><span class="brand-smith">SMITH</span>
+        </span>
+      </a>
       </div>
 
       <!-- Registration Form -->

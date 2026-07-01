@@ -2128,6 +2128,333 @@
         padding: 16px;
       }
     }
+
+    /* Brand Overrides & Profile Styles */
+    .brand {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+    }
+    .brand-lock {
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-primary);
+    }
+    .brand-smith {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* User Profile Menu Styling */
+    .user-profile-menu-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-trigger-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 6px 14px 6px 6px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .profile-trigger-btn:hover {
+      background: var(--bg-secondary);
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .profile-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 2px solid var(--accent-primary);
+    }
+
+    .profile-avatar-admin {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 2px solid #10b981;
+    }
+
+    .profile-name-span {
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 576px) {
+      .profile-name-span {
+        display: none;
+      }
+      .profile-trigger-btn {
+        padding: 6px;
+      }
+      .chevron-icon-profile {
+        display: none;
+      }
+    }
+
+    .chevron-icon-profile {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+      color: var(--text-secondary);
+      stroke-width: 2.5;
+    }
+
+    .user-profile-menu-container.active .chevron-icon-profile {
+      transform: rotate(180deg);
+    }
+
+    .profile-dropdown-card {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 280px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      text-align: left;
+    }
+
+    /* RTL layout */
+    [dir="rtl"] .profile-dropdown-card {
+      right: auto;
+      left: 0;
+      text-align: right;
+    }
+
+    .user-profile-menu-container.active .profile-dropdown-card {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-profile-header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding-bottom: 12px;
+    }
+
+    .dropdown-profile-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid var(--accent-primary);
+    }
+
+    .dropdown-profile-avatar-admin {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid #10b981;
+    }
+
+    .dropdown-profile-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+    }
+
+    .dropdown-profile-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-family: var(--font-heading);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dropdown-profile-email {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-tier-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-primary);
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-top: 4px;
+    }
+
+    .profile-tier-badge-admin {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid #10b981;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-top: 4px;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 12px 0;
+    }
+
+    .dropdown-menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .dropdown-menu-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    [dir="rtl"] .dropdown-menu-item {
+      text-align: right;
+    }
+
+    .dropdown-menu-item:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .dropdown-menu-item.text-danger {
+      color: var(--danger-primary);
+    }
+
+    .dropdown-menu-item.text-danger:hover {
+      background: var(--danger-glow);
+      color: #ffffff;
+    }
+
+    .menu-item-icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    /* Background suitability & opacity overrides */
+    .bg-mesh-1, .bg-mesh-2 {
+      opacity: 0.25 !important;
+      filter: blur(160px) !important;
+    }
+    .bg-grid {
+      opacity: 0.4 !important;
+    }
+
+    /* CTA Button Styles & Hover Highlighters */
+    .btn-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      border-radius: 10px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: var(--text-secondary) !important;
+      background-color: var(--bg-secondary) !important;
+      border: 1px solid var(--border-color) !important;
+      cursor: pointer !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all 0.25s ease !important;
+      text-decoration: none !important;
+    }
+    .btn-action:hover {
+      color: var(--text-primary) !important;
+      border-color: var(--accent-primary) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px var(--accent-glow) !important;
+    }
+    .btn-action-primary {
+      color: #ffffff !important;
+      background: var(--accent-gradient) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+    }
+    .btn-action-primary:hover {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 6px 20px var(--accent-glow) !important;
+      filter: brightness(1.1) !important;
+    }
   </style>
   <link rel="stylesheet" href="responsive.css">
 
@@ -2150,22 +2477,27 @@
   <main class="dashboard-wrapper">
     <!-- Top Header Bar with Back Button & Hamburger Menu -->
     <div class="db-header-row">
-      <a href="index.html" class="brand" style="font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+      <a href="index.html" class="brand" style="font-size: 1.25rem; display: flex; align-items: center; gap: 8px; text-decoration: none;">
         <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
           <defs>
             <linearGradient id="logoGradientAdmin" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="var(--accent-primary)" />
               <stop offset="100%" stop-color="var(--accent-secondary)" />
             </linearGradient>
+            <filter id="logoGlowAdmin" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
           </defs>
-          <!-- Lock Shackle -->
-          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientAdmin)" stroke-width="8" stroke-linecap="round" fill="none" />
-          <!-- Lock Body (Shield shape) -->
-          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientAdmin)" stroke-width="8" stroke-linejoin="round" />
-          <!-- Center Keyhole -->
-          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientAdmin)" />
+          <circle cx="50" cy="50" r="45" stroke="url(#logoGradientAdmin)" stroke-width="4" stroke-dasharray="140 10 30 10" fill="none" filter="url(#logoGlowAdmin)" />
+          <path d="M35,46 V34 a15,15 0 0,1 30,0 V46" stroke="url(#logoGradientAdmin)" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path d="M22,46 H78 V66 C78,80 50,90 50,90 C50,90 22,80 22,66 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientAdmin)" stroke-width="6" stroke-linejoin="round" />
+          <circle cx="50" cy="58" r="5" fill="url(#logoGradientAdmin)" />
+          <path d="M48,58 L46,76 H54 L52,58 Z" fill="url(#logoGradientAdmin)" />
         </svg>
-        <span style="font-family: var(--font-heading); font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LOCKSMITH</span>
+        <span class="brand-text">
+          <span class="brand-lock">LOCK</span><span class="brand-smith">SMITH</span>
+        </span>
       </a>
       <div class="header-controls-group">
         <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
@@ -2179,6 +2511,40 @@
           </svg>
           <span>Back to Home</span>
         </a>
+
+        <!-- Admin Profile Dropdown Widget -->
+        <div class="user-profile-menu-container">
+          <button class="profile-trigger-btn" id="profileTriggerBtn" aria-label="Admin Profile Actions">
+            <div class="profile-avatar-admin">AD</div>
+            <span class="profile-name-span">Admin Dispatcher</span>
+            <svg class="chevron-icon-profile" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="profile-dropdown-card" id="profileDropdownCard">
+            <div class="dropdown-profile-header">
+              <div class="dropdown-profile-avatar-admin">AD</div>
+              <div class="dropdown-profile-details">
+                <div class="dropdown-profile-name">Admin Dispatcher</div>
+                <div class="dropdown-profile-email">dispatch@locksmith.com</div>
+                <span class="profile-tier-badge-admin">Lead Dispatcher</span>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <ul class="dropdown-menu-list">
+              <li>
+                <button class="dropdown-menu-item" id="goToSettingsTabBtn">
+                  <svg class="menu-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  <span>System Settings</span>
+                </button>
+              </li>
+              <li>
+                <a href="index.html" class="dropdown-menu-item text-danger">
+                  <svg class="menu-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="dashboard-layout">
@@ -4004,6 +4370,37 @@
     }
 
     simulateVehiclesMovement();
+
+    // Admin Profile Dropdown Toggle Logic
+    const profileTriggerBtn = document.getElementById('profileTriggerBtn');
+    const profileDropdownCard = document.getElementById('profileDropdownCard');
+    const profileMenuContainer = profileTriggerBtn ? profileTriggerBtn.parentElement : null;
+
+    if (profileTriggerBtn && profileDropdownCard) {
+      profileTriggerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileMenuContainer.classList.toggle('active');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (profileMenuContainer && !profileMenuContainer.contains(e.target)) {
+          profileMenuContainer.classList.remove('active');
+        }
+      });
+
+      // Tab switcher redirection within admin profile dropdown
+      const goToSettingsTabBtn = document.getElementById('goToSettingsTabBtn');
+      if (goToSettingsTabBtn) {
+        goToSettingsTabBtn.addEventListener('click', () => {
+          const settingsTabItem = document.querySelector('.db-nav-item[data-tab="settings"]');
+          if (settingsTabItem) {
+            settingsTabItem.click();
+          }
+          profileMenuContainer.classList.remove('active');
+        });
+      }
+    }
   </script>
 </body>
 </html>

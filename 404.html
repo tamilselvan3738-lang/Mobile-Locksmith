@@ -512,6 +512,141 @@
         left: 16px;
       }
     }
+  
+    /* Brand Logo & Spacing Overrides */
+    .brand {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+    }
+    .brand-lock {
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-primary);
+    }
+    .brand-smith {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .nav-menu {
+      gap: 12px !important;
+    }
+    .nav-link {
+      font-size: 0.88rem !important;
+      padding: 8px 14px !important;
+      gap: 5px !important;
+    }
+
+    /* Background suitability & opacity overrides */
+    .bg-mesh-1, .bg-mesh-2 {
+      opacity: 0.25 !important;
+      filter: blur(160px) !important;
+    }
+    .bg-grid {
+      opacity: 0.4 !important;
+    }
+
+    /* CTA Button Styles & Hover Highlighters */
+    .btn-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      border-radius: 10px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: var(--text-secondary) !important;
+      background-color: var(--bg-secondary) !important;
+      border: 1px solid var(--border-color) !important;
+      cursor: pointer !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all 0.25s ease !important;
+      text-decoration: none !important;
+    }
+    .btn-action:hover {
+      color: var(--text-primary) !important;
+      border-color: var(--accent-primary) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px var(--accent-glow) !important;
+    }
+    .btn-action-primary {
+      color: #ffffff !important;
+      background: var(--accent-gradient) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+    }
+    .btn-action-primary:hover {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 6px 20px var(--accent-glow) !important;
+      filter: brightness(1.1) !important;
+    }
+
+    /* Commercial and Security Installation button overrides */
+    .submit-btn-comm {
+      background: var(--accent-gradient) !important;
+      color: #0b0f19 !important;
+      font-weight: 700 !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+      text-decoration: none !important;
+    }
+    .submit-btn-comm:hover {
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+      transform: translateY(-2px) !important;
+      border-color: #ffffff !important;
+      color: #0b0f19 !important;
+    }
+    .option-btn {
+      background: var(--bg-primary) !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      color: var(--text-secondary) !important;
+      text-decoration: none !important;
+    }
+    .option-btn:hover, .option-btn.selected {
+      border-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+      background: var(--accent-glow) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Hero section spacing & layout overrides */
+    .hero-section {
+      grid-template-columns: 1.15fr 0.85fr !important;
+      gap: 20px !important;
+    }
+
+    /* CCTV Visual Alignment overrides */
+    .sec-hero-img-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Emergency simulation contrast overrides */
+    .sim-display-screen .sim-status-text {
+      color: #ffffff !important;
+    }
+    .sim-display-screen .sim-info-box {
+      color: #94a3b8 !important;
+    }
   </style>
   <link rel="stylesheet" href="responsive.css">
 

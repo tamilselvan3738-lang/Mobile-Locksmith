@@ -3362,6 +3362,141 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
     }
 
+  
+    /* Brand Logo & Spacing Overrides */
+    .brand {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+    }
+    .brand-lock {
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-primary);
+    }
+    .brand-smith {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .nav-menu {
+      gap: 12px !important;
+    }
+    .nav-link {
+      font-size: 0.88rem !important;
+      padding: 8px 14px !important;
+      gap: 5px !important;
+    }
+
+    /* Background suitability & opacity overrides */
+    .bg-mesh-1, .bg-mesh-2 {
+      opacity: 0.25 !important;
+      filter: blur(160px) !important;
+    }
+    .bg-grid {
+      opacity: 0.4 !important;
+    }
+
+    /* CTA Button Styles & Hover Highlighters */
+    .btn-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      border-radius: 10px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: var(--text-secondary) !important;
+      background-color: var(--bg-secondary) !important;
+      border: 1px solid var(--border-color) !important;
+      cursor: pointer !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all 0.25s ease !important;
+      text-decoration: none !important;
+    }
+    .btn-action:hover {
+      color: var(--text-primary) !important;
+      border-color: var(--accent-primary) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px var(--accent-glow) !important;
+    }
+    .btn-action-primary {
+      color: #ffffff !important;
+      background: var(--accent-gradient) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+    }
+    .btn-action-primary:hover {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 6px 20px var(--accent-glow) !important;
+      filter: brightness(1.1) !important;
+    }
+
+    /* Commercial and Security Installation button overrides */
+    .submit-btn-comm {
+      background: var(--accent-gradient) !important;
+      color: #0b0f19 !important;
+      font-weight: 700 !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+      text-decoration: none !important;
+    }
+    .submit-btn-comm:hover {
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+      transform: translateY(-2px) !important;
+      border-color: #ffffff !important;
+      color: #0b0f19 !important;
+    }
+    .option-btn {
+      background: var(--bg-primary) !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 14px 28px !important;
+      border-radius: 12px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      color: var(--text-secondary) !important;
+      text-decoration: none !important;
+    }
+    .option-btn:hover, .option-btn.selected {
+      border-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+      background: var(--accent-glow) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Hero section spacing & layout overrides */
+    .hero-section {
+      grid-template-columns: 1.15fr 0.85fr !important;
+      gap: 20px !important;
+    }
+
+    /* CCTV Visual Alignment overrides */
+    .sec-hero-img-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Emergency simulation contrast overrides */
+    .sim-display-screen .sim-status-text {
+      color: #ffffff !important;
+    }
+    .sim-display-screen .sim-info-box {
+      color: #94a3b8 !important;
+    }
   </style>
 
   <link rel="stylesheet" href="responsive.css">
@@ -3399,34 +3534,27 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
     <div class="mobile-drawer-header">
 
-      <a href="index.html" class="brand" style="font-size: 1.25rem; text-decoration: none;">
-
-        <!-- Hexagon cyber key SVG logo based on Lock -->
-
-        <svg class="brand-logo-svg" style="width: 32px; height: 32px;" viewBox="0 0 100 100">
-
+      <a href="index.html" class="brand" style="text-decoration: none;">
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
           <defs>
-
-            <linearGradient id="logoGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
-
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="var(--accent-primary)" />
-
               <stop offset="100%" stop-color="var(--accent-secondary)" />
-
             </linearGradient>
-
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
           </defs>
-
-          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linecap="round" fill="none" />
-
-          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientMobile)" stroke-width="8" stroke-linejoin="round" />
-
-          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientMobile)" />
-
+          <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="4" stroke-dasharray="140 10 30 10" fill="none" filter="url(#logoGlow)" />
+          <path d="M35,46 V34 a15,15 0 0,1 30,0 V46" stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path d="M22,46 H78 V66 C78,80 50,90 50,90 C50,90 22,80 22,66 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="6" stroke-linejoin="round" />
+          <circle cx="50" cy="58" r="5" fill="url(#logoGradient)" />
+          <path d="M48,58 L46,76 H54 L52,58 Z" fill="url(#logoGradient)" />
         </svg>
-
-        <span>LOCKSMITH</span>
-
+        <span class="brand-text">
+          <span class="brand-lock">LOCK</span><span class="brand-smith">SMITH</span>
+        </span>
       </a>
 
       <!-- Back Chevron Arrow Button on Top Right -->
@@ -3450,87 +3578,62 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
     <!-- Inside Hamburger Menu Content (13 links) -->
 
     <nav class="mobile-menu-list">
-
       <!-- Home Submenu inside Drawer (Accordion) -->
-
       <div class="mobile-menu-item">
-
         <button class="mobile-menu-link drawer-accordion-trigger">
-
           <span>Home</span>
-
           <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
-
         </button>
-
         <div class="mobile-submenu">
-
           <a href="./index.html" class="mobile-submenu-link">Home 1</a>
-
           <a href="./home 2.html" class="mobile-submenu-link">Home 2</a>
-
         </div>
-
       </div>
-
-
-
-      <!-- Other Links (Arranged directly in mobile menu list) -->
 
       <a href="./About.html" class="mobile-menu-link">About</a>
 
-      
-
-      <a href="./Emergency.html" class="mobile-menu-link">
-
-        <span>Emergency</span>
-
-      </a>
-
-      
-
-      <a href="./Residential.html" class="mobile-menu-link">Residential</a>
-
-      <a href="./Commercial.html" class="mobile-menu-link">Commercial</a>
-
-      <a href="./Security Installationl.html" class="mobile-menu-link">Security Installation</a>
-
-      <a href="./Lock Types.html" class="mobile-menu-link">Lock Types</a>
-
-      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
-
-      <a href="./Service.html" class="mobile-menu-link">Service</a>
-
-      <a href="./Security.html" class="mobile-menu-link">Security</a>
-
-      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
-
-      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
-
-
-
-      <!-- Dashboard inside Drawer (Accordion) -->
-
+      <!-- Services Submenu inside Drawer (Accordion) -->
       <div class="mobile-menu-item">
-
         <button class="mobile-menu-link drawer-accordion-trigger">
-
-          <span>Dashboard</span>
-
+          <span>Services</span>
           <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
-
         </button>
-
         <div class="mobile-submenu">
-
-          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
-
-          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
-
+          <a href="./Emergency.html" class="mobile-submenu-link">Emergency Lockout</a>
+          <a href="./Residential.html" class="mobile-submenu-link">Residential Locksmith</a>
+          <a href="./Commercial.html" class="mobile-submenu-link">Commercial Locksmith</a>
+          <a href="./Security Installationl.html" class="mobile-submenu-link">Security Installation</a>
+          <a href="./Service.html" class="mobile-submenu-link">All Services Showcase</a>
         </div>
-
       </div>
 
+      <!-- Resources Submenu inside Drawer (Accordion) -->
+      <div class="mobile-menu-item">
+        <button class="mobile-menu-link drawer-accordion-trigger">
+          <span>Resources</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobile-submenu">
+          <a href="./Lock Types.html" class="mobile-submenu-link">Lock Types Guide</a>
+          <a href="./Security.html" class="mobile-submenu-link">Security Advice</a>
+        </div>
+      </div>
+
+      <a href="./Pricing.html" class="mobile-menu-link">Pricing</a>
+      <a href="./Reviews.html" class="mobile-menu-link">Reviews</a>
+      <a href="./Contact.html" class="mobile-menu-link">Contact</a>
+
+      <!-- Dashboard Submenu inside Drawer (Accordion) -->
+      <div class="mobile-menu-item">
+        <button class="mobile-menu-link drawer-accordion-trigger">
+          <span>Dashboard</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobile-submenu">
+          <a href="./Admin.html" class="mobile-submenu-link">Admin Dashboard</a>
+          <a href="./User.html" class="mobile-submenu-link">User Dashboard</a>
+        </div>
+      </div>
     </nav>
 
 
@@ -3621,38 +3724,27 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
       <!-- Left: Logo based on Lock -->
 
-      <a href="index.html" class="brand">
-
+      <a href="index.html" class="brand" style="text-decoration: none;">
         <svg class="brand-logo-svg" viewBox="0 0 100 100">
-
           <defs>
-
             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-
               <stop offset="0%" stop-color="var(--accent-primary)" />
-
               <stop offset="100%" stop-color="var(--accent-secondary)" />
-
             </linearGradient>
-
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
           </defs>
-
-          <!-- Lock Shackle -->
-
-          <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
-
-          <!-- Lock Body (Shield shape) -->
-
-          <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="8" stroke-linejoin="round" />
-
-          <!-- Center Keyhole -->
-
-          <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradient)" />
-
+          <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="4" stroke-dasharray="140 10 30 10" fill="none" filter="url(#logoGlow)" />
+          <path d="M35,46 V34 a15,15 0 0,1 30,0 V46" stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path d="M22,46 H78 V66 C78,80 50,90 50,90 C50,90 22,80 22,66 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="6" stroke-linejoin="round" />
+          <circle cx="50" cy="58" r="5" fill="url(#logoGradient)" />
+          <path d="M48,58 L46,76 H54 L52,58 Z" fill="url(#logoGradient)" />
         </svg>
-
-        <span>LOCKSMITH</span>
-
+        <span class="brand-text">
+          <span class="brand-lock">LOCK</span><span class="brand-smith">SMITH</span>
+        </span>
       </a>
 
 
@@ -3660,181 +3752,116 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
       <!-- Center: Navigation Menu (Desktop/Laptop View) -->
 
       <ul class="nav-menu">
-
         <!-- Home (Submenu Dropdown) -->
-
         <li class="nav-item">
-
           <a href="./index.html" class="nav-link">
-
             <span>Home</span>
-
             <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
-
           </a>
-
           <div class="dropdown-panel">
-
             <a href="./index.html" class="dropdown-item">
-
-
               <div class="dropdown-item-content">
-
                 <span class="dropdown-item-title">Home 1</span>
-
               </div>
-
             </a>
-
             <a href="./home 2.html" class="dropdown-item">
-
-
               <div class="dropdown-item-content">
-
                 <span class="dropdown-item-title">Home 2</span>
-
               </div>
-
             </a>
-
           </div>
-
         </li>
 
-
-
-        <!-- Direct Links arranged side-by-side in center -->
-
         <li class="nav-item">
-
           <a href="./About.html" class="nav-link">About</a>
-
         </li>
 
-
-
+        <!-- Services (Submenu Dropdown) -->
         <li class="nav-item">
-
-          <a href="./Emergency.html" class="nav-link">Emergency</a>
-
+          <a href="./Service.html" class="nav-link">
+            <span>Services</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel">
+            <a href="./Emergency.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Emergency Lockout</span>
+              </div>
+            </a>
+            <a href="./Residential.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Residential Locksmith</span>
+              </div>
+            </a>
+            <a href="./Commercial.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Commercial Locksmith</span>
+              </div>
+            </a>
+            <a href="./Security Installationl.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Security Installation</span>
+              </div>
+            </a>
+            <a href="./Service.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">All Services Showcase</span>
+              </div>
+            </a>
+          </div>
         </li>
 
-
-
+        <!-- Resources / Guides (Submenu Dropdown) -->
         <li class="nav-item">
-
-          <a href="./Residential.html" class="nav-link">Residential</a>
-
+          <a href="./Lock Types.html" class="nav-link">
+            <span>Resources</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel">
+            <a href="./Lock Types.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Lock Types Guide</span>
+              </div>
+            </a>
+            <a href="./Security.html" class="dropdown-item">
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">Security Advice</span>
+              </div>
+            </a>
+          </div>
         </li>
 
-
-
         <li class="nav-item">
-
-          <a href="./Commercial.html" class="nav-link">Commercial</a>
-
-        </li>
-
-
-
-        <li class="nav-item">
-
-          <a href="./Security Installationl.html" class="nav-link">Security Installation</a>
-
-        </li>
-
-
-
-        <li class="nav-item">
-
-          <a href="./Lock Types.html" class="nav-link">Lock Types</a>
-
-        </li>
-
-
-
-        <li class="nav-item">
-
           <a href="./Pricing.html" class="nav-link">Pricing</a>
-
         </li>
 
-
-
         <li class="nav-item">
-
-          <a href="./Service.html" class="nav-link">Service</a>
-
-        </li>
-
-
-
-        <li class="nav-item">
-
-          <a href="./Security.html" class="nav-link">Security</a>
-
-        </li>
-
-
-
-        <li class="nav-item">
-
           <a href="./Reviews.html" class="nav-link">Reviews</a>
-
         </li>
-
-
 
         <li class="nav-item">
-
           <a href="./Contact.html" class="nav-link">Contact</a>
-
         </li>
-
-
 
         <!-- Dashboard (Submenu Dropdown) -->
-
         <li class="nav-item">
-
-          <a href="./Dashboard.html" class="nav-link">
-
+          <a href="./User.html" class="nav-link">
             <span>Dashboard</span>
-
             <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg>
-
           </a>
-
           <div class="dropdown-panel dropdown-right">
-
             <a href="./Admin.html" class="dropdown-item">
-
-              
-
               <div class="dropdown-item-content">
-
                 <span class="dropdown-item-title">Admin Dashboard</span>
-
               </div>
-
             </a>
-
             <a href="./User.html" class="dropdown-item">
-
-              
-
               <div class="dropdown-item-content">
-
                 <span class="dropdown-item-title">User Dashboard</span>
-
               </div>
-
             </a>
-
           </div>
-
         </li>
-
       </ul>
 
 
@@ -4849,33 +4876,28 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
 
         <div class="footer-col brand-col">
 
-          <a href="index.html" class="brand" style="margin-bottom: 16px;">
-
-            <svg class="brand-logo-svg" viewBox="0 0 100 100">
-
-              <defs>
-
-                <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
-
-                  <stop offset="0%" stop-color="var(--accent-primary)" />
-
-                  <stop offset="100%" stop-color="var(--accent-secondary)" />
-
-                </linearGradient>
-
-              </defs>
-
-              <path d="M30,40 V28 A20,20 0 0,1 70,28 V40" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linecap="round" fill="none" />
-
-              <path d="M20,40 H80 V65 C80,80 50,92 50,92 C50,92 20,80 20,65 Z" fill="var(--bg-secondary)" stroke="url(#logoGradientFooter)" stroke-width="8" stroke-linejoin="round" />
-
-              <path d="M50,52 A6,6 0 1,0 50,64 L53,74 H47 L50,64 Z" fill="url(#logoGradientFooter)" />
-
-            </svg>
-
-            <span>LOCKSMITH</span>
-
-          </a>
+          <a href="index.html" class="brand" style="text-decoration: none;">
+        <svg class="brand-logo-svg" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-primary)" />
+              <stop offset="100%" stop-color="var(--accent-secondary)" />
+            </linearGradient>
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="4" stroke-dasharray="140 10 30 10" fill="none" filter="url(#logoGlow)" />
+          <path d="M35,46 V34 a15,15 0 0,1 30,0 V46" stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path d="M22,46 H78 V66 C78,80 50,90 50,90 C50,90 22,80 22,66 Z" fill="var(--bg-secondary)" stroke="url(#logoGradient)" stroke-width="6" stroke-linejoin="round" />
+          <circle cx="50" cy="58" r="5" fill="url(#logoGradient)" />
+          <path d="M48,58 L46,76 H54 L52,58 Z" fill="url(#logoGradient)" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-lock">LOCK</span><span class="brand-smith">SMITH</span>
+        </span>
+      </a>
 
           <p class="footer-text">
 

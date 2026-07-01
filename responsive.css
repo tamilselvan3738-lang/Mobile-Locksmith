@@ -99,8 +99,9 @@ section:has(> table),
   .pricing-hero, 
   .residential-hero, 
   .reviews-section.rev-hero, 
-  .security-hero {
-    padding: 100px 16px 40px 16px !important;
+  .security-hero,
+  .security-hero-container {
+    padding: 120px 16px 40px 16px !important;
     margin-top: 0 !important;
     min-height: auto !important;
   }
