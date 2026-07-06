@@ -26,7 +26,7 @@
       --bg-tertiary: #f1f5f9;
       --text-primary: #0f172a;
       --text-secondary: #475569;
-      --text-muted: #94a3b8;
+      --text-muted: #475569;
       
       --accent-primary: #d4af37;      /* Metallic Gold / Brass */
       --accent-secondary: #aa7c11;    /* Deep Gold */
@@ -61,7 +61,7 @@
       --bg-tertiary: #1f2937;
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
-      --text-muted: #64748b;
+      --text-muted: #475569;
       
       --accent-primary: #ffd700;      /* Bright Gold */
       --accent-secondary: #f39c12;    /* Amber Orange/Gold */
@@ -646,6 +646,31 @@
     }
     .sim-display-screen .sim-info-box {
       color: #94a3b8 !important;
+    }
+
+    /* Audit calculator button overrides */
+    .audit-calc-btn {
+      padding: 12px 36px !important;
+      border-radius: 10px !important;
+      background: var(--accent-gradient) !important;
+      color: #0b0f19 !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      transition: all 0.25s ease !important;
+      box-shadow: var(--shadow-sm) !important;
+      cursor: pointer !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    .audit-calc-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+      border-color: #ffffff !important;
+    }
+
+    /* Consultation input placeholder visibility overrides */
+    .consultation-input::placeholder {
+      color: var(--text-secondary) !important;
+      opacity: 0.85 !important;
     }
   </style>
   <link rel="stylesheet" href="responsive.css">

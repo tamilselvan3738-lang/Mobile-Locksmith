@@ -60,7 +60,7 @@
 
       --text-secondary: #475569;
 
-      --text-muted: #94a3b8;
+      --text-muted: #475569;
 
       
 
@@ -132,7 +132,7 @@
 
       --text-secondary: #94a3b8;
 
-      --text-muted: #64748b;
+      --text-muted: #475569;
 
       
 
@@ -3496,6 +3496,31 @@ font-size: clamp(2rem, 3.5vw, 2.75rem);
     }
     .sim-display-screen .sim-info-box {
       color: #94a3b8 !important;
+    }
+
+    /* Audit calculator button overrides */
+    .audit-calc-btn {
+      padding: 12px 36px !important;
+      border-radius: 10px !important;
+      background: var(--accent-gradient) !important;
+      color: #0b0f19 !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      transition: all 0.25s ease !important;
+      box-shadow: var(--shadow-sm) !important;
+      cursor: pointer !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    .audit-calc-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 15px var(--accent-glow) !important;
+      border-color: #ffffff !important;
+    }
+
+    /* Consultation input placeholder visibility overrides */
+    .consultation-input::placeholder {
+      color: var(--text-secondary) !important;
+      opacity: 0.85 !important;
     }
   </style>
 
