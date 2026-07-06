@@ -3098,6 +3098,12 @@
 
   
     /* Brand Logo & Spacing Overrides */
+    body {
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f8fafc 100%) !important;
+    }
+    html.dark body {
+      background: radial-gradient(circle at 50% 50%, #0f172a 0%, #0b0f19 100%) !important;
+    }
     .brand {
       background: none !important;
       -webkit-background-clip: initial !important;
@@ -3125,11 +3131,11 @@
 
     /* Background suitability & opacity overrides */
     .bg-mesh-1, .bg-mesh-2 {
-      opacity: 0.25 !important;
-      filter: blur(160px) !important;
+      opacity: 0.12 !important;
+      filter: blur(180px) !important;
     }
     .bg-grid {
-      opacity: 0.4 !important;
+      opacity: 0.18 !important;
     }
 
     /* CTA Button Styles & Hover Highlighters */
